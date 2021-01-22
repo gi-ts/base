@@ -1,0 +1,40 @@
+{
+    "name": "@gi-types/notify",
+    "publishConfig": {
+        "access": "public",
+        "tag": "latest"
+    },
+    "version": "0.7.4",
+    "description": "TypeScript definitions for Notify",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Evan Welsh",
+            "url": "https://gitlab.gnome.org/ewlsh/",
+            "githubUsername": "ewlsh"
+        }
+    ],
+    "main": "",
+    "files": [
+        "index.d.ts",
+        "doc.json",
+        "package.json",
+        "README.md",
+        "LICENSE"
+    ],
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://gitlab.gnome.org/ewlsh/packages.gi.ts.git",
+        "directory": "packages/notify0"
+    },
+    "scripts": {},
+    "contentHash": "4354c7329977bf375ef962ae5a78131f",
+    "dependencies": {
+        "@gi-types/gdkpixbuf": "^2.0.4",
+        "@gi-types/glib": "^2.66.8",
+        "@gi-types/gobject": "^2.66.7"
+    },
+    "typeScriptVersion": "4.1",
+    "gitHead": null
+}

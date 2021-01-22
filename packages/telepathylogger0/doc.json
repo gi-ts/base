@@ -1,0 +1,11 @@
+{
+    "name": "TelepathyLogger",
+    "api_version": "0.2",
+    "package_version": "0.2",
+    "imports": {
+        "GObject": "2.0",
+        "TelepathyGLib": "0.12",
+        "GLib": "2.0",
+        "Gio": "2.0"
+    }
+}

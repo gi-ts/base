@@ -1,0 +1,40 @@
+{
+    "name": "@gi-types/telepathyglib",
+    "publishConfig": {
+        "access": "public",
+        "tag": "latest"
+    },
+    "version": "0.12.7",
+    "description": "TypeScript definitions for TelepathyGLib",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Evan Welsh",
+            "url": "https://gitlab.gnome.org/ewlsh/",
+            "githubUsername": "ewlsh"
+        }
+    ],
+    "main": "",
+    "files": [
+        "index.d.ts",
+        "doc.json",
+        "package.json",
+        "README.md",
+        "LICENSE"
+    ],
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://gitlab.gnome.org/ewlsh/packages.gi.ts.git",
+        "directory": "packages/telepathyglib0"
+    },
+    "scripts": {},
+    "contentHash": "69bd5c65fcbac791c3ab1533a4072505",
+    "dependencies": {
+        "@gi-types/gio": "^2.66.8",
+        "@gi-types/glib": "^2.66.8",
+        "@gi-types/gobject": "^2.66.7"
+    },
+    "typeScriptVersion": "4.1",
+    "gitHead": null
+}

@@ -1,0 +1,10 @@
+{
+    "name": "TelepathyGLib",
+    "api_version": "0.12",
+    "package_version": "0.12",
+    "imports": {
+        "GLib": "2.0",
+        "Gio": "2.0",
+        "GObject": "2.0"
+    }
+}

@@ -1,0 +1,41 @@
+{
+    "name": "@gi-types/gdkpixbuf",
+    "publishConfig": {
+        "access": "public",
+        "tag": "latest"
+    },
+    "version": "2.0.5",
+    "description": "TypeScript definitions for GdkPixbuf",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Evan Welsh",
+            "url": "https://gitlab.gnome.org/ewlsh/",
+            "githubUsername": "ewlsh"
+        }
+    ],
+    "main": "",
+    "files": [
+        "index.d.ts",
+        "doc.json",
+        "package.json",
+        "README.md",
+        "LICENSE"
+    ],
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://gitlab.gnome.org/ewlsh/packages.gi.ts.git",
+        "directory": "packages/gdkpixbuf2"
+    },
+    "scripts": {},
+    "contentHash": "090f0a57634d13c6d319b693c79b8606",
+    "dependencies": {
+        "@gi-types/gio": "^2.66.8",
+        "@gi-types/glib": "^2.66.8",
+        "@gi-types/gmodule": "^2.0.1",
+        "@gi-types/gobject": "^2.66.7"
+    },
+    "typeScriptVersion": "4.1",
+    "gitHead": null
+}

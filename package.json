@@ -1,0 +1,19 @@
+{
+  "name": "packages-current",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.22.1",
+    "npm-api": "^1.0.0",
+    "semver": "^7.3.4",
+    "typescript": "^4.1.3"
+  },
+  "workspaces": [
+    "packages/**"
+  ],
+  "scripts": {
+    "pub": "lerna publish",
+    "pub:package": "lerna publish from-package",
+    "generate": "gi-ts generate docs.json",
+    "config": "XDG_DATA_DIRS=/usr/share/ gi-ts config --lock"
+  }
+}
