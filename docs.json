@@ -1,14 +1,15 @@
 {
     "options": {
         "outputFormat": "folder",
-        "versionedOutput": true,
+        "versionedOutput": false,
         "propertyCase": "both",
-        "out": "./packages",
+        "out": "./packages/@gi-types/",
         "versionedImports": false,
         "importPrefix": "@gi-types/",
         "emitMetadata": true,
         "inferGenerics": true,
-        "promisify": true
+        "promisify": true,
+        "useFormatter": true
     },
     "libraries": {
         "AccountsService": "1.0",
