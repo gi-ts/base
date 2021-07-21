@@ -1,7 +1,7 @@
 /**
  * HarfBuzz 0.0
  *
- * Generated from 0.0
+ * Generated from 2.8.1
  */
 
 import * as GLib from "@gi-types/glib2";

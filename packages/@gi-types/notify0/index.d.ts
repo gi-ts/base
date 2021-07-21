@@ -1,7 +1,7 @@
 /**
  * Notify 0.7
  *
- * Generated from 0.7
+ * Generated from 0.7.9
  */
 
 import * as GObject from "@gi-types/gobject2";
