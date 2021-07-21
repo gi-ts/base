@@ -1361,7 +1361,8 @@ export module Bearer {
 }
 export class Bearer
     extends GdbusBearerProxy
-    implements Gio.AsyncInitable<Bearer>, Gio.DBusInterface, Gio.Initable, GdbusBearer {
+    implements Gio.AsyncInitable<Bearer>, Gio.DBusInterface, Gio.Initable, GdbusBearer
+{
     static $gtype: GObject.GType<Bearer>;
 
     constructor(properties?: Partial<Bearer.ConstructorProperties>, ...args: any[]);
@@ -1820,7 +1821,8 @@ export module GdbusBearerProxy {
 }
 export class GdbusBearerProxy
     extends Gio.DBusProxy
-    implements Gio.AsyncInitable<GdbusBearerProxy>, Gio.DBusInterface, Gio.Initable, GdbusBearer {
+    implements Gio.AsyncInitable<GdbusBearerProxy>, Gio.DBusInterface, Gio.Initable, GdbusBearer
+{
     static $gtype: GObject.GType<GdbusBearerProxy>;
 
     constructor(properties?: Partial<GdbusBearerProxy.ConstructorProperties>, ...args: any[]);
@@ -2071,7 +2073,8 @@ export module GdbusModem3gppProxy {
 }
 export class GdbusModem3gppProxy
     extends Gio.DBusProxy
-    implements Gio.AsyncInitable<GdbusModem3gppProxy>, Gio.DBusInterface, Gio.Initable, GdbusModem3gpp {
+    implements Gio.AsyncInitable<GdbusModem3gppProxy>, Gio.DBusInterface, Gio.Initable, GdbusModem3gpp
+{
     static $gtype: GObject.GType<GdbusModem3gppProxy>;
 
     constructor(properties?: Partial<GdbusModem3gppProxy.ConstructorProperties>, ...args: any[]);
@@ -2430,7 +2433,8 @@ export module GdbusModem3gppUssdProxy {
 }
 export class GdbusModem3gppUssdProxy
     extends Gio.DBusProxy
-    implements Gio.AsyncInitable<GdbusModem3gppUssdProxy>, Gio.DBusInterface, Gio.Initable, GdbusModem3gppUssd {
+    implements Gio.AsyncInitable<GdbusModem3gppUssdProxy>, Gio.DBusInterface, Gio.Initable, GdbusModem3gppUssd
+{
     static $gtype: GObject.GType<GdbusModem3gppUssdProxy>;
 
     constructor(properties?: Partial<GdbusModem3gppUssdProxy.ConstructorProperties>, ...args: any[]);
@@ -2612,7 +2616,8 @@ export module GdbusModem3gppUssdSkeleton {
 }
 export class GdbusModem3gppUssdSkeleton
     extends Gio.DBusInterfaceSkeleton
-    implements Gio.DBusInterface, GdbusModem3gppUssd {
+    implements Gio.DBusInterface, GdbusModem3gppUssd
+{
     static $gtype: GObject.GType<GdbusModem3gppUssdSkeleton>;
 
     constructor(properties?: Partial<GdbusModem3gppUssdSkeleton.ConstructorProperties>, ...args: any[]);
@@ -2691,7 +2696,8 @@ export module GdbusModemCdmaProxy {
 }
 export class GdbusModemCdmaProxy
     extends Gio.DBusProxy
-    implements Gio.AsyncInitable<GdbusModemCdmaProxy>, Gio.DBusInterface, Gio.Initable, GdbusModemCdma {
+    implements Gio.AsyncInitable<GdbusModemCdmaProxy>, Gio.DBusInterface, Gio.Initable, GdbusModemCdma
+{
     static $gtype: GObject.GType<GdbusModemCdmaProxy>;
 
     constructor(properties?: Partial<GdbusModemCdmaProxy.ConstructorProperties>, ...args: any[]);
@@ -2970,7 +2976,8 @@ export module GdbusModemFirmwareProxy {
 }
 export class GdbusModemFirmwareProxy
     extends Gio.DBusProxy
-    implements Gio.AsyncInitable<GdbusModemFirmwareProxy>, Gio.DBusInterface, Gio.Initable, GdbusModemFirmware {
+    implements Gio.AsyncInitable<GdbusModemFirmwareProxy>, Gio.DBusInterface, Gio.Initable, GdbusModemFirmware
+{
     static $gtype: GObject.GType<GdbusModemFirmwareProxy>;
 
     constructor(properties?: Partial<GdbusModemFirmwareProxy.ConstructorProperties>, ...args: any[]);
@@ -3131,7 +3138,8 @@ export module GdbusModemFirmwareSkeleton {
 }
 export class GdbusModemFirmwareSkeleton
     extends Gio.DBusInterfaceSkeleton
-    implements Gio.DBusInterface, GdbusModemFirmware {
+    implements Gio.DBusInterface, GdbusModemFirmware
+{
     static $gtype: GObject.GType<GdbusModemFirmwareSkeleton>;
 
     constructor(properties?: Partial<GdbusModemFirmwareSkeleton.ConstructorProperties>, ...args: any[]);
@@ -3189,7 +3197,8 @@ export module GdbusModemLocationProxy {
 }
 export class GdbusModemLocationProxy
     extends Gio.DBusProxy
-    implements Gio.AsyncInitable<GdbusModemLocationProxy>, Gio.DBusInterface, Gio.Initable, GdbusModemLocation {
+    implements Gio.AsyncInitable<GdbusModemLocationProxy>, Gio.DBusInterface, Gio.Initable, GdbusModemLocation
+{
     static $gtype: GObject.GType<GdbusModemLocationProxy>;
 
     constructor(properties?: Partial<GdbusModemLocationProxy.ConstructorProperties>, ...args: any[]);
@@ -3427,7 +3436,8 @@ export module GdbusModemLocationSkeleton {
 }
 export class GdbusModemLocationSkeleton
     extends Gio.DBusInterfaceSkeleton
-    implements Gio.DBusInterface, GdbusModemLocation {
+    implements Gio.DBusInterface, GdbusModemLocation
+{
     static $gtype: GObject.GType<GdbusModemLocationSkeleton>;
 
     constructor(properties?: Partial<GdbusModemLocationSkeleton.ConstructorProperties>, ...args: any[]);
@@ -3562,7 +3572,8 @@ export module GdbusModemMessagingProxy {
 }
 export class GdbusModemMessagingProxy
     extends Gio.DBusProxy
-    implements Gio.AsyncInitable<GdbusModemMessagingProxy>, Gio.DBusInterface, Gio.Initable, GdbusModemMessaging {
+    implements Gio.AsyncInitable<GdbusModemMessagingProxy>, Gio.DBusInterface, Gio.Initable, GdbusModemMessaging
+{
     static $gtype: GObject.GType<GdbusModemMessagingProxy>;
 
     constructor(properties?: Partial<GdbusModemMessagingProxy.ConstructorProperties>, ...args: any[]);
@@ -3748,7 +3759,8 @@ export module GdbusModemMessagingSkeleton {
 }
 export class GdbusModemMessagingSkeleton
     extends Gio.DBusInterfaceSkeleton
-    implements Gio.DBusInterface, GdbusModemMessaging {
+    implements Gio.DBusInterface, GdbusModemMessaging
+{
     static $gtype: GObject.GType<GdbusModemMessagingSkeleton>;
 
     constructor(properties?: Partial<GdbusModemMessagingSkeleton.ConstructorProperties>, ...args: any[]);
@@ -3831,7 +3843,8 @@ export module GdbusModemOmaProxy {
 }
 export class GdbusModemOmaProxy
     extends Gio.DBusProxy
-    implements Gio.AsyncInitable<GdbusModemOmaProxy>, Gio.DBusInterface, Gio.Initable, GdbusModemOma {
+    implements Gio.AsyncInitable<GdbusModemOmaProxy>, Gio.DBusInterface, Gio.Initable, GdbusModemOma
+{
     static $gtype: GObject.GType<GdbusModemOmaProxy>;
 
     constructor(properties?: Partial<GdbusModemOmaProxy.ConstructorProperties>, ...args: any[]);
@@ -4188,7 +4201,8 @@ export module GdbusModemProxy {
 }
 export class GdbusModemProxy
     extends Gio.DBusProxy
-    implements Gio.AsyncInitable<GdbusModemProxy>, Gio.DBusInterface, Gio.Initable, GdbusModem {
+    implements Gio.AsyncInitable<GdbusModemProxy>, Gio.DBusInterface, Gio.Initable, GdbusModem
+{
     static $gtype: GObject.GType<GdbusModemProxy>;
 
     constructor(properties?: Partial<GdbusModemProxy.ConstructorProperties>, ...args: any[]);
@@ -4617,7 +4631,8 @@ export module GdbusModemSignalProxy {
 }
 export class GdbusModemSignalProxy
     extends Gio.DBusProxy
-    implements Gio.AsyncInitable<GdbusModemSignalProxy>, Gio.DBusInterface, Gio.Initable, GdbusModemSignal {
+    implements Gio.AsyncInitable<GdbusModemSignalProxy>, Gio.DBusInterface, Gio.Initable, GdbusModemSignal
+{
     static $gtype: GObject.GType<GdbusModemSignalProxy>;
 
     constructor(properties?: Partial<GdbusModemSignalProxy.ConstructorProperties>, ...args: any[]);
@@ -4834,7 +4849,8 @@ export module GdbusModemSimpleProxy {
 }
 export class GdbusModemSimpleProxy
     extends Gio.DBusProxy
-    implements Gio.AsyncInitable<GdbusModemSimpleProxy>, Gio.DBusInterface, Gio.Initable, GdbusModemSimple {
+    implements Gio.AsyncInitable<GdbusModemSimpleProxy>, Gio.DBusInterface, Gio.Initable, GdbusModemSimple
+{
     static $gtype: GObject.GType<GdbusModemSimpleProxy>;
 
     constructor(properties?: Partial<GdbusModemSimpleProxy.ConstructorProperties>, ...args: any[]);
@@ -5391,7 +5407,8 @@ export module GdbusModemTimeProxy {
 }
 export class GdbusModemTimeProxy
     extends Gio.DBusProxy
-    implements Gio.AsyncInitable<GdbusModemTimeProxy>, Gio.DBusInterface, Gio.Initable, GdbusModemTime {
+    implements Gio.AsyncInitable<GdbusModemTimeProxy>, Gio.DBusInterface, Gio.Initable, GdbusModemTime
+{
     static $gtype: GObject.GType<GdbusModemTimeProxy>;
 
     constructor(properties?: Partial<GdbusModemTimeProxy.ConstructorProperties>, ...args: any[]);
@@ -5582,7 +5599,8 @@ export module GdbusModemVoiceProxy {
 }
 export class GdbusModemVoiceProxy
     extends Gio.DBusProxy
-    implements Gio.AsyncInitable<GdbusModemVoiceProxy>, Gio.DBusInterface, Gio.Initable, GdbusModemVoice {
+    implements Gio.AsyncInitable<GdbusModemVoiceProxy>, Gio.DBusInterface, Gio.Initable, GdbusModemVoice
+{
     static $gtype: GObject.GType<GdbusModemVoiceProxy>;
 
     constructor(properties?: Partial<GdbusModemVoiceProxy.ConstructorProperties>, ...args: any[]);
@@ -5971,7 +5989,8 @@ export module GdbusObjectManagerClient {
 }
 export class GdbusObjectManagerClient
     extends Gio.DBusObjectManagerClient
-    implements Gio.AsyncInitable<GdbusObjectManagerClient>, Gio.DBusObjectManager, Gio.Initable {
+    implements Gio.AsyncInitable<GdbusObjectManagerClient>, Gio.DBusObjectManager, Gio.Initable
+{
     static $gtype: GObject.GType<GdbusObjectManagerClient>;
 
     constructor(properties?: Partial<GdbusObjectManagerClient.ConstructorProperties>, ...args: any[]);
@@ -6301,7 +6320,8 @@ export class GdbusOrgFreedesktopModemManager1Proxy
         Gio.AsyncInitable<GdbusOrgFreedesktopModemManager1Proxy>,
         Gio.DBusInterface,
         Gio.Initable,
-        GdbusOrgFreedesktopModemManager1 {
+        GdbusOrgFreedesktopModemManager1
+{
     static $gtype: GObject.GType<GdbusOrgFreedesktopModemManager1Proxy>;
 
     constructor(properties?: Partial<GdbusOrgFreedesktopModemManager1Proxy.ConstructorProperties>, ...args: any[]);
@@ -6492,7 +6512,8 @@ export module GdbusOrgFreedesktopModemManager1Skeleton {
 }
 export class GdbusOrgFreedesktopModemManager1Skeleton
     extends Gio.DBusInterfaceSkeleton
-    implements Gio.DBusInterface, GdbusOrgFreedesktopModemManager1 {
+    implements Gio.DBusInterface, GdbusOrgFreedesktopModemManager1
+{
     static $gtype: GObject.GType<GdbusOrgFreedesktopModemManager1Skeleton>;
 
     constructor(properties?: Partial<GdbusOrgFreedesktopModemManager1Skeleton.ConstructorProperties>, ...args: any[]);
@@ -6580,7 +6601,8 @@ export module GdbusSimProxy {
 }
 export class GdbusSimProxy
     extends Gio.DBusProxy
-    implements Gio.AsyncInitable<GdbusSimProxy>, Gio.DBusInterface, Gio.Initable, GdbusSim {
+    implements Gio.AsyncInitable<GdbusSimProxy>, Gio.DBusInterface, Gio.Initable, GdbusSim
+{
     static $gtype: GObject.GType<GdbusSimProxy>;
 
     constructor(properties?: Partial<GdbusSimProxy.ConstructorProperties>, ...args: any[]);
@@ -6915,7 +6937,8 @@ export module GdbusSmsProxy {
 }
 export class GdbusSmsProxy
     extends Gio.DBusProxy
-    implements Gio.AsyncInitable<GdbusSmsProxy>, Gio.DBusInterface, Gio.Initable, GdbusSms {
+    implements Gio.AsyncInitable<GdbusSmsProxy>, Gio.DBusInterface, Gio.Initable, GdbusSms
+{
     static $gtype: GObject.GType<GdbusSmsProxy>;
 
     constructor(properties?: Partial<GdbusSmsProxy.ConstructorProperties>, ...args: any[]);
@@ -7312,7 +7335,8 @@ export module Manager {
 }
 export class Manager
     extends GdbusObjectManagerClient
-    implements Gio.AsyncInitable<Manager>, Gio.DBusObjectManager, Gio.Initable {
+    implements Gio.AsyncInitable<Manager>, Gio.DBusObjectManager, Gio.Initable
+{
     static $gtype: GObject.GType<Manager>;
 
     constructor(properties?: Partial<Manager.ConstructorProperties>, ...args: any[]);
@@ -7453,7 +7477,8 @@ export module Modem {
 }
 export class Modem
     extends GdbusModemProxy
-    implements Gio.AsyncInitable<Modem>, Gio.DBusInterface, Gio.Initable, GdbusModem {
+    implements Gio.AsyncInitable<Modem>, Gio.DBusInterface, Gio.Initable, GdbusModem
+{
     static $gtype: GObject.GType<Modem>;
 
     constructor(properties?: Partial<Modem.ConstructorProperties>, ...args: any[]);
@@ -8024,7 +8049,8 @@ export module Modem3gpp {
 }
 export class Modem3gpp
     extends GdbusModem3gppProxy
-    implements Gio.AsyncInitable<Modem3gpp>, Gio.DBusInterface, Gio.Initable, GdbusModem3gpp {
+    implements Gio.AsyncInitable<Modem3gpp>, Gio.DBusInterface, Gio.Initable, GdbusModem3gpp
+{
     static $gtype: GObject.GType<Modem3gpp>;
 
     constructor(properties?: Partial<Modem3gpp.ConstructorProperties>, ...args: any[]);
@@ -8247,7 +8273,8 @@ export module Modem3gppUssd {
 }
 export class Modem3gppUssd
     extends GdbusModem3gppUssdProxy
-    implements Gio.AsyncInitable<Modem3gppUssd>, Gio.DBusInterface, Gio.Initable, GdbusModem3gppUssd {
+    implements Gio.AsyncInitable<Modem3gppUssd>, Gio.DBusInterface, Gio.Initable, GdbusModem3gppUssd
+{
     static $gtype: GObject.GType<Modem3gppUssd>;
 
     constructor(properties?: Partial<Modem3gppUssd.ConstructorProperties>, ...args: any[]);
@@ -8379,7 +8406,8 @@ export module ModemCdma {
 }
 export class ModemCdma
     extends GdbusModemCdmaProxy
-    implements Gio.AsyncInitable<ModemCdma>, Gio.DBusInterface, Gio.Initable, GdbusModemCdma {
+    implements Gio.AsyncInitable<ModemCdma>, Gio.DBusInterface, Gio.Initable, GdbusModemCdma
+{
     static $gtype: GObject.GType<ModemCdma>;
 
     constructor(properties?: Partial<ModemCdma.ConstructorProperties>, ...args: any[]);
@@ -8521,7 +8549,8 @@ export module ModemFirmware {
 }
 export class ModemFirmware
     extends GdbusModemFirmwareProxy
-    implements Gio.AsyncInitable<ModemFirmware>, Gio.DBusInterface, Gio.Initable, GdbusModemFirmware {
+    implements Gio.AsyncInitable<ModemFirmware>, Gio.DBusInterface, Gio.Initable, GdbusModemFirmware
+{
     static $gtype: GObject.GType<ModemFirmware>;
 
     constructor(properties?: Partial<ModemFirmware.ConstructorProperties>, ...args: any[]);
@@ -8620,7 +8649,8 @@ export module ModemLocation {
 }
 export class ModemLocation
     extends GdbusModemLocationProxy
-    implements Gio.AsyncInitable<ModemLocation>, Gio.DBusInterface, Gio.Initable, GdbusModemLocation {
+    implements Gio.AsyncInitable<ModemLocation>, Gio.DBusInterface, Gio.Initable, GdbusModemLocation
+{
     static $gtype: GObject.GType<ModemLocation>;
 
     constructor(properties?: Partial<ModemLocation.ConstructorProperties>, ...args: any[]);
@@ -8887,7 +8917,8 @@ export module ModemMessaging {
 }
 export class ModemMessaging
     extends GdbusModemMessagingProxy
-    implements Gio.AsyncInitable<ModemMessaging>, Gio.DBusInterface, Gio.Initable, GdbusModemMessaging {
+    implements Gio.AsyncInitable<ModemMessaging>, Gio.DBusInterface, Gio.Initable, GdbusModemMessaging
+{
     static $gtype: GObject.GType<ModemMessaging>;
 
     constructor(properties?: Partial<ModemMessaging.ConstructorProperties>, ...args: any[]);
@@ -9022,7 +9053,8 @@ export module ModemOma {
 }
 export class ModemOma
     extends GdbusModemOmaProxy
-    implements Gio.AsyncInitable<ModemOma>, Gio.DBusInterface, Gio.Initable, GdbusModemOma {
+    implements Gio.AsyncInitable<ModemOma>, Gio.DBusInterface, Gio.Initable, GdbusModemOma
+{
     static $gtype: GObject.GType<ModemOma>;
 
     constructor(properties?: Partial<ModemOma.ConstructorProperties>, ...args: any[]);
@@ -9235,7 +9267,8 @@ export module ModemSignal {
 }
 export class ModemSignal
     extends GdbusModemSignalProxy
-    implements Gio.AsyncInitable<ModemSignal>, Gio.DBusInterface, Gio.Initable, GdbusModemSignal {
+    implements Gio.AsyncInitable<ModemSignal>, Gio.DBusInterface, Gio.Initable, GdbusModemSignal
+{
     static $gtype: GObject.GType<ModemSignal>;
 
     constructor(properties?: Partial<ModemSignal.ConstructorProperties>, ...args: any[]);
@@ -9337,7 +9370,8 @@ export module ModemSimple {
 }
 export class ModemSimple
     extends GdbusModemSimpleProxy
-    implements Gio.AsyncInitable<ModemSimple>, Gio.DBusInterface, Gio.Initable, GdbusModemSimple {
+    implements Gio.AsyncInitable<ModemSimple>, Gio.DBusInterface, Gio.Initable, GdbusModemSimple
+{
     static $gtype: GObject.GType<ModemSimple>;
 
     constructor(properties?: Partial<ModemSimple.ConstructorProperties>, ...args: any[]);
@@ -9462,7 +9496,8 @@ export module ModemTime {
 }
 export class ModemTime
     extends GdbusModemTimeProxy
-    implements Gio.AsyncInitable<ModemTime>, Gio.DBusInterface, Gio.Initable, GdbusModemTime {
+    implements Gio.AsyncInitable<ModemTime>, Gio.DBusInterface, Gio.Initable, GdbusModemTime
+{
     static $gtype: GObject.GType<ModemTime>;
 
     constructor(properties?: Partial<ModemTime.ConstructorProperties>, ...args: any[]);
@@ -9539,7 +9574,8 @@ export module ModemVoice {
 }
 export class ModemVoice
     extends GdbusModemVoiceProxy
-    implements Gio.AsyncInitable<ModemVoice>, Gio.DBusInterface, Gio.Initable, GdbusModemVoice {
+    implements Gio.AsyncInitable<ModemVoice>, Gio.DBusInterface, Gio.Initable, GdbusModemVoice
+{
     static $gtype: GObject.GType<ModemVoice>;
 
     constructor(properties?: Partial<ModemVoice.ConstructorProperties>, ...args: any[]);

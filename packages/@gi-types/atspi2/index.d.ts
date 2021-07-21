@@ -546,7 +546,8 @@ export class Accessible
         Table,
         TableCell,
         Text,
-        Value {
+        Value
+{
     static $gtype: GObject.GType<Accessible>;
 
     constructor(properties?: Partial<Accessible.ConstructorProperties>, ...args: any[]);

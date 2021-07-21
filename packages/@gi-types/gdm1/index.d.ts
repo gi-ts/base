@@ -40,7 +40,8 @@ export module ChooserProxy {
 }
 export class ChooserProxy
     extends Gio.DBusProxy
-    implements Chooser, Gio.AsyncInitable<ChooserProxy>, Gio.DBusInterface, Gio.Initable {
+    implements Chooser, Gio.AsyncInitable<ChooserProxy>, Gio.DBusInterface, Gio.Initable
+{
     static $gtype: GObject.GType<ChooserProxy>;
 
     constructor(properties?: Partial<ChooserProxy.ConstructorProperties>, ...args: any[]);
@@ -250,7 +251,8 @@ export module GreeterProxy {
 }
 export class GreeterProxy
     extends Gio.DBusProxy
-    implements Greeter, Gio.AsyncInitable<GreeterProxy>, Gio.DBusInterface, Gio.Initable {
+    implements Greeter, Gio.AsyncInitable<GreeterProxy>, Gio.DBusInterface, Gio.Initable
+{
     static $gtype: GObject.GType<GreeterProxy>;
 
     constructor(properties?: Partial<GreeterProxy.ConstructorProperties>, ...args: any[]);
@@ -572,7 +574,8 @@ export module ManagerProxy {
 }
 export class ManagerProxy
     extends Gio.DBusProxy
-    implements Manager, Gio.AsyncInitable<ManagerProxy>, Gio.DBusInterface, Gio.Initable {
+    implements Manager, Gio.AsyncInitable<ManagerProxy>, Gio.DBusInterface, Gio.Initable
+{
     static $gtype: GObject.GType<ManagerProxy>;
 
     constructor(properties?: Partial<ManagerProxy.ConstructorProperties>, ...args: any[]);
@@ -802,7 +805,8 @@ export module RemoteGreeterProxy {
 }
 export class RemoteGreeterProxy
     extends Gio.DBusProxy
-    implements RemoteGreeter, Gio.AsyncInitable<RemoteGreeterProxy>, Gio.DBusInterface, Gio.Initable {
+    implements RemoteGreeter, Gio.AsyncInitable<RemoteGreeterProxy>, Gio.DBusInterface, Gio.Initable
+{
     static $gtype: GObject.GType<RemoteGreeterProxy>;
 
     constructor(properties?: Partial<RemoteGreeterProxy.ConstructorProperties>, ...args: any[]);
@@ -916,7 +920,8 @@ export module UserVerifierChoiceListProxy {
 }
 export class UserVerifierChoiceListProxy
     extends Gio.DBusProxy
-    implements UserVerifierChoiceList, Gio.AsyncInitable<UserVerifierChoiceListProxy>, Gio.DBusInterface, Gio.Initable {
+    implements UserVerifierChoiceList, Gio.AsyncInitable<UserVerifierChoiceListProxy>, Gio.DBusInterface, Gio.Initable
+{
     static $gtype: GObject.GType<UserVerifierChoiceListProxy>;
 
     constructor(properties?: Partial<UserVerifierChoiceListProxy.ConstructorProperties>, ...args: any[]);
@@ -1021,7 +1026,8 @@ export module UserVerifierChoiceListSkeleton {
 }
 export class UserVerifierChoiceListSkeleton
     extends Gio.DBusInterfaceSkeleton
-    implements UserVerifierChoiceList, Gio.DBusInterface {
+    implements UserVerifierChoiceList, Gio.DBusInterface
+{
     static $gtype: GObject.GType<UserVerifierChoiceListSkeleton>;
 
     constructor(properties?: Partial<UserVerifierChoiceListSkeleton.ConstructorProperties>, ...args: any[]);
@@ -1074,7 +1080,8 @@ export module UserVerifierProxy {
 }
 export class UserVerifierProxy
     extends Gio.DBusProxy
-    implements UserVerifier, Gio.AsyncInitable<UserVerifierProxy>, Gio.DBusInterface, Gio.Initable {
+    implements UserVerifier, Gio.AsyncInitable<UserVerifierProxy>, Gio.DBusInterface, Gio.Initable
+{
     static $gtype: GObject.GType<UserVerifierProxy>;
 
     constructor(properties?: Partial<UserVerifierProxy.ConstructorProperties>, ...args: any[]);
@@ -1400,7 +1407,8 @@ export module WorkerManagerProxy {
 }
 export class WorkerManagerProxy
     extends Gio.DBusProxy
-    implements WorkerManager, Gio.AsyncInitable<WorkerManagerProxy>, Gio.DBusInterface, Gio.Initable {
+    implements WorkerManager, Gio.AsyncInitable<WorkerManagerProxy>, Gio.DBusInterface, Gio.Initable
+{
     static $gtype: GObject.GType<WorkerManagerProxy>;
 
     constructor(properties?: Partial<WorkerManagerProxy.ConstructorProperties>, ...args: any[]);

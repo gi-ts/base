@@ -43,7 +43,8 @@ export module ClientProxy {
 }
 export class ClientProxy
     extends Gio.DBusProxy
-    implements Client, Gio.AsyncInitable<ClientProxy>, Gio.DBusInterface, Gio.Initable {
+    implements Client, Gio.AsyncInitable<ClientProxy>, Gio.DBusInterface, Gio.Initable
+{
     static $gtype: GObject.GType<ClientProxy>;
 
     constructor(properties?: Partial<ClientProxy.ConstructorProperties>, ...args: any[]);
@@ -336,7 +337,8 @@ export module LocationProxy {
 }
 export class LocationProxy
     extends Gio.DBusProxy
-    implements Location, Gio.AsyncInitable<LocationProxy>, Gio.DBusInterface, Gio.Initable {
+    implements Location, Gio.AsyncInitable<LocationProxy>, Gio.DBusInterface, Gio.Initable
+{
     static $gtype: GObject.GType<LocationProxy>;
 
     constructor(properties?: Partial<LocationProxy.ConstructorProperties>, ...args: any[]);
@@ -527,7 +529,8 @@ export module ManagerProxy {
 }
 export class ManagerProxy
     extends Gio.DBusProxy
-    implements Manager, Gio.AsyncInitable<ManagerProxy>, Gio.DBusInterface, Gio.Initable {
+    implements Manager, Gio.AsyncInitable<ManagerProxy>, Gio.DBusInterface, Gio.Initable
+{
     static $gtype: GObject.GType<ManagerProxy>;
 
     constructor(properties?: Partial<ManagerProxy.ConstructorProperties>, ...args: any[]);

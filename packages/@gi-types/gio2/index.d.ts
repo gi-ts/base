@@ -2840,7 +2840,8 @@ export module DBusObjectManagerClient {
 }
 export class DBusObjectManagerClient
     extends GObject.Object
-    implements AsyncInitable<DBusObjectManagerClient>, DBusObjectManager, Initable {
+    implements AsyncInitable<DBusObjectManagerClient>, DBusObjectManager, Initable
+{
     static $gtype: GObject.GType<DBusObjectManagerClient>;
 
     constructor(properties?: Partial<DBusObjectManagerClient.ConstructorProperties>, ...args: any[]);

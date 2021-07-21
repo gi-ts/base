@@ -550,7 +550,8 @@ export class NoOpObject
         TableCell,
         Text,
         Value,
-        Window {
+        Window
+{
     static $gtype: GObject.GType<NoOpObject>;
 
     constructor(properties?: Partial<NoOpObject.ConstructorProperties>, ...args: any[]);
