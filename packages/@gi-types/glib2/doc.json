@@ -1,0 +1,8 @@
+{
+    "name": "GLib",
+    "api_version": "2.0",
+    "package_version": "2.68.0",
+    "imports": {
+        "GObject": "2.0"
+    }
+}

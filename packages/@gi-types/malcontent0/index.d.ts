@@ -4,9 +4,9 @@
  * Generated from 0.0
  */
 
-import * as GObject from "@gi-types/gobject";
-import * as Gio from "@gi-types/gio";
-import * as GLib from "@gi-types/glib";
+import * as GLib from "@gi-types/glib2";
+import * as GObject from "@gi-types/gobject2";
+import * as Gio from "@gi-types/gio2";
 
 export function app_filter_deserialize(variant: GLib.Variant, user_id: number): AppFilter;
 export function app_filter_error_quark(): GLib.Quark;
@@ -40,7 +40,7 @@ export class ManagerError extends GLib.Error {
     constructor(options: { message: string; code: number });
     constructor(copy: ManagerError);
 
-    // Properties
+    // Fields
     static INVALID_USER: number;
     static PERMISSION_DENIED: number;
     static INVALID_DATA: number;
@@ -89,7 +89,7 @@ export class Manager extends GObject.Object {
     _init(properties?: Partial<Manager.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    connection: Gio.DBusConnection;
+    get connection(): Gio.DBusConnection;
 
     // Signals
 
@@ -214,7 +214,6 @@ export class AppFilter {
     user_id: number;
     app_list: string;
     app_list_type: AppFilterListType;
-    oars_ratings: GLib.Variant;
     allow_user_installation: boolean;
     allow_system_installation: boolean;
 
@@ -304,13 +303,19 @@ export class SessionLimitsBuilder {
     static $gtype: GObject.GType<SessionLimitsBuilder>;
 
     constructor();
+    constructor(
+        properties?: Partial<{
+            u0?: number;
+            u1?: number;
+            u2?: number;
+        }>
+    );
     constructor(copy: SessionLimitsBuilder);
 
     // Fields
     u0: number;
     u1: number;
     u2: number;
-    p0: any[];
 
     // Constructors
     static ["new"](): SessionLimitsBuilder;

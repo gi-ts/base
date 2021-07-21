@@ -4,9 +4,9 @@
  * Generated from 0.12
  */
 
-import * as GLib from "@gi-types/glib";
-import * as Gio from "@gi-types/gio";
-import * as GObject from "@gi-types/gobject";
+import * as GObject from "@gi-types/gobject2";
+import * as GLib from "@gi-types/glib2";
+import * as Gio from "@gi-types/gio2";
 
 export const ACCOUNT_MANAGER_BUS_NAME: string;
 export const ACCOUNT_MANAGER_OBJECT_PATH: string;
@@ -549,13 +549,13 @@ export function dbus_properties_mixin_get(
     self: GObject.Object,
     interface_name: string,
     property_name: string,
-    value: any
+    value: GObject.Value | any
 ): boolean;
 export function dbus_properties_mixin_getter_gobject_properties(
     object: GObject.Object,
     iface: GLib.Quark,
     name: GLib.Quark,
-    value: any,
+    value: GObject.Value | any,
     getter_data?: any | null
 ): void;
 export function dbus_properties_mixin_iface_init(g_iface?: any | null, iface_data?: any | null): void;
@@ -563,13 +563,13 @@ export function dbus_properties_mixin_set(
     self: GObject.Object,
     interface_name: string,
     property_name: string,
-    value: any
+    value: GObject.Value | any
 ): boolean;
 export function dbus_properties_mixin_setter_gobject_properties(
     object: GObject.Object,
     iface: GLib.Quark,
     name: GLib.Quark,
-    value: any,
+    value: GObject.Value | any,
     setter_data?: any | null
 ): boolean;
 export function debug_divert_messages(filename: string): void;
@@ -754,14 +754,14 @@ export type BaseConnectionGetUniqueConnectionNameImpl = (self: BaseConnection) =
 export type BaseConnectionProc = (self: BaseConnection) => void;
 export type BaseConnectionStartConnectingImpl = (self: BaseConnection) => boolean;
 export type ChannelWhenReadyCb = (channel: Channel, error: GLib.Error) => void;
-export type ConnectionContactsByHandleCb = (
+export type ConnectionContactsByHandleCb<A = GObject.Object> = (
     connection: Connection,
     contacts: Contact[],
     failed: Handle[],
     error: GLib.Error,
     weak_object: A
 ) => void;
-export type ConnectionContactsByIdCb = (
+export type ConnectionContactsByIdCb<A = GObject.Object> = (
     connection: Connection,
     contacts: Contact[],
     requested_ids: string[],
@@ -769,7 +769,7 @@ export type ConnectionContactsByIdCb = (
     error: GLib.Error,
     weak_object: A
 ) => void;
-export type ConnectionHoldHandlesCb = (
+export type ConnectionHoldHandlesCb<A = GObject.Object> = (
     connection: Connection,
     handle_type: HandleType,
     n_handles: number,
@@ -777,14 +777,18 @@ export type ConnectionHoldHandlesCb = (
     error: GLib.Error,
     weak_object: A
 ) => void;
-export type ConnectionManagerListCb = (
+export type ConnectionManagerListCb<A = GObject.Object> = (
     cms: ConnectionManager[],
     n_cms: number,
     error: GLib.Error,
     weak_object: A
 ) => void;
-export type ConnectionManagerWhenReadyCb = (cm: ConnectionManager, error: GLib.Error, weak_object: A) => void;
-export type ConnectionNameListCb = (
+export type ConnectionManagerWhenReadyCb<A = GObject.Object> = (
+    cm: ConnectionManager,
+    error: GLib.Error,
+    weak_object: A
+) => void;
+export type ConnectionNameListCb<A = GObject.Object> = (
     names: string[],
     n: number,
     cms: string[],
@@ -792,7 +796,7 @@ export type ConnectionNameListCb = (
     error: GLib.Error,
     weak_object: A
 ) => void;
-export type ConnectionRequestHandlesCb = (
+export type ConnectionRequestHandlesCb<A = GObject.Object> = (
     connection: Connection,
     handle_type: HandleType,
     handles: number[],
@@ -800,36 +804,46 @@ export type ConnectionRequestHandlesCb = (
     error: GLib.Error,
     weak_object: A
 ) => void;
-export type ConnectionUpgradeContactsCb = (
+export type ConnectionUpgradeContactsCb<A = GObject.Object> = (
     connection: Connection,
     contacts: Contact[],
     error: GLib.Error,
     weak_object: A
 ) => void;
 export type ConnectionWhenReadyCb = (connection: Connection, error: GLib.Error) => void;
-export type DBusDaemonListNamesCb = (bus_daemon: DBusDaemon, names: string, error: GLib.Error, weak_object: A) => void;
+export type DBusDaemonListNamesCb<A = GObject.Object> = (
+    bus_daemon: DBusDaemon,
+    names: string,
+    error: GLib.Error,
+    weak_object: A
+) => void;
 export type DBusDaemonNameOwnerChangedCb = (bus_daemon: DBusDaemon, name: string, new_owner: string) => void;
-export type DBusPropertiesMixinGetter = (
+export type DBusPropertiesMixinGetter<A = GObject.Object> = (
     object: A,
     iface: GLib.Quark,
     name: GLib.Quark,
-    value: any,
+    value: GObject.Value | any,
     getter_data?: any | null
 ) => void;
-export type DBusPropertiesMixinSetter = (
+export type DBusPropertiesMixinSetter<A = GObject.Object> = (
     object: A,
     iface: GLib.Quark,
     name: GLib.Quark,
-    value: any,
+    value: GObject.Value | any,
     setter_data?: any | null
 ) => boolean;
-export type GroupMixinAddMemberFunc = (obj: A, handle: Handle, message: string) => boolean;
-export type GroupMixinRemMemberFunc = (obj: A, handle: Handle, message: string) => boolean;
-export type GroupMixinRemMemberWithReasonFunc = (obj: A, handle: Handle, message: string, reason: number) => boolean;
+export type GroupMixinAddMemberFunc<A = GObject.Object> = (obj: A, handle: Handle, message: string) => boolean;
+export type GroupMixinRemMemberFunc<A = GObject.Object> = (obj: A, handle: Handle, message: string) => boolean;
+export type GroupMixinRemMemberWithReasonFunc<A = GObject.Object> = (
+    obj: A,
+    handle: Handle,
+    message: string,
+    reason: number
+) => boolean;
 export type IntFunc = (i: number, userdata?: any | null) => void;
-export type PresenceMixinGetMaximumStatusMessageLengthFunc = (obj: A) => number;
-export type PresenceMixinSetOwnStatusFunc = (obj: A, status: PresenceStatus) => boolean;
-export type PresenceMixinStatusAvailableFunc = (obj: A, which: number) => boolean;
+export type PresenceMixinGetMaximumStatusMessageLengthFunc<A = GObject.Object> = (obj: A) => number;
+export type PresenceMixinSetOwnStatusFunc<A = GObject.Object> = (obj: A, status: PresenceStatus) => boolean;
+export type PresenceMixinStatusAvailableFunc<A = GObject.Object> = (obj: A, which: number) => boolean;
 export type ProxyPrepareAsync = (
     proxy: Proxy,
     feature: ProxyFeature,
@@ -1209,7 +1223,7 @@ export class Error extends GLib.Error {
     constructor(options: { message: string; code: number });
     constructor(copy: Error);
 
-    // Properties
+    // Fields
     static NETWORK_ERROR: number;
     static NOT_IMPLEMENTED: number;
     static INVALID_ARGUMENT: number;
@@ -1960,67 +1974,67 @@ export class Account extends Proxy {
     _init(properties?: Partial<Account.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    automatic_presence_type: number;
-    automaticPresenceType: number;
-    automatic_status: string;
-    automaticStatus: string;
-    automatic_status_message: string;
-    automaticStatusMessage: string;
-    changing_presence: boolean;
-    changingPresence: boolean;
-    cm_name: string;
-    cmName: string;
-    connect_automatically: boolean;
-    connectAutomatically: boolean;
-    connection: Connection;
-    connection_error: string;
-    connectionError: string;
-    connection_error_details: GLib.HashTable<any, any>;
-    connectionErrorDetails: GLib.HashTable<any, any>;
-    connection_manager: string;
-    connectionManager: string;
-    connection_status: number;
-    connectionStatus: number;
-    connection_status_reason: number;
-    connectionStatusReason: number;
-    current_presence_type: number;
-    currentPresenceType: number;
-    current_status: string;
-    currentStatus: string;
-    current_status_message: string;
-    currentStatusMessage: string;
-    display_name: string;
-    displayName: string;
-    enabled: boolean;
-    has_been_online: boolean;
-    hasBeenOnline: boolean;
-    icon_name: string;
-    iconName: string;
-    nickname: string;
-    normalized_name: string;
-    normalizedName: string;
-    protocol: string;
-    protocol_name: string;
-    protocolName: string;
-    requested_presence_type: number;
-    requestedPresenceType: number;
-    requested_status: string;
-    requestedStatus: string;
-    requested_status_message: string;
-    requestedStatusMessage: string;
-    service: string;
-    storage_identifier: GObject.Value;
-    storageIdentifier: GObject.Value;
-    storage_identifier_variant: GLib.Variant;
-    storageIdentifierVariant: GLib.Variant;
-    storage_provider: string;
-    storageProvider: string;
-    storage_restrictions: number;
-    storageRestrictions: number;
-    supersedes: string[];
-    uri_schemes: string[];
-    uriSchemes: string[];
-    valid: boolean;
+    get automatic_presence_type(): number;
+    get automaticPresenceType(): number;
+    get automatic_status(): string;
+    get automaticStatus(): string;
+    get automatic_status_message(): string;
+    get automaticStatusMessage(): string;
+    get changing_presence(): boolean;
+    get changingPresence(): boolean;
+    get cm_name(): string;
+    get cmName(): string;
+    get connect_automatically(): boolean;
+    get connectAutomatically(): boolean;
+    get connection(): Connection;
+    get connection_error(): string;
+    get connectionError(): string;
+    get connection_error_details(): GLib.HashTable<any, any>;
+    get connectionErrorDetails(): GLib.HashTable<any, any>;
+    get connection_manager(): string;
+    get connectionManager(): string;
+    get connection_status(): number;
+    get connectionStatus(): number;
+    get connection_status_reason(): number;
+    get connectionStatusReason(): number;
+    get current_presence_type(): number;
+    get currentPresenceType(): number;
+    get current_status(): string;
+    get currentStatus(): string;
+    get current_status_message(): string;
+    get currentStatusMessage(): string;
+    get display_name(): string;
+    get displayName(): string;
+    get enabled(): boolean;
+    get has_been_online(): boolean;
+    get hasBeenOnline(): boolean;
+    get icon_name(): string;
+    get iconName(): string;
+    get nickname(): string;
+    get normalized_name(): string;
+    get normalizedName(): string;
+    get protocol(): string;
+    get protocol_name(): string;
+    get protocolName(): string;
+    get requested_presence_type(): number;
+    get requestedPresenceType(): number;
+    get requested_status(): string;
+    get requestedStatus(): string;
+    get requested_status_message(): string;
+    get requestedStatusMessage(): string;
+    get service(): string;
+    get storage_identifier(): GObject.Value;
+    get storageIdentifier(): GObject.Value;
+    get storage_identifier_variant(): GLib.Variant;
+    get storageIdentifierVariant(): GLib.Variant;
+    get storage_provider(): string;
+    get storageProvider(): string;
+    get storage_restrictions(): number;
+    get storageRestrictions(): number;
+    get supersedes(): string[];
+    get uri_schemes(): string[];
+    get uriSchemes(): string[];
+    get valid(): boolean;
 
     // Signals
 
@@ -2270,13 +2284,13 @@ export class AccountChannelRequest extends GObject.Object {
     _init(properties?: Partial<AccountChannelRequest.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    account: Account;
-    channel_request: ChannelRequest;
-    channelRequest: ChannelRequest;
-    request_vardict: GLib.Variant;
-    requestVardict: GLib.Variant;
-    user_action_time: number;
-    userActionTime: number;
+    get account(): Account;
+    get channel_request(): ChannelRequest;
+    get channelRequest(): ChannelRequest;
+    get request_vardict(): GLib.Variant;
+    get requestVardict(): GLib.Variant;
+    get user_action_time(): number;
+    get userActionTime(): number;
 
     // Signals
 
@@ -2544,40 +2558,40 @@ export class AccountRequest extends GObject.Object {
     _init(properties?: Partial<AccountRequest.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    account_manager: AccountManager;
-    accountManager: AccountManager;
-    automatic_presence_type: number;
-    automaticPresenceType: number;
-    automatic_status: string;
-    automaticStatus: string;
-    automatic_status_message: string;
-    automaticStatusMessage: string;
-    avatar: any[];
-    avatar_mime_type: string;
-    avatarMimeType: string;
-    connect_automatically: boolean;
-    connectAutomatically: boolean;
-    connection_manager: string;
-    connectionManager: string;
-    display_name: string;
-    displayName: string;
-    enabled: boolean;
-    icon_name: string;
-    iconName: string;
-    nickname: string;
-    parameters: GLib.Variant;
-    properties: GLib.Variant;
-    protocol: string;
-    requested_presence_type: number;
-    requestedPresenceType: number;
-    requested_status: string;
-    requestedStatus: string;
-    requested_status_message: string;
-    requestedStatusMessage: string;
-    service: string;
-    storage_provider: string;
-    storageProvider: string;
-    supersedes: string[];
+    get account_manager(): AccountManager;
+    get accountManager(): AccountManager;
+    get automatic_presence_type(): number;
+    get automaticPresenceType(): number;
+    get automatic_status(): string;
+    get automaticStatus(): string;
+    get automatic_status_message(): string;
+    get automaticStatusMessage(): string;
+    get avatar(): any[];
+    get avatar_mime_type(): string;
+    get avatarMimeType(): string;
+    get connect_automatically(): boolean;
+    get connectAutomatically(): boolean;
+    get connection_manager(): string;
+    get connectionManager(): string;
+    get display_name(): string;
+    get displayName(): string;
+    get enabled(): boolean;
+    get icon_name(): string;
+    get iconName(): string;
+    get nickname(): string;
+    get parameters(): GLib.Variant;
+    get properties(): GLib.Variant;
+    get protocol(): string;
+    get requested_presence_type(): number;
+    get requestedPresenceType(): number;
+    get requested_status(): string;
+    get requestedStatus(): string;
+    get requested_status_message(): string;
+    get requestedStatusMessage(): string;
+    get service(): string;
+    get storage_provider(): string;
+    get storageProvider(): string;
+    get supersedes(): string[];
 
     // Constructors
 
@@ -2626,11 +2640,11 @@ export class AddDispatchOperationContext extends GObject.Object {
     _init(properties?: Partial<AddDispatchOperationContext.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    account: Account;
-    channels: any[];
-    connection: Connection;
-    dispatch_operation: ChannelDispatchOperation;
-    dispatchOperation: ChannelDispatchOperation;
+    get account(): Account;
+    get channels(): any[];
+    get connection(): Connection;
+    get dispatch_operation(): ChannelDispatchOperation;
+    get dispatchOperation(): ChannelDispatchOperation;
 
     // Members
 
@@ -2699,16 +2713,16 @@ export abstract class BaseClient extends GObject.Object {
     _init(properties?: Partial<BaseClient.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    account_manager: AccountManager;
-    accountManager: AccountManager;
-    channel_factory: GObject.Object;
-    channelFactory: GObject.Object;
-    dbus_daemon: DBusDaemon;
-    dbusDaemon: DBusDaemon;
-    factory: SimpleClientFactory;
-    name: string;
-    uniquify_name: boolean;
-    uniquifyName: boolean;
+    get account_manager(): AccountManager;
+    get accountManager(): AccountManager;
+    get channel_factory(): GObject.Object;
+    get channelFactory(): GObject.Object;
+    get dbus_daemon(): DBusDaemon;
+    get dbusDaemon(): DBusDaemon;
+    get factory(): SimpleClientFactory;
+    get name(): string;
+    get uniquify_name(): boolean;
+    get uniquifyName(): boolean;
 
     // Signals
 
@@ -2824,10 +2838,10 @@ export abstract class BaseConnection extends GObject.Object {
     _init(properties?: Partial<BaseConnection.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    account_path_suffix: string;
-    accountPathSuffix: string;
-    has_immortal_handles: boolean;
-    hasImmortalHandles: boolean;
+    get account_path_suffix(): string;
+    get accountPathSuffix(): string;
+    get has_immortal_handles(): boolean;
+    get hasImmortalHandles(): boolean;
 
     // Signals
 
@@ -2924,29 +2938,29 @@ export class CallChannel extends Channel {
     _init(properties?: Partial<CallChannel.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    contents: any[];
-    flags: number;
-    hardware_streaming: boolean;
-    hardwareStreaming: boolean;
-    hold_state: number;
-    holdState: number;
-    hold_state_reason: number;
-    holdStateReason: number;
-    initial_audio: boolean;
-    initialAudio: boolean;
-    initial_audio_name: string;
-    initialAudioName: string;
-    initial_video: boolean;
-    initialVideo: boolean;
-    initial_video_name: string;
-    initialVideoName: string;
-    mutable_contents: boolean;
-    mutableContents: boolean;
-    state: number;
-    state_details: GLib.HashTable<any, any>;
-    stateDetails: GLib.HashTable<any, any>;
-    state_reason: CallStateReason;
-    stateReason: CallStateReason;
+    get contents(): any[];
+    get flags(): number;
+    get hardware_streaming(): boolean;
+    get hardwareStreaming(): boolean;
+    get hold_state(): number;
+    get holdState(): number;
+    get hold_state_reason(): number;
+    get holdStateReason(): number;
+    get initial_audio(): boolean;
+    get initialAudio(): boolean;
+    get initial_audio_name(): string;
+    get initialAudioName(): string;
+    get initial_video(): boolean;
+    get initialVideo(): boolean;
+    get initial_video_name(): string;
+    get initialVideoName(): string;
+    get mutable_contents(): boolean;
+    get mutableContents(): boolean;
+    get state(): number;
+    get state_details(): GLib.HashTable<any, any>;
+    get stateDetails(): GLib.HashTable<any, any>;
+    get state_reason(): CallStateReason;
+    get stateReason(): CallStateReason;
 
     // Signals
 
@@ -3109,13 +3123,13 @@ export class CallContent extends Proxy {
     _init(properties?: Partial<CallContent.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    channel: CallChannel;
-    connection: Connection;
-    disposition: number;
-    media_type: number;
-    mediaType: number;
-    name: string;
-    streams: any[];
+    get channel(): CallChannel;
+    get connection(): Connection;
+    get disposition(): number;
+    get media_type(): number;
+    get mediaType(): number;
+    get name(): string;
+    get streams(): any[];
 
     // Signals
 
@@ -3181,12 +3195,12 @@ export class CallStream extends Proxy {
     _init(properties?: Partial<CallStream.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    can_request_receiving: boolean;
-    canRequestReceiving: boolean;
-    connection: Connection;
-    content: CallContent;
-    local_sending_state: number;
-    localSendingState: number;
+    get can_request_receiving(): boolean;
+    get canRequestReceiving(): boolean;
+    get connection(): Connection;
+    get content(): CallContent;
+    get local_sending_state(): number;
+    get localSendingState(): number;
 
     // Signals
 
@@ -3262,10 +3276,10 @@ export class Capabilities extends GObject.Object {
     _init(properties?: Partial<Capabilities.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    channel_classes_variant: GLib.Variant;
-    channelClassesVariant: GLib.Variant;
-    contact_specific: boolean;
-    contactSpecific: boolean;
+    get channel_classes_variant(): GLib.Variant;
+    get channelClassesVariant(): GLib.Variant;
+    get contact_specific(): boolean;
+    get contactSpecific(): boolean;
 
     // Members
 
@@ -3320,27 +3334,27 @@ export class Channel extends Proxy {
     _init(properties?: Partial<Channel.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    channel_ready: boolean;
-    channelReady: boolean;
-    connection: Connection;
-    group_flags: number;
-    groupFlags: number;
-    group_self_contact: Contact;
-    groupSelfContact: Contact;
-    group_self_handle: number;
-    groupSelfHandle: number;
-    identifier: string;
-    initiator_contact: Contact;
-    initiatorContact: Contact;
-    initiator_handle: number;
-    initiatorHandle: number;
-    initiator_identifier: string;
-    initiatorIdentifier: string;
-    password_needed: boolean;
-    passwordNeeded: boolean;
-    requested: boolean;
-    target_contact: Contact;
-    targetContact: Contact;
+    get channel_ready(): boolean;
+    get channelReady(): boolean;
+    get connection(): Connection;
+    get group_flags(): number;
+    get groupFlags(): number;
+    get group_self_contact(): Contact;
+    get groupSelfContact(): Contact;
+    get group_self_handle(): number;
+    get groupSelfHandle(): number;
+    get identifier(): string;
+    get initiator_contact(): Contact;
+    get initiatorContact(): Contact;
+    get initiator_handle(): number;
+    get initiatorHandle(): number;
+    get initiator_identifier(): string;
+    get initiatorIdentifier(): string;
+    get password_needed(): boolean;
+    get passwordNeeded(): boolean;
+    get requested(): boolean;
+    get target_contact(): Contact;
+    get targetContact(): Contact;
 
     // Signals
 
@@ -3553,11 +3567,11 @@ export class ChannelDispatchOperation extends Proxy {
     _init(properties?: Partial<ChannelDispatchOperation.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    account: Account;
-    channels: any[];
-    connection: Connection;
-    possible_handlers: string[];
-    possibleHandlers: string[];
+    get account(): Account;
+    get channels(): any[];
+    get connection(): Connection;
+    get possible_handlers(): string[];
+    get possibleHandlers(): string[];
 
     // Signals
 
@@ -3686,17 +3700,19 @@ export class ChannelRequest extends Proxy {
     _init(properties?: Partial<ChannelRequest.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    account: Account;
-    channel_factory: GObject.Object;
-    channelFactory: GObject.Object;
-    hints_vardict: GLib.Variant;
-    hintsVardict: GLib.Variant;
-    immutable_properties_vardict: GLib.Variant;
-    immutablePropertiesVardict: GLib.Variant;
-    preferred_handler: string;
-    preferredHandler: string;
-    user_action_time: number;
-    userActionTime: number;
+    get account(): Account;
+    get channel_factory(): GObject.Object;
+    set channel_factory(val: GObject.Object);
+    get channelFactory(): GObject.Object;
+    set channelFactory(val: GObject.Object);
+    get hints_vardict(): GLib.Variant;
+    get hintsVardict(): GLib.Variant;
+    get immutable_properties_vardict(): GLib.Variant;
+    get immutablePropertiesVardict(): GLib.Variant;
+    get preferred_handler(): string;
+    get preferredHandler(): string;
+    get user_action_time(): number;
+    get userActionTime(): number;
 
     // Signals
 
@@ -3805,47 +3821,47 @@ export class Connection extends Proxy {
     _init(properties?: Partial<Connection.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    balance: number;
-    balance_currency: string;
-    balanceCurrency: string;
-    balance_scale: number;
-    balanceScale: number;
-    balance_uri: string;
-    balanceUri: string;
-    blocked_contacts: any[];
-    blockedContacts: any[];
-    can_change_contact_list: boolean;
-    canChangeContactList: boolean;
-    can_report_abusive: boolean;
-    canReportAbusive: boolean;
-    capabilities: Capabilities;
-    cm_name: string;
-    cmName: string;
-    connection_manager_name: string;
-    connectionManagerName: string;
-    connection_ready: boolean;
-    connectionReady: boolean;
-    contact_groups: string[];
-    contactGroups: string[];
-    contact_list_persists: boolean;
-    contactListPersists: boolean;
-    contact_list_state: number;
-    contactListState: number;
-    disjoint_groups: boolean;
-    disjointGroups: boolean;
-    group_storage: number;
-    groupStorage: number;
-    protocol_name: string;
-    protocolName: string;
-    request_uses_message: boolean;
-    requestUsesMessage: boolean;
-    self_contact: Contact;
-    selfContact: Contact;
-    self_handle: number;
-    selfHandle: number;
-    status: number;
-    status_reason: number;
-    statusReason: number;
+    get balance(): number;
+    get balance_currency(): string;
+    get balanceCurrency(): string;
+    get balance_scale(): number;
+    get balanceScale(): number;
+    get balance_uri(): string;
+    get balanceUri(): string;
+    get blocked_contacts(): any[];
+    get blockedContacts(): any[];
+    get can_change_contact_list(): boolean;
+    get canChangeContactList(): boolean;
+    get can_report_abusive(): boolean;
+    get canReportAbusive(): boolean;
+    get capabilities(): Capabilities;
+    get cm_name(): string;
+    get cmName(): string;
+    get connection_manager_name(): string;
+    get connectionManagerName(): string;
+    get connection_ready(): boolean;
+    get connectionReady(): boolean;
+    get contact_groups(): string[];
+    get contactGroups(): string[];
+    get contact_list_persists(): boolean;
+    get contactListPersists(): boolean;
+    get contact_list_state(): number;
+    get contactListState(): number;
+    get disjoint_groups(): boolean;
+    get disjointGroups(): boolean;
+    get group_storage(): number;
+    get groupStorage(): number;
+    get protocol_name(): string;
+    get protocolName(): string;
+    get request_uses_message(): boolean;
+    get requestUsesMessage(): boolean;
+    get self_contact(): Contact;
+    get selfContact(): Contact;
+    get self_handle(): number;
+    get selfHandle(): number;
+    get status(): number;
+    get status_reason(): number;
+    get statusReason(): number;
 
     // Signals
 
@@ -4135,16 +4151,20 @@ export class ConnectionManager extends Proxy {
     _init(properties?: Partial<ConnectionManager.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    always_introspect: boolean;
-    alwaysIntrospect: boolean;
-    cm_name: string;
-    cmName: string;
-    connection_manager: string;
-    connectionManager: string;
-    info_source: number;
-    infoSource: number;
-    manager_file: string;
-    managerFile: string;
+    get always_introspect(): boolean;
+    set always_introspect(val: boolean);
+    get alwaysIntrospect(): boolean;
+    set alwaysIntrospect(val: boolean);
+    get cm_name(): string;
+    get cmName(): string;
+    get connection_manager(): string;
+    get connectionManager(): string;
+    get info_source(): number;
+    get infoSource(): number;
+    get manager_file(): string;
+    set manager_file(val: string);
+    get managerFile(): string;
+    set managerFile(val: string);
 
     // Signals
 
@@ -4225,39 +4245,39 @@ export class Contact extends GObject.Object {
     _init(properties?: Partial<Contact.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    alias: string;
-    avatar_file: Gio.File;
-    avatarFile: Gio.File;
-    avatar_mime_type: string;
-    avatarMimeType: string;
-    avatar_token: string;
-    avatarToken: string;
-    capabilities: Capabilities;
-    client_types: string[];
-    clientTypes: string[];
-    connection: Connection;
-    contact_groups: string[];
-    contactGroups: string[];
-    contact_info: ContactInfoList;
-    contactInfo: ContactInfoList;
-    handle: number;
-    identifier: string;
-    is_blocked: boolean;
-    isBlocked: boolean;
-    location_vardict: GLib.Variant;
-    locationVardict: GLib.Variant;
-    presence_message: string;
-    presenceMessage: string;
-    presence_status: string;
-    presenceStatus: string;
-    presence_type: number;
-    presenceType: number;
-    publish_request: string;
-    publishRequest: string;
-    publish_state: number;
-    publishState: number;
-    subscribe_state: number;
-    subscribeState: number;
+    get alias(): string;
+    get avatar_file(): Gio.File;
+    get avatarFile(): Gio.File;
+    get avatar_mime_type(): string;
+    get avatarMimeType(): string;
+    get avatar_token(): string;
+    get avatarToken(): string;
+    get capabilities(): Capabilities;
+    get client_types(): string[];
+    get clientTypes(): string[];
+    get connection(): Connection;
+    get contact_groups(): string[];
+    get contactGroups(): string[];
+    get contact_info(): ContactInfoList;
+    get contactInfo(): ContactInfoList;
+    get handle(): number;
+    get identifier(): string;
+    get is_blocked(): boolean;
+    get isBlocked(): boolean;
+    get location_vardict(): GLib.Variant;
+    get locationVardict(): GLib.Variant;
+    get presence_message(): string;
+    get presenceMessage(): string;
+    get presence_status(): string;
+    get presenceStatus(): string;
+    get presence_type(): number;
+    get presenceType(): number;
+    get publish_request(): string;
+    get publishRequest(): string;
+    get publish_state(): number;
+    get publishState(): number;
+    get subscribe_state(): number;
+    get subscribeState(): number;
 
     // Signals
 
@@ -4389,10 +4409,11 @@ export class ContactSearch extends GObject.Object implements Gio.AsyncInitable<C
     _init(properties?: Partial<ContactSearch.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    account: Account;
-    limit: number;
-    server: string;
-    state: number;
+    get account(): Account;
+    get limit(): number;
+    set limit(val: number);
+    get server(): string;
+    get state(): number;
 
     // Signals
 
@@ -4412,7 +4433,8 @@ export class ContactSearch extends GObject.Object implements Gio.AsyncInitable<C
     // Constructors
 
     static new_finish(result: Gio.AsyncResult): ContactSearch;
-    static new_finish(...args: never[]): never;
+    // Conflicted with Gio.AsyncInitable.new_finish
+    static new_finish(...args: never[]): any;
 
     // Members
 
@@ -4484,7 +4506,7 @@ export class ContactSearchResult extends GObject.Object {
     _init(properties?: Partial<ContactSearchResult.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    identifier: string;
+    get identifier(): string;
 
     // Members
 
@@ -4533,10 +4555,10 @@ export class DBusTubeChannel extends Channel {
     _init(properties?: Partial<DBusTubeChannel.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    parameters_vardict: GLib.Variant;
-    parametersVardict: GLib.Variant;
-    service_name: string;
-    serviceName: string;
+    get parameters_vardict(): GLib.Variant;
+    get parametersVardict(): GLib.Variant;
+    get service_name(): string;
+    get serviceName(): string;
 
     // Members
 
@@ -4568,7 +4590,7 @@ export class DebugClient extends Proxy {
     _init(properties?: Partial<DebugClient.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    enabled: boolean;
+    get enabled(): boolean;
 
     // Signals
 
@@ -4614,11 +4636,11 @@ export class DebugMessage extends GObject.Object {
     _init(properties?: Partial<DebugMessage.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    category: string;
-    domain: string;
-    level: number;
-    message: string;
-    time: GLib.DateTime;
+    get category(): string;
+    get domain(): string;
+    get level(): number;
+    get message(): string;
+    get time(): GLib.DateTime;
 
     // Members
 
@@ -4654,20 +4676,20 @@ export class FileTransferChannel extends Channel {
     _init(properties?: Partial<FileTransferChannel.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    date: GLib.DateTime;
-    description: string;
-    file: Gio.File;
-    filename: string;
-    initial_offset: number;
-    initialOffset: number;
-    mime_type: string;
-    mimeType: string;
-    service_name: string;
-    serviceName: string;
-    size: number;
-    state: number;
-    transferred_bytes: number;
-    transferredBytes: number;
+    get date(): GLib.DateTime;
+    get description(): string;
+    get file(): Gio.File;
+    get filename(): string;
+    get initial_offset(): number;
+    get initialOffset(): number;
+    get mime_type(): string;
+    get mimeType(): string;
+    get service_name(): string;
+    get serviceName(): string;
+    get size(): number;
+    get state(): number;
+    get transferred_bytes(): number;
+    get transferredBytes(): number;
 
     // Constructors
 
@@ -4676,7 +4698,8 @@ export class FileTransferChannel extends Channel {
         object_path: string,
         immutable_properties: GLib.HashTable<string, GObject.Value>
     ): FileTransferChannel;
-    static ["new"](...args: never[]): never;
+    // Conflicted with TelepathyGLib.Channel.new
+    static ["new"](...args: never[]): any;
 
     // Members
 
@@ -4722,13 +4745,13 @@ export class HandleChannelsContext extends GObject.Object {
     _init(properties?: Partial<HandleChannelsContext.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    account: Account;
-    channels: any[];
-    connection: Connection;
-    requests_satisfied: any[];
-    requestsSatisfied: any[];
-    user_action_time: number;
-    userActionTime: number;
+    get account(): Account;
+    get channels(): any[];
+    get connection(): Connection;
+    get requests_satisfied(): any[];
+    get requestsSatisfied(): any[];
+    get user_action_time(): number;
+    get userActionTime(): number;
 
     // Signals
 
@@ -4779,8 +4802,9 @@ export class Message extends GObject.Object {
     is_scrollback(): boolean;
     peek(part: number): GLib.HashTable<string, GObject.Value>;
     ref_handle(handle_type: HandleType, handle: Handle): void;
-    set(part: number, key: string, source: any): void;
-    set(...args: never[]): never;
+    set(part: number, key: string, source: GObject.Value | any): void;
+    // Conflicted with GObject.Object.set
+    set(...args: never[]): any;
     set_boolean(part: number, key: string, b: boolean): void;
     set_bytes(part: number, key: string, len: number, bytes?: any | null): void;
     set_handle(part: number, key: string, handle_type: HandleType, handle_or_0: Handle): void;
@@ -4811,12 +4835,12 @@ export class ObserveChannelsContext extends GObject.Object {
     _init(properties?: Partial<ObserveChannelsContext.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    account: Account;
-    channels: any[];
-    connection: Connection;
-    dispatch_operation: ChannelDispatchOperation;
-    dispatchOperation: ChannelDispatchOperation;
-    requests: any[];
+    get account(): Account;
+    get channels(): any[];
+    get connection(): Connection;
+    get dispatch_operation(): ChannelDispatchOperation;
+    get dispatchOperation(): ChannelDispatchOperation;
+    get requests(): any[];
 
     // Members
 
@@ -4861,29 +4885,29 @@ export class Protocol extends Proxy {
     _init(properties?: Partial<Protocol.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    addressable_uri_schemes: string[];
-    addressableUriSchemes: string[];
-    addressable_vcard_fields: string[];
-    addressableVcardFields: string[];
-    authentication_types: string[];
-    authenticationTypes: string[];
-    avatar_requirements: any;
-    avatarRequirements: any;
-    capabilities: Capabilities;
-    cm_name: string;
-    cmName: string;
-    english_name: string;
-    englishName: string;
-    icon_name: string;
-    iconName: string;
-    param_names: string[];
-    paramNames: string[];
-    protocol_name: string;
-    protocolName: string;
-    protocol_properties_vardict: GLib.Variant;
-    protocolPropertiesVardict: GLib.Variant;
-    vcard_field: string;
-    vcardField: string;
+    get addressable_uri_schemes(): string[];
+    get addressableUriSchemes(): string[];
+    get addressable_vcard_fields(): string[];
+    get addressableVcardFields(): string[];
+    get authentication_types(): string[];
+    get authenticationTypes(): string[];
+    get avatar_requirements(): any;
+    get avatarRequirements(): any;
+    get capabilities(): Capabilities;
+    get cm_name(): string;
+    get cmName(): string;
+    get english_name(): string;
+    get englishName(): string;
+    get icon_name(): string;
+    get iconName(): string;
+    get param_names(): string[];
+    get paramNames(): string[];
+    get protocol_name(): string;
+    get protocolName(): string;
+    get protocol_properties_vardict(): GLib.Variant;
+    get protocolPropertiesVardict(): GLib.Variant;
+    get vcard_field(): string;
+    get vcardField(): string;
 
     // Constructors
 
@@ -4994,14 +5018,14 @@ export class Proxy extends GObject.Object {
     _init(properties?: Partial<Proxy.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    bus_name: string;
-    busName: string;
-    dbus_daemon: DBusDaemon;
-    dbusDaemon: DBusDaemon;
-    factory: SimpleClientFactory;
-    interfaces: string[];
-    object_path: string;
-    objectPath: string;
+    get bus_name(): string;
+    get busName(): string;
+    get dbus_daemon(): DBusDaemon;
+    get dbusDaemon(): DBusDaemon;
+    get factory(): SimpleClientFactory;
+    get interfaces(): string[];
+    get object_path(): string;
+    get objectPath(): string;
 
     // Signals
 
@@ -5080,9 +5104,9 @@ export class RoomList extends GObject.Object implements Gio.AsyncInitable<RoomLi
     _init(properties?: Partial<RoomList.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    account: Account;
-    listing: boolean;
-    server: string;
+    get account(): Account;
+    get listing(): boolean;
+    get server(): string;
 
     // Signals
 
@@ -5099,7 +5123,8 @@ export class RoomList extends GObject.Object implements Gio.AsyncInitable<RoomLi
     // Constructors
 
     static new_finish(result: Gio.AsyncResult): RoomList;
-    static new_finish(...args: never[]): never;
+    // Conflicted with Gio.AsyncInitable.new_finish
+    static new_finish(...args: never[]): any;
 
     // Members
 
@@ -5156,7 +5181,7 @@ export class SignalledMessage extends Message {
     _init(properties?: Partial<SignalledMessage.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    sender: Contact;
+    get sender(): Contact;
 
     // Members
 
@@ -5178,10 +5203,10 @@ export class SimpleApprover extends BaseClient {
     _init(properties?: Partial<SimpleApprover.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    callback: any;
-    destroy: any;
-    user_data: any;
-    userData: any;
+    set callback(val: any);
+    set destroy(val: any);
+    set user_data(val: any);
+    set userData(val: any);
 
     // Constructors
 
@@ -5218,8 +5243,8 @@ export class SimpleClientFactory extends GObject.Object {
     _init(properties?: Partial<SimpleClientFactory.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    dbus_daemon: DBusDaemon;
-    dbusDaemon: DBusDaemon;
+    get dbus_daemon(): DBusDaemon;
+    get dbusDaemon(): DBusDaemon;
 
     // Constructors
 
@@ -5292,13 +5317,13 @@ export class SimpleHandler extends BaseClient {
     _init(properties?: Partial<SimpleHandler.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    bypass_approval: boolean;
-    bypassApproval: boolean;
-    callback: any;
-    destroy: any;
-    requests: boolean;
-    user_data: any;
-    userData: any;
+    set bypass_approval(val: boolean);
+    set bypassApproval(val: boolean);
+    set callback(val: any);
+    set destroy(val: any);
+    set requests(val: boolean);
+    set user_data(val: any);
+    set userData(val: any);
 
     // Constructors
 
@@ -5344,11 +5369,11 @@ export class SimpleObserver extends BaseClient {
     _init(properties?: Partial<SimpleObserver.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    callback: any;
-    destroy: any;
-    recover: boolean;
-    user_data: any;
-    userData: any;
+    set callback(val: any);
+    set destroy(val: any);
+    set recover(val: boolean);
+    set user_data(val: any);
+    set userData(val: any);
 
     // Constructors
 
@@ -5389,9 +5414,9 @@ export class StreamTubeChannel extends Channel {
     _init(properties?: Partial<StreamTubeChannel.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    parameters_vardict: GLib.Variant;
-    parametersVardict: GLib.Variant;
-    service: string;
+    get parameters_vardict(): GLib.Variant;
+    get parametersVardict(): GLib.Variant;
+    get service(): string;
 
     // Signals
 
@@ -5409,7 +5434,8 @@ export class StreamTubeChannel extends Channel {
         object_path: string,
         immutable_properties: GLib.HashTable<string, GObject.Value>
     ): StreamTubeChannel;
-    static ["new"](...args: never[]): never;
+    // Conflicted with TelepathyGLib.Channel.new
+    static ["new"](...args: never[]): any;
 
     // Members
 
@@ -5443,10 +5469,10 @@ export class StreamTubeConnection extends GObject.Object {
     _init(properties?: Partial<StreamTubeConnection.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    channel: StreamTubeChannel;
-    contact: Contact;
-    socket_connection: Gio.SocketConnection;
-    socketConnection: Gio.SocketConnection;
+    get channel(): StreamTubeChannel;
+    get contact(): Contact;
+    get socket_connection(): Gio.SocketConnection;
+    get socketConnection(): Gio.SocketConnection;
 
     // Signals
 
@@ -5480,11 +5506,11 @@ export class TLSCertificate extends Proxy {
     _init(properties?: Partial<TLSCertificate.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    cert_data: any[];
-    certData: any[];
-    cert_type: string;
-    certType: string;
-    state: number;
+    get cert_data(): any[];
+    get certData(): any[];
+    get cert_type(): string;
+    get certType(): string;
+    get state(): number;
 
     // Constructors
 
@@ -5526,11 +5552,11 @@ export class TLSCertificateRejection extends GObject.Object {
     _init(properties?: Partial<TLSCertificateRejection.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    dbus_error: string;
-    dbusError: string;
-    details: GLib.Variant;
-    error: GLib.Error;
-    reason: number;
+    get dbus_error(): string;
+    get dbusError(): string;
+    get details(): GLib.Variant;
+    get error(): GLib.Error;
+    get reason(): number;
 
     // Members
 
@@ -5562,16 +5588,16 @@ export class TextChannel extends Channel {
     _init(properties?: Partial<TextChannel.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    delivery_reporting_support: number;
-    deliveryReportingSupport: number;
-    is_sms_channel: boolean;
-    isSmsChannel: boolean;
-    message_part_support_flags: number;
-    messagePartSupportFlags: number;
-    sms_flash: boolean;
-    smsFlash: boolean;
-    supported_content_types: string[];
-    supportedContentTypes: string[];
+    get delivery_reporting_support(): number;
+    get deliveryReportingSupport(): number;
+    get is_sms_channel(): boolean;
+    get isSmsChannel(): boolean;
+    get message_part_support_flags(): number;
+    get messagePartSupportFlags(): number;
+    get sms_flash(): boolean;
+    get smsFlash(): boolean;
+    get supported_content_types(): string[];
+    get supportedContentTypes(): string[];
 
     // Signals
 
@@ -5613,7 +5639,8 @@ export class TextChannel extends Channel {
         object_path: string,
         immutable_properties: GLib.HashTable<string, GObject.Value>
     ): TextChannel;
-    static ["new"](...args: never[]): never;
+    // Conflicted with TelepathyGLib.Channel.new
+    static ["new"](...args: never[]): any;
 
     // Members
 
@@ -5634,7 +5661,8 @@ export class TextChannel extends Channel {
     ack_messages_finish(result: Gio.AsyncResult): boolean;
     dup_pending_messages(): SignalledMessage[];
     get_chat_state(contact: Contact): ChannelChatState;
-    get_chat_state(...args: never[]): never;
+    // Conflicted with TelepathyGLib.Channel.get_chat_state
+    get_chat_state(...args: never[]): any;
     get_delivery_reporting_support(): DeliveryReportingSupportFlags;
     get_message_part_support_flags(): MessagePartSupportFlags;
     get_message_types(): ChannelTextMessageType[];
@@ -5728,10 +5756,20 @@ export class AvatarRequirements {
         maximum_height: number,
         maximum_bytes: number
     );
+    constructor(
+        properties?: Partial<{
+            minimum_width?: number;
+            minimum_height?: number;
+            recommended_width?: number;
+            recommended_height?: number;
+            maximum_width?: number;
+            maximum_height?: number;
+            maximum_bytes?: number;
+        }>
+    );
     constructor(copy: AvatarRequirements);
 
     // Fields
-    supported_mime_types: string[];
     minimum_width: number;
     minimum_height: number;
     recommended_width: number;
@@ -5853,12 +5891,19 @@ export class ChannelRequestPrivate {
 export class ConnectionManagerParam {
     static $gtype: GObject.GType<ConnectionManagerParam>;
 
+    constructor(
+        properties?: Partial<{
+            name?: string;
+            dbus_signature?: string;
+            flags?: number;
+            priv?: any;
+        }>
+    );
     constructor(copy: ConnectionManagerParam);
 
     // Fields
     name: string;
     dbus_signature: string;
-    default_value: GObject.Value;
     flags: number;
     priv: any;
 
@@ -5868,7 +5913,7 @@ export class ConnectionManagerParam {
     dup_variant_type(): GLib.VariantType;
     free(): void;
     get_dbus_signature(): string;
-    get_default(value: any): boolean;
+    get_default(value: GObject.Value | any): boolean;
     get_name(): string;
     is_dbus_property(): boolean;
     is_required(): boolean;
@@ -5885,11 +5930,16 @@ export class ConnectionManagerPrivate {
 export class ConnectionManagerProtocol {
     static $gtype: GObject.GType<ConnectionManagerProtocol>;
 
+    constructor(
+        properties?: Partial<{
+            name?: string;
+            priv?: any;
+        }>
+    );
     constructor(copy: ConnectionManagerProtocol);
 
     // Fields
     name: string;
-    params: ConnectionManagerParam;
     priv: any;
 
     // Members
@@ -5911,12 +5961,16 @@ export class ContactInfoField {
     static $gtype: GObject.GType<ContactInfoField>;
 
     constructor(field_name: string, parameters: string[], field_value: string[]);
+    constructor(
+        properties?: Partial<{
+            field_name?: string;
+            priv?: any;
+        }>
+    );
     constructor(copy: ContactInfoField);
 
     // Fields
     field_name: string;
-    parameters: string[];
-    field_value: string[];
     priv: any;
 
     // Constructors
@@ -5930,7 +5984,6 @@ export class ContactInfoFieldSpec {
 
     // Fields
     name: string;
-    parameters: string[];
     flags: ContactInfoFieldFlags;
     max: number;
     priv: any;
@@ -5958,18 +6011,12 @@ export class ContactsMixin {
     static $gtype: GObject.GType<ContactsMixin>;
 
     constructor(copy: ContactsMixin);
-
-    // Fields
-    priv: ContactsMixinPrivate;
 }
 
 export class ContactsMixinClass {
     static $gtype: GObject.GType<ContactsMixinClass>;
 
     constructor(copy: ContactsMixinClass);
-
-    // Fields
-    priv: ContactsMixinClassPrivate;
 }
 
 export class ContactsMixinClassPrivate {
@@ -5995,9 +6042,6 @@ export class DBusPropertiesMixinClass {
 
     constructor(copy: DBusPropertiesMixinClass);
 
-    // Fields
-    interfaces: DBusPropertiesMixinIfaceImpl;
-
     // Members
     static init(cls: GObject.Object, offset: number): void;
 }
@@ -6011,7 +6055,6 @@ export class DBusPropertiesMixinIfaceImpl {
     name: string;
     getter: DBusPropertiesMixinGetter;
     setter: DBusPropertiesMixinSetter;
-    props: DBusPropertiesMixinPropImpl;
     mixin_next: any;
     mixin_priv: any;
 }
@@ -6023,7 +6066,6 @@ export class DBusPropertiesMixinIfaceInfo {
 
     // Fields
     dbus_interface: GLib.Quark;
-    props: DBusPropertiesMixinPropInfo;
 }
 
 export class DBusPropertiesMixinPropImpl {
@@ -6088,13 +6130,8 @@ export class GroupMixin {
     constructor(copy: GroupMixin);
 
     // Fields
-    handle_repo: HandleRepoIface;
     self_handle: Handle;
     group_flags: ChannelGroupFlags;
-    members: HandleSet;
-    local_pending: HandleSet;
-    remote_pending: HandleSet;
-    priv: GroupMixinPrivate;
 }
 
 export class GroupMixinClass {
@@ -6105,7 +6142,6 @@ export class GroupMixinClass {
     // Fields
     add_member: GroupMixinAddMemberFunc;
     remove_member: GroupMixinRemMemberFunc;
-    priv: GroupMixinClassPrivate;
 }
 
 export class GroupMixinClassPrivate {
@@ -6188,10 +6224,14 @@ export class IntsetFastIter {
 export class IntsetIter {
     static $gtype: GObject.GType<IntsetIter>;
 
+    constructor(
+        properties?: Partial<{
+            element?: number;
+        }>
+    );
     constructor(copy: IntsetIter);
 
     // Fields
-    set: Intset;
     element: number;
 
     // Members
@@ -6210,9 +6250,6 @@ export class PresenceMixin {
     static $gtype: GObject.GType<PresenceMixin>;
 
     constructor(copy: PresenceMixin);
-
-    // Fields
-    priv: PresenceMixinPrivate;
 }
 
 export class PresenceMixinClass {
@@ -6223,8 +6260,6 @@ export class PresenceMixinClass {
     // Fields
     status_available: PresenceMixinStatusAvailableFunc;
     set_own_status: PresenceMixinSetOwnStatusFunc;
-    statuses: PresenceStatusSpec;
-    priv: PresenceMixinClassPrivate;
     get_maximum_status_message_length: PresenceMixinGetMaximumStatusMessageLengthFunc;
 }
 
@@ -6243,11 +6278,15 @@ export class PresenceMixinPrivate {
 export class PresenceStatus {
     static $gtype: GObject.GType<PresenceStatus>;
 
+    constructor(
+        properties?: Partial<{
+            index?: number;
+        }>
+    );
     constructor(copy: PresenceStatus);
 
     // Fields
     index: number;
-    optional_arguments: GLib.HashTable<any, any>;
 }
 
 export class PresenceStatusOptionalArgumentSpec {
@@ -6276,8 +6315,6 @@ export class PresenceStatusSpec {
     name: string;
     presence_type: ConnectionPresenceType;
     self: boolean;
-    optional_arguments: PresenceStatusOptionalArgumentSpec;
-    priv: PresenceStatusSpecPrivate;
 
     // Constructors
     static ["new"](
@@ -6327,7 +6364,6 @@ export class ProxyFeature {
     interfaces_needed: GLib.Quark;
     depends_on: GLib.Quark;
     can_retry: boolean;
-    priv: ProxyFeaturePrivate;
 }
 
 export class ProxyFeaturePrivate {
@@ -6459,8 +6495,8 @@ export interface HandleRepoIfaceNamespace {
 export type HandleRepoIface = HandleRepoIfacePrototype;
 export interface HandleRepoIfacePrototype extends GObject.Object {
     // Properties
-    handle_type: number;
-    handleType: number;
+    readonly handle_type: number;
+    readonly handleType: number;
 }
 
 export const HandleRepoIface: HandleRepoIfaceNamespace;

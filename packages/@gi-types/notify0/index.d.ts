@@ -4,9 +4,9 @@
  * Generated from 0.7
  */
 
-import * as GLib from "@gi-types/glib";
-import * as GdkPixbuf from "@gi-types/gdkpixbuf";
-import * as GObject from "@gi-types/gobject";
+import * as GObject from "@gi-types/gobject2";
+import * as GLib from "@gi-types/glib2";
+import * as GdkPixbuf from "@gi-types/gdkpixbuf2";
 
 export const EXPIRES_DEFAULT: number;
 export const EXPIRES_NEVER: number;
@@ -52,15 +52,22 @@ export class Notification extends GObject.Object {
     _init(properties?: Partial<Notification.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    app_name: string;
-    appName: string;
-    body: string;
-    closed_reason: number;
-    closedReason: number;
-    icon_name: string;
-    iconName: string;
-    id: number;
-    summary: string;
+    get app_name(): string;
+    set app_name(val: string);
+    get appName(): string;
+    set appName(val: string);
+    get body(): string;
+    set body(val: string);
+    get closed_reason(): number;
+    get closedReason(): number;
+    get icon_name(): string;
+    set icon_name(val: string);
+    get iconName(): string;
+    set iconName(val: string);
+    get id(): number;
+    set id(val: number);
+    get summary(): string;
+    set summary(val: string);
 
     // Signals
 

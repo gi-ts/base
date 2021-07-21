@@ -1,0 +1,39 @@
+{
+    "name": "@gi-types/nm1",
+    "publishConfig": {
+        "access": "public",
+        "tag": "latest"
+    },
+    "version": "1.32.0",
+    "description": "TypeScript definitions for NM",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Evan Welsh",
+            "url": "https://github.com/ewlsh/",
+            "githubUsername": "ewlsh"
+        }
+    ],
+    "main": "",
+    "files": [
+        "index.d.ts",
+        "doc.json",
+        "package.json",
+        "README.md",
+        "LICENSE"
+    ],
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gi-ts/../base/packages/@gi-types/",
+        "directory": "packages/@gi-types/nm1"
+    },
+    "scripts": {},
+    "dependencies": {
+        "@gi-types/gio1": "^2.68.0",
+        "@gi-types/glib1": "^2.68.0",
+        "@gi-types/gobject1": "^2.68.0"
+    },
+    "typeScriptVersion": "4.1",
+    "gitHead": null
+}

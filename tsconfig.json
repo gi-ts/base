@@ -1,19 +1,16 @@
 {
     "compilerOptions": {
+        "noEmit": true,
         "strict": true,
-        "typeRoots": [
-            "./packages",
-            "./node_modules/@gi-types",
-        ],
         "paths": {
             "*": [
-                "*",
-                "./packages/*",
                 "./packages/@gi-types/*",
-                "./node_modules/@gi-types/*",
+                "./packages/*",
+                "*",
             ]
         },
         "baseUrl": ".",
+        "moduleResolution": "node",
         "allowSyntheticDefaultImports": true
     },
     "include": [

@@ -1,10 +1,10 @@
 {
     "options": {
         "outputFormat": "folder",
-        "versionedOutput": false,
+        "versionedOutput": true,
         "propertyCase": "both",
         "out": "./packages/@gi-types/",
-        "versionedImports": false,
+        "versionedImports": true,
         "importPrefix": "@gi-types/",
         "emitMetadata": true,
         "inferGenerics": true,

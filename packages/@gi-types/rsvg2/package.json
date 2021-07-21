@@ -1,0 +1,41 @@
+{
+    "name": "@gi-types/rsvg2",
+    "publishConfig": {
+        "access": "public",
+        "tag": "latest"
+    },
+    "version": "2.50.0",
+    "description": "TypeScript definitions for Rsvg",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Evan Welsh",
+            "url": "https://github.com/ewlsh/",
+            "githubUsername": "ewlsh"
+        }
+    ],
+    "main": "",
+    "files": [
+        "index.d.ts",
+        "doc.json",
+        "package.json",
+        "README.md",
+        "LICENSE"
+    ],
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gi-ts/../base/packages/@gi-types/",
+        "directory": "packages/@gi-types/rsvg2"
+    },
+    "scripts": {},
+    "dependencies": {
+        "@gi-types/cairo2": "^1.0.0",
+        "@gi-types/gdkpixbuf2": "^2.0.0",
+        "@gi-types/gio2": "^2.68.0",
+        "@gi-types/glib2": "^2.68.0",
+        "@gi-types/gobject2": "^2.68.0"
+    },
+    "typeScriptVersion": "4.1",
+    "gitHead": null
+}

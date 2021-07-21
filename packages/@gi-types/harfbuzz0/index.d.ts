@@ -4,8 +4,8 @@
  * Generated from 0.0
  */
 
-import * as GObject from "@gi-types/gobject";
-import * as GLib from "@gi-types/glib";
+import * as GLib from "@gi-types/glib2";
+import * as GObject from "@gi-types/gobject2";
 
 export const AAT_LAYOUT_NO_SELECTOR_INDEX: number;
 export const BUFFER_REPLACEMENT_CODEPOINT_DEFAULT: number;
@@ -26,6 +26,19 @@ export const VERSION_MAJOR: number;
 export const VERSION_MICRO: number;
 export const VERSION_MINOR: number;
 export const VERSION_STRING: string;
+export function aat_layout_feature_type_get_name_id(
+    face: face_t,
+    feature_type: aat_layout_feature_type_t
+): ot_name_id_t;
+export function aat_layout_feature_type_get_selector_infos(
+    face: face_t,
+    feature_type: aat_layout_feature_type_t,
+    start_offset: number
+): [number, aat_layout_feature_selector_info_t[] | null, number | null];
+export function aat_layout_get_feature_types(face: face_t, start_offset: number): [number, aat_layout_feature_type_t[]];
+export function aat_layout_has_positioning(face: face_t): bool_t;
+export function aat_layout_has_substitution(face: face_t): bool_t;
+export function aat_layout_has_tracking(face: face_t): bool_t;
 export function blob_copy_writable_or_fail(blob: blob_t): blob_t;
 export function blob_create_from_file(file_name: string): blob_t;
 export function blob_create_sub_blob(parent: blob_t, offset: number, length: number): blob_t;
@@ -63,14 +76,14 @@ export function buffer_create(): buffer_t;
 export function buffer_deserialize_glyphs(
     buffer: buffer_t,
     buf: string[],
-    font: font_t,
+    font: font_t | null,
     format: buffer_serialize_format_t
-): [bool_t, string];
+): [bool_t, string | null];
 export function buffer_deserialize_unicode(
     buffer: buffer_t,
     buf: string[],
     format: buffer_serialize_format_t
-): [bool_t, string];
+): [bool_t, string | null];
 export function buffer_diff(
     buffer: buffer_t,
     reference: buffer_t,
@@ -132,7 +145,11 @@ export function buffer_set_flags(buffer: buffer_t, flags: buffer_flags_t): void;
 export function buffer_set_invisible_glyph(buffer: buffer_t, invisible: codepoint_t): void;
 export function buffer_set_language(buffer: buffer_t, language: language_t): void;
 export function buffer_set_length(buffer: buffer_t, length: number): bool_t;
-export function buffer_set_message_func(buffer: buffer_t, func: buffer_message_func_t, destroy: destroy_func_t): void;
+export function buffer_set_message_func(
+    buffer: buffer_t,
+    func: buffer_message_func_t,
+    destroy?: destroy_func_t | null
+): void;
 export function buffer_set_replacement_codepoint(buffer: buffer_t, replacement: codepoint_t): void;
 export function buffer_set_script(buffer: buffer_t, script: script_t): void;
 export function buffer_set_segment_properties(buffer: buffer_t, props: segment_properties_t): void;
@@ -150,7 +167,10 @@ export function face_collect_variation_selectors(face: face_t, out: set_t): void
 export function face_collect_variation_unicodes(face: face_t, variation_selector: codepoint_t, out: set_t): void;
 export function face_count(blob: blob_t): number;
 export function face_create(blob: blob_t, index: number): face_t;
-export function face_create_for_tables(reference_table_func: reference_table_func_t, destroy: destroy_func_t): face_t;
+export function face_create_for_tables(
+    reference_table_func: reference_table_func_t,
+    destroy?: destroy_func_t | null
+): face_t;
 export function face_get_empty(): face_t;
 export function face_get_glyph_count(face: face_t): number;
 export function face_get_index(face: face_t): number;
@@ -181,92 +201,92 @@ export function font_funcs_make_immutable(ffuncs: font_funcs_t): void;
 export function font_funcs_set_font_h_extents_func(
     ffuncs: font_funcs_t,
     func: font_get_font_h_extents_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function font_funcs_set_font_v_extents_func(
     ffuncs: font_funcs_t,
     func: font_get_font_v_extents_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function font_funcs_set_glyph_contour_point_func(
     ffuncs: font_funcs_t,
     func: font_get_glyph_contour_point_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function font_funcs_set_glyph_extents_func(
     ffuncs: font_funcs_t,
     func: font_get_glyph_extents_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function font_funcs_set_glyph_from_name_func(
     ffuncs: font_funcs_t,
     func: font_get_glyph_from_name_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function font_funcs_set_glyph_func(
     ffuncs: font_funcs_t,
     func: font_get_glyph_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function font_funcs_set_glyph_h_advance_func(
     ffuncs: font_funcs_t,
     func: font_get_glyph_h_advance_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function font_funcs_set_glyph_h_advances_func(
     ffuncs: font_funcs_t,
     func: font_get_glyph_h_advances_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function font_funcs_set_glyph_h_kerning_func(
     ffuncs: font_funcs_t,
     func: font_get_glyph_h_kerning_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function font_funcs_set_glyph_h_origin_func(
     ffuncs: font_funcs_t,
     func: font_get_glyph_h_origin_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function font_funcs_set_glyph_name_func(
     ffuncs: font_funcs_t,
     func: font_get_glyph_name_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function font_funcs_set_glyph_v_advance_func(
     ffuncs: font_funcs_t,
     func: font_get_glyph_v_advance_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function font_funcs_set_glyph_v_advances_func(
     ffuncs: font_funcs_t,
     func: font_get_glyph_v_advances_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function font_funcs_set_glyph_v_kerning_func(
     ffuncs: font_funcs_t,
     func: font_get_glyph_v_kerning_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function font_funcs_set_glyph_v_origin_func(
     ffuncs: font_funcs_t,
     func: font_get_glyph_v_origin_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function font_funcs_set_nominal_glyph_func(
     ffuncs: font_funcs_t,
     func: font_get_nominal_glyph_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function font_funcs_set_nominal_glyphs_func(
     ffuncs: font_funcs_t,
     func: font_get_nominal_glyphs_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function font_funcs_set_variation_glyph_func(
     ffuncs: font_funcs_t,
     func: font_get_variation_glyph_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function font_get_empty(): font_t;
 export function font_get_extents_for_direction(font: font_t, direction: direction_t): font_extents_t;
@@ -311,8 +331,9 @@ export function font_get_glyph_h_advances(
     font: font_t,
     count: number,
     first_glyph: codepoint_t,
-    glyph_stride: number
-): [position_t, number];
+    glyph_stride: number,
+    advance_stride: number
+): position_t;
 export function font_get_glyph_h_kerning(font: font_t, left_glyph: codepoint_t, right_glyph: codepoint_t): position_t;
 export function font_get_glyph_h_origin(font: font_t, glyph: codepoint_t): [bool_t, position_t, position_t];
 export function font_get_glyph_kerning_for_direction(
@@ -343,9 +364,8 @@ export function font_get_nominal_glyphs(
     count: number,
     first_unicode: codepoint_t,
     unicode_stride: number,
-    first_glyph: codepoint_t,
     glyph_stride: number
-): number;
+): [number, codepoint_t];
 export function font_get_parent(font: font_t): font_t;
 export function font_get_ppem(font: font_t): [number, number];
 export function font_get_ptem(font: font_t): number;
@@ -362,8 +382,8 @@ export function font_glyph_to_string(font: font_t, glyph: codepoint_t): string[]
 export function font_is_immutable(font: font_t): bool_t;
 export function font_make_immutable(font: font_t): void;
 export function font_set_face(font: font_t, face: face_t): void;
-export function font_set_funcs(font: font_t, klass: font_funcs_t, destroy: destroy_func_t): void;
-export function font_set_funcs_data(font: font_t, font_data: any | null, destroy: destroy_func_t): void;
+export function font_set_funcs(font: font_t, klass: font_funcs_t, destroy?: destroy_func_t | null): void;
+export function font_set_funcs_data(font: font_t, font_data?: any | null, destroy?: destroy_func_t | null): void;
 export function font_set_parent(font: font_t, parent: font_t): void;
 export function font_set_ppem(font: font_t, x_ppem: number, y_ppem: number): void;
 export function font_set_ptem(font: font_t, ptem: number): void;
@@ -582,7 +602,7 @@ export function ot_layout_table_select_script(
     table_tag: tag_t,
     script_count: number,
     script_tags: tag_t
-): [bool_t, number, tag_t];
+): [bool_t, number | null, tag_t | null];
 export function ot_math_get_constant(font: font_t, constant: ot_math_constant_t): position_t;
 export function ot_math_get_glyph_assembly(
     font: font_t,
@@ -618,22 +638,21 @@ export function ot_name_get_utf32(face: face_t, name_id: ot_name_id_t, language:
 export function ot_name_get_utf8(face: face_t, name_id: ot_name_id_t, language: language_t): [number, string[]];
 export function ot_name_list_names(face: face_t): ot_name_entry_t[];
 export function ot_shape_glyphs_closure(font: font_t, buffer: buffer_t, features: feature_t[]): set_t;
+export function ot_shape_plan_collect_lookups(shape_plan: shape_plan_t, table_tag: tag_t): set_t;
 export function ot_tag_from_language(language: language_t): tag_t;
-export function ot_tag_to_language(tag: tag_t): language_t;
+export function ot_tag_to_language(tag: tag_t): language_t | null;
 export function ot_tag_to_script(tag: tag_t): script_t;
 export function ot_tags_from_script(script: script_t, script_tag_1: tag_t, script_tag_2: tag_t): void;
 export function ot_tags_from_script_and_language(
     script: script_t,
     language: language_t,
-    script_count?: number | null,
-    language_count?: number | null
-): [tag_t | null, tag_t | null];
+    script_count?: number,
+    language_count?: number
+): [number, tag_t | null, number, tag_t | null];
 export function ot_tags_to_script_and_language(
     script_tag: tag_t,
-    language_tag: tag_t,
-    script?: script_t | null,
-    language?: language_t | null
-): void;
+    language_tag: tag_t
+): [script_t | null, language_t | null];
 export function ot_var_find_axis(face: face_t, axis_tag: tag_t, axis_index: number): [bool_t, ot_var_axis_t];
 export function ot_var_find_axis_info(face: face_t, axis_tag: tag_t): [bool_t, ot_var_axis_info_t];
 export function ot_var_get_axes(face: face_t, start_offset: number): [number, ot_var_axis_t[]];
@@ -735,54 +754,51 @@ export function unicode_funcs_make_immutable(ufuncs: unicode_funcs_t): void;
 export function unicode_funcs_set_combining_class_func(
     ufuncs: unicode_funcs_t,
     func: unicode_combining_class_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function unicode_funcs_set_compose_func(
     ufuncs: unicode_funcs_t,
     func: unicode_compose_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function unicode_funcs_set_decompose_compatibility_func(
     ufuncs: unicode_funcs_t,
     func: unicode_decompose_compatibility_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function unicode_funcs_set_decompose_func(
     ufuncs: unicode_funcs_t,
     func: unicode_decompose_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function unicode_funcs_set_eastasian_width_func(
     ufuncs: unicode_funcs_t,
     func: unicode_eastasian_width_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function unicode_funcs_set_general_category_func(
     ufuncs: unicode_funcs_t,
     func: unicode_general_category_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function unicode_funcs_set_mirroring_func(
     ufuncs: unicode_funcs_t,
     func: unicode_mirroring_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function unicode_funcs_set_script_func(
     ufuncs: unicode_funcs_t,
     func: unicode_script_func_t,
-    destroy: destroy_func_t
+    destroy?: destroy_func_t | null
 ): void;
 export function unicode_general_category(ufuncs: unicode_funcs_t, unicode: codepoint_t): unicode_general_category_t;
 export function unicode_mirroring(ufuncs: unicode_funcs_t, unicode: codepoint_t): codepoint_t;
 export function unicode_script(ufuncs: unicode_funcs_t, unicode: codepoint_t): script_t;
-export function variation_from_string(str: string, len: number, variation: variation_t): bool_t;
-export function variation_to_string(variation: variation_t, buf: string, size: number): void;
-export function version(): [number, number, number];
-export function version_atleast(major: number, minor: number, micro: number): bool_t;
-export function version_string(): string;
+export function variation_from_string(str: Uint8Array | string): [bool_t, variation_t];
+export function variation_to_string(variation: variation_t): string[];
 export type buffer_message_func_t = (buffer: buffer_t, font: font_t, message: string) => bool_t;
 export type destroy_func_t = () => void;
-export type font_get_font_extents_func_t = (font: font_t, font_data: any | null, extents: font_extents_t) => bool_t;
+export type font_get_font_extents_func_t = (font: font_t, font_data: any | null) => bool_t;
 export type font_get_glyph_advance_func_t = (font: font_t, font_data: any | null, glyph: codepoint_t) => position_t;
 export type font_get_glyph_advances_func_t = (
     font: font_t,
@@ -790,36 +806,21 @@ export type font_get_glyph_advances_func_t = (
     count: number,
     first_glyph: codepoint_t,
     glyph_stride: number,
-    first_advance: position_t,
     advance_stride: number
 ) => void;
 export type font_get_glyph_contour_point_func_t = (
     font: font_t,
     font_data: any | null,
     glyph: codepoint_t,
-    point_index: number,
-    x: position_t,
-    y: position_t
+    point_index: number
 ) => bool_t;
-export type font_get_glyph_extents_func_t = (
-    font: font_t,
-    font_data: any | null,
-    glyph: codepoint_t,
-    extents: glyph_extents_t
-) => bool_t;
-export type font_get_glyph_from_name_func_t = (
-    font: font_t,
-    font_data: any | null,
-    name: string,
-    len: number,
-    glyph: codepoint_t
-) => bool_t;
+export type font_get_glyph_extents_func_t = (font: font_t, font_data: any | null, glyph: codepoint_t) => bool_t;
+export type font_get_glyph_from_name_func_t = (font: font_t, font_data: any | null, name: string[]) => bool_t;
 export type font_get_glyph_func_t = (
     font: font_t,
     font_data: any | null,
     unicode: codepoint_t,
-    variation_selector: codepoint_t,
-    glyph: codepoint_t
+    variation_selector: codepoint_t
 ) => bool_t;
 export type font_get_glyph_kerning_func_t = (
     font: font_t,
@@ -827,41 +828,22 @@ export type font_get_glyph_kerning_func_t = (
     first_glyph: codepoint_t,
     second_glyph: codepoint_t
 ) => position_t;
-export type font_get_glyph_name_func_t = (
-    font: font_t,
-    font_data: any | null,
-    glyph: codepoint_t,
-    name: string,
-    size: number
-) => bool_t;
-export type font_get_glyph_origin_func_t = (
-    font: font_t,
-    font_data: any | null,
-    glyph: codepoint_t,
-    x: position_t,
-    y: position_t
-) => bool_t;
-export type font_get_nominal_glyph_func_t = (
-    font: font_t,
-    font_data: any | null,
-    unicode: codepoint_t,
-    glyph: codepoint_t
-) => bool_t;
+export type font_get_glyph_name_func_t = (font: font_t, font_data: any | null, glyph: codepoint_t) => bool_t;
+export type font_get_glyph_origin_func_t = (font: font_t, font_data: any | null, glyph: codepoint_t) => bool_t;
+export type font_get_nominal_glyph_func_t = (font: font_t, font_data: any | null, unicode: codepoint_t) => bool_t;
 export type font_get_nominal_glyphs_func_t = (
     font: font_t,
     font_data: any | null,
     count: number,
     first_unicode: codepoint_t,
     unicode_stride: number,
-    first_glyph: codepoint_t,
     glyph_stride: number
 ) => number;
 export type font_get_variation_glyph_func_t = (
     font: font_t,
     font_data: any | null,
     unicode: codepoint_t,
-    variation_selector: codepoint_t,
-    glyph: codepoint_t
+    variation_selector: codepoint_t
 ) => bool_t;
 export type reference_table_func_t = (face: face_t, tag: tag_t) => blob_t;
 export type unicode_combining_class_func_t = (
@@ -1730,6 +1712,18 @@ export enum ot_var_axis_flags_t {
     HIDDEN = 1,
 }
 
+export class aat_layout_feature_selector_info_t {
+    static $gtype: GObject.GType<aat_layout_feature_selector_info_t>;
+
+    constructor(copy: aat_layout_feature_selector_info_t);
+
+    // Fields
+    name_id: ot_name_id_t;
+    enable: aat_layout_feature_selector_t;
+    disable: aat_layout_feature_selector_t;
+    reserved: number;
+}
+
 export class blob_t {
     static $gtype: GObject.GType<blob_t>;
 
@@ -1816,8 +1810,6 @@ export class glyph_info_t {
     codepoint: codepoint_t;
     mask: mask_t;
     cluster: number;
-    var1: var_int_t;
-    var2: var_int_t;
 }
 
 export class glyph_position_t {
@@ -1830,7 +1822,6 @@ export class glyph_position_t {
     y_advance: position_t;
     x_offset: position_t;
     y_offset: position_t;
-    "var": var_int_t;
 }
 
 export class language_t {
@@ -1888,8 +1879,6 @@ export class ot_name_entry_t {
 
     // Fields
     name_id: ot_name_id_t;
-    "var": var_int_t;
-    language: language_t;
 }
 
 export class ot_var_axis_info_t {
@@ -1929,7 +1918,6 @@ export class segment_properties_t {
     // Fields
     direction: direction_t;
     script: script_t;
-    language: language_t;
     reserved1: any;
     reserved2: any;
 }
@@ -1976,21 +1964,23 @@ export class variation_t {
     value: number;
 
     // Members
-    _string(buf: string, size: number): void;
+    _string(): string[];
 }
 
 export class var_int_t {
     static $gtype: GObject.GType<var_int_t>;
 
+    constructor(
+        properties?: Partial<{
+            u32?: number;
+            i32?: number;
+        }>
+    );
     constructor(copy: var_int_t);
 
     // Fields
     u32: number;
     i32: number;
-    u16: number[];
-    i16: number[];
-    u8: Uint8Array;
-    i8: Uint8Array;
 }
 export type bool_t = number;
 export type codepoint_t = number;

@@ -3,8 +3,8 @@
     "api_version": "0.7",
     "package_version": "0.7",
     "imports": {
+        "GObject": "2.0",
         "GLib": "2.0",
-        "GdkPixbuf": "2.0",
-        "GObject": "2.0"
+        "GdkPixbuf": "2.0"
     }
 }

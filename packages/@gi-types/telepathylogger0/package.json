@@ -1,16 +1,16 @@
 {
-    "name": "@gi-types/telepathylogger",
+    "name": "@gi-types/telepathylogger0",
     "publishConfig": {
         "access": "public",
         "tag": "latest"
     },
-    "version": "0.2.4",
+    "version": "0.2.0",
     "description": "TypeScript definitions for TelepathyLogger",
     "license": "MIT",
     "contributors": [
         {
             "name": "Evan Welsh",
-            "url": "https://gitlab.gnome.org/ewlsh/",
+            "url": "https://github.com/ewlsh/",
             "githubUsername": "ewlsh"
         }
     ],
@@ -25,16 +25,15 @@
     "types": "index.d.ts",
     "repository": {
         "type": "git",
-        "url": "https://gitlab.gnome.org/ewlsh/packages.gi.ts.git",
-        "directory": "packages/telepathylogger0"
+        "url": "https://github.com/gi-ts/../base/packages/@gi-types/",
+        "directory": "packages/@gi-types/telepathylogger0"
     },
     "scripts": {},
-    "contentHash": "6eae0a80b253bb31a7ac15818bfa4bfb",
     "dependencies": {
-        "@gi-types/gio": "^2.66.8",
-        "@gi-types/glib": "^2.66.8",
-        "@gi-types/gobject": "^2.66.7",
-        "@gi-types/telepathyglib": "^0.12.6"
+        "@gi-types/gio0": "^2.68.0",
+        "@gi-types/glib0": "^2.68.0",
+        "@gi-types/gobject0": "^2.68.0",
+        "@gi-types/telepathyglib0": "^0.12.0"
     },
     "typeScriptVersion": "4.1",
     "gitHead": null

@@ -4,10 +4,10 @@
  * Generated from 0.2
  */
 
-import * as GObject from "@gi-types/gobject";
-import * as TelepathyGLib from "@gi-types/telepathyglib";
-import * as GLib from "@gi-types/glib";
-import * as Gio from "@gi-types/gio";
+import * as GObject from "@gi-types/gobject2";
+import * as TelepathyGLib from "@gi-types/telepathyglib0";
+import * as GLib from "@gi-types/glib2";
+import * as Gio from "@gi-types/gio2";
 
 export type LogEventFilter = (event: Event) => boolean;
 
@@ -58,13 +58,13 @@ export class CallEvent extends Event {
     _init(properties?: Partial<CallEvent.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    detailed_end_reason: string;
-    detailedEndReason: string;
-    duration: number;
-    end_actor: Entity;
-    endActor: Entity;
-    end_reason: number;
-    endReason: number;
+    get detailed_end_reason(): string;
+    get detailedEndReason(): string;
+    get duration(): number;
+    get end_actor(): Entity;
+    get endActor(): Entity;
+    get end_reason(): number;
+    get endReason(): number;
 
     // Members
 
@@ -90,14 +90,11 @@ export class Entity extends GObject.Object {
     _init(properties?: Partial<Entity.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    alias: string;
-    avatar_token: string;
-    avatarToken: string;
-    identifier: string;
-    type: number;
-
-    // Fields
-    priv: EntityPriv;
+    get alias(): string;
+    get avatar_token(): string;
+    get avatarToken(): string;
+    get identifier(): string;
+    get type(): number;
 
     // Constructors
 
@@ -132,14 +129,14 @@ export abstract class Event extends GObject.Object {
     _init(properties?: Partial<Event.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    account: TelepathyGLib.Account;
-    account_path: string;
-    accountPath: string;
-    channel_path: string;
-    channelPath: string;
-    receiver: Entity;
-    sender: Entity;
-    timestamp: number;
+    get account(): TelepathyGLib.Account;
+    get account_path(): string;
+    get accountPath(): string;
+    get channel_path(): string;
+    get channelPath(): string;
+    get receiver(): Entity;
+    get sender(): Entity;
+    get timestamp(): number;
 
     // Members
 
@@ -258,12 +255,9 @@ export class LogWalker extends GObject.Object {
     _init(properties?: Partial<LogWalker.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    filter: any;
-    filter_data: any;
-    filterData: any;
-
-    // Fields
-    priv: LogWalkerPriv;
+    get filter(): any;
+    get filter_data(): any;
+    get filterData(): any;
 
     // Members
 
@@ -299,15 +293,15 @@ export class TextEvent extends Event {
     _init(properties?: Partial<TextEvent.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
-    edit_timestamp: number;
-    editTimestamp: number;
-    message: string;
-    message_token: string;
-    messageToken: string;
-    message_type: number;
-    messageType: number;
-    supersedes_token: string;
-    supersedesToken: string;
+    get edit_timestamp(): number;
+    get editTimestamp(): number;
+    get message(): string;
+    get message_token(): string;
+    get messageToken(): string;
+    get message_type(): number;
+    get messageType(): number;
+    get supersedes_token(): string;
+    get supersedesToken(): string;
 
     // Members
 
@@ -341,11 +335,6 @@ export class LogSearchHit {
     static $gtype: GObject.GType<LogSearchHit>;
 
     constructor(copy: LogSearchHit);
-
-    // Fields
-    account: TelepathyGLib.Account;
-    target: Entity;
-    date: GLib.Date;
 }
 
 export class LogWalkerPriv {

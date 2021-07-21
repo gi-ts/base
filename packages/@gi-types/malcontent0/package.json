@@ -1,16 +1,16 @@
 {
-    "name": "@gi-types/malcontent",
+    "name": "@gi-types/malcontent0",
     "publishConfig": {
         "access": "public",
         "tag": "latest"
     },
-    "version": "0.0.3",
+    "version": "0.0.0",
     "description": "TypeScript definitions for Malcontent",
     "license": "MIT",
     "contributors": [
         {
             "name": "Evan Welsh",
-            "url": "https://gitlab.gnome.org/ewlsh/",
+            "url": "https://github.com/ewlsh/",
             "githubUsername": "ewlsh"
         }
     ],
@@ -25,15 +25,14 @@
     "types": "index.d.ts",
     "repository": {
         "type": "git",
-        "url": "https://gitlab.gnome.org/ewlsh/packages.gi.ts.git",
-        "directory": "packages/malcontent0"
+        "url": "https://github.com/gi-ts/../base/packages/@gi-types/",
+        "directory": "packages/@gi-types/malcontent0"
     },
     "scripts": {},
-    "contentHash": "cb7d5417c45942f9d223c4b0f46c6f02",
     "dependencies": {
-        "@gi-types/gio": "^2.66.8",
-        "@gi-types/glib": "^2.66.8",
-        "@gi-types/gobject": "^2.66.7"
+        "@gi-types/gio0": "^2.68.0",
+        "@gi-types/glib0": "^2.68.0",
+        "@gi-types/gobject0": "^2.68.0"
     },
     "typeScriptVersion": "4.1",
     "gitHead": null
