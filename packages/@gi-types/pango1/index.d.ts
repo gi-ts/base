@@ -6,7 +6,7 @@
 
 import * as GLib from "@gi-types/glib2";
 import * as GObject from "@gi-types/gobject2";
-import * as HarfBuzz from "@gi-types/harfbuzz0";
+import * as HarfBuzz from "@gi-types/harfbuzz2";
 
 export const ANALYSIS_FLAG_CENTERED_BASELINE: number;
 export const ANALYSIS_FLAG_IS_ELLIPSIS: number;

@@ -30,9 +30,9 @@
     },
     "scripts": {},
     "dependencies": {
-        "@gi-types/glib1": "^2.68.0",
-        "@gi-types/gobject1": "^2.68.0",
-        "@gi-types/harfbuzz1": "^0.0.0"
+        "@gi-types/glib2": "^2.68.0",
+        "@gi-types/gobject2": "^2.68.0",
+        "@gi-types/harfbuzz2": "^2.8.1"
     },
     "typeScriptVersion": "4.1",
     "gitHead": null

@@ -30,7 +30,7 @@
     },
     "scripts": {},
     "dependencies": {
-        "@gi-types/dbus2": "^1.0.0",
+        "@gi-types/dbus1": "^1.0.0",
         "@gi-types/glib2": "^2.68.0",
         "@gi-types/gobject2": "^2.68.0"
     },

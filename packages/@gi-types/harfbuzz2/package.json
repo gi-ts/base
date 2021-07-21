@@ -1,10 +1,10 @@
 {
-    "name": "@gi-types/harfbuzz0",
+    "name": "@gi-types/harfbuzz2",
     "publishConfig": {
         "access": "public",
         "tag": "latest"
     },
-    "version": "2.8.0",
+    "version": "2.8.1",
     "description": "TypeScript definitions for HarfBuzz",
     "license": "MIT",
     "contributors": [
@@ -26,12 +26,12 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/gi-ts/../base/packages/@gi-types/",
-        "directory": "packages/@gi-types/harfbuzz0"
+        "directory": "packages/@gi-types/harfbuzz2"
     },
     "scripts": {},
     "dependencies": {
-        "@gi-types/glib0": "^2.68.0",
-        "@gi-types/gobject0": "^2.68.0"
+        "@gi-types/glib2": "^2.68.0",
+        "@gi-types/gobject2": "^2.68.0"
     },
     "typeScriptVersion": "4.1",
     "gitHead": null

@@ -2,8 +2,8 @@
   "name": "@gi.ts/packages-base",
   "private": true,
   "devDependencies": {
-    "@gi.ts/cli": "^1.5.5",
-    "@gi.ts/lib": "^1.5.3",
+    "@gi.ts/cli": "^1.5.7",
+    "@gi.ts/lib": "^1.5.9",
     "lerna": "^3.22.1"
   },
   "workspaces": [

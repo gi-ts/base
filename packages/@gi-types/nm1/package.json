@@ -30,9 +30,9 @@
     },
     "scripts": {},
     "dependencies": {
-        "@gi-types/gio1": "^2.68.0",
-        "@gi-types/glib1": "^2.68.0",
-        "@gi-types/gobject1": "^2.68.0"
+        "@gi-types/gio2": "^2.68.0",
+        "@gi-types/glib2": "^2.68.0",
+        "@gi-types/gobject2": "^2.68.0"
     },
     "typeScriptVersion": "4.1",
     "gitHead": null

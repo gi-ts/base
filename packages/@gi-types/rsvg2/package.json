@@ -30,7 +30,7 @@
     },
     "scripts": {},
     "dependencies": {
-        "@gi-types/cairo2": "^1.0.0",
+        "@gi-types/cairo1": "^1.0.0",
         "@gi-types/gdkpixbuf2": "^2.0.0",
         "@gi-types/gio2": "^2.68.0",
         "@gi-types/glib2": "^2.68.0",
