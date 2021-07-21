@@ -1,5 +1,5 @@
 {
-    "name": "@gi-types/atk2",
+    "name": "@gi-types/atk1",
     "publishConfig": {
         "access": "public",
         "tag": "latest"
