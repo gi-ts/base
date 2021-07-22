@@ -1,5 +1,5 @@
 {
-    "name": "@gi-types/girepository1",
+    "name": "@gi-types/girepository2",
     "publishConfig": {
         "access": "public",
         "tag": "latest"
