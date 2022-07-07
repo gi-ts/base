@@ -4,7 +4,7 @@
         "access": "public",
         "tag": "latest"
     },
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "TypeScript definitions for xlib",
     "license": "MIT",
     "contributors": [
@@ -30,7 +30,7 @@
     },
     "scripts": {},
     "dependencies": {
-        "@gi-types/gobject2": "^2.72.0"
+        "@gi-types/gobject2": "^2.72.1"
     },
     "typeScriptVersion": "4.1",
     "gitHead": null

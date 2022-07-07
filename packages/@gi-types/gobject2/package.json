@@ -4,7 +4,7 @@
         "access": "public",
         "tag": "latest"
     },
-    "version": "2.72.0",
+    "version": "2.72.1",
     "description": "TypeScript definitions for GObject",
     "license": "MIT",
     "contributors": [
@@ -30,7 +30,7 @@
     },
     "scripts": {},
     "dependencies": {
-        "@gi-types/glib2": "^2.72.0"
+        "@gi-types/glib2": "^2.72.1"
     },
     "typeScriptVersion": "4.1",
     "gitHead": null

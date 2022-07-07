@@ -4,7 +4,7 @@
         "access": "public",
         "tag": "latest"
     },
-    "version": "2.54.0",
+    "version": "2.54.1",
     "description": "TypeScript definitions for Rsvg",
     "license": "MIT",
     "contributors": [
@@ -30,11 +30,11 @@
     },
     "scripts": {},
     "dependencies": {
-        "@gi-types/cairo1": "^1.0.0",
-        "@gi-types/gdkpixbuf2": "^2.0.0",
-        "@gi-types/gio2": "^2.72.0",
-        "@gi-types/glib2": "^2.72.0",
-        "@gi-types/gobject2": "^2.72.0"
+        "@gi-types/cairo1": "^1.0.1",
+        "@gi-types/gdkpixbuf2": "^2.0.1",
+        "@gi-types/gio2": "^2.72.1",
+        "@gi-types/glib2": "^2.72.1",
+        "@gi-types/gobject2": "^2.72.1"
     },
     "typeScriptVersion": "4.1",
     "gitHead": null
