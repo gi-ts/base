@@ -1,10 +1,11 @@
 {
     "name": "Pango",
     "api_version": "1.0",
-    "package_version": "1.0",
+    "package_version": "1.50.8",
     "imports": {
         "GLib": "2.0",
         "GObject": "2.0",
-        "HarfBuzz": "0.0"
+        "Gio": "2.0",
+        "HarfBuzz": "2.0"
     }
 }

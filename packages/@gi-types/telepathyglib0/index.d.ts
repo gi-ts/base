@@ -519,17 +519,51 @@ export const TOKEN_CONNECTION_INTERFACE_SIMPLE_PRESENCE_PRESENCE: string;
 export const UNKNOWN_CONNECTION_STATUS: ConnectionStatus;
 export const UNKNOWN_HANDLE_TYPE: HandleType;
 export const USER_ACTION_TIME_NOT_USER_ACTION: number;
-export function asv_get_boolean(asv: GLib.HashTable<string, GObject.Value>, key: string): [boolean, boolean];
-export function asv_get_boxed(asv: GLib.HashTable<string, GObject.Value>, key: string, type: GObject.GType): any | null;
-export function asv_get_bytes(asv: GLib.HashTable<string, GObject.Value>, key: string): Uint8Array | null;
-export function asv_get_double(asv: GLib.HashTable<string, GObject.Value>, key: string): [number, boolean];
-export function asv_get_int32(asv: GLib.HashTable<string, GObject.Value>, key: string): [number, boolean];
-export function asv_get_int64(asv: GLib.HashTable<string, GObject.Value>, key: string): [number, boolean];
-export function asv_get_object_path(asv: GLib.HashTable<string, GObject.Value>, key: string): string | null;
-export function asv_get_string(asv: GLib.HashTable<string, GObject.Value>, key: string): string | null;
-export function asv_get_strv(asv: GLib.HashTable<string, GObject.Value>, key: string): string[] | null;
-export function asv_get_uint32(asv: GLib.HashTable<string, GObject.Value>, key: string): [number, boolean];
-export function asv_get_uint64(asv: GLib.HashTable<string, GObject.Value>, key: string): [number, boolean];
+export function asv_get_boolean(
+    asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+    key: string
+): [boolean, boolean];
+export function asv_get_boxed(
+    asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+    key: string,
+    type: GObject.GType
+): any | null;
+export function asv_get_bytes(
+    asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+    key: string
+): Uint8Array | null;
+export function asv_get_double(
+    asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+    key: string
+): [number, boolean];
+export function asv_get_int32(
+    asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+    key: string
+): [number, boolean];
+export function asv_get_int64(
+    asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+    key: string
+): [number, boolean];
+export function asv_get_object_path(
+    asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+    key: string
+): string | null;
+export function asv_get_string(
+    asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+    key: string
+): string | null;
+export function asv_get_strv(
+    asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+    key: string
+): string[] | null;
+export function asv_get_uint32(
+    asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+    key: string
+): [number, boolean];
+export function asv_get_uint64(
+    asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+    key: string
+): [number, boolean];
 export function dbus_check_valid_bus_name(name: string, allow_types: DBusNameType): boolean;
 export function dbus_check_valid_interface_name(name: string): boolean;
 export function dbus_check_valid_member_name(name: string): boolean;
@@ -719,7 +753,7 @@ export function svc_interface_set_dbus_properties_info(
     info: DBusPropertiesMixinIfaceInfo
 ): void;
 export function user_action_time_from_x11(x11_time: number): number;
-export function user_action_time_should_present(user_action_time: number): [boolean, number | null];
+export function user_action_time_should_present(user_action_time: number): [boolean, number];
 export function utf8_make_valid(name: string): string;
 export function value_array_free(va: GObject.ValueArray): void;
 export type AccountChannelRequestDelegatedChannelCb = (request: AccountChannelRequest, channel: Channel) => void;
@@ -765,7 +799,7 @@ export type ConnectionContactsByIdCb<A = GObject.Object> = (
     connection: Connection,
     contacts: Contact[],
     requested_ids: string[],
-    failed_id_errors: GLib.HashTable<string, GLib.Error>,
+    failed_id_errors: { [key: string]: any } | GLib.HashTable<string, GLib.Error>,
     error: GLib.Error,
     weak_object: A
 ) => void;
@@ -2081,7 +2115,7 @@ export class Account extends Proxy {
         new_status: number,
         reason: number,
         dbus_error_name: string | null,
-        details: GLib.HashTable<string, GObject.Value>
+        details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>
     ): void;
 
     // Constructors
@@ -2232,16 +2266,16 @@ export class Account extends Proxy {
     ): Promise<boolean> | void;
     set_uri_scheme_association_finish(result: Gio.AsyncResult): boolean;
     update_parameters_async(
-        parameters: GLib.HashTable<string, GObject.Value>,
+        parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         unset_parameters: string
     ): Promise<[string[]]>;
     update_parameters_async(
-        parameters: GLib.HashTable<string, GObject.Value>,
+        parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         unset_parameters: string,
         callback: Gio.AsyncReadyCallback<this> | null
     ): void;
     update_parameters_async(
-        parameters: GLib.HashTable<string, GObject.Value>,
+        parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         unset_parameters: string,
         callback?: Gio.AsyncReadyCallback<this> | null
     ): Promise<[string[]]> | void;
@@ -2311,7 +2345,7 @@ export class AccountChannelRequest extends GObject.Object {
 
     static ["new"](
         account: Account,
-        request: GLib.HashTable<string, GObject.Value>,
+        request: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         user_action_time: number
     ): AccountChannelRequest;
     static new_audio_call(account: Account, user_action_time: number): AccountChannelRequest;
@@ -2417,7 +2451,7 @@ export class AccountChannelRequest extends GObject.Object {
     set_file_transfer_timestamp(timestamp: number): void;
     set_file_transfer_uri(uri: string): void;
     set_hint(key: string, value: GLib.Variant): void;
-    set_hints(hints: GLib.HashTable<any, any>): void;
+    set_hints(hints: { [key: string]: any } | GLib.HashTable<any, any>): void;
     set_initial_invitee_ids(ids: string): void;
     set_initial_invitees(contacts: Contact[]): void;
     set_request_property(name: string, value: GLib.Variant): void;
@@ -2480,23 +2514,23 @@ export class AccountManager extends Proxy {
         connection_manager: string,
         protocol: string,
         display_name: string,
-        parameters: GLib.HashTable<string, GObject.Value>,
-        properties: GLib.HashTable<string, GObject.Value>
+        parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>
     ): Promise<Account>;
     create_account_async(
         connection_manager: string,
         protocol: string,
         display_name: string,
-        parameters: GLib.HashTable<string, GObject.Value>,
-        properties: GLib.HashTable<string, GObject.Value>,
+        parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         callback: Gio.AsyncReadyCallback<this> | null
     ): void;
     create_account_async(
         connection_manager: string,
         protocol: string,
         display_name: string,
-        parameters: GLib.HashTable<string, GObject.Value>,
-        properties: GLib.HashTable<string, GObject.Value>,
+        parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         callback?: Gio.AsyncReadyCallback<this> | null
     ): Promise<Account> | void;
     create_account_finish(result: Gio.AsyncResult): Account;
@@ -2688,7 +2722,11 @@ export class AutomaticProxyFactory extends GObject.Object implements ClientChann
 
     // Implemented Members
 
-    create_channel(conn: Connection, path: string, properties: GLib.HashTable<string, GObject.Value>): Channel;
+    create_channel(
+        conn: Connection,
+        path: string,
+        properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>
+    ): Channel;
     dup_channel_features(channel: Channel): GLib.Quark[];
 }
 export module BaseClient {
@@ -2751,15 +2789,15 @@ export abstract class BaseClient extends GObject.Object {
     // Members
 
     add_account_features(features: GLib.Quark[]): void;
-    add_approver_filter(filter: GLib.HashTable<string, GObject.Value>): void;
+    add_approver_filter(filter: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): void;
     add_approver_filter_vardict(filter: GLib.Variant): void;
     add_channel_features(features: GLib.Quark[]): void;
     add_connection_features(features: GLib.Quark[]): void;
     add_handler_capabilities(tokens: string[]): void;
     add_handler_capability(token: string): void;
-    add_handler_filter(filter: GLib.HashTable<string, GObject.Value>): void;
+    add_handler_filter(filter: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): void;
     add_handler_filter_vardict(filter: GLib.Variant): void;
-    add_observer_filter(filter: GLib.HashTable<string, GObject.Value>): void;
+    add_observer_filter(filter: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): void;
     add_observer_filter_vardict(filter: GLib.Variant): void;
     be_a_handler(): void;
     delegate_channels_async(
@@ -2900,7 +2938,11 @@ export class BasicProxyFactory extends GObject.Object implements ClientChannelFa
 
     // Implemented Members
 
-    create_channel(conn: Connection, path: string, properties: GLib.HashTable<string, GObject.Value>): Channel;
+    create_channel(
+        conn: Connection,
+        path: string,
+        properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>
+    ): Channel;
     dup_channel_features(channel: Channel): GLib.Quark[];
 }
 export module CallChannel {
@@ -2999,7 +3041,7 @@ export class CallChannel extends Channel {
     ): number;
     emit(
         signal: "members-changed",
-        updates: GLib.HashTable<Contact, number>,
+        updates: { [key: string]: any } | GLib.HashTable<Contact, number>,
         removed: Contact[],
         reason: CallStateReason
     ): void;
@@ -3028,7 +3070,7 @@ export class CallChannel extends Channel {
         state: number,
         flags: number,
         reason: CallStateReason,
-        details: GLib.HashTable<string, GObject.Value>
+        details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>
     ): void;
 
     // Members
@@ -3075,8 +3117,8 @@ export class CallChannel extends Channel {
     has_dtmf(): boolean;
     has_hardware_streaming(): boolean;
     has_hold(): boolean;
-    has_initial_audio(): [boolean, string | null];
-    has_initial_video(): [boolean, string | null];
+    has_initial_audio(): [boolean, string];
+    has_initial_video(): [boolean, string];
     has_mutable_contents(): boolean;
     request_hold_async(hold: boolean): Promise<boolean>;
     request_hold_async(hold: boolean, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -3236,7 +3278,7 @@ export class CallStream extends Proxy {
     ): number;
     emit(
         signal: "remote-members-changed",
-        updates: GLib.HashTable<Contact, number>,
+        updates: { [key: string]: any } | GLib.HashTable<Contact, number>,
         removed: Contact[],
         reason: CallStateReason
     ): void;
@@ -3398,7 +3440,7 @@ export class Channel extends Proxy {
         local_pending: Contact[],
         remote_pending: Contact[],
         actor: Contact,
-        details: GLib.HashTable<string, GObject.Value>
+        details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>
     ): void;
     connect(signal: "group-flags-changed", callback: (_source: this, added: number, removed: number) => void): number;
     connect_after(
@@ -3470,7 +3512,7 @@ export class Channel extends Proxy {
         removed: number[],
         local_pending: number[],
         remote_pending: number[],
-        details: GLib.HashTable<string, GObject.Value>
+        details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>
     ): void;
 
     // Constructors
@@ -3485,7 +3527,7 @@ export class Channel extends Proxy {
     static new_from_properties(
         conn: Connection,
         object_path: string,
-        immutable_properties: GLib.HashTable<string, GObject.Value>
+        immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>
     ): Channel;
 
     // Members
@@ -3519,10 +3561,10 @@ export class Channel extends Proxy {
     group_get_local_pending(): Intset;
     group_get_local_pending_contact_info(
         local_pending: Contact
-    ): [boolean, Contact | null, ChannelGroupChangeReason | null, string | null];
+    ): [boolean, Contact | null, ChannelGroupChangeReason | null, string];
     group_get_local_pending_info(
         local_pending: Handle
-    ): [boolean, Handle | null, ChannelGroupChangeReason | null, string | null];
+    ): [boolean, Handle | null, ChannelGroupChangeReason | null, string];
     group_get_members(): Intset;
     group_get_remote_pending(): Intset;
     group_get_self_contact(): Contact;
@@ -3593,7 +3635,7 @@ export class ChannelDispatchOperation extends Proxy {
     static ["new"](
         bus_daemon: DBusDaemon,
         object_path: string,
-        immutable_properties: GLib.HashTable<any, any>
+        immutable_properties: { [key: string]: any } | GLib.HashTable<any, any>
     ): ChannelDispatchOperation;
 
     // Members
@@ -3737,7 +3779,7 @@ export class ChannelRequest extends Proxy {
     static ["new"](
         bus_daemon: DBusDaemon,
         object_path: string,
-        immutable_properties: GLib.HashTable<any, any>
+        immutable_properties: { [key: string]: any } | GLib.HashTable<any, any>
     ): ChannelRequest;
 
     // Members
@@ -4450,7 +4492,7 @@ export class ContactSearch extends GObject.Object implements Gio.AsyncInitable<C
         callback?: Gio.AsyncReadyCallback<this> | null
     ): Promise<string[]> | void;
     reset_finish(result: Gio.AsyncResult): string[];
-    start(criteria: GLib.HashTable<string, string>): void;
+    start(criteria: { [key: string]: any } | GLib.HashTable<string, string>): void;
     static new_async(account: Account, server: string, limit: number): Promise<ContactSearch>;
     static new_async(
         account: Account,
@@ -4696,7 +4738,7 @@ export class FileTransferChannel extends Channel {
     static ["new"](
         conn: Connection,
         object_path: string,
-        immutable_properties: GLib.HashTable<string, GObject.Value>
+        immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>
     ): FileTransferChannel;
     // Conflicted with TelepathyGLib.Channel.new
     static ["new"](...args: never[]): any;
@@ -4915,7 +4957,7 @@ export class Protocol extends Proxy {
         dbus: DBusDaemon,
         cm_name: string,
         protocol_name: string,
-        immutable_properties: GLib.HashTable<any, any>
+        immutable_properties: { [key: string]: any } | GLib.HashTable<any, any>
     ): Protocol;
     static new_vardict(
         dbus: DBusDaemon,
@@ -5260,13 +5302,19 @@ export class SimpleClientFactory extends GObject.Object {
     dup_channel_features(channel: Channel): GLib.Quark[];
     dup_connection_features(connection: Connection): GLib.Quark[];
     dup_contact_features(connection: Connection): ContactFeature[];
-    ensure_account(object_path: string, immutable_properties: GLib.HashTable<string, GObject.Value>): Account;
+    ensure_account(
+        object_path: string,
+        immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>
+    ): Account;
     ensure_channel(
         connection: Connection,
         object_path: string,
-        immutable_properties: GLib.HashTable<string, GObject.Value>
+        immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>
     ): Channel;
-    ensure_connection(object_path: string, immutable_properties: GLib.HashTable<string, GObject.Value>): Connection;
+    ensure_connection(
+        object_path: string,
+        immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>
+    ): Connection;
     ensure_contact(connection: Connection, handle: Handle, identifier: string): Contact;
     ensure_contact_by_id_async(connection: Connection, identifier: string): Promise<Contact>;
     ensure_contact_by_id_async(
@@ -5432,7 +5480,7 @@ export class StreamTubeChannel extends Channel {
     static ["new"](
         conn: Connection,
         object_path: string,
-        immutable_properties: GLib.HashTable<string, GObject.Value>
+        immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>
     ): StreamTubeChannel;
     // Conflicted with TelepathyGLib.Channel.new
     static ["new"](...args: never[]): any;
@@ -5637,7 +5685,7 @@ export class TextChannel extends Channel {
     static ["new"](
         conn: Connection,
         object_path: string,
-        immutable_properties: GLib.HashTable<string, GObject.Value>
+        immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>
     ): TextChannel;
     // Conflicted with TelepathyGLib.Channel.new
     static ["new"](...args: never[]): any;
@@ -5756,20 +5804,10 @@ export class AvatarRequirements {
         maximum_height: number,
         maximum_bytes: number
     );
-    constructor(
-        properties?: Partial<{
-            minimum_width?: number;
-            minimum_height?: number;
-            recommended_width?: number;
-            recommended_height?: number;
-            maximum_width?: number;
-            maximum_height?: number;
-            maximum_bytes?: number;
-        }>
-    );
     constructor(copy: AvatarRequirements);
 
     // Fields
+    supported_mime_types: string[];
     minimum_width: number;
     minimum_height: number;
     recommended_width: number;
@@ -5831,7 +5869,6 @@ export class CallStateReason {
     reason: CallStateChangeReason;
     dbus_reason: string;
     message: string;
-    ref_count: number;
 }
 
 export class CallStreamPrivate {
@@ -5891,21 +5928,7 @@ export class ChannelRequestPrivate {
 export class ConnectionManagerParam {
     static $gtype: GObject.GType<ConnectionManagerParam>;
 
-    constructor(
-        properties?: Partial<{
-            name?: string;
-            dbus_signature?: string;
-            flags?: number;
-            priv?: any;
-        }>
-    );
     constructor(copy: ConnectionManagerParam);
-
-    // Fields
-    name: string;
-    dbus_signature: string;
-    flags: number;
-    priv: any;
 
     // Members
     copy(): ConnectionManagerParam;
@@ -5930,17 +5953,11 @@ export class ConnectionManagerPrivate {
 export class ConnectionManagerProtocol {
     static $gtype: GObject.GType<ConnectionManagerProtocol>;
 
-    constructor(
-        properties?: Partial<{
-            name?: string;
-            priv?: any;
-        }>
-    );
     constructor(copy: ConnectionManagerProtocol);
 
     // Fields
     name: string;
-    priv: any;
+    params: ConnectionManagerParam;
 
     // Members
     can_register(): boolean;
@@ -5961,17 +5978,12 @@ export class ContactInfoField {
     static $gtype: GObject.GType<ContactInfoField>;
 
     constructor(field_name: string, parameters: string[], field_value: string[]);
-    constructor(
-        properties?: Partial<{
-            field_name?: string;
-            priv?: any;
-        }>
-    );
     constructor(copy: ContactInfoField);
 
     // Fields
     field_name: string;
-    priv: any;
+    parameters: string[];
+    field_value: string[];
 
     // Constructors
     static ["new"](field_name: string, parameters: string[], field_value: string[]): ContactInfoField;
@@ -5984,9 +5996,9 @@ export class ContactInfoFieldSpec {
 
     // Fields
     name: string;
+    parameters: string[];
     flags: ContactInfoFieldFlags;
     max: number;
-    priv: any;
 }
 
 export class ContactPrivate {
@@ -6042,6 +6054,9 @@ export class DBusPropertiesMixinClass {
 
     constructor(copy: DBusPropertiesMixinClass);
 
+    // Fields
+    interfaces: DBusPropertiesMixinIfaceImpl;
+
     // Members
     static init(cls: GObject.Object, offset: number): void;
 }
@@ -6055,8 +6070,7 @@ export class DBusPropertiesMixinIfaceImpl {
     name: string;
     getter: DBusPropertiesMixinGetter;
     setter: DBusPropertiesMixinSetter;
-    mixin_next: any;
-    mixin_priv: any;
+    props: DBusPropertiesMixinPropImpl;
 }
 
 export class DBusPropertiesMixinIfaceInfo {
@@ -6066,6 +6080,7 @@ export class DBusPropertiesMixinIfaceInfo {
 
     // Fields
     dbus_interface: GLib.Quark;
+    props: DBusPropertiesMixinPropInfo;
 }
 
 export class DBusPropertiesMixinPropImpl {
@@ -6076,7 +6091,6 @@ export class DBusPropertiesMixinPropImpl {
             name?: string;
             getter_data?: any;
             setter_data?: any;
-            mixin_priv?: any;
         }>
     );
     constructor(copy: DBusPropertiesMixinPropImpl);
@@ -6085,7 +6099,6 @@ export class DBusPropertiesMixinPropImpl {
     name: string;
     getter_data: any;
     setter_data: any;
-    mixin_priv: any;
 }
 
 export class DBusPropertiesMixinPropInfo {
@@ -6130,8 +6143,13 @@ export class GroupMixin {
     constructor(copy: GroupMixin);
 
     // Fields
+    handle_repo: HandleRepoIface;
     self_handle: Handle;
     group_flags: ChannelGroupFlags;
+    members: HandleSet;
+    local_pending: HandleSet;
+    remote_pending: HandleSet;
+    priv: GroupMixinPrivate;
 }
 
 export class GroupMixinClass {
@@ -6142,6 +6160,7 @@ export class GroupMixinClass {
     // Fields
     add_member: GroupMixinAddMemberFunc;
     remove_member: GroupMixinRemMemberFunc;
+    priv: GroupMixinClassPrivate;
 }
 
 export class GroupMixinClassPrivate {
@@ -6182,6 +6201,7 @@ export class Intset {
     static $gtype: GObject.GType<Intset>;
 
     constructor();
+    constructor(properties?: Partial<{}>);
     constructor(copy: Intset);
 
     // Constructors
@@ -6224,14 +6244,10 @@ export class IntsetFastIter {
 export class IntsetIter {
     static $gtype: GObject.GType<IntsetIter>;
 
-    constructor(
-        properties?: Partial<{
-            element?: number;
-        }>
-    );
     constructor(copy: IntsetIter);
 
     // Fields
+    set: Intset;
     element: number;
 
     // Members
@@ -6260,6 +6276,7 @@ export class PresenceMixinClass {
     // Fields
     status_available: PresenceMixinStatusAvailableFunc;
     set_own_status: PresenceMixinSetOwnStatusFunc;
+    statuses: PresenceStatusSpec;
     get_maximum_status_message_length: PresenceMixinGetMaximumStatusMessageLengthFunc;
 }
 
@@ -6278,15 +6295,11 @@ export class PresenceMixinPrivate {
 export class PresenceStatus {
     static $gtype: GObject.GType<PresenceStatus>;
 
-    constructor(
-        properties?: Partial<{
-            index?: number;
-        }>
-    );
     constructor(copy: PresenceStatus);
 
     // Fields
     index: number;
+    optional_arguments: GLib.HashTable<any, any>;
 }
 
 export class PresenceStatusOptionalArgumentSpec {
@@ -6315,6 +6328,7 @@ export class PresenceStatusSpec {
     name: string;
     presence_type: ConnectionPresenceType;
     self: boolean;
+    optional_arguments: PresenceStatusOptionalArgumentSpec;
 
     // Constructors
     static ["new"](
@@ -6482,7 +6496,11 @@ export type ClientChannelFactory = ClientChannelFactoryPrototype;
 export interface ClientChannelFactoryPrototype extends GObject.Object {
     // Members
 
-    create_channel(conn: Connection, path: string, properties: GLib.HashTable<string, GObject.Value>): Channel;
+    create_channel(
+        conn: Connection,
+        path: string,
+        properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>
+    ): Channel;
     dup_channel_features(channel: Channel): GLib.Quark[];
 }
 

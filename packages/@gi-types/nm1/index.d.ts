@@ -1,7 +1,7 @@
 /**
  * NM 1.0
  *
- * Generated from 1.32.0
+ * Generated from 1.38.2
  */
 
 import * as GObject from "@gi-types/gobject2";
@@ -73,6 +73,7 @@ export const CLIENT_NM_RUNNING: string;
 export const CLIENT_PERMISSIONS_STATE: string;
 export const CLIENT_PERMISSION_CHANGED: string;
 export const CLIENT_PRIMARY_CONNECTION: string;
+export const CLIENT_RADIO_FLAGS: string;
 export const CLIENT_STARTUP: string;
 export const CLIENT_STATE: string;
 export const CLIENT_VERSION: string;
@@ -83,6 +84,7 @@ export const CLIENT_WIRELESS_HARDWARE_ENABLED: string;
 export const CLIENT_WWAN_ENABLED: string;
 export const CLIENT_WWAN_HARDWARE_ENABLED: string;
 export const CONNECTION_CHANGED: string;
+export const CONNECTION_NORMALIZE_PARAM_IP4_CONFIG_METHOD: string;
 export const CONNECTION_NORMALIZE_PARAM_IP6_CONFIG_METHOD: string;
 export const CONNECTION_SECRETS_CLEARED: string;
 export const CONNECTION_SECRETS_UPDATED: string;
@@ -210,6 +212,7 @@ export const DEVICE_OVS_BRIDGE_SLAVES: string;
 export const DEVICE_OVS_PORT_SLAVES: string;
 export const DEVICE_PATH: string;
 export const DEVICE_PHYSICAL_PORT_ID: string;
+export const DEVICE_PORTS: string;
 export const DEVICE_PRODUCT: string;
 export const DEVICE_REAL: string;
 export const DEVICE_STATE: string;
@@ -417,6 +420,7 @@ export const LLDP_DEST_NEAREST_NON_TPMR_BRIDGE: string;
 export const MAJOR_VERSION: number;
 export const MICRO_VERSION: number;
 export const MINOR_VERSION: number;
+export const OBJECT_CLIENT: string;
 export const OBJECT_PATH: string;
 export const REMOTE_CONNECTION_DBUS_CONNECTION: string;
 export const REMOTE_CONNECTION_FILENAME: string;
@@ -521,6 +525,7 @@ export const SETTING_BOND_OPTION_MODE: string;
 export const SETTING_BOND_OPTION_NUM_GRAT_ARP: string;
 export const SETTING_BOND_OPTION_NUM_UNSOL_NA: string;
 export const SETTING_BOND_OPTION_PACKETS_PER_SLAVE: string;
+export const SETTING_BOND_OPTION_PEER_NOTIF_DELAY: string;
 export const SETTING_BOND_OPTION_PRIMARY: string;
 export const SETTING_BOND_OPTION_PRIMARY_RESELECT: string;
 export const SETTING_BOND_OPTION_RESEND_IGMP: string;
@@ -528,6 +533,8 @@ export const SETTING_BOND_OPTION_TLB_DYNAMIC_LB: string;
 export const SETTING_BOND_OPTION_UPDELAY: string;
 export const SETTING_BOND_OPTION_USE_CARRIER: string;
 export const SETTING_BOND_OPTION_XMIT_HASH_POLICY: string;
+export const SETTING_BOND_PORT_QUEUE_ID: string;
+export const SETTING_BOND_PORT_SETTING_NAME: string;
 export const SETTING_BOND_SETTING_NAME: string;
 export const SETTING_BRIDGE_AGEING_TIME: string;
 export const SETTING_BRIDGE_FORWARD_DELAY: string;
@@ -576,6 +583,7 @@ export const SETTING_CONNECTION_AUTOCONNECT_PRIORITY_MAX: number;
 export const SETTING_CONNECTION_AUTOCONNECT_PRIORITY_MIN: number;
 export const SETTING_CONNECTION_AUTOCONNECT_RETRIES: string;
 export const SETTING_CONNECTION_AUTOCONNECT_SLAVES: string;
+export const SETTING_CONNECTION_DNS_OVER_TLS: string;
 export const SETTING_CONNECTION_GATEWAY_PING_TIMEOUT: string;
 export const SETTING_CONNECTION_ID: string;
 export const SETTING_CONNECTION_INTERFACE_NAME: string;
@@ -702,6 +710,7 @@ export const SETTING_IP_CONFIG_IGNORE_AUTO_ROUTES: string;
 export const SETTING_IP_CONFIG_MAY_FAIL: string;
 export const SETTING_IP_CONFIG_METHOD: string;
 export const SETTING_IP_CONFIG_NEVER_DEFAULT: string;
+export const SETTING_IP_CONFIG_REQUIRED_TIMEOUT: string;
 export const SETTING_IP_CONFIG_ROUTES: string;
 export const SETTING_IP_CONFIG_ROUTE_METRIC: string;
 export const SETTING_IP_CONFIG_ROUTE_TABLE: string;
@@ -754,6 +763,7 @@ export const SETTING_OVS_BRIDGE_RSTP_ENABLE: string;
 export const SETTING_OVS_BRIDGE_SETTING_NAME: string;
 export const SETTING_OVS_BRIDGE_STP_ENABLE: string;
 export const SETTING_OVS_DPDK_DEVARGS: string;
+export const SETTING_OVS_DPDK_N_RXQ: string;
 export const SETTING_OVS_DPDK_SETTING_NAME: string;
 export const SETTING_OVS_EXTERNAL_IDS_DATA: string;
 export const SETTING_OVS_EXTERNAL_IDS_SETTING_NAME: string;
@@ -1112,7 +1122,7 @@ export function utils_check_virtual_device_compatibility(
     virtual_type: GObject.GType,
     other_type: GObject.GType
 ): boolean;
-export function utils_enum_from_str(type: GObject.GType, str: string): [boolean, number | null, string | null];
+export function utils_enum_from_str(type: GObject.GType, str: string): [boolean, number, string];
 export function utils_enum_get_values(type: GObject.GType, from: number, to: number): string[];
 export function utils_enum_to_str(type: GObject.GType, value: number): string;
 export function utils_escape_ssid(ssid: Uint8Array | string): string;
@@ -1127,7 +1137,7 @@ export function utils_file_search_in_paths(
     predicate: UtilsFileSearchInPathsPredicate
 ): string;
 export function utils_format_variant_attributes(
-    attributes: GLib.HashTable<any, any>,
+    attributes: { [key: string]: any } | GLib.HashTable<any, any>,
     attr_separator: number,
     key_value_separator: number
 ): string;
@@ -1146,7 +1156,7 @@ export function utils_hwaddr_matches(
 export function utils_hwaddr_ntoa(addr: Uint8Array | string): string;
 export function utils_hwaddr_valid(asc: string, length: number): boolean;
 export function utils_iface_valid_name(name?: string | null): boolean;
-export function utils_ip4_addresses_from_variant(value: GLib.Variant): [IPAddress[], string | null];
+export function utils_ip4_addresses_from_variant(value: GLib.Variant): [IPAddress[], string];
 export function utils_ip4_addresses_to_variant(addresses: IPAddress[], gateway?: string | null): GLib.Variant;
 export function utils_ip4_dns_from_variant(value: GLib.Variant): string;
 export function utils_ip4_dns_to_variant(dns: string): GLib.Variant;
@@ -1155,7 +1165,7 @@ export function utils_ip4_netmask_to_prefix(netmask: number): number;
 export function utils_ip4_prefix_to_netmask(prefix: number): number;
 export function utils_ip4_routes_from_variant(value: GLib.Variant): IPRoute[];
 export function utils_ip4_routes_to_variant(routes: IPRoute[]): GLib.Variant;
-export function utils_ip6_addresses_from_variant(value: GLib.Variant): [IPAddress[], string | null];
+export function utils_ip6_addresses_from_variant(value: GLib.Variant): [IPAddress[], string];
 export function utils_ip6_addresses_to_variant(addresses: IPAddress[], gateway?: string | null): GLib.Variant;
 export function utils_ip6_dns_from_variant(value: GLib.Variant): string;
 export function utils_ip6_dns_to_variant(dns: string): GLib.Variant;
@@ -1754,6 +1764,17 @@ export enum SettingConnectionAutoconnectSlaves {
     YES = 1,
 }
 
+export namespace SettingConnectionDnsOverTls {
+    export const $gtype: GObject.GType<SettingConnectionDnsOverTls>;
+}
+
+export enum SettingConnectionDnsOverTls {
+    DEFAULT = -1,
+    NO = 0,
+    OPPORTUNISTIC = 1,
+    YES = 2,
+}
+
 export namespace SettingConnectionLldp {
     export const $gtype: GObject.GType<SettingConnectionLldp>;
 }
@@ -2175,6 +2196,7 @@ export enum CheckpointCreateFlags {
     DELETE_NEW_CONNECTIONS = 2,
     DISCONNECT_NEW_DEVICES = 4,
     ALLOW_OVERLAPPING = 8,
+    NO_PRESERVE_EXTERNAL_PORTS = 16,
 }
 
 export namespace ClientInstanceFlags {
@@ -2235,6 +2257,7 @@ export enum DeviceModemCapabilities {
     CDMA_EVDO = 2,
     GSM_UMTS = 4,
     LTE = 8,
+    "5GNR" = 64,
 }
 
 export namespace DeviceWifiCapabilities {
@@ -2320,6 +2343,16 @@ export enum ManagerReloadFlags {
     CONF = 1,
     DNS_RC = 2,
     DNS_FULL = 4,
+}
+
+export namespace RadioFlags {
+    export const $gtype: GObject.GType<RadioFlags>;
+}
+
+export enum RadioFlags {
+    NONE = 0,
+    WLAN_AVAILABLE = 1,
+    WWAN_AVAILABLE = 2,
 }
 
 export namespace SecretAgentCapabilities {
@@ -2711,6 +2744,8 @@ export module Client {
         permissionsState: Ternary;
         primary_connection: ActiveConnection;
         primaryConnection: ActiveConnection;
+        radio_flags: number;
+        radioFlags: number;
         startup: boolean;
         state: State;
         version: string;
@@ -2782,6 +2817,8 @@ export class Client extends GObject.Object implements Gio.AsyncInitable<Client>,
     get permissionsState(): Ternary;
     get primary_connection(): ActiveConnection;
     get primaryConnection(): ActiveConnection;
+    get radio_flags(): number;
+    get radioFlags(): number;
     get startup(): boolean;
     get state(): State;
     get version(): string;
@@ -2894,7 +2931,7 @@ export class Client extends GObject.Object implements Gio.AsyncInitable<Client>,
         specific_object: string | null,
         options: GLib.Variant,
         cancellable?: Gio.Cancellable | null
-    ): Promise<ActiveConnection>;
+    ): Promise<[ActiveConnection, GLib.Variant | null]>;
     add_and_activate_connection2(
         partial: Connection | null,
         device: Device,
@@ -2910,8 +2947,8 @@ export class Client extends GObject.Object implements Gio.AsyncInitable<Client>,
         options: GLib.Variant,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<ActiveConnection> | void;
-    add_and_activate_connection2_finish(result: Gio.AsyncResult, out_result?: GLib.Variant | null): ActiveConnection;
+    ): Promise<[ActiveConnection, GLib.Variant | null]> | void;
+    add_and_activate_connection2_finish(result: Gio.AsyncResult): [ActiveConnection, GLib.Variant | null];
     add_and_activate_connection_async(
         partial: Connection | null,
         device: Device,
@@ -3151,6 +3188,7 @@ export class Client extends GObject.Object implements Gio.AsyncInitable<Client>,
     get_permission_result(permission: ClientPermission): ClientPermissionResult;
     get_permissions_state(): Ternary;
     get_primary_connection(): ActiveConnection;
+    get_radio_flags(): RadioFlags;
     get_startup(): boolean;
     get_state(): State;
     get_version(): string;
@@ -3296,6 +3334,7 @@ export module Device {
         path: string;
         physical_port_id: string;
         physicalPortId: string;
+        ports: any[];
         product: string;
         real: boolean;
         state: DeviceState;
@@ -3357,6 +3396,7 @@ export abstract class Device extends Object {
     get path(): string;
     get physical_port_id(): string;
     get physicalPortId(): string;
+    get ports(): any[];
     get product(): string;
     get real(): boolean;
     get state(): DeviceState;
@@ -3404,11 +3444,8 @@ export abstract class Device extends Object {
     disconnect_finish(result: Gio.AsyncResult): boolean;
     filter_connections(connections: Connection[]): Connection[];
     get_active_connection(): ActiveConnection;
-    get_applied_connection(flags: number, cancellable?: Gio.Cancellable | null): [Connection, number | null];
-    get_applied_connection_async(
-        flags: number,
-        cancellable?: Gio.Cancellable | null
-    ): Promise<[Connection, number | null]>;
+    get_applied_connection(flags: number, cancellable?: Gio.Cancellable | null): [Connection, number];
+    get_applied_connection_async(flags: number, cancellable?: Gio.Cancellable | null): Promise<[Connection, number]>;
     get_applied_connection_async(
         flags: number,
         cancellable: Gio.Cancellable | null,
@@ -3418,8 +3455,8 @@ export abstract class Device extends Object {
         flags: number,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[Connection, number | null]> | void;
-    get_applied_connection_finish(result: Gio.AsyncResult): [Connection, number | null];
+    ): Promise<[Connection, number]> | void;
+    get_applied_connection_finish(result: Gio.AsyncResult): [Connection, number];
     get_autoconnect(): boolean;
     get_available_connections(): RemoteConnection[];
     get_capabilities(): DeviceCapabilities;
@@ -3445,6 +3482,7 @@ export abstract class Device extends Object {
     get_nm_plugin_missing(): boolean;
     get_path(): string;
     get_physical_port_id(): string;
+    get_ports(): Device[];
     get_product(): string;
     get_setting_type(): GObject.GType;
     get_state(): DeviceState;
@@ -4437,6 +4475,7 @@ export abstract class IPConfig extends Object {
 export module Object {
     export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
         [key: string]: any;
+        client: Client;
         path: string;
     }
 }
@@ -4447,6 +4486,7 @@ export abstract class Object extends GObject.Object {
     _init(properties?: Partial<Object.ConstructorProperties>, ...args: any[]): void;
 
     // Properties
+    get client(): Client;
     get path(): string;
 
     // Members
@@ -4552,7 +4592,11 @@ export class RemoteConnection extends Object implements Connection {
     clear_secrets_with_flags(func?: SettingClearSecretsWithFlagsFn | null): void;
     clear_settings(): void;
     compare(b: Connection, flags: SettingCompareFlags): boolean;
-    diff(b: Connection, flags: SettingCompareFlags, out_settings: GLib.HashTable<string, GLib.HashTable>): boolean;
+    diff(
+        b: Connection,
+        flags: SettingCompareFlags,
+        out_settings: { [key: string]: any } | GLib.HashTable<string, GLib.HashTable>
+    ): boolean;
     dump(): void;
     for_each_setting_value(func: SettingValueIterFn): void;
     get_connection_type(): string;
@@ -4605,7 +4649,7 @@ export class RemoteConnection extends Object implements Connection {
     is_type(type: string): boolean;
     is_virtual(): boolean;
     need_secrets(): [string, string[] | null];
-    normalize(parameters?: GLib.HashTable<string, any> | null): [boolean, boolean | null];
+    normalize(parameters: GLib.HashTable<string, any> | null): [boolean, boolean];
     remove_setting(setting_type: GObject.GType): void;
     replace_settings(new_settings: GLib.Variant): boolean;
     replace_settings_from_connection(new_connection: Connection): void;
@@ -4760,8 +4804,8 @@ export abstract class Setting extends GObject.Object {
     option_clear_by_name(predicate?: UtilsPredicateStr | null): void;
     option_get(opt_name: string): GLib.Variant;
     option_get_all_names(): string[];
-    option_get_boolean(opt_name: string): [boolean, boolean | null];
-    option_get_uint32(opt_name: string): [boolean, number | null];
+    option_get_boolean(opt_name: string): [boolean, boolean];
+    option_get_uint32(opt_name: string): [boolean, number];
     option_set(opt_name: string, variant?: GLib.Variant | null): void;
     option_set_boolean(opt_name: string, value: boolean): void;
     option_set_uint32(opt_name: string, value: number): void;
@@ -5287,6 +5331,33 @@ export class SettingBond extends Setting {
     remove_option(name: string): boolean;
     static validate_option(name: string, value: string): boolean;
 }
+export module SettingBondPort {
+    export interface ConstructorProperties extends Setting.ConstructorProperties {
+        [key: string]: any;
+        queue_id: number;
+        queueId: number;
+    }
+}
+export class SettingBondPort extends Setting {
+    static $gtype: GObject.GType<SettingBondPort>;
+
+    constructor(properties?: Partial<SettingBondPort.ConstructorProperties>, ...args: any[]);
+    _init(properties?: Partial<SettingBondPort.ConstructorProperties>, ...args: any[]): void;
+
+    // Properties
+    get queue_id(): number;
+    set queue_id(val: number);
+    get queueId(): number;
+    set queueId(val: number);
+
+    // Constructors
+
+    static ["new"](): SettingBondPort;
+
+    // Members
+
+    get_queue_id(): number;
+}
 export module SettingBridge {
     export interface ConstructorProperties extends Setting.ConstructorProperties {
         [key: string]: any;
@@ -5594,6 +5665,8 @@ export module SettingConnection {
         autoconnectRetries: number;
         autoconnect_slaves: SettingConnectionAutoconnectSlaves;
         autoconnectSlaves: SettingConnectionAutoconnectSlaves;
+        dns_over_tls: number;
+        dnsOverTls: number;
         gateway_ping_timeout: number;
         gatewayPingTimeout: number;
         id: string;
@@ -5649,6 +5722,10 @@ export class SettingConnection extends Setting {
     set autoconnect_slaves(val: SettingConnectionAutoconnectSlaves);
     get autoconnectSlaves(): SettingConnectionAutoconnectSlaves;
     set autoconnectSlaves(val: SettingConnectionAutoconnectSlaves);
+    get dns_over_tls(): number;
+    set dns_over_tls(val: number);
+    get dnsOverTls(): number;
+    set dnsOverTls(val: number);
     get gateway_ping_timeout(): number;
     set gateway_ping_timeout(val: number);
     get gatewayPingTimeout(): number;
@@ -5720,6 +5797,7 @@ export class SettingConnection extends Setting {
     get_autoconnect_retries(): number;
     get_autoconnect_slaves(): SettingConnectionAutoconnectSlaves;
     get_connection_type(): string;
+    get_dns_over_tls(): SettingConnectionDnsOverTls;
     get_gateway_ping_timeout(): number;
     get_id(): string;
     get_interface_name(): string;
@@ -5913,7 +5991,7 @@ export class SettingEthtool extends Setting {
 
     clear_features(): void;
     get_feature(optname: string): Ternary;
-    get_optnames(): [string[], number | null];
+    get_optnames(): [string[], number];
     set_feature(optname: string, value: Ternary): void;
 }
 export module SettingGeneric {
@@ -6204,6 +6282,8 @@ export module SettingIPConfig {
         method: string;
         never_default: boolean;
         neverDefault: boolean;
+        required_timeout: number;
+        requiredTimeout: number;
         route_metric: number;
         routeMetric: number;
         route_table: number;
@@ -6282,6 +6362,10 @@ export abstract class SettingIPConfig extends Setting {
     set never_default(val: boolean);
     get neverDefault(): boolean;
     set neverDefault(val: boolean);
+    get required_timeout(): number;
+    set required_timeout(val: number);
+    get requiredTimeout(): number;
+    set requiredTimeout(val: number);
     get route_metric(): number;
     set route_metric(val: number);
     get routeMetric(): number;
@@ -6333,6 +6417,7 @@ export abstract class SettingIPConfig extends Setting {
     get_num_dns_searches(): number;
     get_num_routes(): number;
     get_num_routing_rules(): number;
+    get_required_timeout(): number;
     get_route(idx: number): IPRoute;
     get_route_metric(): number;
     get_route_table(): number;
@@ -6740,6 +6825,8 @@ export module SettingOvsDpdk {
     export interface ConstructorProperties extends Setting.ConstructorProperties {
         [key: string]: any;
         devargs: string;
+        n_rxq: number;
+        nRxq: number;
     }
 }
 export class SettingOvsDpdk extends Setting {
@@ -6751,6 +6838,10 @@ export class SettingOvsDpdk extends Setting {
     // Properties
     get devargs(): string;
     set devargs(val: string);
+    get n_rxq(): number;
+    set n_rxq(val: number);
+    get nRxq(): number;
+    set nRxq(val: number);
 
     // Constructors
 
@@ -6759,6 +6850,7 @@ export class SettingOvsDpdk extends Setting {
     // Members
 
     get_devargs(): string;
+    get_n_rxq(): number;
 }
 export module SettingOvsExternalIDs {
     export interface ConstructorProperties extends Setting.ConstructorProperties {
@@ -7580,7 +7672,7 @@ export class SettingVlan extends Setting {
     get_id(): number;
     get_num_priorities(map: VlanPriorityMap): number;
     get_parent(): string;
-    get_priority(map: VlanPriorityMap, idx: number): [boolean, number | null, number | null];
+    get_priority(map: VlanPriorityMap, idx: number): [boolean, number, number];
     remove_priority(map: VlanPriorityMap, idx: number): void;
     remove_priority_by_value(map: VlanPriorityMap, from: number, to: number): boolean;
     remove_priority_str_by_value(map: VlanPriorityMap, str: string): boolean;
@@ -7906,7 +7998,7 @@ export class SettingWireGuard extends Setting {
     get_listen_port(): number;
     get_mtu(): number;
     get_peer(idx: number): WireGuardPeer;
-    get_peer_by_public_key(public_key: string): [WireGuardPeer, number | null];
+    get_peer_by_public_key(public_key: string): [WireGuardPeer, number];
     get_peer_routes(): boolean;
     get_peers_len(): number;
     get_private_key(): string;
@@ -8027,7 +8119,7 @@ export class SettingWired extends Setting {
     get_num_s390_options(): number;
     get_port(): string;
     get_s390_nettype(): string;
-    get_s390_option(idx: number): [boolean, string | null, string | null];
+    get_s390_option(idx: number): [boolean, string, string];
     get_s390_option_by_key(key: string): string;
     get_s390_subchannels(): string[];
     get_speed(): number;
@@ -8400,7 +8492,11 @@ export class SimpleConnection extends GObject.Object implements Connection {
     clear_secrets_with_flags(func?: SettingClearSecretsWithFlagsFn | null): void;
     clear_settings(): void;
     compare(b: Connection, flags: SettingCompareFlags): boolean;
-    diff(b: Connection, flags: SettingCompareFlags, out_settings: GLib.HashTable<string, GLib.HashTable>): boolean;
+    diff(
+        b: Connection,
+        flags: SettingCompareFlags,
+        out_settings: { [key: string]: any } | GLib.HashTable<string, GLib.HashTable>
+    ): boolean;
     dump(): void;
     for_each_setting_value(func: SettingValueIterFn): void;
     get_connection_type(): string;
@@ -8453,7 +8549,7 @@ export class SimpleConnection extends GObject.Object implements Connection {
     is_type(type: string): boolean;
     is_virtual(): boolean;
     need_secrets(): [string, string[] | null];
-    normalize(parameters?: GLib.HashTable<string, any> | null): [boolean, boolean | null];
+    normalize(parameters: GLib.HashTable<string, any> | null): [boolean, boolean];
     remove_setting(setting_type: GObject.GType): void;
     replace_settings(new_settings: GLib.Variant): boolean;
     replace_settings_from_connection(new_connection: Connection): void;
@@ -8630,7 +8726,10 @@ export abstract class VpnPluginOld extends GObject.Object implements Gio.Initabl
     vfunc_new_secrets(connection: Connection): boolean;
     vfunc_quit(): void;
     vfunc_state_changed(state: VpnServiceState): void;
-    static get_secret_flags(data: GLib.HashTable<any, any>, secret_name: string): [boolean, SettingSecretFlags];
+    static get_secret_flags(
+        data: { [key: string]: any } | GLib.HashTable<any, any>,
+        secret_name: string
+    ): [boolean, SettingSecretFlags];
     static read_vpn_details(fd: number): [boolean, GLib.HashTable<any, any>, GLib.HashTable<any, any>];
 
     // Implemented Members
@@ -8717,7 +8816,10 @@ export abstract class VpnServicePlugin extends GObject.Object implements Gio.Ini
     vfunc_new_secrets(connection: Connection): boolean;
     vfunc_quit(): void;
     vfunc_state_changed(state: VpnServiceState): void;
-    static get_secret_flags(data: GLib.HashTable<any, any>, secret_name: string): [boolean, SettingSecretFlags];
+    static get_secret_flags(
+        data: { [key: string]: any } | GLib.HashTable<any, any>,
+        secret_name: string
+    ): [boolean, SettingSecretFlags];
     static read_vpn_details(fd: number): [boolean, GLib.HashTable<any, any>, GLib.HashTable<any, any>];
 
     // Implemented Members
@@ -8941,7 +9043,7 @@ export class IPRoutingRule {
     get_to(): string;
     get_to_len(): number;
     get_tos(): number;
-    get_uid_range(): [boolean, number | null, number | null];
+    get_uid_range(): [boolean, number, number];
     is_sealed(): boolean;
     new_clone(): IPRoutingRule;
     ref(): IPRoutingRule;
@@ -8978,14 +9080,15 @@ export class KeyfileHandlerData {
 
     // Members
     fail_with_error(src: GLib.Error): void;
-    get_context(): [string | null, string | null, Setting | null, string | null];
-    warn_get(): [string | null, KeyfileWarnSeverity | null];
+    get_context(): [string, string, Setting | null, string];
+    warn_get(): [string, KeyfileWarnSeverity | null];
 }
 
 export class LldpNeighbor {
     static $gtype: GObject.GType<LldpNeighbor>;
 
     constructor();
+    constructor(properties?: Partial<{}>);
     constructor(copy: LldpNeighbor);
 
     // Constructors
@@ -8993,9 +9096,9 @@ export class LldpNeighbor {
 
     // Members
     get_attr_names(): string[];
-    get_attr_string_value(name: string): [boolean, string | null];
+    get_attr_string_value(name: string): [boolean, string];
     get_attr_type(name: string): GLib.VariantType;
-    get_attr_uint_value(name: string): [boolean, number | null];
+    get_attr_uint_value(name: string): [boolean, number];
     get_attr_value(name: string): GLib.Variant;
     ref(): void;
     unref(): void;
@@ -9161,6 +9264,7 @@ export class WireGuardPeer {
     static $gtype: GObject.GType<WireGuardPeer>;
 
     constructor();
+    constructor(properties?: Partial<{}>);
     constructor(copy: WireGuardPeer);
 
     // Constructors
@@ -9204,7 +9308,11 @@ export interface ConnectionPrototype extends GObject.Object {
     clear_secrets_with_flags(func?: SettingClearSecretsWithFlagsFn | null): void;
     clear_settings(): void;
     compare(b: Connection, flags: SettingCompareFlags): boolean;
-    diff(b: Connection, flags: SettingCompareFlags, out_settings: GLib.HashTable<string, GLib.HashTable>): boolean;
+    diff(
+        b: Connection,
+        flags: SettingCompareFlags,
+        out_settings: { [key: string]: any } | GLib.HashTable<string, GLib.HashTable>
+    ): boolean;
     dump(): void;
     for_each_setting_value(func: SettingValueIterFn): void;
     get_connection_type(): string;
@@ -9257,7 +9365,7 @@ export interface ConnectionPrototype extends GObject.Object {
     is_type(type: string): boolean;
     is_virtual(): boolean;
     need_secrets(): [string, string[] | null];
-    normalize(parameters?: GLib.HashTable<string, any> | null): [boolean, boolean | null];
+    normalize(parameters: GLib.HashTable<string, any> | null): [boolean, boolean];
     remove_setting(setting_type: GObject.GType): void;
     replace_settings(new_settings: GLib.Variant): boolean;
     replace_settings_from_connection(new_connection: Connection): void;

@@ -1,7 +1,7 @@
 /**
  * GObject 2.0
  *
- * Generated from 2.68.0
+ * Generated from 2.72.0
  */
 
 import * as GLib from "@gi-types/glib2";
@@ -703,6 +703,7 @@ export namespace TypeFlags {
 export enum TypeFlags {
     ABSTRACT = 16,
     VALUE_ABSTRACT = 32,
+    FINAL = 64,
 }
 
 export namespace TypeFundamentalFlags {
@@ -753,6 +754,48 @@ export class Binding extends Object {
     get_target_property(): string;
     unbind(): void;
 }
+export module BindingGroup {
+    export interface ConstructorProperties extends Object.ConstructorProperties {
+        [key: string]: any;
+        source: Object;
+    }
+}
+export class BindingGroup extends Object {
+    static $gtype: GType<BindingGroup>;
+
+    constructor(properties?: Partial<BindingGroup.ConstructorProperties>, ...args: any[]);
+    _init(properties?: Partial<BindingGroup.ConstructorProperties>, ...args: any[]): void;
+
+    // Properties
+    get source(): Object;
+    set source(val: Object);
+
+    // Constructors
+
+    static ["new"](): BindingGroup;
+
+    // Members
+
+    bind(source_property: string, target: Object, target_property: string, flags: BindingFlags): void;
+    bind_full(
+        source_property: string,
+        target: Object,
+        target_property: string,
+        flags: BindingFlags,
+        transform_to?: BindingTransformFunc | null,
+        transform_from?: BindingTransformFunc | null
+    ): void;
+    bind_full(
+        source_property: string,
+        target: Object,
+        target_property: string,
+        flags: BindingFlags,
+        transform_to?: Closure | null,
+        transform_from?: Closure | null
+    ): void;
+    dup_source<T = Object>(): T;
+    set_source(source?: Object | null): void;
+}
 export module InitiallyUnowned {
     export interface ConstructorProperties extends Object.ConstructorProperties {
         [key: string]: any;
@@ -763,6 +806,9 @@ export class InitiallyUnowned extends Object {
 
     constructor(properties?: Partial<InitiallyUnowned.ConstructorProperties>, ...args: any[]);
     _init(properties?: Partial<InitiallyUnowned.ConstructorProperties>, ...args: any[]): void;
+
+    // Fields
+    g_type_instance: TypeInstance;
 }
 export module Object {
     export interface ConstructorProperties {
@@ -774,6 +820,9 @@ export class Object {
 
     constructor(properties?: Partial<Object.ConstructorProperties>, ...args: any[]);
     _init(properties?: Partial<Object.ConstructorProperties>, ...args: any[]): void;
+
+    // Fields
+    g_type_instance: TypeInstance;
 
     // Signals
 
@@ -838,6 +887,11 @@ export class Object {
     static interface_find_property(g_iface: TypeInterface, property_name: string): ParamSpec;
     static interface_install_property(g_iface: TypeInterface, pspec: ParamSpec): void;
     static interface_list_properties(g_iface: TypeInterface): ParamSpec[];
+    static find_property(property_name: string): ParamSpec;
+    static install_properties(pspecs: ParamSpec[]): void;
+    static install_property(property_id: number, pspec: ParamSpec): void;
+    static list_properties(): ParamSpec[];
+    static override_property(property_id: number, name: string): void;
     static _classInit(klass: any): any;
     disconnect(id: number): void;
     set(properties: { [key: string]: any }): void;
@@ -857,6 +911,7 @@ export abstract class ParamSpec<A = unknown> {
     _init(properties?: Partial<ParamSpec.ConstructorProperties<A>>, ...args: any[]): void;
 
     // Fields
+    g_type_instance: TypeInstance;
     name: string;
     flags: ParamFlags;
     value_type: GType;
@@ -1018,6 +1073,51 @@ export abstract class ParamSpec<A = unknown> {
     __type__(arg: never): A;
 }
 
+export module SignalGroup {
+    export interface ConstructorProperties extends Object.ConstructorProperties {
+        [key: string]: any;
+        target: Object;
+        target_type: GType;
+        targetType: GType;
+    }
+}
+export class SignalGroup extends Object {
+    static $gtype: GType<SignalGroup>;
+
+    constructor(properties?: Partial<SignalGroup.ConstructorProperties>, ...args: any[]);
+    _init(properties?: Partial<SignalGroup.ConstructorProperties>, ...args: any[]): void;
+
+    // Properties
+    get target(): Object;
+    set target(val: Object);
+    get target_type(): GType;
+    get targetType(): GType;
+
+    // Signals
+
+    connect(id: string, callback: (...args: any[]) => any): number;
+    connect_after(id: string, callback: (...args: any[]) => any): number;
+    emit(id: string, ...args: any[]): void;
+    connect(signal: "bind", callback: (_source: this, instance: Object) => void): number;
+    connect_after(signal: "bind", callback: (_source: this, instance: Object) => void): number;
+    emit(signal: "bind", instance: Object): void;
+    connect(signal: "unbind", callback: (_source: this) => void): number;
+    connect_after(signal: "unbind", callback: (_source: this) => void): number;
+    emit(signal: "unbind"): void;
+
+    // Constructors
+
+    static ["new"](target_type: GType): SignalGroup;
+
+    // Members
+
+    block(): void;
+    connect_data(detailed_signal: string, c_handler: Callback, notify: ClosureNotify, flags: ConnectFlags): void;
+    connect_swapped(detailed_signal: string, c_handler: Callback): void;
+    dup_target<T = Object>(): T;
+    set_target(target?: Object | null): void;
+    unblock(): void;
+}
 export module TypeModule {
     export interface ConstructorProperties extends Object.ConstructorProperties {
         [key: string]: any;
@@ -1031,6 +1131,8 @@ export abstract class TypeModule extends Object implements TypePlugin {
 
     // Fields
     use_count: number;
+    type_infos: any[];
+    interface_infos: any[];
     name: string;
 
     // Members
@@ -1056,14 +1158,10 @@ export abstract class TypeModule extends Object implements TypePlugin {
 export class CClosure {
     static $gtype: GType<CClosure>;
 
-    constructor(
-        properties?: Partial<{
-            callback?: any;
-        }>
-    );
     constructor(copy: CClosure);
 
     // Fields
+    closure: Closure;
     callback: any;
 
     // Members
@@ -1266,19 +1364,14 @@ export class ClosureNotifyData {
 export class EnumClass {
     static $gtype: GType<EnumClass>;
 
-    constructor(
-        properties?: Partial<{
-            minimum?: number;
-            maximum?: number;
-            n_values?: number;
-        }>
-    );
     constructor(copy: EnumClass);
 
     // Fields
+    g_type_class: TypeClass;
     minimum: number;
     maximum: number;
     n_values: number;
+    values: EnumValue;
 }
 
 export class EnumValue {
@@ -1302,17 +1395,13 @@ export class EnumValue {
 export class FlagsClass {
     static $gtype: GType<FlagsClass>;
 
-    constructor(
-        properties?: Partial<{
-            mask?: number;
-            n_values?: number;
-        }>
-    );
     constructor(copy: FlagsClass);
 
     // Fields
+    g_type_class: TypeClass;
     mask: number;
     n_values: number;
+    values: FlagsValue;
 }
 
 export class FlagsValue {
@@ -1348,6 +1437,10 @@ export class ObjectConstructParam {
     static $gtype: GType<ObjectConstructParam>;
 
     constructor(copy: ObjectConstructParam);
+
+    // Fields
+    pspec: ParamSpec;
+    value: Value;
 }
 
 export class ParamSpecPool {
@@ -1377,15 +1470,11 @@ export class ParamSpecTypeInfo {
 export class Parameter {
     static $gtype: GType<Parameter>;
 
-    constructor(
-        properties?: Partial<{
-            name?: string;
-        }>
-    );
     constructor(copy: Parameter);
 
     // Fields
     name: string;
+    value: Value;
 }
 
 export class SignalInvocationHint {
@@ -1411,15 +1500,13 @@ export class SignalQuery {
     signal_flags: SignalFlags;
     return_type: GType;
     n_params: number;
+    param_types: GType[];
 }
 
 export class TypeClass {
     static $gtype: GType<TypeClass>;
 
     constructor(copy: TypeClass);
-
-    // Fields
-    g_type: GType;
 
     // Members
     add_private(private_size: number): void;
@@ -1456,6 +1543,7 @@ export class TypeInfo {
     instance_size: number;
     n_preallocs: number;
     instance_init: InstanceInitFunc;
+    value_table: TypeValueTable;
 }
 
 export class TypeInstance {
@@ -1471,10 +1559,6 @@ export class TypeInterface {
     static $gtype: GType<TypeInterface>;
 
     constructor(copy: TypeInterface);
-
-    // Fields
-    g_type: GType;
-    g_instance_type: GType;
 
     // Members
     peek_parent(): TypeInterface;
@@ -1531,7 +1615,7 @@ export class Value {
     constructor(copy: Value);
 
     // Fields
-    g_type: GType;
+    data: _Value__data__union[];
 
     // Members
     copy(dest_value: Value | any): void;
@@ -1604,17 +1688,11 @@ export class ValueArray {
     static $gtype: GType<ValueArray>;
 
     constructor(n_prealloced: number);
-    constructor(
-        properties?: Partial<{
-            n_values?: number;
-            n_prealloced?: number;
-        }>
-    );
     constructor(copy: ValueArray);
 
     // Fields
     n_values: number;
-    n_prealloced: number;
+    values: Value;
 
     // Constructors
     static ["new"](n_prealloced: number): ValueArray;

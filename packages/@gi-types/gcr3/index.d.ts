@@ -1,7 +1,7 @@
 /**
  * Gcr 3
  *
- * Generated from 3.40.0
+ * Generated from 3.41.0
  */
 
 import * as GObject from "@gi-types/gobject2";
@@ -549,7 +549,7 @@ export class Pkcs11Certificate extends Gck.Object implements Certificate, Compar
 
     // Implemented Members
 
-    get_basic_constraints(): [boolean, boolean | null, number | null];
+    get_basic_constraints(): [boolean, boolean, number];
     get_der_data(): Uint8Array;
     get_expiry_date(): GLib.Date;
     get_fingerprint(type: GLib.ChecksumType): Uint8Array;
@@ -631,7 +631,7 @@ export class SimpleCertificate extends GObject.Object implements Certificate, Co
 
     // Implemented Members
 
-    get_basic_constraints(): [boolean, boolean | null, number | null];
+    get_basic_constraints(): [boolean, boolean, number];
     get_der_data(): Uint8Array;
     get_expiry_date(): GLib.Date;
     get_fingerprint(type: GLib.ChecksumType): Uint8Array;
@@ -1005,7 +1005,6 @@ export class Column {
     flags: ColumnFlags;
     transformer: GObject.ValueTransform;
     user_data: any;
-    reserved: any;
 }
 
 export class FilterCollectionPrivate {
@@ -1098,7 +1097,7 @@ export interface CertificatePrototype extends Comparable {
 
     // Members
 
-    get_basic_constraints(): [boolean, boolean | null, number | null];
+    get_basic_constraints(): [boolean, boolean, number];
     get_der_data(): Uint8Array;
     get_expiry_date(): GLib.Date;
     get_fingerprint(type: GLib.ChecksumType): Uint8Array;

@@ -1,34 +1,37 @@
 /**
  * Pango 1.0
  *
- * Generated from 1.0
+ * Generated from 1.50.8
  */
 
 import * as GLib from "@gi-types/glib2";
 import * as GObject from "@gi-types/gobject2";
+import * as Gio from "@gi-types/gio2";
 import * as HarfBuzz from "@gi-types/harfbuzz2";
 
 export const ANALYSIS_FLAG_CENTERED_BASELINE: number;
 export const ANALYSIS_FLAG_IS_ELLIPSIS: number;
 export const ANALYSIS_FLAG_NEED_HYPHEN: number;
 export const ATTR_INDEX_FROM_TEXT_BEGINNING: number;
-export const ENGINE_TYPE_LANG: string;
-export const ENGINE_TYPE_SHAPE: string;
+export const ATTR_INDEX_TO_TEXT_END: number;
 export const GLYPH_EMPTY: Glyph;
 export const GLYPH_INVALID_INPUT: Glyph;
 export const GLYPH_UNKNOWN_FLAG: Glyph;
-export const RENDER_TYPE_NONE: string;
 export const SCALE: number;
-export const UNKNOWN_GLYPH_HEIGHT: number;
-export const UNKNOWN_GLYPH_WIDTH: number;
-export const VERSION_MIN_REQUIRED: number;
+export const VERSION_MAJOR: number;
+export const VERSION_MICRO: number;
+export const VERSION_MINOR: number;
+export const VERSION_STRING: string;
 export function attr_allow_breaks_new(allow_breaks: boolean): Attribute;
 export function attr_background_alpha_new(alpha: number): Attribute;
 export function attr_background_new(red: number, green: number, blue: number): Attribute;
+export function attr_baseline_shift_new(shift: number): Attribute;
+export function attr_break(text: string, length: number, attr_list: AttrList, offset: number, attrs: LogAttr[]): void;
 export function attr_fallback_new(enable_fallback: boolean): Attribute;
 export function attr_family_new(family: string): Attribute;
 export function attr_font_desc_new(desc: FontDescription): Attribute;
 export function attr_font_features_new(features: string): Attribute;
+export function attr_font_scale_new(scale: FontScale): Attribute;
 export function attr_foreground_alpha_new(alpha: number): Attribute;
 export function attr_foreground_new(red: number, green: number, blue: number): Attribute;
 export function attr_gravity_hint_new(hint: GravityHint): Attribute;
@@ -36,10 +39,14 @@ export function attr_gravity_new(gravity: Gravity): Attribute;
 export function attr_insert_hyphens_new(insert_hyphens: boolean): Attribute;
 export function attr_language_new(language: Language): Attribute;
 export function attr_letter_spacing_new(letter_spacing: number): Attribute;
+export function attr_line_height_new(factor: number): Attribute;
+export function attr_line_height_new_absolute(height: number): Attribute;
+export function attr_list_from_string(text: string): AttrList | null;
 export function attr_overline_color_new(red: number, green: number, blue: number): Attribute;
 export function attr_overline_new(overline: Overline): Attribute;
 export function attr_rise_new(rise: number): Attribute;
 export function attr_scale_new(scale_factor: number): Attribute;
+export function attr_sentence_new(): Attribute;
 export function attr_shape_new(ink_rect: Rectangle, logical_rect: Rectangle): Attribute;
 export function attr_shape_new_with_data(
     ink_rect: Rectangle,
@@ -55,12 +62,14 @@ export function attr_stretch_new(stretch: Stretch): Attribute;
 export function attr_strikethrough_color_new(red: number, green: number, blue: number): Attribute;
 export function attr_strikethrough_new(strikethrough: boolean): Attribute;
 export function attr_style_new(style: Style): Attribute;
+export function attr_text_transform_new(transform: TextTransform): Attribute;
 export function attr_type_get_name(type: AttrType): string | null;
 export function attr_type_register(name: string): AttrType;
 export function attr_underline_color_new(red: number, green: number, blue: number): Attribute;
 export function attr_underline_new(underline: Underline): Attribute;
 export function attr_variant_new(variant: Variant): Attribute;
 export function attr_weight_new(weight: Weight): Attribute;
+export function attr_word_new(): Attribute;
 export function bidi_type_for_unichar(ch: number): BidiType;
 export function __break(text: string, length: number, analysis: Analysis, attrs: LogAttr[]): void;
 export function default_break(
@@ -74,13 +83,7 @@ export function extents_to_pixels(inclusive?: Rectangle | null, nearest?: Rectan
 export function find_base_dir(text: string, length: number): Direction;
 export function find_paragraph_boundary(text: string, length: number): [number, number];
 export function font_description_from_string(str: string): FontDescription;
-export function get_log_attrs(
-    text: string,
-    length: number,
-    level: number,
-    language: Language,
-    log_attrs: LogAttr[]
-): void;
+export function get_log_attrs(text: string, length: number, level: number, language: Language, attrs: LogAttr[]): void;
 export function get_mirror_char(ch: number, mirrored_ch: number): boolean;
 export function gravity_get_for_matrix(matrix?: Matrix | null): Gravity;
 export function gravity_get_for_script(script: Script, base_gravity: Gravity, hint: GravityHint): Gravity;
@@ -112,28 +115,23 @@ export function itemize_with_base_dir(
 export function language_from_string(language?: string | null): Language | null;
 export function language_get_default(): Language;
 export function language_get_preferred(): Language | null;
+export function layout_deserialize_error_quark(): GLib.Quark;
 export function log2vis_get_embedding_levels(text: string, length: number, pbase_dir: Direction): number;
-export function markup_parser_finish(
-    context: GLib.MarkupParseContext
-): [boolean, AttrList | null, string | null, number | null];
+export function markup_parser_finish(context: GLib.MarkupParseContext): [boolean, AttrList | null, string, number];
 export function markup_parser_new(accel_marker: number): GLib.MarkupParseContext;
-export function parse_enum(
-    type: GObject.GType,
-    str: string | null,
-    warn: boolean
-): [boolean, number | null, string | null];
+export function parse_enum(type: GObject.GType, str: string | null, warn: boolean): [boolean, number, string];
 export function parse_markup(
     markup_text: string,
     length: number,
     accel_marker: number
-): [boolean, AttrList | null, string | null, number | null];
+): [boolean, AttrList | null, string, number];
 export function parse_stretch(str: string, warn: boolean): [boolean, Stretch];
 export function parse_style(str: string, warn: boolean): [boolean, Style];
 export function parse_variant(str: string, warn: boolean): [boolean, Variant];
 export function parse_weight(str: string, warn: boolean): [boolean, Weight];
 export function quantize_line_geometry(thickness: number, position: number): [number, number];
 export function read_line(stream: any | null, str: GLib.String): number;
-export function reorder_items(logical_items: Item[]): Item[];
+export function reorder_items(items: Item[]): Item[];
 export function scan_int(pos: string): [boolean, string, number];
 export function scan_string(pos: string, out: GLib.String): [boolean, string];
 export function scan_word(pos: string, out: GLib.String): [boolean, string];
@@ -148,6 +146,14 @@ export function shape_full(
     analysis: Analysis,
     glyphs: GlyphString
 ): void;
+export function shape_item(
+    item: Item,
+    paragraph_text: string | null,
+    paragraph_length: number,
+    log_attrs: LogAttr | null,
+    glyphs: GlyphString,
+    flags: ShapeFlags
+): void;
 export function shape_with_flags(
     item_text: string,
     item_length: number,
@@ -159,13 +165,8 @@ export function shape_with_flags(
 ): void;
 export function skip_space(pos: string): [boolean, string];
 export function split_file_list(str: string): string[];
-export function tailor_break(
-    text: string,
-    length: number,
-    analysis: Analysis,
-    offset: number,
-    log_attrs: LogAttr[]
-): void;
+export function tab_array_from_string(text: string): TabArray | null;
+export function tailor_break(text: string, length: number, analysis: Analysis, offset: number, attrs: LogAttr[]): void;
 export function trim_string(str: string): string;
 export function unichar_direction(ch: number): Direction;
 export function units_from_double(d: number): number;
@@ -223,6 +224,23 @@ export enum AttrType {
     INSERT_HYPHENS = 28,
     OVERLINE = 29,
     OVERLINE_COLOR = 30,
+    LINE_HEIGHT = 31,
+    ABSOLUTE_LINE_HEIGHT = 32,
+    TEXT_TRANSFORM = 33,
+    WORD = 34,
+    SENTENCE = 35,
+    BASELINE_SHIFT = 36,
+    FONT_SCALE = 37,
+}
+
+export namespace BaselineShift {
+    export const $gtype: GObject.GType<BaselineShift>;
+}
+
+export enum BaselineShift {
+    NONE = 0,
+    SUPERSCRIPT = 1,
+    SUBSCRIPT = 2,
 }
 
 export namespace BidiType {
@@ -249,6 +267,10 @@ export enum BidiType {
     S = 16,
     WS = 17,
     ON = 18,
+    LRI = 19,
+    RLI = 20,
+    FSI = 21,
+    PDI = 22,
 }
 
 export namespace CoverageLevel {
@@ -287,6 +309,17 @@ export enum EllipsizeMode {
     END = 3,
 }
 
+export namespace FontScale {
+    export const $gtype: GObject.GType<FontScale>;
+}
+
+export enum FontScale {
+    NONE = 0,
+    SUPERSCRIPT = 1,
+    SUBSCRIPT = 2,
+    SMALL_CAPS = 3,
+}
+
 export namespace Gravity {
     export const $gtype: GObject.GType<Gravity>;
 }
@@ -307,6 +340,21 @@ export enum GravityHint {
     NATURAL = 0,
     STRONG = 1,
     LINE = 2,
+}
+
+export class LayoutDeserializeError extends GLib.Error {
+    static $gtype: GObject.GType<LayoutDeserializeError>;
+
+    constructor(options: { message: string; code: number });
+    constructor(copy: LayoutDeserializeError);
+
+    // Fields
+    static INVALID: number;
+    static INVALID_VALUE: number;
+    static MISSING_VALUE: number;
+
+    // Members
+    static quark(): GLib.Quark;
 }
 
 export namespace Overline {
@@ -487,6 +535,20 @@ export namespace TabAlign {
 
 export enum TabAlign {
     LEFT = 0,
+    RIGHT = 1,
+    CENTER = 2,
+    DECIMAL = 3,
+}
+
+export namespace TextTransform {
+    export const $gtype: GObject.GType<TextTransform>;
+}
+
+export enum TextTransform {
+    NONE = 0,
+    LOWERCASE = 1,
+    UPPERCASE = 2,
+    CAPITALIZE = 3,
 }
 
 export namespace Underline {
@@ -511,6 +573,11 @@ export namespace Variant {
 export enum Variant {
     NORMAL = 0,
     SMALL_CAPS = 1,
+    ALL_SMALL_CAPS = 2,
+    PETITE_CAPS = 3,
+    ALL_PETITE_CAPS = 4,
+    UNICASE = 5,
+    TITLE_CAPS = 6,
 }
 
 export namespace Weight {
@@ -555,6 +622,25 @@ export enum FontMask {
     SIZE = 32,
     GRAVITY = 64,
     VARIATIONS = 128,
+}
+
+export namespace LayoutDeserializeFlags {
+    export const $gtype: GObject.GType<LayoutDeserializeFlags>;
+}
+
+export enum LayoutDeserializeFlags {
+    DEFAULT = 0,
+    CONTEXT = 1,
+}
+
+export namespace LayoutSerializeFlags {
+    export const $gtype: GObject.GType<LayoutSerializeFlags>;
+}
+
+export enum LayoutSerializeFlags {
+    DEFAULT = 0,
+    CONTEXT = 1,
+    OUTPUT = 2,
 }
 
 export namespace ShapeFlags {
@@ -645,56 +731,6 @@ export class Coverage extends GObject.Object {
     unref(): void;
     static from_bytes(bytes: Uint8Array | string): Coverage | null;
 }
-export module Engine {
-    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-        [key: string]: any;
-    }
-}
-export abstract class Engine extends GObject.Object {
-    static $gtype: GObject.GType<Engine>;
-
-    constructor(properties?: Partial<Engine.ConstructorProperties>, ...args: any[]);
-    _init(properties?: Partial<Engine.ConstructorProperties>, ...args: any[]): void;
-}
-export module EngineLang {
-    export interface ConstructorProperties extends Engine.ConstructorProperties {
-        [key: string]: any;
-    }
-}
-export abstract class EngineLang extends Engine {
-    static $gtype: GObject.GType<EngineLang>;
-
-    constructor(properties?: Partial<EngineLang.ConstructorProperties>, ...args: any[]);
-    _init(properties?: Partial<EngineLang.ConstructorProperties>, ...args: any[]): void;
-
-    // Members
-
-    vfunc_script_break(text: string, len: number, analysis: Analysis, attrs: LogAttr, attrs_len: number): void;
-}
-export module EngineShape {
-    export interface ConstructorProperties extends Engine.ConstructorProperties {
-        [key: string]: any;
-    }
-}
-export abstract class EngineShape extends Engine {
-    static $gtype: GObject.GType<EngineShape>;
-
-    constructor(properties?: Partial<EngineShape.ConstructorProperties>, ...args: any[]);
-    _init(properties?: Partial<EngineShape.ConstructorProperties>, ...args: any[]): void;
-
-    // Members
-
-    vfunc_covers(font: Font, language: Language, wc: number): CoverageLevel;
-    vfunc_script_shape(
-        font: Font,
-        item_text: string,
-        item_length: number,
-        analysis: Analysis,
-        glyphs: GlyphString,
-        paragraph_text: string,
-        paragraph_length: number
-    ): void;
-}
 export module Font {
     export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
         [key: string]: any;
@@ -710,14 +746,15 @@ export abstract class Font extends GObject.Object {
 
     describe(): FontDescription;
     describe_with_absolute_size(): FontDescription;
-    find_shaper(language: Language, ch: number): EngineShape;
     get_coverage(language: Language): Coverage;
     get_face(): FontFace;
     get_features(num_features: number): [HarfBuzz.feature_t[], number];
     get_font_map(): FontMap | null;
     get_glyph_extents(glyph: Glyph): [Rectangle | null, Rectangle | null];
+    get_languages(): Language[] | null;
     get_metrics(language?: Language | null): FontMetrics;
     has_char(wc: number): boolean;
+    serialize(): GLib.Bytes;
     vfunc_create_hb_font(): HarfBuzz.font_t;
     vfunc_describe(): FontDescription;
     vfunc_describe_absolute(): FontDescription;
@@ -727,6 +764,7 @@ export abstract class Font extends GObject.Object {
     vfunc_get_glyph_extents(glyph: Glyph): [Rectangle | null, Rectangle | null];
     vfunc_get_metrics(language?: Language | null): FontMetrics;
     static descriptions_free(descs?: FontDescription[] | null): void;
+    static deserialize(context: Context, bytes: GLib.Bytes | Uint8Array): Font | null;
 }
 export module FontFace {
     export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
@@ -753,15 +791,29 @@ export abstract class FontFace extends GObject.Object {
     vfunc_list_sizes(): number[] | null;
 }
 export module FontFamily {
-    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+    export interface ConstructorProperties<A extends GObject.Object = GObject.Object>
+        extends GObject.Object.ConstructorProperties {
         [key: string]: any;
+        item_type: GObject.GType;
+        itemType: GObject.GType;
+        n_items: number;
+        nItems: number;
     }
 }
-export abstract class FontFamily extends GObject.Object {
+export abstract class FontFamily<A extends GObject.Object = GObject.Object>
+    extends GObject.Object
+    implements Gio.ListModel<A>
+{
     static $gtype: GObject.GType<FontFamily>;
 
-    constructor(properties?: Partial<FontFamily.ConstructorProperties>, ...args: any[]);
-    _init(properties?: Partial<FontFamily.ConstructorProperties>, ...args: any[]): void;
+    constructor(properties?: Partial<FontFamily.ConstructorProperties<A>>, ...args: any[]);
+    _init(properties?: Partial<FontFamily.ConstructorProperties<A>>, ...args: any[]): void;
+
+    // Properties
+    get item_type(): GObject.GType;
+    get itemType(): GObject.GType;
+    get n_items(): number;
+    get nItems(): number;
 
     // Members
 
@@ -775,17 +827,41 @@ export abstract class FontFamily extends GObject.Object {
     vfunc_is_monospace(): boolean;
     vfunc_is_variable(): boolean;
     vfunc_list_faces(): FontFace[] | null;
+
+    // Implemented Members
+
+    get_item_type(): GObject.GType;
+    get_n_items(): number;
+    get_item(position: number): A | null;
+    items_changed(position: number, removed: number, added: number): void;
+    vfunc_get_item(position: number): A | null;
+    vfunc_get_item_type(): GObject.GType;
+    vfunc_get_n_items(): number;
 }
 export module FontMap {
-    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+    export interface ConstructorProperties<A extends GObject.Object = GObject.Object>
+        extends GObject.Object.ConstructorProperties {
         [key: string]: any;
+        item_type: GObject.GType;
+        itemType: GObject.GType;
+        n_items: number;
+        nItems: number;
     }
 }
-export abstract class FontMap extends GObject.Object {
+export abstract class FontMap<A extends GObject.Object = GObject.Object>
+    extends GObject.Object
+    implements Gio.ListModel<A>
+{
     static $gtype: GObject.GType<FontMap>;
 
-    constructor(properties?: Partial<FontMap.ConstructorProperties>, ...args: any[]);
-    _init(properties?: Partial<FontMap.ConstructorProperties>, ...args: any[]): void;
+    constructor(properties?: Partial<FontMap.ConstructorProperties<A>>, ...args: any[]);
+    _init(properties?: Partial<FontMap.ConstructorProperties<A>>, ...args: any[]): void;
+
+    // Properties
+    get item_type(): GObject.GType;
+    get itemType(): GObject.GType;
+    get n_items(): number;
+    get nItems(): number;
 
     // Members
 
@@ -802,6 +878,16 @@ export abstract class FontMap extends GObject.Object {
     vfunc_list_families(): FontFamily[];
     vfunc_load_font(context: Context, desc: FontDescription): Font | null;
     vfunc_load_fontset(context: Context, desc: FontDescription, language: Language): Fontset | null;
+
+    // Implemented Members
+
+    get_item_type(): GObject.GType;
+    get_n_items(): number;
+    get_item(position: number): A | null;
+    items_changed(position: number, removed: number, added: number): void;
+    vfunc_get_item(position: number): A | null;
+    vfunc_get_item_type(): GObject.GType;
+    vfunc_get_n_items(): number;
 }
 export module Fontset {
     export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
@@ -867,6 +953,7 @@ export class Layout extends GObject.Object {
     get_attributes(): AttrList | null;
     get_auto_dir(): boolean;
     get_baseline(): number;
+    get_caret_pos(index_: number): [Rectangle | null, Rectangle | null];
     get_character_count(): number;
     get_context(): Context;
     get_cursor_pos(index_: number): [Rectangle | null, Rectangle | null];
@@ -878,6 +965,7 @@ export class Layout extends GObject.Object {
     get_indent(): number;
     get_iter(): LayoutIter;
     get_justify(): boolean;
+    get_justify_last_line(): boolean;
     get_line(line: number): LayoutLine | null;
     get_line_count(): number;
     get_line_readonly(line: number): LayoutLine | null;
@@ -887,21 +975,22 @@ export class Layout extends GObject.Object {
     get_log_attrs(): LogAttr[];
     get_log_attrs_readonly(): LogAttr[];
     get_pixel_extents(): [Rectangle | null, Rectangle | null];
-    get_pixel_size(): [number | null, number | null];
+    get_pixel_size(): [number, number];
     get_serial(): number;
     get_single_paragraph_mode(): boolean;
-    get_size(): [number | null, number | null];
+    get_size(): [number, number];
     get_spacing(): number;
     get_tabs(): TabArray | null;
     get_text(): string;
     get_unknown_glyphs_count(): number;
     get_width(): number;
     get_wrap(): WrapMode;
-    index_to_line_x(index_: number, trailing: boolean): [number | null, number | null];
+    index_to_line_x(index_: number, trailing: boolean): [number, number];
     index_to_pos(index_: number): Rectangle;
     is_ellipsized(): boolean;
     is_wrapped(): boolean;
     move_cursor_visually(strong: boolean, old_index: number, old_trailing: number, direction: number): [number, number];
+    serialize(flags: LayoutSerializeFlags): GLib.Bytes;
     set_alignment(alignment: Alignment): void;
     set_attributes(attrs?: AttrList | null): void;
     set_auto_dir(auto_dir: boolean): void;
@@ -910,16 +999,19 @@ export class Layout extends GObject.Object {
     set_height(height: number): void;
     set_indent(indent: number): void;
     set_justify(justify: boolean): void;
+    set_justify_last_line(justify: boolean): void;
     set_line_spacing(factor: number): void;
     set_markup(markup: string, length: number): void;
-    set_markup_with_accel(markup: string, length: number, accel_marker: number): number | null;
+    set_markup_with_accel(markup: string, length: number, accel_marker: number): number;
     set_single_paragraph_mode(setting: boolean): void;
     set_spacing(spacing: number): void;
     set_tabs(tabs?: TabArray | null): void;
     set_text(text: string, length: number): void;
     set_width(width: number): void;
     set_wrap(wrap: WrapMode): void;
+    write_to_file(flags: LayoutSerializeFlags, filename: string): boolean;
     xy_to_index(x: number, y: number): [boolean, number, number];
+    static deserialize(context: Context, bytes: GLib.Bytes | Uint8Array, flags: LayoutDeserializeFlags): Layout | null;
 }
 export module Renderer {
     export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
@@ -931,6 +1023,9 @@ export abstract class Renderer extends GObject.Object {
 
     constructor(properties?: Partial<Renderer.ConstructorProperties>, ...args: any[]);
     _init(properties?: Partial<Renderer.ConstructorProperties>, ...args: any[]): void;
+
+    // Fields
+    matrix: Matrix;
 
     // Members
 
@@ -977,21 +1072,18 @@ export abstract class Renderer extends GObject.Object {
 export class Analysis {
     static $gtype: GObject.GType<Analysis>;
 
-    constructor(
-        properties?: Partial<{
-            level?: number;
-            gravity?: number;
-            flags?: number;
-            script?: number;
-        }>
-    );
     constructor(copy: Analysis);
 
     // Fields
+    shape_engine: any;
+    lang_engine: any;
+    font: Font;
     level: number;
     gravity: number;
     flags: number;
     script: number;
+    language: Language;
+    extra_attrs: any[];
 }
 
 export class AttrClass {
@@ -1007,19 +1099,19 @@ export class AttrColor {
     static $gtype: GObject.GType<AttrColor>;
 
     constructor(copy: AttrColor);
+
+    // Fields
+    attr: Attribute;
+    color: Color;
 }
 
 export class AttrFloat {
     static $gtype: GObject.GType<AttrFloat>;
 
-    constructor(
-        properties?: Partial<{
-            value?: number;
-        }>
-    );
     constructor(copy: AttrFloat);
 
     // Fields
+    attr: Attribute;
     value: number;
 }
 
@@ -1028,6 +1120,10 @@ export class AttrFontDesc {
 
     constructor(copy: AttrFontDesc);
 
+    // Fields
+    attr: Attribute;
+    desc: FontDescription;
+
     // Members
     static new(desc: FontDescription): Attribute;
 }
@@ -1035,14 +1131,10 @@ export class AttrFontDesc {
 export class AttrFontFeatures {
     static $gtype: GObject.GType<AttrFontFeatures>;
 
-    constructor(
-        properties?: Partial<{
-            features?: string;
-        }>
-    );
     constructor(copy: AttrFontFeatures);
 
     // Fields
+    attr: Attribute;
     features: string;
 
     // Members
@@ -1052,14 +1144,10 @@ export class AttrFontFeatures {
 export class AttrInt {
     static $gtype: GObject.GType<AttrInt>;
 
-    constructor(
-        properties?: Partial<{
-            value?: number;
-        }>
-    );
     constructor(copy: AttrInt);
 
     // Fields
+    attr: Attribute;
     value: number;
 }
 
@@ -1073,7 +1161,7 @@ export class AttrIterator {
     destroy(): void;
     get(type: AttrType): Attribute | null;
     get_attrs(): Attribute[];
-    get_font(desc: FontDescription, language?: Language | null, extra_attrs?: Attribute[] | null): void;
+    get_font(desc: FontDescription): [Language | null, Attribute[] | null];
     next(): boolean;
     range(): [number, number];
 }
@@ -1083,6 +1171,10 @@ export class AttrLanguage {
 
     constructor(copy: AttrLanguage);
 
+    // Fields
+    attr: Attribute;
+    value: Language;
+
     // Members
     static new(language: Language): Attribute;
 }
@@ -1091,6 +1183,7 @@ export class AttrList {
     static $gtype: GObject.GType<AttrList>;
 
     constructor();
+    constructor(properties?: Partial<{}>);
     constructor(copy: AttrList);
 
     // Constructors
@@ -1107,8 +1200,10 @@ export class AttrList {
     insert_before(attr: Attribute): void;
     ref(): AttrList;
     splice(other: AttrList, pos: number, len: number): void;
+    to_string(): string;
     unref(): void;
     update(pos: number, remove: number, add: number): void;
+    static from_string(text: string): AttrList | null;
 }
 
 export class AttrShape {
@@ -1117,6 +1212,9 @@ export class AttrShape {
     constructor(copy: AttrShape);
 
     // Fields
+    attr: Attribute;
+    ink_rect: Rectangle;
+    logical_rect: Rectangle;
     data: any;
     copy_func: AttrDataCopyFunc;
     destroy_func: GLib.DestroyNotify;
@@ -1135,15 +1233,10 @@ export class AttrShape {
 export class AttrSize {
     static $gtype: GObject.GType<AttrSize>;
 
-    constructor(
-        properties?: Partial<{
-            size?: number;
-            absolute?: number;
-        }>
-    );
     constructor(copy: AttrSize);
 
     // Fields
+    attr: Attribute;
     size: number;
     absolute: number;
 
@@ -1155,33 +1248,33 @@ export class AttrSize {
 export class AttrString {
     static $gtype: GObject.GType<AttrString>;
 
-    constructor(
-        properties?: Partial<{
-            value?: string;
-        }>
-    );
     constructor(copy: AttrString);
 
     // Fields
+    attr: Attribute;
     value: string;
 }
 
 export class Attribute {
     static $gtype: GObject.GType<Attribute>;
 
-    constructor(
-        properties?: Partial<{
-            start_index?: number;
-            end_index?: number;
-        }>
-    );
     constructor(copy: Attribute);
 
     // Fields
+    klass: AttrClass;
     start_index: number;
     end_index: number;
 
     // Members
+    as_color(): AttrColor | null;
+    as_float(): AttrFloat | null;
+    as_font_desc(): AttrFontDesc | null;
+    as_font_features(): AttrFontFeatures | null;
+    as_int(): AttrInt | null;
+    as_language(): AttrLanguage | null;
+    as_shape(): AttrShape | null;
+    as_size(): AttrSize | null;
+    as_string(): AttrString | null;
     copy(): Attribute;
     destroy(): void;
     equal(attr2: Attribute): boolean;
@@ -1209,44 +1302,15 @@ export class Color {
     copy(): Color | null;
     free(): void;
     parse(spec: string): boolean;
-    parse_with_alpha(spec: string): [boolean, number | null];
+    parse_with_alpha(spec: string): [boolean, number];
     to_string(): string;
-}
-
-export class EngineInfo {
-    static $gtype: GObject.GType<EngineInfo>;
-
-    constructor(
-        properties?: Partial<{
-            id?: string;
-            engine_type?: string;
-            render_type?: string;
-            n_scripts?: number;
-        }>
-    );
-    constructor(copy: EngineInfo);
-
-    // Fields
-    id: string;
-    engine_type: string;
-    render_type: string;
-    n_scripts: number;
-}
-
-export class EngineScriptInfo {
-    static $gtype: GObject.GType<EngineScriptInfo>;
-
-    constructor(copy: EngineScriptInfo);
-
-    // Fields
-    script: Script;
-    langs: string;
 }
 
 export class FontDescription {
     static $gtype: GObject.GType<FontDescription>;
 
     constructor();
+    constructor(properties?: Partial<{}>);
     constructor(copy: FontDescription);
 
     // Constructors
@@ -1279,7 +1343,7 @@ export class FontDescription {
     set_stretch(stretch: Stretch): void;
     set_style(style: Style): void;
     set_variant(variant: Variant): void;
-    set_variations(variations: string): void;
+    set_variations(variations?: string | null): void;
     set_variations_static(variations: string): void;
     set_weight(weight: Weight): void;
     to_filename(): string;
@@ -1291,33 +1355,7 @@ export class FontDescription {
 export class FontMetrics {
     static $gtype: GObject.GType<FontMetrics>;
 
-    constructor(
-        properties?: Partial<{
-            ref_count?: number;
-            ascent?: number;
-            descent?: number;
-            height?: number;
-            approximate_char_width?: number;
-            approximate_digit_width?: number;
-            underline_position?: number;
-            underline_thickness?: number;
-            strikethrough_position?: number;
-            strikethrough_thickness?: number;
-        }>
-    );
     constructor(copy: FontMetrics);
-
-    // Fields
-    ref_count: number;
-    ascent: number;
-    descent: number;
-    height: number;
-    approximate_char_width: number;
-    approximate_digit_width: number;
-    underline_position: number;
-    underline_thickness: number;
-    strikethrough_position: number;
-    strikethrough_thickness: number;
 
     // Members
     get_approximate_char_width(): number;
@@ -1351,12 +1389,21 @@ export class GlyphInfo {
 
     // Fields
     glyph: Glyph;
+    geometry: GlyphGeometry;
+    attr: GlyphVisAttr;
 }
 
 export class GlyphItem {
     static $gtype: GObject.GType<GlyphItem>;
 
     constructor(copy: GlyphItem);
+
+    // Fields
+    item: Item;
+    glyphs: GlyphString;
+    y_offset: number;
+    start_x_offset: number;
+    end_x_offset: number;
 
     // Members
     apply_attrs(text: string, list: AttrList): GlyphItem[];
@@ -1370,20 +1417,10 @@ export class GlyphItem {
 export class GlyphItemIter {
     static $gtype: GObject.GType<GlyphItemIter>;
 
-    constructor(
-        properties?: Partial<{
-            text?: string;
-            start_glyph?: number;
-            start_index?: number;
-            start_char?: number;
-            end_glyph?: number;
-            end_index?: number;
-            end_char?: number;
-        }>
-    );
     constructor(copy: GlyphItemIter);
 
     // Fields
+    glyph_item: GlyphItem;
     text: string;
     start_glyph: number;
     start_index: number;
@@ -1408,16 +1445,16 @@ export class GlyphString {
     constructor(
         properties?: Partial<{
             num_glyphs?: number;
+            glyphs?: GlyphInfo[];
             log_clusters?: number;
-            space?: number;
         }>
     );
     constructor(copy: GlyphString);
 
     // Fields
     num_glyphs: number;
+    glyphs: GlyphInfo[];
     log_clusters: number;
-    space: number;
 
     // Constructors
     static ["new"](): GlyphString;
@@ -1430,6 +1467,14 @@ export class GlyphString {
     get_logical_widths(text: string, length: number, embedding_level: number, logical_widths: number[]): void;
     get_width(): number;
     index_to_x(text: string, length: number, analysis: Analysis, index_: number, trailing: boolean): number;
+    index_to_x_full(
+        text: string,
+        length: number,
+        analysis: Analysis,
+        attrs: LogAttr | null,
+        index_: number,
+        trailing: boolean
+    ): number;
     set_size(new_len: number): void;
     x_to_index(text: string, length: number, analysis: Analysis, x_pos: number): [number, number];
 }
@@ -1440,18 +1485,14 @@ export class GlyphVisAttr {
     constructor(
         properties?: Partial<{
             is_cluster_start?: number;
+            is_color?: number;
         }>
     );
     constructor(copy: GlyphVisAttr);
 
     // Fields
     is_cluster_start: number;
-}
-
-export class IncludedModule {
-    static $gtype: GObject.GType<IncludedModule>;
-
-    constructor(copy: IncludedModule);
+    is_color: number;
 }
 
 export class Item {
@@ -1463,6 +1504,7 @@ export class Item {
             offset?: number;
             length?: number;
             num_chars?: number;
+            analysis?: Analysis;
         }>
     );
     constructor(copy: Item);
@@ -1471,6 +1513,7 @@ export class Item {
     offset: number;
     length: number;
     num_chars: number;
+    analysis: Analysis;
 
     // Constructors
     static ["new"](): Item;
@@ -1516,8 +1559,9 @@ export class LayoutIter {
     get_line(): LayoutLine;
     get_line_extents(): [Rectangle | null, Rectangle | null];
     get_line_readonly(): LayoutLine;
-    get_line_yrange(): [number | null, number | null];
+    get_line_yrange(): [number, number];
     get_run(): LayoutRun | null;
+    get_run_baseline(): number;
     get_run_extents(): [Rectangle | null, Rectangle | null];
     get_run_readonly(): LayoutRun | null;
     next_char(): boolean;
@@ -1529,28 +1573,25 @@ export class LayoutIter {
 export class LayoutLine {
     static $gtype: GObject.GType<LayoutLine>;
 
-    constructor(
-        properties?: Partial<{
-            start_index?: number;
-            length?: number;
-            is_paragraph_start?: number;
-            resolved_dir?: number;
-        }>
-    );
     constructor(copy: LayoutLine);
 
     // Fields
+    layout: Layout;
     start_index: number;
     length: number;
-    is_paragraph_start: number;
+    runs: LayoutRun[];
     resolved_dir: number;
 
     // Members
     get_extents(): [Rectangle | null, Rectangle | null];
-    get_height(): number | null;
+    get_height(): number;
+    get_length(): number;
     get_pixel_extents(): [Rectangle | null, Rectangle | null];
+    get_resolved_direction(): Direction;
+    get_start_index(): number;
     get_x_ranges(start_index: number, end_index: number): number[];
     index_to_x(index_: number, trailing: boolean): number;
+    is_paragraph_start(): boolean;
     ref(): LayoutLine;
     unref(): void;
     x_to_index(x_pos: number): [boolean, number, number];
@@ -1574,6 +1615,9 @@ export class LogAttr {
             backspace_deletes_character?: number;
             is_expandable_space?: number;
             is_word_boundary?: number;
+            break_inserts_hyphen?: number;
+            break_removes_preceding?: number;
+            reserved?: number;
         }>
     );
     constructor(copy: LogAttr);
@@ -1592,18 +1636,9 @@ export class LogAttr {
     backspace_deletes_character: number;
     is_expandable_space: number;
     is_word_boundary: number;
-}
-
-export class Map {
-    static $gtype: GObject.GType<Map>;
-
-    constructor(copy: Map);
-}
-
-export class MapEntry {
-    static $gtype: GObject.GType<MapEntry>;
-
-    constructor(copy: MapEntry);
+    break_inserts_hyphen: number;
+    break_removes_preceding: number;
+    reserved: number;
 }
 
 export class Matrix {
@@ -1634,13 +1669,14 @@ export class Matrix {
     copy(): Matrix | null;
     free(): void;
     get_font_scale_factor(): number;
-    get_font_scale_factors(): [number | null, number | null];
+    get_font_scale_factors(): [number, number];
+    get_slant_ratio(): number;
     rotate(degrees: number): void;
     scale(scale_x: number, scale_y: number): void;
     transform_distance(dx: number, dy: number): [number, number];
-    transform_pixel_rectangle(rect?: Rectangle | null): Rectangle | null;
+    transform_pixel_rectangle(rect?: Rectangle): Rectangle;
     transform_point(x: number, y: number): [number, number];
-    transform_rectangle(rect?: Rectangle | null): Rectangle | null;
+    transform_rectangle(rect?: Rectangle): Rectangle;
     translate(tx: number, ty: number): void;
 }
 
@@ -1681,7 +1717,7 @@ export class ScriptIter {
 
     // Members
     free(): void;
-    get_range(): [string | null, string | null, Script | null];
+    get_range(): [string, string, Script | null];
     next(): boolean;
 }
 
@@ -1697,12 +1733,18 @@ export class TabArray {
     // Members
     copy(): TabArray;
     free(): void;
+    get_decimal_point(tab_index: number): number;
     get_positions_in_pixels(): boolean;
     get_size(): number;
-    get_tab(tab_index: number): [TabAlign | null, number | null];
+    get_tab(tab_index: number): [TabAlign | null, number];
     get_tabs(): [TabAlign | null, number[] | null];
     resize(new_size: number): void;
+    set_decimal_point(tab_index: number, decimal_point: number): void;
+    set_positions_in_pixels(positions_in_pixels: boolean): void;
     set_tab(tab_index: number, alignment: TabAlign, location: number): void;
+    sort(): void;
+    to_string(): string;
+    static from_string(text: string): TabArray | null;
 }
 export type Glyph = number;
 export type GlyphUnit = number;

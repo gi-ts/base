@@ -554,11 +554,16 @@ export class Accessible
     _init(properties?: Partial<Accessible.ConstructorProperties>, ...args: any[]): void;
 
     // Fields
+    accessible_parent: Accessible;
+    children: any[];
     role: Role;
     interfaces: number;
     name: string;
     description: string;
+    states: StateSet;
+    attributes: GLib.HashTable<any, any>;
     cached_properties: number;
+    priv: AccessiblePrivate;
 
     // Signals
 
@@ -785,7 +790,9 @@ export class Application extends GObject.Object {
     _init(properties?: Partial<Application.ConstructorProperties>, ...args: any[]): void;
 
     // Fields
+    hash: GLib.HashTable<any, any>;
     bus_name: string;
+    bus: DBus.Connection;
     root: any;
     cache: Cache;
     toolkit_name: string;
@@ -858,6 +865,7 @@ export class DeviceListener extends GObject.Object {
 
     // Fields
     id: number;
+    callbacks: any[];
 
     // Constructors
 
@@ -946,9 +954,13 @@ export class MatchRule extends GObject.Object {
     _init(properties?: Partial<MatchRule.ConstructorProperties>, ...args: any[]): void;
 
     // Fields
+    states: StateSet;
     statematchtype: CollectionMatchType;
+    attributes: GLib.HashTable<any, any>;
     attributematchtype: CollectionMatchType;
+    interfaces: any[];
     interfacematchtype: CollectionMatchType;
+    roles: number[];
     rolematchtype: CollectionMatchType;
     invert: boolean;
 
@@ -957,7 +969,7 @@ export class MatchRule extends GObject.Object {
     static ["new"](
         states: StateSet,
         statematchtype: CollectionMatchType,
-        attributes: GLib.HashTable<string, string>,
+        attributes: { [key: string]: any } | GLib.HashTable<string, string>,
         attributematchtype: CollectionMatchType,
         roles: Role[],
         rolematchtype: CollectionMatchType,
@@ -978,6 +990,7 @@ export class Object extends GObject.Object {
     _init(properties?: Partial<Object.ConstructorProperties>, ...args: any[]): void;
 
     // Fields
+    app: Application;
     path: string;
 }
 export module Relation {
@@ -993,6 +1006,7 @@ export class Relation extends GObject.Object {
 
     // Fields
     relation_type: RelationType;
+    targets: any[];
 
     // Members
 
@@ -1055,19 +1069,15 @@ export class DeviceEvent {
 export class Event {
     static $gtype: GObject.GType<Event>;
 
-    constructor(
-        properties?: Partial<{
-            type?: string;
-            detail1?: number;
-            detail2?: number;
-        }>
-    );
     constructor(copy: Event);
 
     // Fields
     type: string;
+    source: Accessible;
     detail1: number;
     detail2: number;
+    any_data: GObject.Value;
+    sender: Accessible;
 
     // Members
     static main(): void;

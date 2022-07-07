@@ -1,7 +1,7 @@
 /**
  * Atk 1.0
  *
- * Generated from 2.36.0
+ * Generated from 2.38.0
  */
 
 import * as GObject from "@gi-types/gobject2";
@@ -314,7 +314,8 @@ export enum StateType {
     HAS_POPUP = 40,
     HAS_TOOLTIP = 41,
     READ_ONLY = 42,
-    LAST_DEFINED = 43,
+    COLLAPSED = 43,
+    LAST_DEFINED = 44,
 }
 
 export namespace TextAttribute {
@@ -591,13 +592,13 @@ export class NoOpObject
     vfunc_set_description(...args: never[]): any;
     contains(x: number, y: number, coord_type: CoordType): boolean;
     get_alpha(): number;
-    get_extents(coord_type: CoordType): [number | null, number | null, number | null, number | null];
+    get_extents(coord_type: CoordType): [number, number, number, number];
     get_layer(): Layer;
     get_mdi_zorder(): number;
-    get_position(coord_type: CoordType): [number | null, number | null];
+    get_position(coord_type: CoordType): [number, number];
     // Conflicted with Atk.TableCell.get_position
     get_position(...args: never[]): any;
-    get_size(): [number | null, number | null];
+    get_size(): [number, number];
     grab_focus(): boolean;
     ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
     remove_focus_handler(handler_id: number): void;
@@ -609,13 +610,13 @@ export class NoOpObject
     vfunc_bounds_changed(bounds: Rectangle): void;
     vfunc_contains(x: number, y: number, coord_type: CoordType): boolean;
     vfunc_get_alpha(): number;
-    vfunc_get_extents(coord_type: CoordType): [number | null, number | null, number | null, number | null];
+    vfunc_get_extents(coord_type: CoordType): [number, number, number, number];
     vfunc_get_layer(): Layer;
     vfunc_get_mdi_zorder(): number;
-    vfunc_get_position(coord_type: CoordType): [number | null, number | null];
+    vfunc_get_position(coord_type: CoordType): [number, number];
     // Conflicted with Atk.TableCell.vfunc_get_position
     vfunc_get_position(...args: never[]): any;
-    vfunc_get_size(): [number | null, number | null];
+    vfunc_get_size(): [number, number];
     vfunc_grab_focus(): boolean;
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
     vfunc_remove_focus_handler(handler_id: number): void;
@@ -663,13 +664,13 @@ export class NoOpObject
     vfunc_link_selected(link_index: number): void;
     get_image_description(): string;
     get_image_locale(): string | null;
-    get_image_position(coord_type: CoordType): [number | null, number | null];
-    get_image_size(): [number | null, number | null];
+    get_image_position(coord_type: CoordType): [number, number];
+    get_image_size(): [number, number];
     set_image_description(description: string): boolean;
     vfunc_get_image_description(): string;
     vfunc_get_image_locale(): string | null;
-    vfunc_get_image_position(coord_type: CoordType): [number | null, number | null];
-    vfunc_get_image_size(): [number | null, number | null];
+    vfunc_get_image_position(coord_type: CoordType): [number, number];
+    vfunc_get_image_size(): [number, number];
     vfunc_set_image_description(description: string): boolean;
     add_selection(i: number): boolean;
     clear_selection(): boolean;
@@ -772,10 +773,7 @@ export class NoOpObject
     get_caret_offset(): number;
     get_character_at_offset(offset: number): number;
     get_character_count(): number;
-    get_character_extents(
-        offset: number,
-        coords: CoordType
-    ): [number | null, number | null, number | null, number | null];
+    get_character_extents(offset: number, coords: CoordType): [number, number, number, number];
     get_default_attributes(): AttributeSet;
     get_n_selections(): number;
     get_offset_at_point(x: number, y: number, coords: CoordType): number;
@@ -806,10 +804,7 @@ export class NoOpObject
     vfunc_get_caret_offset(): number;
     vfunc_get_character_at_offset(offset: number): number;
     vfunc_get_character_count(): number;
-    vfunc_get_character_extents(
-        offset: number,
-        coords: CoordType
-    ): [number | null, number | null, number | null, number | null];
+    vfunc_get_character_extents(offset: number, coords: CoordType): [number, number, number, number];
     vfunc_get_default_attributes(): AttributeSet;
     vfunc_get_n_selections(): number;
     vfunc_get_offset_at_point(x: number, y: number, coords: CoordType): number;
@@ -842,7 +837,7 @@ export class NoOpObject
     get_minimum_value(): unknown;
     get_range(): Range | null;
     get_sub_ranges(): Range[];
-    get_value_and_text(): [number, string | null];
+    get_value_and_text(): [number, string];
     set_current_value(value: GObject.Value | any): boolean;
     set_value(new_value: number): void;
     vfunc_get_current_value(): unknown;
@@ -852,7 +847,7 @@ export class NoOpObject
     vfunc_get_minimum_value(): unknown;
     vfunc_get_range(): Range | null;
     vfunc_get_sub_ranges(): Range[];
-    vfunc_get_value_and_text(): [number, string | null];
+    vfunc_get_value_and_text(): [number, string];
     vfunc_set_current_value(value: GObject.Value | any): boolean;
     vfunc_set_value(new_value: number): void;
 }
@@ -972,6 +967,7 @@ export class Object extends GObject.Object {
     description: string;
     name: string;
     role: Role;
+    relation_set: RelationSet;
     layer: Layer;
 
     // Signals
@@ -1093,11 +1089,11 @@ export class Plug extends Object implements Component {
 
     contains(x: number, y: number, coord_type: CoordType): boolean;
     get_alpha(): number;
-    get_extents(coord_type: CoordType): [number | null, number | null, number | null, number | null];
+    get_extents(coord_type: CoordType): [number, number, number, number];
     get_layer(): Layer;
     get_mdi_zorder(): number;
-    get_position(coord_type: CoordType): [number | null, number | null];
-    get_size(): [number | null, number | null];
+    get_position(coord_type: CoordType): [number, number];
+    get_size(): [number, number];
     grab_focus(): boolean;
     ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
     remove_focus_handler(handler_id: number): void;
@@ -1109,11 +1105,11 @@ export class Plug extends Object implements Component {
     vfunc_bounds_changed(bounds: Rectangle): void;
     vfunc_contains(x: number, y: number, coord_type: CoordType): boolean;
     vfunc_get_alpha(): number;
-    vfunc_get_extents(coord_type: CoordType): [number | null, number | null, number | null, number | null];
+    vfunc_get_extents(coord_type: CoordType): [number, number, number, number];
     vfunc_get_layer(): Layer;
     vfunc_get_mdi_zorder(): number;
-    vfunc_get_position(coord_type: CoordType): [number | null, number | null];
-    vfunc_get_size(): [number | null, number | null];
+    vfunc_get_position(coord_type: CoordType): [number, number];
+    vfunc_get_size(): [number, number];
     vfunc_grab_focus(): boolean;
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
     vfunc_remove_focus_handler(handler_id: number): void;
@@ -1133,6 +1129,10 @@ export class Registry extends GObject.Object {
 
     constructor(properties?: Partial<Registry.ConstructorProperties>, ...args: any[]);
     _init(properties?: Partial<Registry.ConstructorProperties>, ...args: any[]): void;
+
+    // Fields
+    factory_type_registry: GLib.HashTable<any, any>;
+    factory_singleton_cache: GLib.HashTable<any, any>;
 
     // Members
 
@@ -1187,6 +1187,9 @@ export class RelationSet extends GObject.Object {
     constructor(properties?: Partial<RelationSet.ConstructorProperties>, ...args: any[]);
     _init(properties?: Partial<RelationSet.ConstructorProperties>, ...args: any[]): void;
 
+    // Fields
+    relations: any[];
+
     // Constructors
 
     static ["new"](): RelationSet;
@@ -1227,11 +1230,11 @@ export class Socket extends Object implements Component {
 
     contains(x: number, y: number, coord_type: CoordType): boolean;
     get_alpha(): number;
-    get_extents(coord_type: CoordType): [number | null, number | null, number | null, number | null];
+    get_extents(coord_type: CoordType): [number, number, number, number];
     get_layer(): Layer;
     get_mdi_zorder(): number;
-    get_position(coord_type: CoordType): [number | null, number | null];
-    get_size(): [number | null, number | null];
+    get_position(coord_type: CoordType): [number, number];
+    get_size(): [number, number];
     grab_focus(): boolean;
     ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
     remove_focus_handler(handler_id: number): void;
@@ -1243,11 +1246,11 @@ export class Socket extends Object implements Component {
     vfunc_bounds_changed(bounds: Rectangle): void;
     vfunc_contains(x: number, y: number, coord_type: CoordType): boolean;
     vfunc_get_alpha(): number;
-    vfunc_get_extents(coord_type: CoordType): [number | null, number | null, number | null, number | null];
+    vfunc_get_extents(coord_type: CoordType): [number, number, number, number];
     vfunc_get_layer(): Layer;
     vfunc_get_mdi_zorder(): number;
-    vfunc_get_position(coord_type: CoordType): [number | null, number | null];
-    vfunc_get_size(): [number | null, number | null];
+    vfunc_get_position(coord_type: CoordType): [number, number];
+    vfunc_get_size(): [number, number];
     vfunc_grab_focus(): boolean;
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
     vfunc_remove_focus_handler(handler_id: number): void;
@@ -1354,15 +1357,12 @@ export class KeyEventStruct {
 export class PropertyValues {
     static $gtype: GObject.GType<PropertyValues>;
 
-    constructor(
-        properties?: Partial<{
-            property_name?: string;
-        }>
-    );
     constructor(copy: PropertyValues);
 
     // Fields
     property_name: string;
+    old_value: GObject.Value;
+    new_value: GObject.Value;
 }
 
 export class Range {
@@ -1407,6 +1407,7 @@ export class TextRange {
 
     constructor(
         properties?: Partial<{
+            bounds?: TextRectangle;
             start_offset?: number;
             end_offset?: number;
             content?: string;
@@ -1415,6 +1416,7 @@ export class TextRange {
     constructor(copy: TextRange);
 
     // Fields
+    bounds: TextRectangle;
     start_offset: number;
     end_offset: number;
     content: string;
@@ -1476,11 +1478,11 @@ export interface ComponentPrototype extends GObject.Object {
 
     contains(x: number, y: number, coord_type: CoordType): boolean;
     get_alpha(): number;
-    get_extents(coord_type: CoordType): [number | null, number | null, number | null, number | null];
+    get_extents(coord_type: CoordType): [number, number, number, number];
     get_layer(): Layer;
     get_mdi_zorder(): number;
-    get_position(coord_type: CoordType): [number | null, number | null];
-    get_size(): [number | null, number | null];
+    get_position(coord_type: CoordType): [number, number];
+    get_size(): [number, number];
     grab_focus(): boolean;
     ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
     remove_focus_handler(handler_id: number): void;
@@ -1492,11 +1494,11 @@ export interface ComponentPrototype extends GObject.Object {
     vfunc_bounds_changed(bounds: Rectangle): void;
     vfunc_contains(x: number, y: number, coord_type: CoordType): boolean;
     vfunc_get_alpha(): number;
-    vfunc_get_extents(coord_type: CoordType): [number | null, number | null, number | null, number | null];
+    vfunc_get_extents(coord_type: CoordType): [number, number, number, number];
     vfunc_get_layer(): Layer;
     vfunc_get_mdi_zorder(): number;
-    vfunc_get_position(coord_type: CoordType): [number | null, number | null];
-    vfunc_get_size(): [number | null, number | null];
+    vfunc_get_position(coord_type: CoordType): [number, number];
+    vfunc_get_size(): [number, number];
     vfunc_grab_focus(): boolean;
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
     vfunc_remove_focus_handler(handler_id: number): void;
@@ -1606,13 +1608,13 @@ export interface ImagePrototype extends GObject.Object {
 
     get_image_description(): string;
     get_image_locale(): string | null;
-    get_image_position(coord_type: CoordType): [number | null, number | null];
-    get_image_size(): [number | null, number | null];
+    get_image_position(coord_type: CoordType): [number, number];
+    get_image_size(): [number, number];
     set_image_description(description: string): boolean;
     vfunc_get_image_description(): string;
     vfunc_get_image_locale(): string | null;
-    vfunc_get_image_position(coord_type: CoordType): [number | null, number | null];
-    vfunc_get_image_size(): [number | null, number | null];
+    vfunc_get_image_position(coord_type: CoordType): [number, number];
+    vfunc_get_image_size(): [number, number];
     vfunc_set_image_description(description: string): boolean;
 }
 
@@ -1797,10 +1799,7 @@ export interface TextPrototype extends GObject.Object {
     get_caret_offset(): number;
     get_character_at_offset(offset: number): number;
     get_character_count(): number;
-    get_character_extents(
-        offset: number,
-        coords: CoordType
-    ): [number | null, number | null, number | null, number | null];
+    get_character_extents(offset: number, coords: CoordType): [number, number, number, number];
     get_default_attributes(): AttributeSet;
     get_n_selections(): number;
     get_offset_at_point(x: number, y: number, coords: CoordType): number;
@@ -1833,10 +1832,7 @@ export interface TextPrototype extends GObject.Object {
     vfunc_get_caret_offset(): number;
     vfunc_get_character_at_offset(offset: number): number;
     vfunc_get_character_count(): number;
-    vfunc_get_character_extents(
-        offset: number,
-        coords: CoordType
-    ): [number | null, number | null, number | null, number | null];
+    vfunc_get_character_extents(offset: number, coords: CoordType): [number, number, number, number];
     vfunc_get_default_attributes(): AttributeSet;
     vfunc_get_n_selections(): number;
     vfunc_get_offset_at_point(x: number, y: number, coords: CoordType): number;
@@ -1882,7 +1878,7 @@ export interface ValuePrototype extends GObject.Object {
     get_minimum_value(): unknown;
     get_range(): Range | null;
     get_sub_ranges(): Range[];
-    get_value_and_text(): [number, string | null];
+    get_value_and_text(): [number, string];
     set_current_value(value: GObject.Value | any): boolean;
     set_value(new_value: number): void;
     vfunc_get_current_value(): unknown;
@@ -1892,7 +1888,7 @@ export interface ValuePrototype extends GObject.Object {
     vfunc_get_minimum_value(): unknown;
     vfunc_get_range(): Range | null;
     vfunc_get_sub_ranges(): Range[];
-    vfunc_get_value_and_text(): [number, string | null];
+    vfunc_get_value_and_text(): [number, string];
     vfunc_set_current_value(value: GObject.Value | any): boolean;
     vfunc_set_value(new_value: number): void;
 }

@@ -1,7 +1,7 @@
 {
     "name": "UPowerGlib",
     "api_version": "1.0",
-    "package_version": "0.99.12",
+    "package_version": "0.99.19",
     "imports": {
         "GObject": "2.0",
         "Gio": "2.0"

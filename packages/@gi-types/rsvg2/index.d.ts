@@ -1,13 +1,13 @@
 /**
  * Rsvg 2.0
  *
- * Generated from 2.50.7
+ * Generated from 2.54.4
  */
 
 import * as GObject from "@gi-types/gobject2";
 import * as GLib from "@gi-types/glib2";
-import * as Gio from "@gi-types/gio2";
 import * as GdkPixbuf from "@gi-types/gdkpixbuf2";
+import * as Gio from "@gi-types/gio2";
 import * as cairo from "@gi-types/cairo1";
 
 export const MAJOR_VERSION: number;
@@ -16,8 +16,26 @@ export const MINOR_VERSION: number;
 export const VERSION: string;
 export function cleanup(): void;
 export function error_quark(): GLib.Quark;
+export function init(): void;
+export function pixbuf_from_file(filename: string): GdkPixbuf.Pixbuf | null;
+export function pixbuf_from_file_at_max_size(
+    filename: string,
+    max_width: number,
+    max_height: number
+): GdkPixbuf.Pixbuf | null;
+export function pixbuf_from_file_at_size(filename: string, width: number, height: number): GdkPixbuf.Pixbuf | null;
+export function pixbuf_from_file_at_zoom(filename: string, x_zoom: number, y_zoom: number): GdkPixbuf.Pixbuf | null;
+export function pixbuf_from_file_at_zoom_with_max(
+    filename: string,
+    x_zoom: number,
+    y_zoom: number,
+    max_width: number,
+    max_height: number
+): GdkPixbuf.Pixbuf | null;
 export function set_default_dpi(dpi: number): void;
 export function set_default_dpi_x_y(dpi_x: number, dpi_y: number): void;
+export function term(): void;
+export type SizeFunc = () => void;
 
 export class Error extends GLib.Error {
     static $gtype: GObject.GType<Error>;
@@ -121,22 +139,20 @@ export class Handle extends GObject.Object {
     // Members
 
     close(): boolean;
+    free(): void;
     get_base_uri(): string;
+    get_desc(): string | null;
     get_dimensions(): DimensionData;
     get_dimensions_sub(id?: string | null): [boolean, DimensionData];
     get_geometry_for_element(id?: string | null): [boolean, Rectangle | null, Rectangle | null];
     get_geometry_for_layer(id: string | null, viewport: Rectangle): [boolean, Rectangle | null, Rectangle | null];
-    get_intrinsic_dimensions(): [
-        boolean | null,
-        Length | null,
-        boolean | null,
-        Length | null,
-        boolean | null,
-        Rectangle | null
-    ];
+    get_intrinsic_dimensions(): [boolean, Length | null, boolean, Length | null, boolean, Rectangle | null];
+    get_intrinsic_size_in_pixels(): [boolean, number, number];
+    get_metadata(): string | null;
     get_pixbuf(): GdkPixbuf.Pixbuf | null;
     get_pixbuf_sub(id?: string | null): GdkPixbuf.Pixbuf | null;
     get_position_sub(id?: string | null): [boolean, PositionData];
+    get_title(): string | null;
     has_sub(id: string): boolean;
     internal_set_testing(testing: boolean): void;
     read_stream_sync(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): boolean;
@@ -149,6 +165,7 @@ export class Handle extends GObject.Object {
     set_base_uri(base_uri: string): void;
     set_dpi(dpi: number): void;
     set_dpi_x_y(dpi_x: number, dpi_y: number): void;
+    set_size_callback(size_func?: SizeFunc | null): void;
     set_stylesheet(css: Uint8Array | string): boolean;
     write(buf: Uint8Array | string): boolean;
 }

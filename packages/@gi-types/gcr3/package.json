@@ -4,7 +4,7 @@
         "access": "public",
         "tag": "latest"
     },
-    "version": "3.40.0",
+    "version": "3.41.0",
     "description": "TypeScript definitions for Gcr",
     "license": "MIT",
     "contributors": [
@@ -25,15 +25,15 @@
     "types": "index.d.ts",
     "repository": {
         "type": "git",
-        "url": "https://github.com/gi-ts/../base/packages/@gi-types/",
+        "url": "https://github.com/gi-ts/base",
         "directory": "packages/@gi-types/gcr3"
     },
     "scripts": {},
     "dependencies": {
         "@gi-types/gck1": "^1.0.0",
-        "@gi-types/gio2": "^2.68.0",
-        "@gi-types/glib2": "^2.68.0",
-        "@gi-types/gobject2": "^2.68.0"
+        "@gi-types/gio2": "^2.72.0",
+        "@gi-types/glib2": "^2.72.0",
+        "@gi-types/gobject2": "^2.72.0"
     },
     "typeScriptVersion": "4.1",
     "gitHead": null

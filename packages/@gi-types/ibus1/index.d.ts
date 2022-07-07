@@ -1,7 +1,7 @@
 /**
  * IBus 1.0
  *
- * Generated from 1.5.24
+ * Generated from 1.5.26
  */
 
 import * as GObject from "@gi-types/gobject2";
@@ -818,6 +818,7 @@ export const KEY_Acircumflexbelowdot: number;
 export const KEY_Acircumflexgrave: number;
 export const KEY_Acircumflexhook: number;
 export const KEY_Acircumflextilde: number;
+export const KEY_AddFavorite: number;
 export const KEY_Adiaeresis: number;
 export const KEY_Agrave: number;
 export const KEY_Ahook: number;
@@ -825,6 +826,8 @@ export const KEY_Alt_L: number;
 export const KEY_Alt_R: number;
 export const KEY_Amacron: number;
 export const KEY_Aogonek: number;
+export const KEY_ApplicationLeft: number;
+export const KEY_ApplicationRight: number;
 export const KEY_Arabic_0: number;
 export const KEY_Arabic_1: number;
 export const KEY_Arabic_2: number;
@@ -998,20 +1001,48 @@ export const KEY_Armenian_za: number;
 export const KEY_Armenian_zhe: number;
 export const KEY_Atilde: number;
 export const KEY_AudibleBell_Enable: number;
+export const KEY_AudioCycleTrack: number;
+export const KEY_AudioForward: number;
+export const KEY_AudioLowerVolume: number;
+export const KEY_AudioMedia: number;
+export const KEY_AudioMicMute: number;
+export const KEY_AudioMute: number;
+export const KEY_AudioNext: number;
+export const KEY_AudioPause: number;
+export const KEY_AudioPlay: number;
+export const KEY_AudioPreset: number;
+export const KEY_AudioPrev: number;
+export const KEY_AudioRaiseVolume: number;
+export const KEY_AudioRandomPlay: number;
+export const KEY_AudioRecord: number;
+export const KEY_AudioRepeat: number;
+export const KEY_AudioRewind: number;
+export const KEY_AudioStop: number;
+export const KEY_Away: number;
 export const KEY_B: number;
 export const KEY_Babovedot: number;
+export const KEY_Back: number;
+export const KEY_BackForward: number;
 export const KEY_BackSpace: number;
+export const KEY_Battery: number;
 export const KEY_Begin: number;
+export const KEY_Blue: number;
+export const KEY_Bluetooth: number;
+export const KEY_Book: number;
 export const KEY_BounceKeys_Enable: number;
 export const KEY_Break: number;
+export const KEY_BrightnessAdjust: number;
 export const KEY_Byelorussian_SHORTU: number;
 export const KEY_Byelorussian_shortu: number;
 export const KEY_C: number;
+export const KEY_CD: number;
 export const KEY_CH: number;
 export const KEY_C_H: number;
 export const KEY_C_h: number;
 export const KEY_Cabovedot: number;
 export const KEY_Cacute: number;
+export const KEY_Calculator: number;
+export const KEY_Calendar: number;
 export const KEY_Cancel: number;
 export const KEY_Caps_Lock: number;
 export const KEY_Ccaron: number;
@@ -1019,11 +1050,18 @@ export const KEY_Ccedilla: number;
 export const KEY_Ccircumflex: number;
 export const KEY_Ch: number;
 export const KEY_Clear: number;
+export const KEY_ClearGrab: number;
+export const KEY_Close: number;
 export const KEY_Codeinput: number;
 export const KEY_ColonSign: number;
+export const KEY_Community: number;
+export const KEY_ContrastAdjust: number;
 export const KEY_Control_L: number;
 export const KEY_Control_R: number;
+export const KEY_Copy: number;
 export const KEY_CruzeiroSign: number;
+export const KEY_Cut: number;
+export const KEY_CycleAngle: number;
 export const KEY_Cyrillic_A: number;
 export const KEY_Cyrillic_BE: number;
 export const KEY_Cyrillic_CHE: number;
@@ -1129,9 +1167,12 @@ export const KEY_Cyrillic_ze: number;
 export const KEY_Cyrillic_zhe: number;
 export const KEY_Cyrillic_zhe_descender: number;
 export const KEY_D: number;
+export const KEY_DOS: number;
 export const KEY_Dabovedot: number;
 export const KEY_Dcaron: number;
 export const KEY_Delete: number;
+export const KEY_Display: number;
+export const KEY_Documents: number;
 export const KEY_DongSign: number;
 export const KEY_Down: number;
 export const KEY_Dstroke: number;
@@ -1155,6 +1196,7 @@ export const KEY_Egrave: number;
 export const KEY_Ehook: number;
 export const KEY_Eisu_Shift: number;
 export const KEY_Eisu_toggle: number;
+export const KEY_Eject: number;
 export const KEY_Emacron: number;
 export const KEY_End: number;
 export const KEY_Eogonek: number;
@@ -1162,7 +1204,9 @@ export const KEY_Escape: number;
 export const KEY_Eth: number;
 export const KEY_Etilde: number;
 export const KEY_EuroSign: number;
+export const KEY_Excel: number;
 export const KEY_Execute: number;
+export const KEY_Explorer: number;
 export const KEY_F: number;
 export const KEY_F1: number;
 export const KEY_F10: number;
@@ -1212,10 +1256,16 @@ export const KEY_Farsi_7: number;
 export const KEY_Farsi_8: number;
 export const KEY_Farsi_9: number;
 export const KEY_Farsi_yeh: number;
+export const KEY_Favorites: number;
+export const KEY_Finance: number;
 export const KEY_Find: number;
 export const KEY_First_Virtual_Screen: number;
+export const KEY_Forward: number;
+export const KEY_FrameBack: number;
+export const KEY_FrameForward: number;
 export const KEY_G: number;
 export const KEY_Gabovedot: number;
+export const KEY_Game: number;
 export const KEY_Gbreve: number;
 export const KEY_Gcaron: number;
 export const KEY_Gcedilla: number;
@@ -1259,6 +1309,7 @@ export const KEY_Georgian_we: number;
 export const KEY_Georgian_xan: number;
 export const KEY_Georgian_zen: number;
 export const KEY_Georgian_zhar: number;
+export const KEY_Go: number;
 export const KEY_Greek_ALPHA: number;
 export const KEY_Greek_ALPHAaccent: number;
 export const KEY_Greek_BETA: number;
@@ -1334,6 +1385,7 @@ export const KEY_Greek_upsilonaccentdieresis: number;
 export const KEY_Greek_upsilondieresis: number;
 export const KEY_Greek_xi: number;
 export const KEY_Greek_zeta: number;
+export const KEY_Green: number;
 export const KEY_H: number;
 export const KEY_Hangul: number;
 export const KEY_Hangul_A: number;
@@ -1447,9 +1499,13 @@ export const KEY_Hebrew_switch: number;
 export const KEY_Help: number;
 export const KEY_Henkan: number;
 export const KEY_Henkan_Mode: number;
+export const KEY_Hibernate: number;
 export const KEY_Hiragana: number;
 export const KEY_Hiragana_Katakana: number;
+export const KEY_History: number;
 export const KEY_Home: number;
+export const KEY_HomePage: number;
+export const KEY_HotLinks: number;
 export const KEY_Hstroke: number;
 export const KEY_Hyper_L: number;
 export const KEY_Hyper_R: number;
@@ -1551,7 +1607,11 @@ export const KEY_Kana_Shift: number;
 export const KEY_Kanji: number;
 export const KEY_Kanji_Bangou: number;
 export const KEY_Katakana: number;
+export const KEY_KbdBrightnessDown: number;
+export const KEY_KbdBrightnessUp: number;
+export const KEY_KbdLightOnOff: number;
 export const KEY_Kcedilla: number;
+export const KEY_Keyboard: number;
 export const KEY_Korean_Won: number;
 export const KEY_L: number;
 export const KEY_L1: number;
@@ -1566,12 +1626,32 @@ export const KEY_L8: number;
 export const KEY_L9: number;
 export const KEY_Lacute: number;
 export const KEY_Last_Virtual_Screen: number;
+export const KEY_Launch0: number;
+export const KEY_Launch1: number;
+export const KEY_Launch2: number;
+export const KEY_Launch3: number;
+export const KEY_Launch4: number;
+export const KEY_Launch5: number;
+export const KEY_Launch6: number;
+export const KEY_Launch7: number;
+export const KEY_Launch8: number;
+export const KEY_Launch9: number;
+export const KEY_LaunchA: number;
+export const KEY_LaunchB: number;
+export const KEY_LaunchC: number;
+export const KEY_LaunchD: number;
+export const KEY_LaunchE: number;
+export const KEY_LaunchF: number;
 export const KEY_Lbelowdot: number;
 export const KEY_Lcaron: number;
 export const KEY_Lcedilla: number;
 export const KEY_Left: number;
+export const KEY_LightBulb: number;
 export const KEY_Linefeed: number;
 export const KEY_LiraSign: number;
+export const KEY_LogGrabInfo: number;
+export const KEY_LogOff: number;
+export const KEY_LogWindowTree: number;
 export const KEY_Lstroke: number;
 export const KEY_M: number;
 export const KEY_Mabovedot: number;
@@ -1582,24 +1662,41 @@ export const KEY_Macedonia_dse: number;
 export const KEY_Macedonia_gje: number;
 export const KEY_Macedonia_kje: number;
 export const KEY_Mae_Koho: number;
+export const KEY_Mail: number;
+export const KEY_MailForward: number;
+export const KEY_Market: number;
 export const KEY_Massyo: number;
+export const KEY_Meeting: number;
+export const KEY_Memo: number;
 export const KEY_Menu: number;
+export const KEY_MenuKB: number;
+export const KEY_MenuPB: number;
+export const KEY_Messenger: number;
 export const KEY_Meta_L: number;
 export const KEY_Meta_R: number;
 export const KEY_MillSign: number;
+export const KEY_ModeLock: number;
 export const KEY_Mode_switch: number;
+export const KEY_MonBrightnessDown: number;
+export const KEY_MonBrightnessUp: number;
 export const KEY_MouseKeys_Accel_Enable: number;
 export const KEY_MouseKeys_Enable: number;
 export const KEY_Muhenkan: number;
 export const KEY_Multi_key: number;
 export const KEY_MultipleCandidate: number;
+export const KEY_Music: number;
+export const KEY_MyComputer: number;
+export const KEY_MySites: number;
 export const KEY_N: number;
 export const KEY_Nacute: number;
 export const KEY_NairaSign: number;
 export const KEY_Ncaron: number;
 export const KEY_Ncedilla: number;
+export const KEY_New: number;
 export const KEY_NewSheqelSign: number;
+export const KEY_News: number;
 export const KEY_Next: number;
+export const KEY_Next_VMode: number;
 export const KEY_Next_Virtual_Screen: number;
 export const KEY_Ntilde: number;
 export const KEY_Num_Lock: number;
@@ -1617,6 +1714,7 @@ export const KEY_Ocircumflexhook: number;
 export const KEY_Ocircumflextilde: number;
 export const KEY_Odiaeresis: number;
 export const KEY_Odoubleacute: number;
+export const KEY_OfficeHome: number;
 export const KEY_Ograve: number;
 export const KEY_Ohook: number;
 export const KEY_Ohorn: number;
@@ -1627,6 +1725,9 @@ export const KEY_Ohornhook: number;
 export const KEY_Ohorntilde: number;
 export const KEY_Omacron: number;
 export const KEY_Ooblique: number;
+export const KEY_Open: number;
+export const KEY_OpenURL: number;
+export const KEY_Option: number;
 export const KEY_Oslash: number;
 export const KEY_Otilde: number;
 export const KEY_Overlay1_Enable: number;
@@ -1635,8 +1736,11 @@ export const KEY_P: number;
 export const KEY_Pabovedot: number;
 export const KEY_Page_Down: number;
 export const KEY_Page_Up: number;
+export const KEY_Paste: number;
 export const KEY_Pause: number;
 export const KEY_PesetaSign: number;
+export const KEY_Phone: number;
+export const KEY_Pictures: number;
 export const KEY_Pointer_Accelerate: number;
 export const KEY_Pointer_Button1: number;
 export const KEY_Pointer_Button2: number;
@@ -1667,6 +1771,9 @@ export const KEY_Pointer_Right: number;
 export const KEY_Pointer_Up: number;
 export const KEY_Pointer_UpLeft: number;
 export const KEY_Pointer_UpRight: number;
+export const KEY_PowerDown: number;
+export const KEY_PowerOff: number;
+export const KEY_Prev_VMode: number;
 export const KEY_Prev_Virtual_Screen: number;
 export const KEY_PreviousCandidate: number;
 export const KEY_Print: number;
@@ -1688,24 +1795,43 @@ export const KEY_R6: number;
 export const KEY_R7: number;
 export const KEY_R8: number;
 export const KEY_R9: number;
+export const KEY_RFKill: number;
 export const KEY_Racute: number;
 export const KEY_Rcaron: number;
 export const KEY_Rcedilla: number;
+export const KEY_Red: number;
 export const KEY_Redo: number;
+export const KEY_Refresh: number;
+export const KEY_Reload: number;
 export const KEY_RepeatKeys_Enable: number;
+export const KEY_Reply: number;
 export const KEY_Return: number;
 export const KEY_Right: number;
+export const KEY_RockerDown: number;
+export const KEY_RockerEnter: number;
+export const KEY_RockerUp: number;
 export const KEY_Romaji: number;
+export const KEY_RotateWindows: number;
+export const KEY_RotationKB: number;
+export const KEY_RotationPB: number;
 export const KEY_RupeeSign: number;
 export const KEY_S: number;
 export const KEY_SCHWA: number;
 export const KEY_Sabovedot: number;
 export const KEY_Sacute: number;
+export const KEY_Save: number;
 export const KEY_Scaron: number;
 export const KEY_Scedilla: number;
 export const KEY_Scircumflex: number;
+export const KEY_ScreenSaver: number;
+export const KEY_ScrollClick: number;
+export const KEY_ScrollDown: number;
+export const KEY_ScrollUp: number;
 export const KEY_Scroll_Lock: number;
+export const KEY_Search: number;
 export const KEY_Select: number;
+export const KEY_SelectButton: number;
+export const KEY_Send: number;
 export const KEY_Serbian_DJE: number;
 export const KEY_Serbian_DZE: number;
 export const KEY_Serbian_JE: number;
@@ -1721,6 +1847,7 @@ export const KEY_Serbian_tshe: number;
 export const KEY_Shift_L: number;
 export const KEY_Shift_Lock: number;
 export const KEY_Shift_R: number;
+export const KEY_Shop: number;
 export const KEY_SingleCandidate: number;
 export const KEY_Sinh_a: number;
 export const KEY_Sinh_aa: number;
@@ -1802,17 +1929,40 @@ export const KEY_Sinh_uu: number;
 export const KEY_Sinh_uu2: number;
 export const KEY_Sinh_va: number;
 export const KEY_Sinh_ya: number;
+export const KEY_Sleep: number;
 export const KEY_SlowKeys_Enable: number;
+export const KEY_Spell: number;
+export const KEY_SplitScreen: number;
+export const KEY_Standby: number;
+export const KEY_Start: number;
 export const KEY_StickyKeys_Enable: number;
+export const KEY_Stop: number;
+export const KEY_Subtitle: number;
 export const KEY_Super_L: number;
 export const KEY_Super_R: number;
+export const KEY_Support: number;
+export const KEY_Suspend: number;
+export const KEY_Switch_VT_1: number;
+export const KEY_Switch_VT_10: number;
+export const KEY_Switch_VT_11: number;
+export const KEY_Switch_VT_12: number;
+export const KEY_Switch_VT_2: number;
+export const KEY_Switch_VT_3: number;
+export const KEY_Switch_VT_4: number;
+export const KEY_Switch_VT_5: number;
+export const KEY_Switch_VT_6: number;
+export const KEY_Switch_VT_7: number;
+export const KEY_Switch_VT_8: number;
+export const KEY_Switch_VT_9: number;
 export const KEY_Sys_Req: number;
 export const KEY_T: number;
 export const KEY_THORN: number;
 export const KEY_Tab: number;
 export const KEY_Tabovedot: number;
+export const KEY_TaskPane: number;
 export const KEY_Tcaron: number;
 export const KEY_Tcedilla: number;
+export const KEY_Terminal: number;
 export const KEY_Terminate_Server: number;
 export const KEY_Thai_baht: number;
 export const KEY_Thai_bobaimai: number;
@@ -1899,9 +2049,18 @@ export const KEY_Thai_wowaen: number;
 export const KEY_Thai_yoyak: number;
 export const KEY_Thai_yoying: number;
 export const KEY_Thorn: number;
+export const KEY_Time: number;
+export const KEY_ToDoList: number;
+export const KEY_Tools: number;
+export const KEY_TopMenu: number;
+export const KEY_TouchpadOff: number;
+export const KEY_TouchpadOn: number;
+export const KEY_TouchpadToggle: number;
 export const KEY_Touroku: number;
+export const KEY_Travel: number;
 export const KEY_Tslash: number;
 export const KEY_U: number;
+export const KEY_UWB: number;
 export const KEY_Uacute: number;
 export const KEY_Ubelowdot: number;
 export const KEY_Ubreve: number;
@@ -1932,25 +2091,42 @@ export const KEY_Ukranian_je: number;
 export const KEY_Ukranian_yi: number;
 export const KEY_Umacron: number;
 export const KEY_Undo: number;
+export const KEY_Ungrab: number;
 export const KEY_Uogonek: number;
 export const KEY_Up: number;
 export const KEY_Uring: number;
+export const KEY_User1KB: number;
+export const KEY_User2KB: number;
+export const KEY_UserPB: number;
 export const KEY_Utilde: number;
 export const KEY_V: number;
+export const KEY_VendorHome: number;
+export const KEY_Video: number;
+export const KEY_View: number;
 export const KEY_VoidSymbol: number;
 export const KEY_W: number;
+export const KEY_WLAN: number;
+export const KEY_WWAN: number;
+export const KEY_WWW: number;
 export const KEY_Wacute: number;
+export const KEY_WakeUp: number;
 export const KEY_Wcircumflex: number;
 export const KEY_Wdiaeresis: number;
+export const KEY_WebCam: number;
 export const KEY_Wgrave: number;
+export const KEY_WheelButton: number;
+export const KEY_WindowClear: number;
 export const KEY_WonSign: number;
+export const KEY_Word: number;
 export const KEY_X: number;
 export const KEY_Xabovedot: number;
+export const KEY_Xfer: number;
 export const KEY_Y: number;
 export const KEY_Yacute: number;
 export const KEY_Ybelowdot: number;
 export const KEY_Ycircumflex: number;
 export const KEY_Ydiaeresis: number;
+export const KEY_Yellow: number;
 export const KEY_Ygrave: number;
 export const KEY_Yhook: number;
 export const KEY_Ytilde: number;
@@ -1961,6 +2137,8 @@ export const KEY_Zcaron: number;
 export const KEY_Zen_Koho: number;
 export const KEY_Zenkaku: number;
 export const KEY_Zenkaku_Hankaku: number;
+export const KEY_ZoomIn: number;
+export const KEY_ZoomOut: number;
 export const KEY_Zstroke: number;
 export const KEY_a: number;
 export const KEY_aacute: number;
@@ -2323,6 +2501,7 @@ export const KEY_dead_abovecomma: number;
 export const KEY_dead_abovedot: number;
 export const KEY_dead_abovereversedcomma: number;
 export const KEY_dead_abovering: number;
+export const KEY_dead_aboveverticalline: number;
 export const KEY_dead_acute: number;
 export const KEY_dead_belowbreve: number;
 export const KEY_dead_belowcircumflex: number;
@@ -2332,6 +2511,7 @@ export const KEY_dead_belowdot: number;
 export const KEY_dead_belowmacron: number;
 export const KEY_dead_belowring: number;
 export const KEY_dead_belowtilde: number;
+export const KEY_dead_belowverticalline: number;
 export const KEY_dead_breve: number;
 export const KEY_dead_capital_schwa: number;
 export const KEY_dead_caron: number;
@@ -2350,6 +2530,8 @@ export const KEY_dead_horn: number;
 export const KEY_dead_i: number;
 export const KEY_dead_invertedbreve: number;
 export const KEY_dead_iota: number;
+export const KEY_dead_longsolidusoverlay: number;
+export const KEY_dead_lowline: number;
 export const KEY_dead_macron: number;
 export const KEY_dead_o: number;
 export const KEY_dead_ogonek: number;
@@ -2505,6 +2687,7 @@ export const KEY_hstroke: number;
 export const KEY_ht: number;
 export const KEY_hyphen: number;
 export const KEY_i: number;
+export const KEY_iTouch: number;
 export const KEY_iacute: number;
 export const KEY_ibelowdot: number;
 export const KEY_ibreve: number;
@@ -2705,6 +2888,7 @@ export const KEY_partialderivative: number;
 export const KEY_percent: number;
 export const KEY_period: number;
 export const KEY_periodcentered: number;
+export const KEY_permille: number;
 export const KEY_phonographcopyright: number;
 export const KEY_plus: number;
 export const KEY_plusminus: number;
@@ -4118,14 +4302,17 @@ export const zerosubscript: number;
 export const zerosuperior: number;
 export const zstroke: number;
 export function accelerator_name(accelerator_key: number, accelerator_mods: ModifierType): string;
-export function accelerator_parse(accelerator: string): [number | null, ModifierType | null];
+export function accelerator_parse(accelerator: string): [number, ModifierType | null];
 export function accelerator_valid(keyval: number, modifiers: ModifierType): boolean;
 export function attr_background_new(color: number, start_index: number, end_index: number): Attribute;
 export function attr_foreground_new(color: number, start_index: number, end_index: number): Attribute;
 export function attr_underline_new(underline_type: number, start_index: number, end_index: number): Attribute;
 export function emoji_dict_load(path: string): GLib.HashTable<string, any>;
-export function emoji_dict_lookup(dict: GLib.HashTable<string, EmojiData>, emoji: string): EmojiData;
-export function emoji_dict_save(path: string, dict: GLib.HashTable<string, any>): void;
+export function emoji_dict_lookup(
+    dict: { [key: string]: any } | GLib.HashTable<string, EmojiData>,
+    emoji: string
+): EmojiData;
+export function emoji_dict_save(path: string, dict: { [key: string]: any } | GLib.HashTable<string, any>): void;
 export function error_quark(): GLib.Quark;
 export function free_strv(strv: string): void;
 export function get_address(): string;
@@ -4137,7 +4324,7 @@ export function get_timeout(): number;
 export function get_untranslated_language_name(_locale: string): string;
 export function get_user_name(): string;
 export function init(): void;
-export function key_event_from_string(string: string, keyval: number, modifiers: number): boolean;
+export function key_event_from_string(string: string): [boolean, number, number];
 export function key_event_to_string(keyval: number, modifiers: number): string;
 export function keyval_convert_case(symbol: number): [number, number];
 export function keyval_from_name(keyval_name: string): number;
@@ -4329,6 +4516,7 @@ export enum InputHints {
     VERTICAL_WRITING = 256,
     EMOJI = 512,
     NO_EMOJI = 1024,
+    PRIVATE = 2048,
 }
 
 export namespace ModifierType {
@@ -4379,6 +4567,9 @@ export class AttrList extends Serializable {
 
     constructor(properties?: Partial<AttrList.ConstructorProperties>, ...args: any[]);
     _init(properties?: Partial<AttrList.ConstructorProperties>, ...args: any[]): void;
+
+    // Fields
+    attributes: any[];
 
     // Constructors
 
@@ -4439,6 +4630,9 @@ export class Bus extends Object {
     get clientOnly(): boolean;
     get connect_async(): boolean;
     get connectAsync(): boolean;
+
+    // Fields
+    priv: BusPrivate | any;
 
     // Signals
 
@@ -5090,6 +5284,7 @@ export class Engine extends Service {
     // Fields
     enabled: boolean;
     has_focus: boolean;
+    cursor_area: Rectangle;
     client_capabilities: number;
 
     // Signals
@@ -5208,9 +5403,9 @@ export class Engine extends Service {
     commit_text(text: Text): void;
     delete_surrounding_text(offset: number, nchars: number): void;
     forward_key_event(keyval: number, keycode: number, state: number): void;
-    get_content_type(): [number | null, number | null];
+    get_content_type(): [number, number];
     get_name(): string;
-    get_surrounding_text(): [Text | null, number | null, number | null];
+    get_surrounding_text(): [Text | null, number, number];
     hide_auxiliary_text(): void;
     hide_lookup_table(): void;
     hide_preedit_text(): void;
@@ -5711,6 +5906,7 @@ export class Keymap extends Object {
 
     // Fields
     name: string;
+    keymap: number[];
 
     // Constructors
 
@@ -5740,6 +5936,8 @@ export class LookupTable extends Serializable {
     cursor_visible: boolean;
     round: boolean;
     orientation: number;
+    candidates: any[];
+    labels: any[];
 
     // Constructors
 
@@ -5785,6 +5983,7 @@ export class Object extends GObject.InitiallyUnowned {
 
     // Fields
     flags: number;
+    priv: ObjectPrivate;
 
     // Signals
 
@@ -6047,6 +6246,9 @@ export class PropList extends Serializable {
 
     constructor(properties?: Partial<PropList.ConstructorProperties>, ...args: any[]);
     _init(properties?: Partial<PropList.ConstructorProperties>, ...args: any[]): void;
+
+    // Fields
+    properties: any[];
 
     // Constructors
 
@@ -6330,6 +6532,7 @@ export class Service extends Object {
         property_name: string,
         value: GLib.Variant
     ): boolean;
+    static add_interfaces(xml_data: string): boolean;
 }
 export module Text {
     export interface ConstructorProperties extends Serializable.ConstructorProperties {
@@ -6345,6 +6548,7 @@ export class Text extends Serializable {
     // Fields
     is_static: boolean;
     text: string;
+    attrs: AttrList;
 
     // Constructors
 
@@ -6668,19 +6872,13 @@ export class XEventPrivate {
 export class XML {
     static $gtype: GObject.GType<XML>;
 
-    constructor(
-        properties?: Partial<{
-            name?: string;
-            text?: string;
-            attributes?: string;
-        }>
-    );
     constructor(copy: XML);
 
     // Fields
     name: string;
     text: string;
     attributes: string;
+    sub_nodes: any[];
 
     // Members
     copy(): XML;

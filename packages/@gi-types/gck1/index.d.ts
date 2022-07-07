@@ -897,16 +897,11 @@ export class Attribute {
     static $gtype: GObject.GType<Attribute>;
 
     constructor(attr_type: number, value: number, length: number);
-    constructor(
-        properties?: Partial<{
-            type?: number;
-            length?: number;
-        }>
-    );
     constructor(copy: Attribute);
 
     // Fields
     type: number;
+    value: Uint8Array;
     length: number;
 
     // Constructors
@@ -1226,12 +1221,18 @@ export class UriData {
     constructor(
         properties?: Partial<{
             any_unrecognized?: boolean;
+            module_info?: ModuleInfo;
+            token_info?: TokenInfo;
+            attributes?: Attributes;
         }>
     );
     constructor(copy: UriData);
 
     // Fields
     any_unrecognized: boolean;
+    module_info: ModuleInfo;
+    token_info: TokenInfo;
+    attributes: Attributes;
 
     // Constructors
     static ["new"](): UriData;

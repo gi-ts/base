@@ -1,21 +1,25 @@
 /**
  * ModemManager 1.0
  *
- * Generated from 1.16.6
+ * Generated from 1.18.10
  */
 
 import * as GObject from "@gi-types/gobject2";
 import * as Gio from "@gi-types/gio2";
 import * as GLib from "@gi-types/glib2";
 
+export const __3GPP_PROFILE_ID_UNKNOWN: number;
 export const BEARER_METHOD_CONNECT: string;
 export const BEARER_METHOD_DISCONNECT: string;
 export const BEARER_PROPERTY_BEARERTYPE: string;
 export const BEARER_PROPERTY_CONNECTED: string;
+export const BEARER_PROPERTY_CONNECTIONERROR: string;
 export const BEARER_PROPERTY_INTERFACE: string;
 export const BEARER_PROPERTY_IP4CONFIG: string;
 export const BEARER_PROPERTY_IP6CONFIG: string;
 export const BEARER_PROPERTY_IPTIMEOUT: string;
+export const BEARER_PROPERTY_MULTIPLEXED: string;
+export const BEARER_PROPERTY_PROFILEID: string;
 export const BEARER_PROPERTY_PROPERTIES: string;
 export const BEARER_PROPERTY_STATS: string;
 export const BEARER_PROPERTY_SUSPENDED: string;
@@ -44,10 +48,12 @@ export const DBUS_INTERFACE_MODEM_FIRMWARE: string;
 export const DBUS_INTERFACE_MODEM_LOCATION: string;
 export const DBUS_INTERFACE_MODEM_MESSAGING: string;
 export const DBUS_INTERFACE_MODEM_MODEM3GPP: string;
+export const DBUS_INTERFACE_MODEM_MODEM3GPP_PROFILEMANAGER: string;
 export const DBUS_INTERFACE_MODEM_MODEM3GPP_USSD: string;
 export const DBUS_INTERFACE_MODEM_MODEMCDMA: string;
 export const DBUS_INTERFACE_MODEM_OMA: string;
 export const DBUS_INTERFACE_MODEM_SIGNAL: string;
+export const DBUS_INTERFACE_MODEM_SIMPLE: string;
 export const DBUS_INTERFACE_MODEM_TIME: string;
 export const DBUS_INTERFACE_MODEM_VOICE: string;
 export const DBUS_INTERFACE_SIM: string;
@@ -100,10 +106,15 @@ export const MODEM_METHOD_SETCURRENTCAPABILITIES: string;
 export const MODEM_METHOD_SETCURRENTMODES: string;
 export const MODEM_METHOD_SETPOWERSTATE: string;
 export const MODEM_METHOD_SETPRIMARYSIMSLOT: string;
+export const MODEM_MODEM3GPP_METHOD_DISABLEFACILITYLOCK: string;
 export const MODEM_MODEM3GPP_METHOD_REGISTER: string;
 export const MODEM_MODEM3GPP_METHOD_SCAN: string;
 export const MODEM_MODEM3GPP_METHOD_SETEPSUEMODEOPERATION: string;
 export const MODEM_MODEM3GPP_METHOD_SETINITIALEPSBEARERSETTINGS: string;
+export const MODEM_MODEM3GPP_PROFILEMANAGER_METHOD_DELETE: string;
+export const MODEM_MODEM3GPP_PROFILEMANAGER_METHOD_LIST: string;
+export const MODEM_MODEM3GPP_PROFILEMANAGER_METHOD_SET: string;
+export const MODEM_MODEM3GPP_PROFILEMANAGER_SIGNAL_UPDATED: string;
 export const MODEM_MODEM3GPP_PROPERTY_ENABLEDFACILITYLOCKS: string;
 export const MODEM_MODEM3GPP_PROPERTY_EPSUEMODEOPERATION: string;
 export const MODEM_MODEM3GPP_PROPERTY_IMEI: string;
@@ -153,6 +164,7 @@ export const MODEM_PROPERTY_EQUIPMENTIDENTIFIER: string;
 export const MODEM_PROPERTY_HARDWAREREVISION: string;
 export const MODEM_PROPERTY_MANUFACTURER: string;
 export const MODEM_PROPERTY_MAXACTIVEBEARERS: string;
+export const MODEM_PROPERTY_MAXACTIVEMULTIPLEXEDBEARERS: string;
 export const MODEM_PROPERTY_MAXBEARERS: string;
 export const MODEM_PROPERTY_MODEL: string;
 export const MODEM_PROPERTY_OWNNUMBERS: string;
@@ -182,6 +194,9 @@ export const MODEM_SIGNAL_PROPERTY_NR5G: string;
 export const MODEM_SIGNAL_PROPERTY_RATE: string;
 export const MODEM_SIGNAL_PROPERTY_UMTS: string;
 export const MODEM_SIGNAL_STATECHANGED: string;
+export const MODEM_SIMPLE_METHOD_CONNECT: string;
+export const MODEM_SIMPLE_METHOD_DISCONNECT: string;
+export const MODEM_SIMPLE_METHOD_GETSTATUS: string;
 export const MODEM_TIME_METHOD_GETNETWORKTIME: string;
 export const MODEM_TIME_PROPERTY_NETWORKTIMEZONE: string;
 export const MODEM_TIME_SIGNAL_NETWORKTIMECHANGED: string;
@@ -214,12 +229,14 @@ export const SIM_METHOD_CHANGEPIN: string;
 export const SIM_METHOD_ENABLEPIN: string;
 export const SIM_METHOD_SENDPIN: string;
 export const SIM_METHOD_SENDPUK: string;
+export const SIM_METHOD_SETPREFERREDNETWORKS: string;
 export const SIM_PROPERTY_ACTIVE: string;
 export const SIM_PROPERTY_EID: string;
 export const SIM_PROPERTY_EMERGENCYNUMBERS: string;
 export const SIM_PROPERTY_IMSI: string;
 export const SIM_PROPERTY_OPERATORIDENTIFIER: string;
 export const SIM_PROPERTY_OPERATORNAME: string;
+export const SIM_PROPERTY_PREFERREDNETWORKS: string;
 export const SIM_PROPERTY_SIMIDENTIFIER: string;
 export const SMS_METHOD_SEND: string;
 export const SMS_METHOD_STORE: string;
@@ -241,8 +258,10 @@ export const SMS_PROPERTY_TIMESTAMP: string;
 export const SMS_PROPERTY_VALIDITY: string;
 export const UNLOCK_RETRIES_UNKNOWN: number;
 export function bearer_allowed_auth_build_string_from_mask(mask: BearerAllowedAuth): string;
+export function bearer_apn_type_build_string_from_mask(mask: BearerApnType): string;
 export function bearer_ip_family_build_string_from_mask(mask: BearerIpFamily): string;
 export function bearer_ip_method_get_string(val: BearerIpMethod): string;
+export function bearer_multiplex_support_get_string(val: BearerMultiplexSupport): string;
 export function bearer_type_get_string(val: BearerType): string;
 export function call_direction_get_string(val: CallDirection): string;
 export function call_state_get_string(val: CallState): string;
@@ -253,8 +272,15 @@ export function core_error_quark(): GLib.Quark;
 export function firmware_image_type_get_string(val: FirmwareImageType): string;
 export function gdbus_bearer_interface_info(): Gio.DBusInterfaceInfo;
 export function gdbus_bearer_override_properties(klass: GObject.Object, property_id_begin: number): number;
+export function gdbus_call_interface_info(): Gio.DBusInterfaceInfo;
+export function gdbus_call_override_properties(klass: GObject.Object, property_id_begin: number): number;
 export function gdbus_modem3gpp_interface_info(): Gio.DBusInterfaceInfo;
 export function gdbus_modem3gpp_override_properties(klass: GObject.Object, property_id_begin: number): number;
+export function gdbus_modem3gpp_profile_manager_interface_info(): Gio.DBusInterfaceInfo;
+export function gdbus_modem3gpp_profile_manager_override_properties(
+    klass: GObject.Object,
+    property_id_begin: number
+): number;
 export function gdbus_modem3gpp_ussd_interface_info(): Gio.DBusInterfaceInfo;
 export function gdbus_modem3gpp_ussd_override_properties(klass: GObject.Object, property_id_begin: number): number;
 export function gdbus_modem_cdma_interface_info(): Gio.DBusInterfaceInfo;
@@ -336,6 +362,17 @@ export enum BearerIpMethod {
     PPP = 1,
     STATIC = 2,
     DHCP = 3,
+}
+
+export namespace BearerMultiplexSupport {
+    export const $gtype: GObject.GType<BearerMultiplexSupport>;
+}
+
+export enum BearerMultiplexSupport {
+    UNKNOWN = 0,
+    NONE = 1,
+    REQUESTED = 2,
+    REQUIRED = 3,
 }
 
 export namespace BearerType {
@@ -547,50 +584,130 @@ export class MobileEquipmentError extends GLib.Error {
     static HIDDENKEYREQUIRED: number;
     static EAPMETHODNOTSUPPORTED: number;
     static INCORRECTPARAMETERS: number;
+    static COMMANDDISABLED: number;
+    static COMMANDABORTED: number;
+    static NOTATTACHEDRESTRICTED: number;
+    static NOTALLOWEDEMERGENCYONLY: number;
+    static NOTALLOWEDRESTRICTED: number;
+    static FIXEDDIALNUMBERONLY: number;
+    static TEMPORARILYOUTOFSERVICE: number;
+    static LANGUAGEORALPHABETNOTSUPPORTED: number;
+    static UNEXPECTEDDATAVALUE: number;
+    static SYSTEMFAILURE: number;
+    static DATAMISSING: number;
+    static CALLBARRED: number;
+    static MESSAGEWAITINGINDICATIONSUBSCRIPTIONFAILURE: number;
     static UNKNOWN: number;
-    static GPRSIMSIUNKNOWNINHLR: number;
-    static GPRSILLEGALMS: number;
-    static GPRSIMSIUNKNOWNINVLR: number;
-    static GPRSILLEGALME: number;
-    static GPRSSERVICENOTALLOWED: number;
-    static GPRSANDNONGPRSSERVICESNOTALLOWED: number;
-    static GPRSPLMNNOTALLOWED: number;
-    static GPRSLOCATIONNOTALLOWED: number;
-    static GPRSROMAINGNOTALLOWED: number;
-    static GPRSNOCELLSINLOCATIONAREA: number;
-    static GPRSNETWORKFAILURE: number;
-    static GPRSCONGESTION: number;
+    static IMSIUNKNOWNINHSS: number;
+    static ILLEGALUE: number;
+    static IMSIUNKNOWNINVLR: number;
+    static IMEINOTACCEPTED: number;
+    static ILLEGALME: number;
+    static PSSERVICESNOTALLOWED: number;
+    static PSANDNONPSSERVICESNOTALLOWED: number;
+    static UEIDENTITYNOTDERIVEDFROMNETWORK: number;
+    static IMPLICITLYDETACHED: number;
+    static PLMNNOTALLOWED: number;
+    static AREANOTALLOWED: number;
+    static ROAMINGNOTALLOWEDINAREA: number;
+    static PSSERVICESNOTALLOWEDINPLMN: number;
+    static NOCELLSINAREA: number;
+    static MSCTEMPORARILYNOTREACHABLE: number;
+    static NETWORKFAILUREATTACH: number;
+    static CSDOMAINUNAVAILABLE: number;
+    static ESMFAILURE: number;
+    static CONGESTION: number;
+    static MBMSBEARERCAPABILITIESINSUFFICIENTFORSERVICE: number;
     static NOTAUTHORIZEDFORCSG: number;
-    static GPRSINSUFFICIENTRESOURCES: number;
-    static GPRSMISSINGORUNKNOWNAPN: number;
-    static GPRSUNKNOWNPDPADDRESSORTYPE: number;
-    static GPRSUSERAUTHENTICATIONFAILED: number;
-    static GPRSACTIVATIONREJECTEDBYGGSNORGW: number;
-    static GPRSACTIVATIONREJECTEDUNSPECIFIED: number;
-    static GPRSSERVICEOPTIONNOTSUPPORTED: number;
-    static GPRSSERVICEOPTIONNOTSUBSCRIBED: number;
-    static GPRSSERVICEOPTIONOUTOFORDER: number;
-    static GPRSFEATURENOTSUPPORTED: number;
-    static GPRSSEMANTICERRORINTFTOPERATION: number;
-    static GPRSSYNTACTICALERRORINTFTOPERATION: number;
-    static GPRSUNKNOWNPDPCONTEXT: number;
-    static GPRSSEMANTICERRORSINPACKETFILTER: number;
-    static GPRSSYNTACTICALERRORSINPACKETFILTER: number;
-    static GPRSPDPCONTEXTWITHOUTTFTALREADYACTIVATED: number;
+    static INSUFFICIENTRESOURCES: number;
+    static MISSINGORUNKNOWNAPN: number;
+    static UNKNOWNPDPADDRESSORTYPE: number;
+    static USERAUTHENTICATIONFAILED: number;
+    static ACTIVATIONREJECTEDBYGGSNORGW: number;
+    static ACTIVATIONREJECTEDUNSPECIFIED: number;
+    static SERVICEOPTIONNOTSUPPORTED: number;
+    static SERVICEOPTIONNOTSUBSCRIBED: number;
+    static SERVICEOPTIONOUTOFORDER: number;
+    static NSAPIORPTIALREADYINUSE: number;
+    static REGULARDEACTIVATION: number;
+    static QOSNOTACCEPTED: number;
+    static CALLCANNOTBEIDENTIFIED: number;
+    static CSSERVICETEMPORARILYUNAVAILABLE: number;
+    static FEATURENOTSUPPORTED: number;
+    static SEMANTICERRORINTFTOPERATION: number;
+    static SYNTACTICALERRORINTFTOPERATION: number;
+    static UNKNOWNPDPCONTEXT: number;
+    static SEMANTICERRORSINPACKETFILTER: number;
+    static SYNTACTICALERRORSINPACKETFILTER: number;
+    static PDPCONTEXTWITHOUTTFTALREADYACTIVATED: number;
+    static MULTICASTGROUPMEMBERSHIPTIMEOUT: number;
     static GPRSUNKNOWN: number;
-    static GPRSPDPAUTHFAILURE: number;
-    static GPRSINVALIDMOBILECLASS: number;
-    static GPRSLASTPDNDISCONNECTIONNOTALLOWEDLEGACY: number;
-    static GPRSLASTPDNDISCONNECTIONNOTALLOWED: number;
-    static GPRSSEMANTICALLYINCORRECTMESSAGE: number;
-    static GPRSMANDATORYIEERROR: number;
-    static GPRSIENOTIMPLEMENTED: number;
-    static GPRSCONDITIONALIEERROR: number;
-    static GPRSUNSPECIFIEDPROTOCOLERROR: number;
-    static GPRSOPERATORDETERMINEDBARRING: number;
-    static GPRSMAXIMUMNUMBEROFPDPCONTEXTSREACHED: number;
-    static GPRSREQUESTEDAPNNOTSUPPORTED: number;
-    static GPRSREQUESTREJECTEDBCMVIOLATION: number;
+    static PDPAUTHFAILURE: number;
+    static INVALIDMOBILECLASS: number;
+    static LASTPDNDISCONNECTIONNOTALLOWEDLEGACY: number;
+    static LASTPDNDISCONNECTIONNOTALLOWED: number;
+    static SEMANTICALLYINCORRECTMESSAGE: number;
+    static INVALIDMANDATORYINFORMATION: number;
+    static MESSAGETYPENOTIMPLEMENTED: number;
+    static CONDITIONALIEERROR: number;
+    static UNSPECIFIEDPROTOCOLERROR: number;
+    static OPERATORDETERMINEDBARRING: number;
+    static MAXIMUMNUMBEROFBEARERSREACHED: number;
+    static REQUESTEDAPNNOTSUPPORTED: number;
+    static REQUESTREJECTEDBCMVIOLATION: number;
+    static UNSUPPORTEDQCIOR5QIVALUE: number;
+    static USERDATAVIACONTROLPLANECONGESTED: number;
+    static SMSPROVIDEDVIAGPRSINROUTINGAREA: number;
+    static INVALIDPTIVALUE: number;
+    static NOBEARERACTIVATED: number;
+    static MESSAGENOTCOMPATIBLEWITHPROTOCOLSTATE: number;
+    static RECOVERYONTIMEREXPIRY: number;
+    static INVALIDTRANSACTIONIDVALUE: number;
+    static SERVICEOPTIONNOTAUTHORIZEDINPLMN: number;
+    static NETWORKFAILUREACTIVATION: number;
+    static REACTIVATIONREQUESTED: number;
+    static IPV4ONLYALLOWED: number;
+    static IPV6ONLYALLOWED: number;
+    static SINGLEADDRESSBEARERSONLYALLOWED: number;
+    static COLLISIONWITHNETWORKINITIATEDREQUEST: number;
+    static IPV4V6ONLYALLOWED: number;
+    static NONIPONLYALLOWED: number;
+    static BEARERHANDLINGUNSUPPORTED: number;
+    static APNRESTRICTIONINCOMPATIBLE: number;
+    static MULTIPLEACCESSTOPDNCONNECTIONNOTALLOWED: number;
+    static ESMINFORMATIONNOTRECEIVED: number;
+    static PDNCONNECTIONNONEXISTENT: number;
+    static MULTIPLEPDNCONNECTIONSAMEAPNNOTALLOWED: number;
+    static SEVERENETWORKFAILURE: number;
+    static INSUFFICIENTRESOURCESFORSLICEANDDNN: number;
+    static UNSUPPORTEDSSCMODE: number;
+    static INSUFFICIENTRESOURCESFORSLICE: number;
+    static MESSAGETYPENOTCOMPATIBLEWITHPROTOCOLSTATE: number;
+    static IENOTIMPLEMENTED: number;
+    static N1MODENOTALLOWED: number;
+    static RESTRICTEDSERVICEAREA: number;
+    static LADNUNAVAILABLE: number;
+    static MISSINGORUNKNOWNDNNINSLICE: number;
+    static NKGSIALREADYINUSE: number;
+    static PAYLOADNOTFORWARDED: number;
+    static NON3GPPACCESSTO5GCNNOTALLOWED: number;
+    static SERVINGNETWORKNOTAUTHORIZED: number;
+    static DNNNOTSUPPORTEDINSLICE: number;
+    static INSUFFICIENTUSERPLANERESOURCESFORPDUSESSION: number;
+    static OUTOFLADNSERVICEAREA: number;
+    static PTIMISMATCH: number;
+    static MAXDATARATEFORUSERPLANEINTEGRITYTOOLOW: number;
+    static SEMANTICERRORINQOSOPERATION: number;
+    static SYNTACTICALERRORINQOSOPERATION: number;
+    static INVALIDMAPPEDEPSBEARERIDENTITY: number;
+    static REDIRECTIONTO5GCNREQUIRED: number;
+    static REDIRECTIONTOEPCREQUIRED: number;
+    static TEMPORARILYUNAUTHORIZEDFORSNPN: number;
+    static PERMANENTLYUNAUTHORIZEDFORSNPN: number;
+    static ETHERNETONLYALLOWED: number;
+    static UNAUTHORIZEDFORCAG: number;
+    static NONETWORKSLICESAVAILABLE: number;
+    static WIRELINEACCESSAREANOTALLOWED: number;
 
     // Members
     static quark(): GLib.Quark;
@@ -1202,6 +1319,18 @@ export enum SmsValidityType {
     ENHANCED = 3,
 }
 
+export namespace __3gppProfileCmpFlags {
+    export const $gtype: GObject.GType<__3gppProfileCmpFlags>;
+}
+
+export enum __3gppProfileCmpFlags {
+    NONE = 0,
+    NO_PROFILE_ID = 2,
+    NO_AUTH = 4,
+    NO_APN_TYPE = 8,
+    NO_IP_TYPE = 16,
+}
+
 export namespace BearerAllowedAuth {
     export const $gtype: GObject.GType<BearerAllowedAuth>;
 }
@@ -1214,6 +1343,22 @@ export enum BearerAllowedAuth {
     MSCHAP = 8,
     MSCHAPV2 = 16,
     EAP = 32,
+}
+
+export namespace BearerApnType {
+    export const $gtype: GObject.GType<BearerApnType>;
+}
+
+export enum BearerApnType {
+    NONE = 0,
+    INITIAL = 1,
+    DEFAULT = 2,
+    IMS = 4,
+    MMS = 8,
+    MANAGEMENT = 16,
+    VOICE = 32,
+    EMERGENCY = 64,
+    PRIVATE = 128,
 }
 
 export namespace BearerIpFamily {
@@ -1238,6 +1383,8 @@ export enum BearerPropertiesCmpFlags {
     NO_PASSWORD = 2,
     NO_ALLOW_ROAMING = 4,
     NO_RM_PROTOCOL = 8,
+    NO_APN_TYPE = 16,
+    NO_PROFILE_ID = 32,
 }
 
 export namespace Modem3gppFacility {
@@ -1304,6 +1451,8 @@ export enum ModemFirmwareUpdateMethod {
     NONE = 0,
     FASTBOOT = 1,
     QMI_PDC = 2,
+    MBIM_QDU = 4,
+    FIREHOSE = 8,
 }
 
 export namespace ModemLocationAssistanceDataType {
@@ -1354,6 +1503,40 @@ export enum OmaFeature {
     PRL_UPDATE = 2,
     HANDS_FREE_ACTIVATION = 4,
 }
+export module __3gppProfile {
+    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+        [key: string]: any;
+    }
+}
+export class __3gppProfile extends GObject.Object {
+    static $gtype: GObject.GType<__3gppProfile>;
+
+    constructor(properties?: Partial<__3gppProfile.ConstructorProperties>, ...args: any[]);
+    _init(properties?: Partial<__3gppProfile.ConstructorProperties>, ...args: any[]): void;
+
+    // Constructors
+
+    static ["new"](): __3gppProfile;
+
+    // Members
+
+    consume_string(key: string, value: string): boolean;
+    consume_variant(key: string, value: GLib.Variant): boolean;
+    get_allowed_auth(): BearerAllowedAuth;
+    get_apn(): string;
+    get_apn_type(): BearerApnType;
+    get_ip_type(): BearerIpFamily;
+    get_password(): string;
+    get_profile_id(): number;
+    get_user(): string;
+    set_allowed_auth(allowed_auth: BearerAllowedAuth): void;
+    set_apn(apn: string): void;
+    set_apn_type(apn_type: BearerApnType): void;
+    set_ip_type(ip_type: BearerIpFamily): void;
+    set_password(password: string): void;
+    set_profile_id(profile_id: number): void;
+    set_user(user: string): void;
+}
 export module Bearer {
     export interface ConstructorProperties extends GdbusBearerProxy.ConstructorProperties {
         [key: string]: any;
@@ -1376,6 +1559,10 @@ export class Bearer
     set bearerType(val: number);
     get connected(): boolean;
     set connected(val: boolean);
+    get connection_error(): GLib.Variant;
+    set connection_error(val: GLib.Variant);
+    get connectionError(): GLib.Variant;
+    set connectionError(val: GLib.Variant);
     get interface(): string;
     set interface(val: string);
     get ip_timeout(): number;
@@ -1390,6 +1577,12 @@ export class Bearer
     set ip6_config(val: GLib.Variant);
     get ip6Config(): GLib.Variant;
     set ip6Config(val: GLib.Variant);
+    get multiplexed(): boolean;
+    set multiplexed(val: boolean);
+    get profile_id(): number;
+    set profile_id(val: number);
+    get profileId(): number;
+    set profileId(val: number);
     get properties(): GLib.Variant;
     set properties(val: GLib.Variant);
     get stats(): GLib.Variant;
@@ -1422,14 +1615,18 @@ export class Bearer
     dup_path(): string;
     get_bearer_type(): BearerType;
     get_connected(): boolean;
+    get_connection_error(): GLib.Error;
     get_interface(): string;
     get_ip_timeout(): number;
     get_ipv4_config(): BearerIpConfig;
     get_ipv6_config(): BearerIpConfig;
+    get_multiplexed(): boolean;
     get_path(): string;
+    get_profile_id(): number;
     get_properties(): BearerProperties;
     get_stats(): BearerStats;
     get_suspended(): boolean;
+    peek_connection_error(): GLib.Error;
     peek_ipv4_config(): BearerIpConfig;
     peek_ipv6_config(): BearerIpConfig;
     peek_properties(): BearerProperties;
@@ -1525,17 +1722,23 @@ export class BearerProperties extends GObject.Object {
     get_allow_roaming(): boolean;
     get_allowed_auth(): BearerAllowedAuth;
     get_apn(): string;
+    get_apn_type(): BearerApnType;
     get_ip_type(): BearerIpFamily;
+    get_multiplex(): BearerMultiplexSupport;
     get_number(): string;
     get_password(): string;
+    get_profile_id(): number;
     get_rm_protocol(): ModemCdmaRmProtocol;
     get_user(): string;
     set_allow_roaming(allow_roaming: boolean): void;
     set_allowed_auth(allowed_auth: BearerAllowedAuth): void;
     set_apn(apn: string): void;
+    set_apn_type(apn_type: BearerApnType): void;
     set_ip_type(ip_type: BearerIpFamily): void;
+    set_multiplex(multiplex: BearerMultiplexSupport): void;
     set_number(number: string): void;
     set_password(password: string): void;
+    set_profile_id(profile_id: number): void;
     set_rm_protocol(protocol: ModemCdmaRmProtocol): void;
     set_user(user: string): void;
 }
@@ -1562,15 +1765,41 @@ export class BearerStats extends GObject.Object {
     get_tx_bytes(): number;
 }
 export module Call {
-    export interface ConstructorProperties extends Gio.DBusProxy.ConstructorProperties {
+    export interface ConstructorProperties extends GdbusCallProxy.ConstructorProperties {
         [key: string]: any;
     }
 }
-export class Call extends Gio.DBusProxy implements Gio.AsyncInitable<Call>, Gio.DBusInterface, Gio.Initable {
+export class Call
+    extends GdbusCallProxy
+    implements Gio.AsyncInitable<Call>, Gio.DBusInterface, Gio.Initable, GdbusCall
+{
     static $gtype: GObject.GType<Call>;
 
     constructor(properties?: Partial<Call.ConstructorProperties>, ...args: any[]);
     _init(properties?: Partial<Call.ConstructorProperties>, ...args: any[]): void;
+
+    // Implemented Properties
+
+    get audio_format(): GLib.Variant;
+    set audio_format(val: GLib.Variant);
+    get audioFormat(): GLib.Variant;
+    set audioFormat(val: GLib.Variant);
+    get audio_port(): string;
+    set audio_port(val: string);
+    get audioPort(): string;
+    set audioPort(val: string);
+    get direction(): number;
+    set direction(val: number);
+    get multiparty(): boolean;
+    set multiparty(val: boolean);
+    get number(): string;
+    set number(val: string);
+    get state(): number;
+    set state(val: number);
+    get state_reason(): number;
+    set state_reason(val: number);
+    get stateReason(): number;
+    set stateReason(val: number);
 
     // Members
 
@@ -1660,7 +1889,7 @@ export class Call extends Gio.DBusProxy implements Gio.AsyncInitable<Call>, Gio.
     ): Promise<boolean> | void;
     init_finish(res: Gio.AsyncResult): boolean;
     new_finish(res: Gio.AsyncResult): Call;
-    // Conflicted with Gio.DBusProxy.new_finish
+    // Conflicted with ModemManager.GdbusCallProxy.new_finish
     new_finish(...args: never[]): any;
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     vfunc_init_async(
@@ -1674,14 +1903,90 @@ export class Call extends Gio.DBusProxy implements Gio.AsyncInitable<Call>, Gio.
         callback?: Gio.AsyncReadyCallback<this> | null
     ): Promise<boolean> | void;
     vfunc_init_finish(res: Gio.AsyncResult): boolean;
-    get_object(): Gio.DBusObject | null;
-    get_info(): Gio.DBusInterfaceInfo;
-    set_object(object?: Gio.DBusObject | null): void;
-    vfunc_dup_object(): Gio.DBusObject | null;
-    vfunc_get_info(): Gio.DBusInterfaceInfo;
-    vfunc_set_object(object?: Gio.DBusObject | null): void;
-    init(cancellable?: Gio.Cancellable | null): boolean;
-    vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+    call_accept(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_accept(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_accept(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_accept_finish(res: Gio.AsyncResult): boolean;
+    call_accept_sync(cancellable?: Gio.Cancellable | null): boolean;
+    call_deflect(arg_number: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_deflect(
+        arg_number: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_deflect(
+        arg_number: string,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_deflect_finish(res: Gio.AsyncResult): boolean;
+    call_deflect_sync(arg_number: string, cancellable?: Gio.Cancellable | null): boolean;
+    call_hangup(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_hangup(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_hangup(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_hangup_finish(res: Gio.AsyncResult): boolean;
+    call_hangup_sync(cancellable?: Gio.Cancellable | null): boolean;
+    call_join_multiparty(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_join_multiparty(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_join_multiparty(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_join_multiparty_finish(res: Gio.AsyncResult): boolean;
+    call_join_multiparty_sync(cancellable?: Gio.Cancellable | null): boolean;
+    call_leave_multiparty(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_leave_multiparty(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_leave_multiparty(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_leave_multiparty_finish(res: Gio.AsyncResult): boolean;
+    call_leave_multiparty_sync(cancellable?: Gio.Cancellable | null): boolean;
+    call_send_dtmf(arg_dtmf: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_send_dtmf(
+        arg_dtmf: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_send_dtmf(
+        arg_dtmf: string,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_send_dtmf_finish(res: Gio.AsyncResult): boolean;
+    call_send_dtmf_sync(arg_dtmf: string, cancellable?: Gio.Cancellable | null): boolean;
+    call_start(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_start(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_start(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_start_finish(res: Gio.AsyncResult): boolean;
+    call_start_sync(cancellable?: Gio.Cancellable | null): boolean;
+    complete_accept(invocation: Gio.DBusMethodInvocation): void;
+    complete_deflect(invocation: Gio.DBusMethodInvocation): void;
+    complete_hangup(invocation: Gio.DBusMethodInvocation): void;
+    complete_join_multiparty(invocation: Gio.DBusMethodInvocation): void;
+    complete_leave_multiparty(invocation: Gio.DBusMethodInvocation): void;
+    complete_send_dtmf(invocation: Gio.DBusMethodInvocation): void;
+    complete_start(invocation: Gio.DBusMethodInvocation): void;
+    emit_dtmf_received(arg_dtmf: string): void;
+    emit_state_changed(arg_old: number, arg_new: number, arg_reason: number): void;
+    vfunc_dtmf_received(arg_dtmf: string): void;
+    vfunc_handle_accept(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_handle_deflect(invocation: Gio.DBusMethodInvocation, arg_number: string): boolean;
+    vfunc_handle_hangup(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_handle_join_multiparty(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_handle_leave_multiparty(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_handle_send_dtmf(invocation: Gio.DBusMethodInvocation, arg_dtmf: string): boolean;
+    vfunc_handle_start(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_state_changed(arg_old: number, arg_new: number, arg_reason: number): void;
 }
 export module CallAudioFormat {
     export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
@@ -1836,6 +2141,10 @@ export class GdbusBearerProxy
     set bearerType(val: number);
     get connected(): boolean;
     set connected(val: boolean);
+    get connection_error(): GLib.Variant;
+    set connection_error(val: GLib.Variant);
+    get connectionError(): GLib.Variant;
+    set connectionError(val: GLib.Variant);
     get interface(): string;
     set interface(val: string);
     get ip_timeout(): number;
@@ -1850,6 +2159,12 @@ export class GdbusBearerProxy
     set ip6_config(val: GLib.Variant);
     get ip6Config(): GLib.Variant;
     set ip6Config(val: GLib.Variant);
+    get multiplexed(): boolean;
+    set multiplexed(val: boolean);
+    get profile_id(): number;
+    set profile_id(val: number);
+    get profileId(): number;
+    set profileId(val: number);
     get properties(): GLib.Variant;
     set properties(val: GLib.Variant);
     get stats(): GLib.Variant;
@@ -2012,6 +2327,10 @@ export class GdbusBearerSkeleton extends Gio.DBusInterfaceSkeleton implements Gi
     set bearerType(val: number);
     get connected(): boolean;
     set connected(val: boolean);
+    get connection_error(): GLib.Variant;
+    set connection_error(val: GLib.Variant);
+    get connectionError(): GLib.Variant;
+    set connectionError(val: GLib.Variant);
     get interface(): string;
     set interface(val: string);
     get ip_timeout(): number;
@@ -2026,6 +2345,12 @@ export class GdbusBearerSkeleton extends Gio.DBusInterfaceSkeleton implements Gi
     set ip6_config(val: GLib.Variant);
     get ip6Config(): GLib.Variant;
     set ip6Config(val: GLib.Variant);
+    get multiplexed(): boolean;
+    set multiplexed(val: boolean);
+    get profile_id(): number;
+    set profile_id(val: number);
+    get profileId(): number;
+    set profileId(val: number);
     get properties(): GLib.Variant;
     set properties(val: GLib.Variant);
     get stats(): GLib.Variant;
@@ -2065,6 +2390,631 @@ export class GdbusBearerSkeleton extends Gio.DBusInterfaceSkeleton implements Gi
     complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
     vfunc_handle_connect(invocation: Gio.DBusMethodInvocation): boolean;
     vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
+}
+export module GdbusCallProxy {
+    export interface ConstructorProperties extends Gio.DBusProxy.ConstructorProperties {
+        [key: string]: any;
+    }
+}
+export class GdbusCallProxy
+    extends Gio.DBusProxy
+    implements Gio.AsyncInitable<GdbusCallProxy>, Gio.DBusInterface, Gio.Initable, GdbusCall
+{
+    static $gtype: GObject.GType<GdbusCallProxy>;
+
+    constructor(properties?: Partial<GdbusCallProxy.ConstructorProperties>, ...args: any[]);
+    _init(properties?: Partial<GdbusCallProxy.ConstructorProperties>, ...args: any[]): void;
+
+    // Implemented Properties
+
+    get audio_format(): GLib.Variant;
+    set audio_format(val: GLib.Variant);
+    get audioFormat(): GLib.Variant;
+    set audioFormat(val: GLib.Variant);
+    get audio_port(): string;
+    set audio_port(val: string);
+    get audioPort(): string;
+    set audioPort(val: string);
+    get direction(): number;
+    set direction(val: number);
+    get multiparty(): boolean;
+    set multiparty(val: boolean);
+    get number(): string;
+    set number(val: string);
+    get state(): number;
+    set state(val: number);
+    get state_reason(): number;
+    set state_reason(val: number);
+    get stateReason(): number;
+    set stateReason(val: number);
+
+    // Constructors
+
+    static new_finish(res: Gio.AsyncResult): GdbusCallProxy;
+    // Conflicted with Gio.AsyncInitable.new_finish
+    static new_finish(...args: never[]): any;
+    static new_for_bus_finish(res: Gio.AsyncResult): GdbusCallProxy;
+    static new_for_bus_sync(
+        bus_type: Gio.BusType,
+        flags: Gio.DBusProxyFlags,
+        name: string,
+        object_path: string,
+        cancellable?: Gio.Cancellable | null
+    ): GdbusCallProxy;
+    // Conflicted with Gio.DBusProxy.new_for_bus_sync
+    static new_for_bus_sync(...args: never[]): any;
+    static new_sync(
+        connection: Gio.DBusConnection,
+        flags: Gio.DBusProxyFlags,
+        name: string | null,
+        object_path: string,
+        cancellable?: Gio.Cancellable | null
+    ): GdbusCallProxy;
+    // Conflicted with Gio.DBusProxy.new_sync
+    static new_sync(...args: never[]): any;
+
+    // Members
+
+    static new(
+        connection: Gio.DBusConnection,
+        flags: Gio.DBusProxyFlags,
+        name: string | null,
+        object_path: string,
+        cancellable?: Gio.Cancellable | null
+    ): Promise<GdbusCallProxy>;
+    static new(
+        connection: Gio.DBusConnection,
+        flags: Gio.DBusProxyFlags,
+        name: string | null,
+        object_path: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<GdbusCallProxy> | null
+    ): void;
+    static new(
+        connection: Gio.DBusConnection,
+        flags: Gio.DBusProxyFlags,
+        name: string | null,
+        object_path: string,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<GdbusCallProxy> | null
+    ): Promise<GdbusCallProxy> | void;
+    // Conflicted with Gio.DBusProxy.new
+    static new(...args: never[]): any;
+    static new_for_bus(
+        bus_type: Gio.BusType,
+        flags: Gio.DBusProxyFlags,
+        name: string,
+        object_path: string,
+        cancellable?: Gio.Cancellable | null
+    ): Promise<GdbusCallProxy>;
+    static new_for_bus(
+        bus_type: Gio.BusType,
+        flags: Gio.DBusProxyFlags,
+        name: string,
+        object_path: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<GdbusCallProxy> | null
+    ): void;
+    static new_for_bus(
+        bus_type: Gio.BusType,
+        flags: Gio.DBusProxyFlags,
+        name: string,
+        object_path: string,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<GdbusCallProxy> | null
+    ): Promise<GdbusCallProxy> | void;
+    // Conflicted with Gio.DBusProxy.new_for_bus
+    static new_for_bus(...args: never[]): any;
+
+    // Implemented Members
+
+    init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    init_async(
+        io_priority: number,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    init_async(
+        io_priority: number,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    init_finish(res: Gio.AsyncResult): boolean;
+    new_finish(res: Gio.AsyncResult): GdbusCallProxy;
+    // Conflicted with Gio.DBusProxy.new_finish
+    new_finish(...args: never[]): any;
+    vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    vfunc_init_async(
+        io_priority: number,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    vfunc_init_async(
+        io_priority: number,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    vfunc_init_finish(res: Gio.AsyncResult): boolean;
+    get_object(): Gio.DBusObject | null;
+    get_info(): Gio.DBusInterfaceInfo;
+    set_object(object?: Gio.DBusObject | null): void;
+    vfunc_dup_object(): Gio.DBusObject | null;
+    vfunc_get_info(): Gio.DBusInterfaceInfo;
+    vfunc_set_object(object?: Gio.DBusObject | null): void;
+    init(cancellable?: Gio.Cancellable | null): boolean;
+    vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+    call_accept(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_accept(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_accept(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_accept_finish(res: Gio.AsyncResult): boolean;
+    call_accept_sync(cancellable?: Gio.Cancellable | null): boolean;
+    call_deflect(arg_number: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_deflect(
+        arg_number: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_deflect(
+        arg_number: string,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_deflect_finish(res: Gio.AsyncResult): boolean;
+    call_deflect_sync(arg_number: string, cancellable?: Gio.Cancellable | null): boolean;
+    call_hangup(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_hangup(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_hangup(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_hangup_finish(res: Gio.AsyncResult): boolean;
+    call_hangup_sync(cancellable?: Gio.Cancellable | null): boolean;
+    call_join_multiparty(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_join_multiparty(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_join_multiparty(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_join_multiparty_finish(res: Gio.AsyncResult): boolean;
+    call_join_multiparty_sync(cancellable?: Gio.Cancellable | null): boolean;
+    call_leave_multiparty(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_leave_multiparty(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_leave_multiparty(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_leave_multiparty_finish(res: Gio.AsyncResult): boolean;
+    call_leave_multiparty_sync(cancellable?: Gio.Cancellable | null): boolean;
+    call_send_dtmf(arg_dtmf: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_send_dtmf(
+        arg_dtmf: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_send_dtmf(
+        arg_dtmf: string,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_send_dtmf_finish(res: Gio.AsyncResult): boolean;
+    call_send_dtmf_sync(arg_dtmf: string, cancellable?: Gio.Cancellable | null): boolean;
+    call_start(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_start(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_start(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_start_finish(res: Gio.AsyncResult): boolean;
+    call_start_sync(cancellable?: Gio.Cancellable | null): boolean;
+    complete_accept(invocation: Gio.DBusMethodInvocation): void;
+    complete_deflect(invocation: Gio.DBusMethodInvocation): void;
+    complete_hangup(invocation: Gio.DBusMethodInvocation): void;
+    complete_join_multiparty(invocation: Gio.DBusMethodInvocation): void;
+    complete_leave_multiparty(invocation: Gio.DBusMethodInvocation): void;
+    complete_send_dtmf(invocation: Gio.DBusMethodInvocation): void;
+    complete_start(invocation: Gio.DBusMethodInvocation): void;
+    emit_dtmf_received(arg_dtmf: string): void;
+    emit_state_changed(arg_old: number, arg_new: number, arg_reason: number): void;
+    vfunc_dtmf_received(arg_dtmf: string): void;
+    vfunc_handle_accept(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_handle_deflect(invocation: Gio.DBusMethodInvocation, arg_number: string): boolean;
+    vfunc_handle_hangup(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_handle_join_multiparty(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_handle_leave_multiparty(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_handle_send_dtmf(invocation: Gio.DBusMethodInvocation, arg_dtmf: string): boolean;
+    vfunc_handle_start(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_state_changed(arg_old: number, arg_new: number, arg_reason: number): void;
+}
+export module GdbusCallSkeleton {
+    export interface ConstructorProperties extends Gio.DBusInterfaceSkeleton.ConstructorProperties {
+        [key: string]: any;
+    }
+}
+export class GdbusCallSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, GdbusCall {
+    static $gtype: GObject.GType<GdbusCallSkeleton>;
+
+    constructor(properties?: Partial<GdbusCallSkeleton.ConstructorProperties>, ...args: any[]);
+    _init(properties?: Partial<GdbusCallSkeleton.ConstructorProperties>, ...args: any[]): void;
+
+    // Implemented Properties
+
+    get audio_format(): GLib.Variant;
+    set audio_format(val: GLib.Variant);
+    get audioFormat(): GLib.Variant;
+    set audioFormat(val: GLib.Variant);
+    get audio_port(): string;
+    set audio_port(val: string);
+    get audioPort(): string;
+    set audioPort(val: string);
+    get direction(): number;
+    set direction(val: number);
+    get multiparty(): boolean;
+    set multiparty(val: boolean);
+    get number(): string;
+    set number(val: string);
+    get state(): number;
+    set state(val: number);
+    get state_reason(): number;
+    set state_reason(val: number);
+    get stateReason(): number;
+    set stateReason(val: number);
+
+    // Constructors
+
+    static ["new"](): GdbusCallSkeleton;
+
+    // Implemented Members
+
+    get_object(): Gio.DBusObject | null;
+    get_info(): Gio.DBusInterfaceInfo;
+    set_object(object?: Gio.DBusObject | null): void;
+    vfunc_dup_object(): Gio.DBusObject | null;
+    vfunc_get_info(): Gio.DBusInterfaceInfo;
+    vfunc_set_object(object?: Gio.DBusObject | null): void;
+    call_accept(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_accept(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_accept(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_accept_finish(res: Gio.AsyncResult): boolean;
+    call_accept_sync(cancellable?: Gio.Cancellable | null): boolean;
+    call_deflect(arg_number: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_deflect(
+        arg_number: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_deflect(
+        arg_number: string,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_deflect_finish(res: Gio.AsyncResult): boolean;
+    call_deflect_sync(arg_number: string, cancellable?: Gio.Cancellable | null): boolean;
+    call_hangup(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_hangup(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_hangup(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_hangup_finish(res: Gio.AsyncResult): boolean;
+    call_hangup_sync(cancellable?: Gio.Cancellable | null): boolean;
+    call_join_multiparty(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_join_multiparty(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_join_multiparty(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_join_multiparty_finish(res: Gio.AsyncResult): boolean;
+    call_join_multiparty_sync(cancellable?: Gio.Cancellable | null): boolean;
+    call_leave_multiparty(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_leave_multiparty(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_leave_multiparty(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_leave_multiparty_finish(res: Gio.AsyncResult): boolean;
+    call_leave_multiparty_sync(cancellable?: Gio.Cancellable | null): boolean;
+    call_send_dtmf(arg_dtmf: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_send_dtmf(
+        arg_dtmf: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_send_dtmf(
+        arg_dtmf: string,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_send_dtmf_finish(res: Gio.AsyncResult): boolean;
+    call_send_dtmf_sync(arg_dtmf: string, cancellable?: Gio.Cancellable | null): boolean;
+    call_start(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_start(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_start(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_start_finish(res: Gio.AsyncResult): boolean;
+    call_start_sync(cancellable?: Gio.Cancellable | null): boolean;
+    complete_accept(invocation: Gio.DBusMethodInvocation): void;
+    complete_deflect(invocation: Gio.DBusMethodInvocation): void;
+    complete_hangup(invocation: Gio.DBusMethodInvocation): void;
+    complete_join_multiparty(invocation: Gio.DBusMethodInvocation): void;
+    complete_leave_multiparty(invocation: Gio.DBusMethodInvocation): void;
+    complete_send_dtmf(invocation: Gio.DBusMethodInvocation): void;
+    complete_start(invocation: Gio.DBusMethodInvocation): void;
+    emit_dtmf_received(arg_dtmf: string): void;
+    emit_state_changed(arg_old: number, arg_new: number, arg_reason: number): void;
+    vfunc_dtmf_received(arg_dtmf: string): void;
+    vfunc_handle_accept(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_handle_deflect(invocation: Gio.DBusMethodInvocation, arg_number: string): boolean;
+    vfunc_handle_hangup(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_handle_join_multiparty(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_handle_leave_multiparty(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_handle_send_dtmf(invocation: Gio.DBusMethodInvocation, arg_dtmf: string): boolean;
+    vfunc_handle_start(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_state_changed(arg_old: number, arg_new: number, arg_reason: number): void;
+}
+export module GdbusModem3gppProfileManagerProxy {
+    export interface ConstructorProperties extends Gio.DBusProxy.ConstructorProperties {
+        [key: string]: any;
+    }
+}
+export class GdbusModem3gppProfileManagerProxy
+    extends Gio.DBusProxy
+    implements
+        Gio.AsyncInitable<GdbusModem3gppProfileManagerProxy>,
+        Gio.DBusInterface,
+        Gio.Initable,
+        GdbusModem3gppProfileManager
+{
+    static $gtype: GObject.GType<GdbusModem3gppProfileManagerProxy>;
+
+    constructor(properties?: Partial<GdbusModem3gppProfileManagerProxy.ConstructorProperties>, ...args: any[]);
+    _init(properties?: Partial<GdbusModem3gppProfileManagerProxy.ConstructorProperties>, ...args: any[]): void;
+
+    // Constructors
+
+    static new_finish(res: Gio.AsyncResult): GdbusModem3gppProfileManagerProxy;
+    // Conflicted with Gio.AsyncInitable.new_finish
+    static new_finish(...args: never[]): any;
+    static new_for_bus_finish(res: Gio.AsyncResult): GdbusModem3gppProfileManagerProxy;
+    static new_for_bus_sync(
+        bus_type: Gio.BusType,
+        flags: Gio.DBusProxyFlags,
+        name: string,
+        object_path: string,
+        cancellable?: Gio.Cancellable | null
+    ): GdbusModem3gppProfileManagerProxy;
+    // Conflicted with Gio.DBusProxy.new_for_bus_sync
+    static new_for_bus_sync(...args: never[]): any;
+    static new_sync(
+        connection: Gio.DBusConnection,
+        flags: Gio.DBusProxyFlags,
+        name: string | null,
+        object_path: string,
+        cancellable?: Gio.Cancellable | null
+    ): GdbusModem3gppProfileManagerProxy;
+    // Conflicted with Gio.DBusProxy.new_sync
+    static new_sync(...args: never[]): any;
+
+    // Members
+
+    static new(
+        connection: Gio.DBusConnection,
+        flags: Gio.DBusProxyFlags,
+        name: string | null,
+        object_path: string,
+        cancellable?: Gio.Cancellable | null
+    ): Promise<GdbusModem3gppProfileManagerProxy>;
+    static new(
+        connection: Gio.DBusConnection,
+        flags: Gio.DBusProxyFlags,
+        name: string | null,
+        object_path: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<GdbusModem3gppProfileManagerProxy> | null
+    ): void;
+    static new(
+        connection: Gio.DBusConnection,
+        flags: Gio.DBusProxyFlags,
+        name: string | null,
+        object_path: string,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<GdbusModem3gppProfileManagerProxy> | null
+    ): Promise<GdbusModem3gppProfileManagerProxy> | void;
+    // Conflicted with Gio.DBusProxy.new
+    static new(...args: never[]): any;
+    static new_for_bus(
+        bus_type: Gio.BusType,
+        flags: Gio.DBusProxyFlags,
+        name: string,
+        object_path: string,
+        cancellable?: Gio.Cancellable | null
+    ): Promise<GdbusModem3gppProfileManagerProxy>;
+    static new_for_bus(
+        bus_type: Gio.BusType,
+        flags: Gio.DBusProxyFlags,
+        name: string,
+        object_path: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<GdbusModem3gppProfileManagerProxy> | null
+    ): void;
+    static new_for_bus(
+        bus_type: Gio.BusType,
+        flags: Gio.DBusProxyFlags,
+        name: string,
+        object_path: string,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<GdbusModem3gppProfileManagerProxy> | null
+    ): Promise<GdbusModem3gppProfileManagerProxy> | void;
+    // Conflicted with Gio.DBusProxy.new_for_bus
+    static new_for_bus(...args: never[]): any;
+
+    // Implemented Members
+
+    init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    init_async(
+        io_priority: number,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    init_async(
+        io_priority: number,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    init_finish(res: Gio.AsyncResult): boolean;
+    new_finish(res: Gio.AsyncResult): GdbusModem3gppProfileManagerProxy;
+    // Conflicted with Gio.DBusProxy.new_finish
+    new_finish(...args: never[]): any;
+    vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    vfunc_init_async(
+        io_priority: number,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    vfunc_init_async(
+        io_priority: number,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    vfunc_init_finish(res: Gio.AsyncResult): boolean;
+    get_object(): Gio.DBusObject | null;
+    get_info(): Gio.DBusInterfaceInfo;
+    set_object(object?: Gio.DBusObject | null): void;
+    vfunc_dup_object(): Gio.DBusObject | null;
+    vfunc_get_info(): Gio.DBusInterfaceInfo;
+    vfunc_set_object(object?: Gio.DBusObject | null): void;
+    init(cancellable?: Gio.Cancellable | null): boolean;
+    vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+    call_delete(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_delete(
+        arg_properties: GLib.Variant,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_delete(
+        arg_properties: GLib.Variant,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_delete_finish(res: Gio.AsyncResult): boolean;
+    call_delete_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+    call_list(cancellable?: Gio.Cancellable | null): Promise<[GLib.Variant | null]>;
+    call_list(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_list(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<[GLib.Variant | null]> | void;
+    call_list_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
+    call_list_sync(cancellable?: Gio.Cancellable | null): [boolean, GLib.Variant | null];
+    call_set(
+        arg_requested_properties: GLib.Variant,
+        cancellable?: Gio.Cancellable | null
+    ): Promise<[GLib.Variant | null]>;
+    call_set(
+        arg_requested_properties: GLib.Variant,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_set(
+        arg_requested_properties: GLib.Variant,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<[GLib.Variant | null]> | void;
+    call_set_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
+    call_set_sync(
+        arg_requested_properties: GLib.Variant,
+        cancellable?: Gio.Cancellable | null
+    ): [boolean, GLib.Variant | null];
+    complete_delete(invocation: Gio.DBusMethodInvocation): void;
+    complete_list(invocation: Gio.DBusMethodInvocation, profiles: GLib.Variant): void;
+    complete_set(invocation: Gio.DBusMethodInvocation, stored_properties: GLib.Variant): void;
+    emit_updated(): void;
+    vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
+    vfunc_handle_list(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_handle_set(invocation: Gio.DBusMethodInvocation, arg_requested_properties: GLib.Variant): boolean;
+    vfunc_updated(): void;
+}
+export module GdbusModem3gppProfileManagerSkeleton {
+    export interface ConstructorProperties extends Gio.DBusInterfaceSkeleton.ConstructorProperties {
+        [key: string]: any;
+    }
+}
+export class GdbusModem3gppProfileManagerSkeleton
+    extends Gio.DBusInterfaceSkeleton
+    implements Gio.DBusInterface, GdbusModem3gppProfileManager
+{
+    static $gtype: GObject.GType<GdbusModem3gppProfileManagerSkeleton>;
+
+    constructor(properties?: Partial<GdbusModem3gppProfileManagerSkeleton.ConstructorProperties>, ...args: any[]);
+    _init(properties?: Partial<GdbusModem3gppProfileManagerSkeleton.ConstructorProperties>, ...args: any[]): void;
+
+    // Constructors
+
+    static ["new"](): GdbusModem3gppProfileManagerSkeleton;
+
+    // Implemented Members
+
+    get_object(): Gio.DBusObject | null;
+    get_info(): Gio.DBusInterfaceInfo;
+    set_object(object?: Gio.DBusObject | null): void;
+    vfunc_dup_object(): Gio.DBusObject | null;
+    vfunc_get_info(): Gio.DBusInterfaceInfo;
+    vfunc_set_object(object?: Gio.DBusObject | null): void;
+    call_delete(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_delete(
+        arg_properties: GLib.Variant,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_delete(
+        arg_properties: GLib.Variant,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_delete_finish(res: Gio.AsyncResult): boolean;
+    call_delete_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+    call_list(cancellable?: Gio.Cancellable | null): Promise<[GLib.Variant | null]>;
+    call_list(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_list(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<[GLib.Variant | null]> | void;
+    call_list_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
+    call_list_sync(cancellable?: Gio.Cancellable | null): [boolean, GLib.Variant | null];
+    call_set(
+        arg_requested_properties: GLib.Variant,
+        cancellable?: Gio.Cancellable | null
+    ): Promise<[GLib.Variant | null]>;
+    call_set(
+        arg_requested_properties: GLib.Variant,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_set(
+        arg_requested_properties: GLib.Variant,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<[GLib.Variant | null]> | void;
+    call_set_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
+    call_set_sync(
+        arg_requested_properties: GLib.Variant,
+        cancellable?: Gio.Cancellable | null
+    ): [boolean, GLib.Variant | null];
+    complete_delete(invocation: Gio.DBusMethodInvocation): void;
+    complete_list(invocation: Gio.DBusMethodInvocation, profiles: GLib.Variant): void;
+    complete_set(invocation: Gio.DBusMethodInvocation, stored_properties: GLib.Variant): void;
+    emit_updated(): void;
+    vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
+    vfunc_handle_list(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_handle_set(invocation: Gio.DBusMethodInvocation, arg_requested_properties: GLib.Variant): boolean;
+    vfunc_updated(): void;
 }
 export module GdbusModem3gppProxy {
     export interface ConstructorProperties extends Gio.DBusProxy.ConstructorProperties {
@@ -2234,6 +3184,19 @@ export class GdbusModem3gppProxy
     vfunc_set_object(object?: Gio.DBusObject | null): void;
     init(cancellable?: Gio.Cancellable | null): boolean;
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+    call_disable_facility_lock(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_disable_facility_lock(
+        arg_properties: GLib.Variant,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_disable_facility_lock(
+        arg_properties: GLib.Variant,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_disable_facility_lock_finish(res: Gio.AsyncResult): boolean;
+    call_disable_facility_lock_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
     call_register(arg_operator_id: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_register(
         arg_operator_id: string,
@@ -2287,10 +3250,12 @@ export class GdbusModem3gppProxy
         arg_settings: GLib.Variant,
         cancellable?: Gio.Cancellable | null
     ): boolean;
+    complete_disable_facility_lock(invocation: Gio.DBusMethodInvocation): void;
     complete_register(invocation: Gio.DBusMethodInvocation): void;
     complete_scan(invocation: Gio.DBusMethodInvocation, results: GLib.Variant): void;
     complete_set_eps_ue_mode_operation(invocation: Gio.DBusMethodInvocation): void;
     complete_set_initial_eps_bearer_settings(invocation: Gio.DBusMethodInvocation): void;
+    vfunc_handle_disable_facility_lock(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
     vfunc_handle_register(invocation: Gio.DBusMethodInvocation, arg_operator_id: string): boolean;
     vfunc_handle_scan(invocation: Gio.DBusMethodInvocation): boolean;
     vfunc_handle_set_eps_ue_mode_operation(invocation: Gio.DBusMethodInvocation, arg_mode: number): boolean;
@@ -2361,6 +3326,19 @@ export class GdbusModem3gppSkeleton extends Gio.DBusInterfaceSkeleton implements
     vfunc_dup_object(): Gio.DBusObject | null;
     vfunc_get_info(): Gio.DBusInterfaceInfo;
     vfunc_set_object(object?: Gio.DBusObject | null): void;
+    call_disable_facility_lock(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_disable_facility_lock(
+        arg_properties: GLib.Variant,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_disable_facility_lock(
+        arg_properties: GLib.Variant,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_disable_facility_lock_finish(res: Gio.AsyncResult): boolean;
+    call_disable_facility_lock_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
     call_register(arg_operator_id: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_register(
         arg_operator_id: string,
@@ -2414,10 +3392,12 @@ export class GdbusModem3gppSkeleton extends Gio.DBusInterfaceSkeleton implements
         arg_settings: GLib.Variant,
         cancellable?: Gio.Cancellable | null
     ): boolean;
+    complete_disable_facility_lock(invocation: Gio.DBusMethodInvocation): void;
     complete_register(invocation: Gio.DBusMethodInvocation): void;
     complete_scan(invocation: Gio.DBusMethodInvocation, results: GLib.Variant): void;
     complete_set_eps_ue_mode_operation(invocation: Gio.DBusMethodInvocation): void;
     complete_set_initial_eps_bearer_settings(invocation: Gio.DBusMethodInvocation): void;
+    vfunc_handle_disable_facility_lock(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
     vfunc_handle_register(invocation: Gio.DBusMethodInvocation, arg_operator_id: string): boolean;
     vfunc_handle_scan(invocation: Gio.DBusMethodInvocation): boolean;
     vfunc_handle_set_eps_ue_mode_operation(invocation: Gio.DBusMethodInvocation, arg_mode: number): boolean;
@@ -2576,7 +3556,7 @@ export class GdbusModem3gppUssdProxy
     ): Promise<boolean> | void;
     call_cancel_finish(res: Gio.AsyncResult): boolean;
     call_cancel_sync(cancellable?: Gio.Cancellable | null): boolean;
-    call_initiate(arg_command: string, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_initiate(arg_command: string, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_initiate(
         arg_command: string,
         cancellable: Gio.Cancellable | null,
@@ -2586,10 +3566,10 @@ export class GdbusModem3gppUssdProxy
         arg_command: string,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_initiate_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_initiate_sync(arg_command: string, cancellable?: Gio.Cancellable | null): [boolean, string | null];
-    call_respond(arg_response: string, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    ): Promise<[string]> | void;
+    call_initiate_finish(res: Gio.AsyncResult): [boolean, string];
+    call_initiate_sync(arg_command: string, cancellable?: Gio.Cancellable | null): [boolean, string];
+    call_respond(arg_response: string, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_respond(
         arg_response: string,
         cancellable: Gio.Cancellable | null,
@@ -2599,9 +3579,9 @@ export class GdbusModem3gppUssdProxy
         arg_response: string,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_respond_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_respond_sync(arg_response: string, cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_respond_finish(res: Gio.AsyncResult): [boolean, string];
+    call_respond_sync(arg_response: string, cancellable?: Gio.Cancellable | null): [boolean, string];
     complete_cancel(invocation: Gio.DBusMethodInvocation): void;
     complete_initiate(invocation: Gio.DBusMethodInvocation, reply: string): void;
     complete_respond(invocation: Gio.DBusMethodInvocation, reply: string): void;
@@ -2656,7 +3636,7 @@ export class GdbusModem3gppUssdSkeleton
     ): Promise<boolean> | void;
     call_cancel_finish(res: Gio.AsyncResult): boolean;
     call_cancel_sync(cancellable?: Gio.Cancellable | null): boolean;
-    call_initiate(arg_command: string, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_initiate(arg_command: string, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_initiate(
         arg_command: string,
         cancellable: Gio.Cancellable | null,
@@ -2666,10 +3646,10 @@ export class GdbusModem3gppUssdSkeleton
         arg_command: string,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_initiate_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_initiate_sync(arg_command: string, cancellable?: Gio.Cancellable | null): [boolean, string | null];
-    call_respond(arg_response: string, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    ): Promise<[string]> | void;
+    call_initiate_finish(res: Gio.AsyncResult): [boolean, string];
+    call_initiate_sync(arg_command: string, cancellable?: Gio.Cancellable | null): [boolean, string];
+    call_respond(arg_response: string, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_respond(
         arg_response: string,
         cancellable: Gio.Cancellable | null,
@@ -2679,9 +3659,9 @@ export class GdbusModem3gppUssdSkeleton
         arg_response: string,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_respond_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_respond_sync(arg_response: string, cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_respond_finish(res: Gio.AsyncResult): [boolean, string];
+    call_respond_sync(arg_response: string, cancellable?: Gio.Cancellable | null): [boolean, string];
     complete_cancel(invocation: Gio.DBusMethodInvocation): void;
     complete_initiate(invocation: Gio.DBusMethodInvocation, reply: string): void;
     complete_respond(invocation: Gio.DBusMethodInvocation, reply: string): void;
@@ -3105,14 +4085,14 @@ export class GdbusModemFirmwareProxy
     vfunc_set_object(object?: Gio.DBusObject | null): void;
     init(cancellable?: Gio.Cancellable | null): boolean;
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
-    call_list(cancellable?: Gio.Cancellable | null): Promise<[string | null, GLib.Variant | null]>;
+    call_list(cancellable?: Gio.Cancellable | null): Promise<[string, GLib.Variant | null]>;
     call_list(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     call_list(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null, GLib.Variant | null]> | void;
-    call_list_finish(res: Gio.AsyncResult): [boolean, string | null, GLib.Variant | null];
-    call_list_sync(cancellable?: Gio.Cancellable | null): [boolean, string | null, GLib.Variant | null];
+    ): Promise<[string, GLib.Variant | null]> | void;
+    call_list_finish(res: Gio.AsyncResult): [boolean, string, GLib.Variant | null];
+    call_list_sync(cancellable?: Gio.Cancellable | null): [boolean, string, GLib.Variant | null];
     call_select(arg_uniqueid: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_select(
         arg_uniqueid: string,
@@ -3164,14 +4144,14 @@ export class GdbusModemFirmwareSkeleton
     vfunc_dup_object(): Gio.DBusObject | null;
     vfunc_get_info(): Gio.DBusInterfaceInfo;
     vfunc_set_object(object?: Gio.DBusObject | null): void;
-    call_list(cancellable?: Gio.Cancellable | null): Promise<[string | null, GLib.Variant | null]>;
+    call_list(cancellable?: Gio.Cancellable | null): Promise<[string, GLib.Variant | null]>;
     call_list(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     call_list(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null, GLib.Variant | null]> | void;
-    call_list_finish(res: Gio.AsyncResult): [boolean, string | null, GLib.Variant | null];
-    call_list_sync(cancellable?: Gio.Cancellable | null): [boolean, string | null, GLib.Variant | null];
+    ): Promise<[string, GLib.Variant | null]> | void;
+    call_list_finish(res: Gio.AsyncResult): [boolean, string, GLib.Variant | null];
+    call_list_sync(cancellable?: Gio.Cancellable | null): [boolean, string, GLib.Variant | null];
     call_select(arg_uniqueid: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_select(
         arg_uniqueid: string,
@@ -3707,7 +4687,7 @@ export class GdbusModemMessagingProxy
     vfunc_set_object(object?: Gio.DBusObject | null): void;
     init(cancellable?: Gio.Cancellable | null): boolean;
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
-    call_create(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_create(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_create(
         arg_properties: GLib.Variant,
         cancellable: Gio.Cancellable | null,
@@ -3717,9 +4697,9 @@ export class GdbusModemMessagingProxy
         arg_properties: GLib.Variant,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_create_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_create_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_create_finish(res: Gio.AsyncResult): [boolean, string];
+    call_create_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string];
     call_delete(arg_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_delete(
         arg_path: string,
@@ -3791,7 +4771,7 @@ export class GdbusModemMessagingSkeleton
     vfunc_dup_object(): Gio.DBusObject | null;
     vfunc_get_info(): Gio.DBusInterfaceInfo;
     vfunc_set_object(object?: Gio.DBusObject | null): void;
-    call_create(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_create(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_create(
         arg_properties: GLib.Variant,
         cancellable: Gio.Cancellable | null,
@@ -3801,9 +4781,9 @@ export class GdbusModemMessagingSkeleton
         arg_properties: GLib.Variant,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_create_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_create_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_create_finish(res: Gio.AsyncResult): [boolean, string];
+    call_create_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string];
     call_delete(arg_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_delete(
         arg_path: string,
@@ -4258,6 +5238,10 @@ export class GdbusModemProxy
     set max_active_bearers(val: number);
     get maxActiveBearers(): number;
     set maxActiveBearers(val: number);
+    get max_active_multiplexed_bearers(): number;
+    set max_active_multiplexed_bearers(val: number);
+    get maxActiveMultiplexedBearers(): number;
+    set maxActiveMultiplexedBearers(val: number);
     get max_bearers(): number;
     set max_bearers(val: number);
     get maxBearers(): number;
@@ -4442,7 +5426,7 @@ export class GdbusModemProxy
     vfunc_set_object(object?: Gio.DBusObject | null): void;
     init(cancellable?: Gio.Cancellable | null): boolean;
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
-    call_command(arg_cmd: string, arg_timeout: number, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_command(arg_cmd: string, arg_timeout: number, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_command(
         arg_cmd: string,
         arg_timeout: number,
@@ -4454,14 +5438,10 @@ export class GdbusModemProxy
         arg_timeout: number,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_command_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_command_sync(
-        arg_cmd: string,
-        arg_timeout: number,
-        cancellable?: Gio.Cancellable | null
-    ): [boolean, string | null];
-    call_create_bearer(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    ): Promise<[string]> | void;
+    call_command_finish(res: Gio.AsyncResult): [boolean, string];
+    call_command_sync(arg_cmd: string, arg_timeout: number, cancellable?: Gio.Cancellable | null): [boolean, string];
+    call_create_bearer(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_create_bearer(
         arg_properties: GLib.Variant,
         cancellable: Gio.Cancellable | null,
@@ -4471,12 +5451,9 @@ export class GdbusModemProxy
         arg_properties: GLib.Variant,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_create_bearer_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_create_bearer_sync(
-        arg_properties: GLib.Variant,
-        cancellable?: Gio.Cancellable | null
-    ): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_create_bearer_finish(res: Gio.AsyncResult): [boolean, string];
+    call_create_bearer_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string];
     call_delete_bearer(arg_bearer: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_delete_bearer(
         arg_bearer: string,
@@ -4971,7 +5948,7 @@ export class GdbusModemSimpleProxy
     vfunc_set_object(object?: Gio.DBusObject | null): void;
     init(cancellable?: Gio.Cancellable | null): boolean;
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
-    call_connect(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_connect(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_connect(
         arg_properties: GLib.Variant,
         cancellable: Gio.Cancellable | null,
@@ -4981,9 +5958,9 @@ export class GdbusModemSimpleProxy
         arg_properties: GLib.Variant,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_connect_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_connect_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_connect_finish(res: Gio.AsyncResult): [boolean, string];
+    call_connect_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string];
     call_disconnect(arg_bearer: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_disconnect(
         arg_bearer: string,
@@ -5035,7 +6012,7 @@ export class GdbusModemSimpleSkeleton extends Gio.DBusInterfaceSkeleton implemen
     vfunc_dup_object(): Gio.DBusObject | null;
     vfunc_get_info(): Gio.DBusInterfaceInfo;
     vfunc_set_object(object?: Gio.DBusObject | null): void;
-    call_connect(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_connect(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_connect(
         arg_properties: GLib.Variant,
         cancellable: Gio.Cancellable | null,
@@ -5045,9 +6022,9 @@ export class GdbusModemSimpleSkeleton extends Gio.DBusInterfaceSkeleton implemen
         arg_properties: GLib.Variant,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_connect_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_connect_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_connect_finish(res: Gio.AsyncResult): [boolean, string];
+    call_connect_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string];
     call_disconnect(arg_bearer: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_disconnect(
         arg_bearer: string,
@@ -5137,6 +6114,10 @@ export class GdbusModemSkeleton extends Gio.DBusInterfaceSkeleton implements Gio
     set max_active_bearers(val: number);
     get maxActiveBearers(): number;
     set maxActiveBearers(val: number);
+    get max_active_multiplexed_bearers(): number;
+    set max_active_multiplexed_bearers(val: number);
+    get maxActiveMultiplexedBearers(): number;
+    set maxActiveMultiplexedBearers(val: number);
     get max_bearers(): number;
     set max_bearers(val: number);
     get maxBearers(): number;
@@ -5218,7 +6199,7 @@ export class GdbusModemSkeleton extends Gio.DBusInterfaceSkeleton implements Gio
     vfunc_dup_object(): Gio.DBusObject | null;
     vfunc_get_info(): Gio.DBusInterfaceInfo;
     vfunc_set_object(object?: Gio.DBusObject | null): void;
-    call_command(arg_cmd: string, arg_timeout: number, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_command(arg_cmd: string, arg_timeout: number, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_command(
         arg_cmd: string,
         arg_timeout: number,
@@ -5230,14 +6211,10 @@ export class GdbusModemSkeleton extends Gio.DBusInterfaceSkeleton implements Gio
         arg_timeout: number,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_command_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_command_sync(
-        arg_cmd: string,
-        arg_timeout: number,
-        cancellable?: Gio.Cancellable | null
-    ): [boolean, string | null];
-    call_create_bearer(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    ): Promise<[string]> | void;
+    call_command_finish(res: Gio.AsyncResult): [boolean, string];
+    call_command_sync(arg_cmd: string, arg_timeout: number, cancellable?: Gio.Cancellable | null): [boolean, string];
+    call_create_bearer(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_create_bearer(
         arg_properties: GLib.Variant,
         cancellable: Gio.Cancellable | null,
@@ -5247,12 +6224,9 @@ export class GdbusModemSkeleton extends Gio.DBusInterfaceSkeleton implements Gio
         arg_properties: GLib.Variant,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_create_bearer_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_create_bearer_sync(
-        arg_properties: GLib.Variant,
-        cancellable?: Gio.Cancellable | null
-    ): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_create_bearer_finish(res: Gio.AsyncResult): [boolean, string];
+    call_create_bearer_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string];
     call_delete_bearer(arg_bearer: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_delete_bearer(
         arg_bearer: string,
@@ -5536,14 +6510,14 @@ export class GdbusModemTimeProxy
     vfunc_set_object(object?: Gio.DBusObject | null): void;
     init(cancellable?: Gio.Cancellable | null): boolean;
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
-    call_get_network_time(cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_get_network_time(cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_get_network_time(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     call_get_network_time(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_get_network_time_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_get_network_time_sync(cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_get_network_time_finish(res: Gio.AsyncResult): [boolean, string];
+    call_get_network_time_sync(cancellable?: Gio.Cancellable | null): [boolean, string];
     complete_get_network_time(invocation: Gio.DBusMethodInvocation, time: string): void;
     emit_network_time_changed(arg_time: string): void;
     vfunc_handle_get_network_time(invocation: Gio.DBusMethodInvocation): boolean;
@@ -5579,14 +6553,14 @@ export class GdbusModemTimeSkeleton extends Gio.DBusInterfaceSkeleton implements
     vfunc_dup_object(): Gio.DBusObject | null;
     vfunc_get_info(): Gio.DBusInterfaceInfo;
     vfunc_set_object(object?: Gio.DBusObject | null): void;
-    call_get_network_time(cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_get_network_time(cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_get_network_time(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     call_get_network_time(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_get_network_time_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_get_network_time_sync(cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_get_network_time_finish(res: Gio.AsyncResult): [boolean, string];
+    call_get_network_time_sync(cancellable?: Gio.Cancellable | null): [boolean, string];
     complete_get_network_time(invocation: Gio.DBusMethodInvocation, time: string): void;
     emit_network_time_changed(arg_time: string): void;
     vfunc_handle_get_network_time(invocation: Gio.DBusMethodInvocation): boolean;
@@ -5730,14 +6704,14 @@ export class GdbusModemVoiceProxy
     vfunc_set_object(object?: Gio.DBusObject | null): void;
     init(cancellable?: Gio.Cancellable | null): boolean;
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
-    call_call_waiting_query(cancellable?: Gio.Cancellable | null): Promise<[boolean | null]>;
+    call_call_waiting_query(cancellable?: Gio.Cancellable | null): Promise<[boolean]>;
     call_call_waiting_query(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     call_call_waiting_query(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[boolean | null]> | void;
-    call_call_waiting_query_finish(res: Gio.AsyncResult): [boolean, boolean | null];
-    call_call_waiting_query_sync(cancellable?: Gio.Cancellable | null): [boolean, boolean | null];
+    ): Promise<[boolean]> | void;
+    call_call_waiting_query_finish(res: Gio.AsyncResult): [boolean, boolean];
+    call_call_waiting_query_sync(cancellable?: Gio.Cancellable | null): [boolean, boolean];
     call_call_waiting_setup(arg_enable: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_call_waiting_setup(
         arg_enable: boolean,
@@ -5751,7 +6725,7 @@ export class GdbusModemVoiceProxy
     ): Promise<boolean> | void;
     call_call_waiting_setup_finish(res: Gio.AsyncResult): boolean;
     call_call_waiting_setup_sync(arg_enable: boolean, cancellable?: Gio.Cancellable | null): boolean;
-    call_create_call(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_create_call(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_create_call(
         arg_properties: GLib.Variant,
         cancellable: Gio.Cancellable | null,
@@ -5761,9 +6735,9 @@ export class GdbusModemVoiceProxy
         arg_properties: GLib.Variant,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_create_call_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_create_call_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_create_call_finish(res: Gio.AsyncResult): [boolean, string];
+    call_create_call_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string];
     call_delete_call(arg_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_delete_call(
         arg_path: string,
@@ -5872,14 +6846,14 @@ export class GdbusModemVoiceSkeleton extends Gio.DBusInterfaceSkeleton implement
     vfunc_dup_object(): Gio.DBusObject | null;
     vfunc_get_info(): Gio.DBusInterfaceInfo;
     vfunc_set_object(object?: Gio.DBusObject | null): void;
-    call_call_waiting_query(cancellable?: Gio.Cancellable | null): Promise<[boolean | null]>;
+    call_call_waiting_query(cancellable?: Gio.Cancellable | null): Promise<[boolean]>;
     call_call_waiting_query(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     call_call_waiting_query(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[boolean | null]> | void;
-    call_call_waiting_query_finish(res: Gio.AsyncResult): [boolean, boolean | null];
-    call_call_waiting_query_sync(cancellable?: Gio.Cancellable | null): [boolean, boolean | null];
+    ): Promise<[boolean]> | void;
+    call_call_waiting_query_finish(res: Gio.AsyncResult): [boolean, boolean];
+    call_call_waiting_query_sync(cancellable?: Gio.Cancellable | null): [boolean, boolean];
     call_call_waiting_setup(arg_enable: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_call_waiting_setup(
         arg_enable: boolean,
@@ -5893,7 +6867,7 @@ export class GdbusModemVoiceSkeleton extends Gio.DBusInterfaceSkeleton implement
     ): Promise<boolean> | void;
     call_call_waiting_setup_finish(res: Gio.AsyncResult): boolean;
     call_call_waiting_setup_sync(arg_enable: boolean, cancellable?: Gio.Cancellable | null): boolean;
-    call_create_call(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_create_call(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_create_call(
         arg_properties: GLib.Variant,
         cancellable: Gio.Cancellable | null,
@@ -5903,9 +6877,9 @@ export class GdbusModemVoiceSkeleton extends Gio.DBusInterfaceSkeleton implement
         arg_properties: GLib.Variant,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_create_call_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_create_call_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_create_call_finish(res: Gio.AsyncResult): [boolean, string];
+    call_create_call_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string];
     call_delete_call(arg_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_delete_call(
         arg_path: string,
@@ -6109,12 +7083,12 @@ export class GdbusObjectManagerClient
         callback?: Gio.AsyncReadyCallback<this> | null
     ): Promise<boolean> | void;
     vfunc_init_finish(res: Gio.AsyncResult): boolean;
-    get_interface(object_path: string, interface_name: string): Gio.DBusInterface;
-    get_object(object_path: string): Gio.DBusObject;
+    get_interface(object_path: string, interface_name: string): Gio.DBusInterface | null;
+    get_object(object_path: string): Gio.DBusObject | null;
     get_object_path(): string;
     get_objects(): Gio.DBusObject[];
-    vfunc_get_interface(object_path: string, interface_name: string): Gio.DBusInterface;
-    vfunc_get_object(object_path: string): Gio.DBusObject;
+    vfunc_get_interface(object_path: string, interface_name: string): Gio.DBusInterface | null;
+    vfunc_get_object(object_path: string): Gio.DBusObject | null;
     vfunc_get_object_path(): string;
     vfunc_get_objects(): Gio.DBusObject[];
     vfunc_interface_added(object: Gio.DBusObject, interface_: Gio.DBusInterface): void;
@@ -6177,6 +7151,10 @@ export class GdbusObjectProxy extends Gio.DBusObjectProxy implements Gio.DBusObj
     set modemVoice(val: GdbusModemVoice);
     get modem3gpp(): GdbusModem3gpp;
     set modem3gpp(val: GdbusModem3gpp);
+    get modem3gpp_profile_manager(): GdbusModem3gppProfileManager;
+    set modem3gpp_profile_manager(val: GdbusModem3gppProfileManager);
+    get modem3gppProfileManager(): GdbusModem3gppProfileManager;
+    set modem3gppProfileManager(val: GdbusModem3gppProfileManager);
     get modem3gpp_ussd(): GdbusModem3gppUssd;
     set modem3gpp_ussd(val: GdbusModem3gppUssd);
     get modem3gppUssd(): GdbusModem3gppUssd;
@@ -6198,6 +7176,7 @@ export class GdbusObjectProxy extends Gio.DBusObjectProxy implements Gio.DBusObj
     vfunc_interface_removed(interface_: Gio.DBusInterface): void;
     get_modem(): GdbusModem | null;
     get_modem3gpp(): GdbusModem3gpp | null;
+    get_modem3gpp_profile_manager(): GdbusModem3gppProfileManager | null;
     get_modem3gpp_ussd(): GdbusModem3gppUssd | null;
     get_modem_cdma(): GdbusModemCdma | null;
     get_modem_firmware(): GdbusModemFirmware | null;
@@ -6262,6 +7241,10 @@ export class GdbusObjectSkeleton extends Gio.DBusObjectSkeleton implements Gio.D
     set modemVoice(val: GdbusModemVoice);
     get modem3gpp(): GdbusModem3gpp;
     set modem3gpp(val: GdbusModem3gpp);
+    get modem3gpp_profile_manager(): GdbusModem3gppProfileManager;
+    set modem3gpp_profile_manager(val: GdbusModem3gppProfileManager);
+    get modem3gppProfileManager(): GdbusModem3gppProfileManager;
+    set modem3gppProfileManager(val: GdbusModem3gppProfileManager);
     get modem3gpp_ussd(): GdbusModem3gppUssd;
     set modem3gpp_ussd(val: GdbusModem3gppUssd);
     get modem3gppUssd(): GdbusModem3gppUssd;
@@ -6275,6 +7258,7 @@ export class GdbusObjectSkeleton extends Gio.DBusObjectSkeleton implements Gio.D
 
     set_modem(interface_?: GdbusModem | null): void;
     set_modem3gpp(interface_?: GdbusModem3gpp | null): void;
+    set_modem3gpp_profile_manager(interface_?: GdbusModem3gppProfileManager | null): void;
     set_modem3gpp_ussd(interface_?: GdbusModem3gppUssd | null): void;
     set_modem_cdma(interface_?: GdbusModemCdma | null): void;
     set_modem_firmware(interface_?: GdbusModemFirmware | null): void;
@@ -6298,6 +7282,7 @@ export class GdbusObjectSkeleton extends Gio.DBusObjectSkeleton implements Gio.D
     vfunc_interface_removed(interface_: Gio.DBusInterface): void;
     get_modem(): GdbusModem | null;
     get_modem3gpp(): GdbusModem3gpp | null;
+    get_modem3gpp_profile_manager(): GdbusModem3gppProfileManager | null;
     get_modem3gpp_ussd(): GdbusModem3gppUssd | null;
     get_modem_cdma(): GdbusModemCdma | null;
     get_modem_firmware(): GdbusModemFirmware | null;
@@ -6628,6 +7613,10 @@ export class GdbusSimProxy
     set operator_name(val: string);
     get operatorName(): string;
     set operatorName(val: string);
+    get preferred_networks(): GLib.Variant;
+    set preferred_networks(val: GLib.Variant);
+    get preferredNetworks(): GLib.Variant;
+    set preferredNetworks(val: GLib.Variant);
     get sim_identifier(): string;
     set sim_identifier(val: string);
     get simIdentifier(): string;
@@ -6806,14 +7795,38 @@ export class GdbusSimProxy
     ): Promise<boolean> | void;
     call_send_puk_finish(res: Gio.AsyncResult): boolean;
     call_send_puk_sync(arg_puk: string, arg_pin: string, cancellable?: Gio.Cancellable | null): boolean;
+    call_set_preferred_networks(
+        arg_preferred_networks: GLib.Variant,
+        cancellable?: Gio.Cancellable | null
+    ): Promise<boolean>;
+    call_set_preferred_networks(
+        arg_preferred_networks: GLib.Variant,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_set_preferred_networks(
+        arg_preferred_networks: GLib.Variant,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_set_preferred_networks_finish(res: Gio.AsyncResult): boolean;
+    call_set_preferred_networks_sync(
+        arg_preferred_networks: GLib.Variant,
+        cancellable?: Gio.Cancellable | null
+    ): boolean;
     complete_change_pin(invocation: Gio.DBusMethodInvocation): void;
     complete_enable_pin(invocation: Gio.DBusMethodInvocation): void;
     complete_send_pin(invocation: Gio.DBusMethodInvocation): void;
     complete_send_puk(invocation: Gio.DBusMethodInvocation): void;
+    complete_set_preferred_networks(invocation: Gio.DBusMethodInvocation): void;
     vfunc_handle_change_pin(invocation: Gio.DBusMethodInvocation, arg_old_pin: string, arg_new_pin: string): boolean;
     vfunc_handle_enable_pin(invocation: Gio.DBusMethodInvocation, arg_pin: string, arg_enabled: boolean): boolean;
     vfunc_handle_send_pin(invocation: Gio.DBusMethodInvocation, arg_pin: string): boolean;
     vfunc_handle_send_puk(invocation: Gio.DBusMethodInvocation, arg_puk: string, arg_pin: string): boolean;
+    vfunc_handle_set_preferred_networks(
+        invocation: Gio.DBusMethodInvocation,
+        arg_preferred_networks: GLib.Variant
+    ): boolean;
 }
 export module GdbusSimSkeleton {
     export interface ConstructorProperties extends Gio.DBusInterfaceSkeleton.ConstructorProperties {
@@ -6846,6 +7859,10 @@ export class GdbusSimSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.D
     set operator_name(val: string);
     get operatorName(): string;
     set operatorName(val: string);
+    get preferred_networks(): GLib.Variant;
+    set preferred_networks(val: GLib.Variant);
+    get preferredNetworks(): GLib.Variant;
+    set preferredNetworks(val: GLib.Variant);
     get sim_identifier(): string;
     set sim_identifier(val: string);
     get simIdentifier(): string;
@@ -6921,14 +7938,38 @@ export class GdbusSimSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.D
     ): Promise<boolean> | void;
     call_send_puk_finish(res: Gio.AsyncResult): boolean;
     call_send_puk_sync(arg_puk: string, arg_pin: string, cancellable?: Gio.Cancellable | null): boolean;
+    call_set_preferred_networks(
+        arg_preferred_networks: GLib.Variant,
+        cancellable?: Gio.Cancellable | null
+    ): Promise<boolean>;
+    call_set_preferred_networks(
+        arg_preferred_networks: GLib.Variant,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_set_preferred_networks(
+        arg_preferred_networks: GLib.Variant,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_set_preferred_networks_finish(res: Gio.AsyncResult): boolean;
+    call_set_preferred_networks_sync(
+        arg_preferred_networks: GLib.Variant,
+        cancellable?: Gio.Cancellable | null
+    ): boolean;
     complete_change_pin(invocation: Gio.DBusMethodInvocation): void;
     complete_enable_pin(invocation: Gio.DBusMethodInvocation): void;
     complete_send_pin(invocation: Gio.DBusMethodInvocation): void;
     complete_send_puk(invocation: Gio.DBusMethodInvocation): void;
+    complete_set_preferred_networks(invocation: Gio.DBusMethodInvocation): void;
     vfunc_handle_change_pin(invocation: Gio.DBusMethodInvocation, arg_old_pin: string, arg_new_pin: string): boolean;
     vfunc_handle_enable_pin(invocation: Gio.DBusMethodInvocation, arg_pin: string, arg_enabled: boolean): boolean;
     vfunc_handle_send_pin(invocation: Gio.DBusMethodInvocation, arg_pin: string): boolean;
     vfunc_handle_send_puk(invocation: Gio.DBusMethodInvocation, arg_puk: string, arg_pin: string): boolean;
+    vfunc_handle_set_preferred_networks(
+        invocation: Gio.DBusMethodInvocation,
+        arg_preferred_networks: GLib.Variant
+    ): boolean;
 }
 export module GdbusSmsProxy {
     export interface ConstructorProperties extends Gio.DBusProxy.ConstructorProperties {
@@ -7275,6 +8316,7 @@ export class Location3gpp extends GObject.Object {
     get_location_area_code(): number;
     get_mobile_country_code(): number;
     get_mobile_network_code(): number;
+    get_operator_code(): string;
     get_tracking_area_code(): number;
 }
 export module LocationCdmaBs {
@@ -7534,6 +8576,10 @@ export class Modem
     set max_active_bearers(val: number);
     get maxActiveBearers(): number;
     set maxActiveBearers(val: number);
+    get max_active_multiplexed_bearers(): number;
+    set max_active_multiplexed_bearers(val: number);
+    get maxActiveMultiplexedBearers(): number;
+    set maxActiveMultiplexedBearers(val: number);
     get max_bearers(): number;
     set max_bearers(val: number);
     get maxBearers(): number;
@@ -7706,6 +8752,7 @@ export class Modem
     get_hardware_revision(): string;
     get_manufacturer(): string;
     get_max_active_bearers(): number;
+    get_max_active_multiplexed_bearers(): number;
     get_max_bearers(): number;
     get_model(): string;
     get_plugin(): string;
@@ -7860,7 +8907,7 @@ export class Modem
         callback?: Gio.AsyncReadyCallback<this> | null
     ): Promise<boolean> | void;
     vfunc_init_finish(res: Gio.AsyncResult): boolean;
-    call_command(arg_cmd: string, arg_timeout: number, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_command(arg_cmd: string, arg_timeout: number, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_command(
         arg_cmd: string,
         arg_timeout: number,
@@ -7872,14 +8919,10 @@ export class Modem
         arg_timeout: number,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_command_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_command_sync(
-        arg_cmd: string,
-        arg_timeout: number,
-        cancellable?: Gio.Cancellable | null
-    ): [boolean, string | null];
-    call_create_bearer(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    ): Promise<[string]> | void;
+    call_command_finish(res: Gio.AsyncResult): [boolean, string];
+    call_command_sync(arg_cmd: string, arg_timeout: number, cancellable?: Gio.Cancellable | null): [boolean, string];
+    call_create_bearer(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_create_bearer(
         arg_properties: GLib.Variant,
         cancellable: Gio.Cancellable | null,
@@ -7889,12 +8932,9 @@ export class Modem
         arg_properties: GLib.Variant,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_create_bearer_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_create_bearer_sync(
-        arg_properties: GLib.Variant,
-        cancellable?: Gio.Cancellable | null
-    ): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_create_bearer_finish(res: Gio.AsyncResult): [boolean, string];
+    call_create_bearer_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string];
     call_delete_bearer(arg_bearer: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_delete_bearer(
         arg_bearer: string,
@@ -8097,6 +9137,29 @@ export class Modem3gpp
 
     // Members
 
+    disable_facility_lock(
+        facility: Modem3gppFacility,
+        control_key: string,
+        cancellable?: Gio.Cancellable | null
+    ): Promise<boolean>;
+    disable_facility_lock(
+        facility: Modem3gppFacility,
+        control_key: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    disable_facility_lock(
+        facility: Modem3gppFacility,
+        control_key: string,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    disable_facility_lock_finish(res: Gio.AsyncResult): boolean;
+    disable_facility_lock_sync(
+        facility: Modem3gppFacility,
+        control_key: string,
+        cancellable?: Gio.Cancellable | null
+    ): boolean;
     dup_imei(): string;
     dup_initial_eps_bearer_path(): string;
     dup_operator_code(): string;
@@ -8201,6 +9264,19 @@ export class Modem3gpp
         callback?: Gio.AsyncReadyCallback<this> | null
     ): Promise<boolean> | void;
     vfunc_init_finish(res: Gio.AsyncResult): boolean;
+    call_disable_facility_lock(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_disable_facility_lock(
+        arg_properties: GLib.Variant,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_disable_facility_lock(
+        arg_properties: GLib.Variant,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_disable_facility_lock_finish(res: Gio.AsyncResult): boolean;
+    call_disable_facility_lock_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
     call_register(arg_operator_id: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_register(
         arg_operator_id: string,
@@ -8254,10 +9330,12 @@ export class Modem3gpp
         arg_settings: GLib.Variant,
         cancellable?: Gio.Cancellable | null
     ): boolean;
+    complete_disable_facility_lock(invocation: Gio.DBusMethodInvocation): void;
     complete_register(invocation: Gio.DBusMethodInvocation): void;
     complete_scan(invocation: Gio.DBusMethodInvocation, results: GLib.Variant): void;
     complete_set_eps_ue_mode_operation(invocation: Gio.DBusMethodInvocation): void;
     complete_set_initial_eps_bearer_settings(invocation: Gio.DBusMethodInvocation): void;
+    vfunc_handle_disable_facility_lock(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
     vfunc_handle_register(invocation: Gio.DBusMethodInvocation, arg_operator_id: string): boolean;
     vfunc_handle_scan(invocation: Gio.DBusMethodInvocation): boolean;
     vfunc_handle_set_eps_ue_mode_operation(invocation: Gio.DBusMethodInvocation, arg_mode: number): boolean;
@@ -8265,6 +9343,143 @@ export class Modem3gpp
         invocation: Gio.DBusMethodInvocation,
         arg_settings: GLib.Variant
     ): boolean;
+}
+export module Modem3gppProfileManager {
+    export interface ConstructorProperties extends GdbusModem3gppProfileManagerProxy.ConstructorProperties {
+        [key: string]: any;
+    }
+}
+export class Modem3gppProfileManager
+    extends GdbusModem3gppProfileManagerProxy
+    implements
+        Gio.AsyncInitable<Modem3gppProfileManager>,
+        Gio.DBusInterface,
+        Gio.Initable,
+        GdbusModem3gppProfileManager
+{
+    static $gtype: GObject.GType<Modem3gppProfileManager>;
+
+    constructor(properties?: Partial<Modem3gppProfileManager.ConstructorProperties>, ...args: any[]);
+    _init(properties?: Partial<Modem3gppProfileManager.ConstructorProperties>, ...args: any[]): void;
+
+    // Members
+
+    ["delete"](profile: __3gppProfile, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    ["delete"](
+        profile: __3gppProfile,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    ["delete"](
+        profile: __3gppProfile,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    delete_finish(res: Gio.AsyncResult): boolean;
+    delete_sync(profile: __3gppProfile, cancellable?: Gio.Cancellable | null): boolean;
+    dup_path(): string;
+    get_path(): string;
+    list(cancellable?: Gio.Cancellable | null): Promise<[__3gppProfile[] | null]>;
+    list(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    list(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<[__3gppProfile[] | null]> | void;
+    list_finish(res: Gio.AsyncResult): [boolean, __3gppProfile[] | null];
+    list_sync(cancellable?: Gio.Cancellable | null): [boolean, __3gppProfile[] | null];
+    set(requested: __3gppProfile, cancellable?: Gio.Cancellable | null): Promise<__3gppProfile>;
+    set(
+        requested: __3gppProfile,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    set(
+        requested: __3gppProfile,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<__3gppProfile> | void;
+    // Conflicted with GObject.Object.set
+    set(...args: never[]): any;
+    set_finish(res: Gio.AsyncResult): __3gppProfile;
+    set_sync(requested: __3gppProfile, cancellable?: Gio.Cancellable | null): __3gppProfile;
+
+    // Implemented Members
+
+    init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    init_async(
+        io_priority: number,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    init_async(
+        io_priority: number,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    init_finish(res: Gio.AsyncResult): boolean;
+    new_finish(res: Gio.AsyncResult): Modem3gppProfileManager;
+    // Conflicted with ModemManager.GdbusModem3gppProfileManagerProxy.new_finish
+    new_finish(...args: never[]): any;
+    vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    vfunc_init_async(
+        io_priority: number,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    vfunc_init_async(
+        io_priority: number,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    vfunc_init_finish(res: Gio.AsyncResult): boolean;
+    call_delete(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_delete(
+        arg_properties: GLib.Variant,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_delete(
+        arg_properties: GLib.Variant,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_delete_finish(res: Gio.AsyncResult): boolean;
+    call_delete_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+    call_list(cancellable?: Gio.Cancellable | null): Promise<[GLib.Variant | null]>;
+    call_list(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_list(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<[GLib.Variant | null]> | void;
+    call_list_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
+    call_list_sync(cancellable?: Gio.Cancellable | null): [boolean, GLib.Variant | null];
+    call_set(
+        arg_requested_properties: GLib.Variant,
+        cancellable?: Gio.Cancellable | null
+    ): Promise<[GLib.Variant | null]>;
+    call_set(
+        arg_requested_properties: GLib.Variant,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_set(
+        arg_requested_properties: GLib.Variant,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<[GLib.Variant | null]> | void;
+    call_set_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
+    call_set_sync(
+        arg_requested_properties: GLib.Variant,
+        cancellable?: Gio.Cancellable | null
+    ): [boolean, GLib.Variant | null];
+    complete_delete(invocation: Gio.DBusMethodInvocation): void;
+    complete_list(invocation: Gio.DBusMethodInvocation, profiles: GLib.Variant): void;
+    complete_set(invocation: Gio.DBusMethodInvocation, stored_properties: GLib.Variant): void;
+    emit_updated(): void;
+    vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
+    vfunc_handle_list(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_handle_set(invocation: Gio.DBusMethodInvocation, arg_requested_properties: GLib.Variant): boolean;
+    vfunc_updated(): void;
 }
 export module Modem3gppUssd {
     export interface ConstructorProperties extends GdbusModem3gppUssdProxy.ConstructorProperties {
@@ -8366,7 +9581,7 @@ export class Modem3gppUssd
     ): Promise<boolean> | void;
     call_cancel_finish(res: Gio.AsyncResult): boolean;
     call_cancel_sync(cancellable?: Gio.Cancellable | null): boolean;
-    call_initiate(arg_command: string, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_initiate(arg_command: string, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_initiate(
         arg_command: string,
         cancellable: Gio.Cancellable | null,
@@ -8376,10 +9591,10 @@ export class Modem3gppUssd
         arg_command: string,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_initiate_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_initiate_sync(arg_command: string, cancellable?: Gio.Cancellable | null): [boolean, string | null];
-    call_respond(arg_response: string, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    ): Promise<[string]> | void;
+    call_initiate_finish(res: Gio.AsyncResult): [boolean, string];
+    call_initiate_sync(arg_command: string, cancellable?: Gio.Cancellable | null): [boolean, string];
+    call_respond(arg_response: string, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_respond(
         arg_response: string,
         cancellable: Gio.Cancellable | null,
@@ -8389,9 +9604,9 @@ export class Modem3gppUssd
         arg_response: string,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_respond_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_respond_sync(arg_response: string, cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_respond_finish(res: Gio.AsyncResult): [boolean, string];
+    call_respond_sync(arg_response: string, cancellable?: Gio.Cancellable | null): [boolean, string];
     complete_cancel(invocation: Gio.DBusMethodInvocation): void;
     complete_initiate(invocation: Gio.DBusMethodInvocation, reply: string): void;
     complete_respond(invocation: Gio.DBusMethodInvocation, reply: string): void;
@@ -8616,14 +9831,14 @@ export class ModemFirmware
         callback?: Gio.AsyncReadyCallback<this> | null
     ): Promise<boolean> | void;
     vfunc_init_finish(res: Gio.AsyncResult): boolean;
-    call_list(cancellable?: Gio.Cancellable | null): Promise<[string | null, GLib.Variant | null]>;
+    call_list(cancellable?: Gio.Cancellable | null): Promise<[string, GLib.Variant | null]>;
     call_list(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     call_list(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null, GLib.Variant | null]> | void;
-    call_list_finish(res: Gio.AsyncResult): [boolean, string | null, GLib.Variant | null];
-    call_list_sync(cancellable?: Gio.Cancellable | null): [boolean, string | null, GLib.Variant | null];
+    ): Promise<[string, GLib.Variant | null]> | void;
+    call_list_finish(res: Gio.AsyncResult): [boolean, string, GLib.Variant | null];
+    call_list_sync(cancellable?: Gio.Cancellable | null): [boolean, string, GLib.Variant | null];
     call_select(arg_uniqueid: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_select(
         arg_uniqueid: string,
@@ -8739,6 +9954,10 @@ export class ModemLocation
     get_gps_raw_sync(cancellable?: Gio.Cancellable | null): LocationGpsRaw;
     get_gps_refresh_rate(): number;
     get_path(): string;
+    get_signaled_3gpp(): Location3gpp;
+    get_signaled_cdma_bs(): LocationCdmaBs;
+    get_signaled_gps_nmea(): LocationGpsNmea;
+    get_signaled_gps_raw(): LocationGpsRaw;
     get_supl_server(): string;
     get_supported_assistance_data(): ModemLocationAssistanceDataType;
     inject_assistance_data(data: Uint8Array | string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
@@ -8754,6 +9973,10 @@ export class ModemLocation
     ): Promise<boolean> | void;
     inject_assistance_data_finish(res: Gio.AsyncResult): boolean;
     inject_assistance_data_sync(data: Uint8Array | string, cancellable?: Gio.Cancellable | null): boolean;
+    peek_signaled_3gpp(): Location3gpp;
+    peek_signaled_cdma_bs(): LocationCdmaBs;
+    peek_signaled_gps_nmea(): LocationGpsNmea;
+    peek_signaled_gps_raw(): LocationGpsRaw;
     set_gps_refresh_rate(rate: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     set_gps_refresh_rate(
         rate: number,
@@ -9001,7 +10224,7 @@ export class ModemMessaging
         callback?: Gio.AsyncReadyCallback<this> | null
     ): Promise<boolean> | void;
     vfunc_init_finish(res: Gio.AsyncResult): boolean;
-    call_create(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_create(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_create(
         arg_properties: GLib.Variant,
         cancellable: Gio.Cancellable | null,
@@ -9011,9 +10234,9 @@ export class ModemMessaging
         arg_properties: GLib.Variant,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_create_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_create_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_create_finish(res: Gio.AsyncResult): [boolean, string];
+    call_create_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string];
     call_delete(arg_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_delete(
         arg_path: string,
@@ -9113,8 +10336,10 @@ export class ModemOma
     dup_path(): string;
     get_features(): OmaFeature;
     get_path(): string;
+    get_pending_network_initiated_sessions(): [boolean, OmaPendingNetworkInitiatedSession[]];
     get_session_state(): OmaSessionState;
     get_session_type(): OmaSessionType;
+    peek_pending_network_initiated_sessions(): [boolean, OmaPendingNetworkInitiatedSession[]];
     setup(features: OmaFeature, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     setup(
         features: OmaFeature,
@@ -9448,7 +10673,7 @@ export class ModemSimple
         callback?: Gio.AsyncReadyCallback<this> | null
     ): Promise<boolean> | void;
     vfunc_init_finish(res: Gio.AsyncResult): boolean;
-    call_connect(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_connect(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_connect(
         arg_properties: GLib.Variant,
         cancellable: Gio.Cancellable | null,
@@ -9458,9 +10683,9 @@ export class ModemSimple
         arg_properties: GLib.Variant,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_connect_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_connect_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_connect_finish(res: Gio.AsyncResult): [boolean, string];
+    call_connect_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string];
     call_disconnect(arg_bearer: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_disconnect(
         arg_bearer: string,
@@ -9554,14 +10779,14 @@ export class ModemTime
         callback?: Gio.AsyncReadyCallback<this> | null
     ): Promise<boolean> | void;
     vfunc_init_finish(res: Gio.AsyncResult): boolean;
-    call_get_network_time(cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_get_network_time(cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_get_network_time(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     call_get_network_time(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_get_network_time_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_get_network_time_sync(cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_get_network_time_finish(res: Gio.AsyncResult): [boolean, string];
+    call_get_network_time_sync(cancellable?: Gio.Cancellable | null): [boolean, string];
     complete_get_network_time(invocation: Gio.DBusMethodInvocation, time: string): void;
     emit_network_time_changed(arg_time: string): void;
     vfunc_handle_get_network_time(invocation: Gio.DBusMethodInvocation): boolean;
@@ -9708,14 +10933,14 @@ export class ModemVoice
         callback?: Gio.AsyncReadyCallback<this> | null
     ): Promise<boolean> | void;
     vfunc_init_finish(res: Gio.AsyncResult): boolean;
-    call_call_waiting_query(cancellable?: Gio.Cancellable | null): Promise<[boolean | null]>;
+    call_call_waiting_query(cancellable?: Gio.Cancellable | null): Promise<[boolean]>;
     call_call_waiting_query(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     call_call_waiting_query(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[boolean | null]> | void;
-    call_call_waiting_query_finish(res: Gio.AsyncResult): [boolean, boolean | null];
-    call_call_waiting_query_sync(cancellable?: Gio.Cancellable | null): [boolean, boolean | null];
+    ): Promise<[boolean]> | void;
+    call_call_waiting_query_finish(res: Gio.AsyncResult): [boolean, boolean];
+    call_call_waiting_query_sync(cancellable?: Gio.Cancellable | null): [boolean, boolean];
     call_call_waiting_setup(arg_enable: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_call_waiting_setup(
         arg_enable: boolean,
@@ -9729,7 +10954,7 @@ export class ModemVoice
     ): Promise<boolean> | void;
     call_call_waiting_setup_finish(res: Gio.AsyncResult): boolean;
     call_call_waiting_setup_sync(arg_enable: boolean, cancellable?: Gio.Cancellable | null): boolean;
-    call_create_call(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_create_call(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_create_call(
         arg_properties: GLib.Variant,
         cancellable: Gio.Cancellable | null,
@@ -9739,9 +10964,9 @@ export class ModemVoice
         arg_properties: GLib.Variant,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_create_call_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_create_call_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_create_call_finish(res: Gio.AsyncResult): [boolean, string];
+    call_create_call_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string];
     call_delete_call(arg_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_delete_call(
         arg_path: string,
@@ -9888,6 +11113,10 @@ export class Object extends GdbusObjectProxy implements Gio.DBusObject, GdbusObj
     set modemVoice(val: GdbusModemVoice);
     get modem3gpp(): GdbusModem3gpp;
     set modem3gpp(val: GdbusModem3gpp);
+    get modem3gpp_profile_manager(): GdbusModem3gppProfileManager;
+    set modem3gpp_profile_manager(val: GdbusModem3gppProfileManager);
+    get modem3gppProfileManager(): GdbusModem3gppProfileManager;
+    set modem3gppProfileManager(val: GdbusModem3gppProfileManager);
     get modem3gpp_ussd(): GdbusModem3gppUssd;
     set modem3gpp_ussd(val: GdbusModem3gppUssd);
     get modem3gppUssd(): GdbusModem3gppUssd;
@@ -9900,6 +11129,7 @@ export class Object extends GdbusObjectProxy implements Gio.DBusObject, GdbusObj
     // Conflicted with ModemManager.GdbusObject.get_modem
     get_modem(...args: never[]): any;
     get_modem_3gpp(): Modem3gpp;
+    get_modem_3gpp_profile_manager(): Modem3gppProfileManager;
     get_modem_3gpp_ussd(): Modem3gppUssd;
     get_modem_cdma(): ModemCdma;
     // Conflicted with ModemManager.GdbusObject.get_modem_cdma
@@ -9932,6 +11162,7 @@ export class Object extends GdbusObjectProxy implements Gio.DBusObject, GdbusObj
     // Implemented Members
 
     get_modem3gpp(): GdbusModem3gpp | null;
+    get_modem3gpp_profile_manager(): GdbusModem3gppProfileManager | null;
     get_modem3gpp_ussd(): GdbusModem3gppUssd | null;
 }
 export module Pco {
@@ -10007,6 +11238,10 @@ export class Sim extends GdbusSimProxy implements Gio.AsyncInitable<Sim>, Gio.DB
     set operator_name(val: string);
     get operatorName(): string;
     set operatorName(val: string);
+    get preferred_networks(): GLib.Variant;
+    set preferred_networks(val: GLib.Variant);
+    get preferredNetworks(): GLib.Variant;
+    set preferredNetworks(val: GLib.Variant);
     get sim_identifier(): string;
     set sim_identifier(val: string);
     get simIdentifier(): string;
@@ -10062,6 +11297,7 @@ export class Sim extends GdbusSimProxy implements Gio.AsyncInitable<Sim>, Gio.DB
     get_operator_identifier(): string;
     get_operator_name(): string;
     get_path(): string;
+    get_preferred_networks(): SimPreferredNetwork[];
     send_pin(pin: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     send_pin(pin: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     send_pin(
@@ -10086,6 +11322,25 @@ export class Sim extends GdbusSimProxy implements Gio.AsyncInitable<Sim>, Gio.DB
     ): Promise<boolean> | void;
     send_puk_finish(res: Gio.AsyncResult): boolean;
     send_puk_sync(puk: string, pin: string, cancellable?: Gio.Cancellable | null): boolean;
+    set_preferred_networks(
+        preferred_networks: SimPreferredNetwork[],
+        cancellable?: Gio.Cancellable | null
+    ): Promise<boolean>;
+    set_preferred_networks(
+        preferred_networks: SimPreferredNetwork[],
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    set_preferred_networks(
+        preferred_networks: SimPreferredNetwork[],
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    set_preferred_networks_finish(res: Gio.AsyncResult): boolean;
+    set_preferred_networks_sync(
+        preferred_networks: SimPreferredNetwork[],
+        cancellable?: Gio.Cancellable | null
+    ): boolean;
 
     // Implemented Members
 
@@ -10174,14 +11429,38 @@ export class Sim extends GdbusSimProxy implements Gio.AsyncInitable<Sim>, Gio.DB
     ): Promise<boolean> | void;
     call_send_puk_finish(res: Gio.AsyncResult): boolean;
     call_send_puk_sync(arg_puk: string, arg_pin: string, cancellable?: Gio.Cancellable | null): boolean;
+    call_set_preferred_networks(
+        arg_preferred_networks: GLib.Variant,
+        cancellable?: Gio.Cancellable | null
+    ): Promise<boolean>;
+    call_set_preferred_networks(
+        arg_preferred_networks: GLib.Variant,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_set_preferred_networks(
+        arg_preferred_networks: GLib.Variant,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_set_preferred_networks_finish(res: Gio.AsyncResult): boolean;
+    call_set_preferred_networks_sync(
+        arg_preferred_networks: GLib.Variant,
+        cancellable?: Gio.Cancellable | null
+    ): boolean;
     complete_change_pin(invocation: Gio.DBusMethodInvocation): void;
     complete_enable_pin(invocation: Gio.DBusMethodInvocation): void;
     complete_send_pin(invocation: Gio.DBusMethodInvocation): void;
     complete_send_puk(invocation: Gio.DBusMethodInvocation): void;
+    complete_set_preferred_networks(invocation: Gio.DBusMethodInvocation): void;
     vfunc_handle_change_pin(invocation: Gio.DBusMethodInvocation, arg_old_pin: string, arg_new_pin: string): boolean;
     vfunc_handle_enable_pin(invocation: Gio.DBusMethodInvocation, arg_pin: string, arg_enabled: boolean): boolean;
     vfunc_handle_send_pin(invocation: Gio.DBusMethodInvocation, arg_pin: string): boolean;
     vfunc_handle_send_puk(invocation: Gio.DBusMethodInvocation, arg_puk: string, arg_pin: string): boolean;
+    vfunc_handle_set_preferred_networks(
+        invocation: Gio.DBusMethodInvocation,
+        arg_preferred_networks: GLib.Variant
+    ): boolean;
 }
 export module SimpleConnectProperties {
     export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
@@ -10203,21 +11482,27 @@ export class SimpleConnectProperties extends GObject.Object {
     get_allow_roaming(): boolean;
     get_allowed_auth(): BearerAllowedAuth;
     get_apn(): string;
+    get_apn_type(): BearerApnType;
     get_ip_type(): BearerIpFamily;
+    get_multiplex(): BearerMultiplexSupport;
     get_number(): string;
     get_operator_id(): string;
     get_password(): string;
     get_pin(): string;
+    get_profile_id(): number;
     get_rm_protocol(): ModemCdmaRmProtocol;
     get_user(): string;
     set_allow_roaming(allow_roaming: boolean): void;
     set_allowed_auth(allowed_auth: BearerAllowedAuth): void;
     set_apn(apn: string): void;
+    set_apn_type(apn_type: BearerApnType): void;
     set_ip_type(ip_type: BearerIpFamily): void;
+    set_multiplex(multiplex: BearerMultiplexSupport): void;
     set_number(number: string): void;
     set_operator_id(operator_id: string): void;
     set_password(password: string): void;
     set_pin(pin: string): void;
+    set_profile_id(profile_id: number): void;
     set_rm_protocol(protocol: ModemCdmaRmProtocol): void;
     set_user(user: string): void;
 }
@@ -10315,7 +11600,7 @@ export class SimpleStatus extends GObject.Object {
     get_cdma_nid(): number;
     get_cdma_sid(): number;
     get_current_bands(): [ModemBand, number];
-    get_signal_quality(): [number, boolean | null];
+    get_signal_quality(): [number, boolean];
     get_state(): ModemState;
 }
 export module Sms {
@@ -10542,6 +11827,12 @@ export class UnlockRetries extends GObject.Object {
     get(lock: ModemLock): number;
 }
 
+export class __3gppProfilePrivate {
+    static $gtype: GObject.GType<__3gppProfilePrivate>;
+
+    constructor(copy: __3gppProfilePrivate);
+}
+
 export class BearerIpConfigPrivate {
     static $gtype: GObject.GType<BearerIpConfigPrivate>;
 
@@ -10612,6 +11903,30 @@ export class GdbusBearerSkeletonPrivate {
     static $gtype: GObject.GType<GdbusBearerSkeletonPrivate>;
 
     constructor(copy: GdbusBearerSkeletonPrivate);
+}
+
+export class GdbusCallProxyPrivate {
+    static $gtype: GObject.GType<GdbusCallProxyPrivate>;
+
+    constructor(copy: GdbusCallProxyPrivate);
+}
+
+export class GdbusCallSkeletonPrivate {
+    static $gtype: GObject.GType<GdbusCallSkeletonPrivate>;
+
+    constructor(copy: GdbusCallSkeletonPrivate);
+}
+
+export class GdbusModem3gppProfileManagerProxyPrivate {
+    static $gtype: GObject.GType<GdbusModem3gppProfileManagerProxyPrivate>;
+
+    constructor(copy: GdbusModem3gppProfileManagerProxyPrivate);
+}
+
+export class GdbusModem3gppProfileManagerSkeletonPrivate {
+    static $gtype: GObject.GType<GdbusModem3gppProfileManagerSkeletonPrivate>;
+
+    constructor(copy: GdbusModem3gppProfileManagerSkeletonPrivate);
 }
 
 export class GdbusModem3gppProxyPrivate {
@@ -10874,6 +12189,12 @@ export class ModemFirmwarePrivate {
     constructor(copy: ModemFirmwarePrivate);
 }
 
+export class ModemLocationPrivate {
+    static $gtype: GObject.GType<ModemLocationPrivate>;
+
+    constructor(copy: ModemLocationPrivate);
+}
+
 export class ModemMessagingPrivate {
     static $gtype: GObject.GType<ModemMessagingPrivate>;
 
@@ -10961,6 +12282,24 @@ export class SignalPrivate {
     constructor(copy: SignalPrivate);
 }
 
+export class SimPreferredNetwork {
+    static $gtype: GObject.GType<SimPreferredNetwork>;
+
+    constructor();
+    constructor(properties?: Partial<{}>);
+    constructor(copy: SimPreferredNetwork);
+
+    // Constructors
+    static ["new"](): SimPreferredNetwork;
+
+    // Members
+    free(): void;
+    get_access_technology(): ModemAccessTechnology;
+    get_operator_code(): string;
+    set_access_technology(access_technology: ModemAccessTechnology): void;
+    set_operator_code(operator_code: string): void;
+}
+
 export class SimpleConnectPropertiesPrivate {
     static $gtype: GObject.GType<SimpleConnectPropertiesPrivate>;
 
@@ -10998,6 +12337,8 @@ export interface GdbusBearerPrototype extends GObject.Object {
     bearer_type: number;
     bearerType: number;
     connected: boolean;
+    connection_error: GLib.Variant;
+    connectionError: GLib.Variant;
     interface: string;
     ip_timeout: number;
     ipTimeout: number;
@@ -11005,6 +12346,9 @@ export interface GdbusBearerPrototype extends GObject.Object {
     ip4Config: GLib.Variant;
     ip6_config: GLib.Variant;
     ip6Config: GLib.Variant;
+    multiplexed: boolean;
+    profile_id: number;
+    profileId: number;
     properties: GLib.Variant;
     stats: GLib.Variant;
     suspended: boolean;
@@ -11034,6 +12378,117 @@ export interface GdbusBearerPrototype extends GObject.Object {
 }
 
 export const GdbusBearer: GdbusBearerNamespace;
+
+export interface GdbusCallNamespace {
+    $gtype: GObject.GType<GdbusCall>;
+    prototype: GdbusCallPrototype;
+
+    interface_info(): Gio.DBusInterfaceInfo;
+    override_properties(klass: GObject.Object, property_id_begin: number): number;
+}
+export type GdbusCall = GdbusCallPrototype;
+export interface GdbusCallPrototype extends GObject.Object {
+    // Properties
+    audio_format: GLib.Variant;
+    audioFormat: GLib.Variant;
+    audio_port: string;
+    audioPort: string;
+    direction: number;
+    multiparty: boolean;
+    number: string;
+    state: number;
+    state_reason: number;
+    stateReason: number;
+
+    // Members
+
+    call_accept(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_accept(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_accept(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_accept_finish(res: Gio.AsyncResult): boolean;
+    call_accept_sync(cancellable?: Gio.Cancellable | null): boolean;
+    call_deflect(arg_number: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_deflect(
+        arg_number: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_deflect(
+        arg_number: string,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_deflect_finish(res: Gio.AsyncResult): boolean;
+    call_deflect_sync(arg_number: string, cancellable?: Gio.Cancellable | null): boolean;
+    call_hangup(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_hangup(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_hangup(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_hangup_finish(res: Gio.AsyncResult): boolean;
+    call_hangup_sync(cancellable?: Gio.Cancellable | null): boolean;
+    call_join_multiparty(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_join_multiparty(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_join_multiparty(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_join_multiparty_finish(res: Gio.AsyncResult): boolean;
+    call_join_multiparty_sync(cancellable?: Gio.Cancellable | null): boolean;
+    call_leave_multiparty(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_leave_multiparty(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_leave_multiparty(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_leave_multiparty_finish(res: Gio.AsyncResult): boolean;
+    call_leave_multiparty_sync(cancellable?: Gio.Cancellable | null): boolean;
+    call_send_dtmf(arg_dtmf: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_send_dtmf(
+        arg_dtmf: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_send_dtmf(
+        arg_dtmf: string,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_send_dtmf_finish(res: Gio.AsyncResult): boolean;
+    call_send_dtmf_sync(arg_dtmf: string, cancellable?: Gio.Cancellable | null): boolean;
+    call_start(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_start(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_start(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_start_finish(res: Gio.AsyncResult): boolean;
+    call_start_sync(cancellable?: Gio.Cancellable | null): boolean;
+    complete_accept(invocation: Gio.DBusMethodInvocation): void;
+    complete_deflect(invocation: Gio.DBusMethodInvocation): void;
+    complete_hangup(invocation: Gio.DBusMethodInvocation): void;
+    complete_join_multiparty(invocation: Gio.DBusMethodInvocation): void;
+    complete_leave_multiparty(invocation: Gio.DBusMethodInvocation): void;
+    complete_send_dtmf(invocation: Gio.DBusMethodInvocation): void;
+    complete_start(invocation: Gio.DBusMethodInvocation): void;
+    emit_dtmf_received(arg_dtmf: string): void;
+    emit_state_changed(arg_old: number, arg_new: number, arg_reason: number): void;
+    vfunc_dtmf_received(arg_dtmf: string): void;
+    vfunc_handle_accept(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_handle_deflect(invocation: Gio.DBusMethodInvocation, arg_number: string): boolean;
+    vfunc_handle_hangup(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_handle_join_multiparty(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_handle_leave_multiparty(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_handle_send_dtmf(invocation: Gio.DBusMethodInvocation, arg_dtmf: string): boolean;
+    vfunc_handle_start(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_state_changed(arg_old: number, arg_new: number, arg_reason: number): void;
+}
+
+export const GdbusCall: GdbusCallNamespace;
 
 export interface GdbusModemNamespace {
     $gtype: GObject.GType<GdbusModem>;
@@ -11069,6 +12524,8 @@ export interface GdbusModemPrototype extends GObject.Object {
     manufacturer: string;
     max_active_bearers: number;
     maxActiveBearers: number;
+    max_active_multiplexed_bearers: number;
+    maxActiveMultiplexedBearers: number;
     max_bearers: number;
     maxBearers: number;
     model: string;
@@ -11106,7 +12563,7 @@ export interface GdbusModemPrototype extends GObject.Object {
 
     // Members
 
-    call_command(arg_cmd: string, arg_timeout: number, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_command(arg_cmd: string, arg_timeout: number, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_command(
         arg_cmd: string,
         arg_timeout: number,
@@ -11118,14 +12575,10 @@ export interface GdbusModemPrototype extends GObject.Object {
         arg_timeout: number,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_command_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_command_sync(
-        arg_cmd: string,
-        arg_timeout: number,
-        cancellable?: Gio.Cancellable | null
-    ): [boolean, string | null];
-    call_create_bearer(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    ): Promise<[string]> | void;
+    call_command_finish(res: Gio.AsyncResult): [boolean, string];
+    call_command_sync(arg_cmd: string, arg_timeout: number, cancellable?: Gio.Cancellable | null): [boolean, string];
+    call_create_bearer(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_create_bearer(
         arg_properties: GLib.Variant,
         cancellable: Gio.Cancellable | null,
@@ -11135,12 +12588,9 @@ export interface GdbusModemPrototype extends GObject.Object {
         arg_properties: GLib.Variant,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_create_bearer_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_create_bearer_sync(
-        arg_properties: GLib.Variant,
-        cancellable?: Gio.Cancellable | null
-    ): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_create_bearer_finish(res: Gio.AsyncResult): [boolean, string];
+    call_create_bearer_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string];
     call_delete_bearer(arg_bearer: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_delete_bearer(
         arg_bearer: string,
@@ -11322,6 +12772,19 @@ export interface GdbusModem3gppPrototype extends GObject.Object {
 
     // Members
 
+    call_disable_facility_lock(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_disable_facility_lock(
+        arg_properties: GLib.Variant,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_disable_facility_lock(
+        arg_properties: GLib.Variant,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_disable_facility_lock_finish(res: Gio.AsyncResult): boolean;
+    call_disable_facility_lock_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
     call_register(arg_operator_id: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_register(
         arg_operator_id: string,
@@ -11375,10 +12838,12 @@ export interface GdbusModem3gppPrototype extends GObject.Object {
         arg_settings: GLib.Variant,
         cancellable?: Gio.Cancellable | null
     ): boolean;
+    complete_disable_facility_lock(invocation: Gio.DBusMethodInvocation): void;
     complete_register(invocation: Gio.DBusMethodInvocation): void;
     complete_scan(invocation: Gio.DBusMethodInvocation, results: GLib.Variant): void;
     complete_set_eps_ue_mode_operation(invocation: Gio.DBusMethodInvocation): void;
     complete_set_initial_eps_bearer_settings(invocation: Gio.DBusMethodInvocation): void;
+    vfunc_handle_disable_facility_lock(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
     vfunc_handle_register(invocation: Gio.DBusMethodInvocation, arg_operator_id: string): boolean;
     vfunc_handle_scan(invocation: Gio.DBusMethodInvocation): boolean;
     vfunc_handle_set_eps_ue_mode_operation(invocation: Gio.DBusMethodInvocation, arg_mode: number): boolean;
@@ -11389,6 +12854,69 @@ export interface GdbusModem3gppPrototype extends GObject.Object {
 }
 
 export const GdbusModem3gpp: GdbusModem3gppNamespace;
+
+export interface GdbusModem3gppProfileManagerNamespace {
+    $gtype: GObject.GType<GdbusModem3gppProfileManager>;
+    prototype: GdbusModem3gppProfileManagerPrototype;
+
+    interface_info(): Gio.DBusInterfaceInfo;
+    override_properties(klass: GObject.Object, property_id_begin: number): number;
+}
+export type GdbusModem3gppProfileManager = GdbusModem3gppProfileManagerPrototype;
+export interface GdbusModem3gppProfileManagerPrototype extends GObject.Object {
+    // Members
+
+    call_delete(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    call_delete(
+        arg_properties: GLib.Variant,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_delete(
+        arg_properties: GLib.Variant,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_delete_finish(res: Gio.AsyncResult): boolean;
+    call_delete_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+    call_list(cancellable?: Gio.Cancellable | null): Promise<[GLib.Variant | null]>;
+    call_list(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    call_list(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<[GLib.Variant | null]> | void;
+    call_list_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
+    call_list_sync(cancellable?: Gio.Cancellable | null): [boolean, GLib.Variant | null];
+    call_set(
+        arg_requested_properties: GLib.Variant,
+        cancellable?: Gio.Cancellable | null
+    ): Promise<[GLib.Variant | null]>;
+    call_set(
+        arg_requested_properties: GLib.Variant,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_set(
+        arg_requested_properties: GLib.Variant,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<[GLib.Variant | null]> | void;
+    call_set_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
+    call_set_sync(
+        arg_requested_properties: GLib.Variant,
+        cancellable?: Gio.Cancellable | null
+    ): [boolean, GLib.Variant | null];
+    complete_delete(invocation: Gio.DBusMethodInvocation): void;
+    complete_list(invocation: Gio.DBusMethodInvocation, profiles: GLib.Variant): void;
+    complete_set(invocation: Gio.DBusMethodInvocation, stored_properties: GLib.Variant): void;
+    emit_updated(): void;
+    vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
+    vfunc_handle_list(invocation: Gio.DBusMethodInvocation): boolean;
+    vfunc_handle_set(invocation: Gio.DBusMethodInvocation, arg_requested_properties: GLib.Variant): boolean;
+    vfunc_updated(): void;
+}
+
+export const GdbusModem3gppProfileManager: GdbusModem3gppProfileManagerNamespace;
 
 export interface GdbusModem3gppUssdNamespace {
     $gtype: GObject.GType<GdbusModem3gppUssd>;
@@ -11416,7 +12944,7 @@ export interface GdbusModem3gppUssdPrototype extends GObject.Object {
     ): Promise<boolean> | void;
     call_cancel_finish(res: Gio.AsyncResult): boolean;
     call_cancel_sync(cancellable?: Gio.Cancellable | null): boolean;
-    call_initiate(arg_command: string, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_initiate(arg_command: string, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_initiate(
         arg_command: string,
         cancellable: Gio.Cancellable | null,
@@ -11426,10 +12954,10 @@ export interface GdbusModem3gppUssdPrototype extends GObject.Object {
         arg_command: string,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_initiate_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_initiate_sync(arg_command: string, cancellable?: Gio.Cancellable | null): [boolean, string | null];
-    call_respond(arg_response: string, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    ): Promise<[string]> | void;
+    call_initiate_finish(res: Gio.AsyncResult): [boolean, string];
+    call_initiate_sync(arg_command: string, cancellable?: Gio.Cancellable | null): [boolean, string];
+    call_respond(arg_response: string, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_respond(
         arg_response: string,
         cancellable: Gio.Cancellable | null,
@@ -11439,9 +12967,9 @@ export interface GdbusModem3gppUssdPrototype extends GObject.Object {
         arg_response: string,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_respond_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_respond_sync(arg_response: string, cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_respond_finish(res: Gio.AsyncResult): [boolean, string];
+    call_respond_sync(arg_response: string, cancellable?: Gio.Cancellable | null): [boolean, string];
     complete_cancel(invocation: Gio.DBusMethodInvocation): void;
     complete_initiate(invocation: Gio.DBusMethodInvocation, reply: string): void;
     complete_respond(invocation: Gio.DBusMethodInvocation, reply: string): void;
@@ -11534,14 +13062,14 @@ export interface GdbusModemFirmwarePrototype extends GObject.Object {
 
     // Members
 
-    call_list(cancellable?: Gio.Cancellable | null): Promise<[string | null, GLib.Variant | null]>;
+    call_list(cancellable?: Gio.Cancellable | null): Promise<[string, GLib.Variant | null]>;
     call_list(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     call_list(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null, GLib.Variant | null]> | void;
-    call_list_finish(res: Gio.AsyncResult): [boolean, string | null, GLib.Variant | null];
-    call_list_sync(cancellable?: Gio.Cancellable | null): [boolean, string | null, GLib.Variant | null];
+    ): Promise<[string, GLib.Variant | null]> | void;
+    call_list_finish(res: Gio.AsyncResult): [boolean, string, GLib.Variant | null];
+    call_list_sync(cancellable?: Gio.Cancellable | null): [boolean, string, GLib.Variant | null];
     call_select(arg_uniqueid: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_select(
         arg_uniqueid: string,
@@ -11691,7 +13219,7 @@ export interface GdbusModemMessagingPrototype extends GObject.Object {
 
     // Members
 
-    call_create(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_create(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_create(
         arg_properties: GLib.Variant,
         cancellable: Gio.Cancellable | null,
@@ -11701,9 +13229,9 @@ export interface GdbusModemMessagingPrototype extends GObject.Object {
         arg_properties: GLib.Variant,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_create_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_create_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_create_finish(res: Gio.AsyncResult): [boolean, string];
+    call_create_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string];
     call_delete(arg_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_delete(
         arg_path: string,
@@ -11898,7 +13426,7 @@ export type GdbusModemSimple = GdbusModemSimplePrototype;
 export interface GdbusModemSimplePrototype extends GObject.Object {
     // Members
 
-    call_connect(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_connect(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_connect(
         arg_properties: GLib.Variant,
         cancellable: Gio.Cancellable | null,
@@ -11908,9 +13436,9 @@ export interface GdbusModemSimplePrototype extends GObject.Object {
         arg_properties: GLib.Variant,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_connect_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_connect_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_connect_finish(res: Gio.AsyncResult): [boolean, string];
+    call_connect_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string];
     call_disconnect(arg_bearer: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_disconnect(
         arg_bearer: string,
@@ -11957,14 +13485,14 @@ export interface GdbusModemTimePrototype extends GObject.Object {
 
     // Members
 
-    call_get_network_time(cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_get_network_time(cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_get_network_time(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     call_get_network_time(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_get_network_time_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_get_network_time_sync(cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_get_network_time_finish(res: Gio.AsyncResult): [boolean, string];
+    call_get_network_time_sync(cancellable?: Gio.Cancellable | null): [boolean, string];
     complete_get_network_time(invocation: Gio.DBusMethodInvocation, time: string): void;
     emit_network_time_changed(arg_time: string): void;
     vfunc_handle_get_network_time(invocation: Gio.DBusMethodInvocation): boolean;
@@ -11989,14 +13517,14 @@ export interface GdbusModemVoicePrototype extends GObject.Object {
 
     // Members
 
-    call_call_waiting_query(cancellable?: Gio.Cancellable | null): Promise<[boolean | null]>;
+    call_call_waiting_query(cancellable?: Gio.Cancellable | null): Promise<[boolean]>;
     call_call_waiting_query(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     call_call_waiting_query(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[boolean | null]> | void;
-    call_call_waiting_query_finish(res: Gio.AsyncResult): [boolean, boolean | null];
-    call_call_waiting_query_sync(cancellable?: Gio.Cancellable | null): [boolean, boolean | null];
+    ): Promise<[boolean]> | void;
+    call_call_waiting_query_finish(res: Gio.AsyncResult): [boolean, boolean];
+    call_call_waiting_query_sync(cancellable?: Gio.Cancellable | null): [boolean, boolean];
     call_call_waiting_setup(arg_enable: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_call_waiting_setup(
         arg_enable: boolean,
@@ -12010,7 +13538,7 @@ export interface GdbusModemVoicePrototype extends GObject.Object {
     ): Promise<boolean> | void;
     call_call_waiting_setup_finish(res: Gio.AsyncResult): boolean;
     call_call_waiting_setup_sync(arg_enable: boolean, cancellable?: Gio.Cancellable | null): boolean;
-    call_create_call(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_create_call(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_create_call(
         arg_properties: GLib.Variant,
         cancellable: Gio.Cancellable | null,
@@ -12020,9 +13548,9 @@ export interface GdbusModemVoicePrototype extends GObject.Object {
         arg_properties: GLib.Variant,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_create_call_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_create_call_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_create_call_finish(res: Gio.AsyncResult): [boolean, string];
+    call_create_call_sync(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): [boolean, string];
     call_delete_call(arg_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_delete_call(
         arg_path: string,
@@ -12129,6 +13657,8 @@ export interface GdbusObjectPrototype extends Gio.DBusObject {
     modem_voice: GdbusModemVoice;
     modemVoice: GdbusModemVoice;
     modem3gpp: GdbusModem3gpp;
+    modem3gpp_profile_manager: GdbusModem3gppProfileManager;
+    modem3gppProfileManager: GdbusModem3gppProfileManager;
     modem3gpp_ussd: GdbusModem3gppUssd;
     modem3gppUssd: GdbusModem3gppUssd;
 
@@ -12136,6 +13666,7 @@ export interface GdbusObjectPrototype extends Gio.DBusObject {
 
     get_modem(): GdbusModem | null;
     get_modem3gpp(): GdbusModem3gpp | null;
+    get_modem3gpp_profile_manager(): GdbusModem3gppProfileManager | null;
     get_modem3gpp_ussd(): GdbusModem3gppUssd | null;
     get_modem_cdma(): GdbusModemCdma | null;
     get_modem_firmware(): GdbusModemFirmware | null;
@@ -12244,6 +13775,8 @@ export interface GdbusSimPrototype extends GObject.Object {
     operatorIdentifier: string;
     operator_name: string;
     operatorName: string;
+    preferred_networks: GLib.Variant;
+    preferredNetworks: GLib.Variant;
     sim_identifier: string;
     simIdentifier: string;
 
@@ -12307,14 +13840,38 @@ export interface GdbusSimPrototype extends GObject.Object {
     ): Promise<boolean> | void;
     call_send_puk_finish(res: Gio.AsyncResult): boolean;
     call_send_puk_sync(arg_puk: string, arg_pin: string, cancellable?: Gio.Cancellable | null): boolean;
+    call_set_preferred_networks(
+        arg_preferred_networks: GLib.Variant,
+        cancellable?: Gio.Cancellable | null
+    ): Promise<boolean>;
+    call_set_preferred_networks(
+        arg_preferred_networks: GLib.Variant,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    call_set_preferred_networks(
+        arg_preferred_networks: GLib.Variant,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    call_set_preferred_networks_finish(res: Gio.AsyncResult): boolean;
+    call_set_preferred_networks_sync(
+        arg_preferred_networks: GLib.Variant,
+        cancellable?: Gio.Cancellable | null
+    ): boolean;
     complete_change_pin(invocation: Gio.DBusMethodInvocation): void;
     complete_enable_pin(invocation: Gio.DBusMethodInvocation): void;
     complete_send_pin(invocation: Gio.DBusMethodInvocation): void;
     complete_send_puk(invocation: Gio.DBusMethodInvocation): void;
+    complete_set_preferred_networks(invocation: Gio.DBusMethodInvocation): void;
     vfunc_handle_change_pin(invocation: Gio.DBusMethodInvocation, arg_old_pin: string, arg_new_pin: string): boolean;
     vfunc_handle_enable_pin(invocation: Gio.DBusMethodInvocation, arg_pin: string, arg_enabled: boolean): boolean;
     vfunc_handle_send_pin(invocation: Gio.DBusMethodInvocation, arg_pin: string): boolean;
     vfunc_handle_send_puk(invocation: Gio.DBusMethodInvocation, arg_puk: string, arg_pin: string): boolean;
+    vfunc_handle_set_preferred_networks(
+        invocation: Gio.DBusMethodInvocation,
+        arg_preferred_networks: GLib.Variant
+    ): boolean;
 }
 
 export const GdbusSim: GdbusSimNamespace;

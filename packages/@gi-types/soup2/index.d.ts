@@ -1,7 +1,7 @@
 /**
  * Soup 2.4
  *
- * Generated from 2.72.0
+ * Generated from 2.74.2
  */
 
 import * as GObject from "@gi-types/gobject2";
@@ -129,15 +129,15 @@ export function cookies_to_response(cookies: Cookie[], msg: Message): void;
 export function form_decode(encoded_form: string): GLib.HashTable<string, string>;
 export function form_decode_multipart(
     msg: Message,
-    file_control_name?: string | null
-): [GLib.HashTable<string, string> | null, string | null, string | null, Buffer | null];
+    file_control_name: string | null
+): [GLib.HashTable<string, string> | null, string, string, Buffer | null];
 export function form_encode_datalist(form_data_set: GLib.Data): string;
-export function form_encode_hash(form_data_set: GLib.HashTable<string, string>): string;
+export function form_encode_hash(form_data_set: { [key: string]: any } | GLib.HashTable<string, string>): string;
 export function form_request_new_from_datalist(method: string, uri: string, form_data_set: GLib.Data): Message;
 export function form_request_new_from_hash(
     method: string,
     uri: string,
-    form_data_set: GLib.HashTable<string, string>
+    form_data_set: { [key: string]: any } | GLib.HashTable<string, string>
 ): Message;
 export function form_request_new_from_multipart(uri: string, multipart: Multipart): Message;
 export function get_major_version(): number;
@@ -145,7 +145,7 @@ export function get_micro_version(): number;
 export function get_minor_version(): number;
 export function get_resource(): Gio.Resource;
 export function header_contains(header: string, token: string): boolean;
-export function header_free_param_list(param_list: GLib.HashTable<string, string>): void;
+export function header_free_param_list(param_list: { [key: string]: any } | GLib.HashTable<string, string>): void;
 export function header_g_string_append_param(string: GLib.String, name: string, value: string): void;
 export function header_g_string_append_param_quoted(string: GLib.String, name: string, value: string): void;
 export function header_parse_list(header: string): string[];
@@ -159,15 +159,13 @@ export function headers_parse_request(
     str: string,
     len: number,
     req_headers: MessageHeaders
-): [number, string | null, string | null, HTTPVersion | null];
+): [number, string, string, HTTPVersion | null];
 export function headers_parse_response(
     str: string,
     len: number,
     headers: MessageHeaders
-): [boolean, HTTPVersion | null, number | null, string | null];
-export function headers_parse_status_line(
-    status_line: string
-): [boolean, HTTPVersion | null, number | null, string | null];
+): [boolean, HTTPVersion | null, number, string];
+export function headers_parse_status_line(status_line: string): [boolean, HTTPVersion | null, number, string];
 export function http_error_quark(): GLib.Quark;
 export function message_headers_iter_init(hdrs: MessageHeaders): MessageHeadersIter;
 export function request_error_quark(): GLib.Quark;
@@ -184,7 +182,7 @@ export function uri_encode(part: string, escape_extra?: string | null): string;
 export function uri_normalize(part: string, unescape_extra?: string | null): string;
 export function value_array_new(): GObject.ValueArray;
 export function value_hash_insert_value(
-    hash: GLib.HashTable<string, GObject.Value>,
+    hash: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
     key: string,
     value: GObject.Value | any
 ): void;
@@ -881,7 +879,7 @@ export abstract class Auth extends GObject.Object {
     vfunc_get_protection_space(source_uri: URI): string[];
     vfunc_is_authenticated(): boolean;
     vfunc_is_ready(msg: Message): boolean;
-    vfunc_update(msg: Message, auth_header: GLib.HashTable<any, any>): boolean;
+    vfunc_update(msg: Message, auth_header: { [key: string]: any } | GLib.HashTable<any, any>): boolean;
 }
 export module AuthBasic {
     export interface ConstructorProperties extends Auth.ConstructorProperties {
@@ -1035,6 +1033,9 @@ export class AuthManager extends GObject.Object implements SessionFeature {
     constructor(properties?: Partial<AuthManager.ConstructorProperties>, ...args: any[]);
     _init(properties?: Partial<AuthManager.ConstructorProperties>, ...args: any[]): void;
 
+    // Fields
+    priv: AuthManagerPrivate;
+
     // Signals
 
     connect(id: string, callback: (...args: any[]) => any): number;
@@ -1119,6 +1120,9 @@ export class Cache extends GObject.Object implements SessionFeature {
     get cache_type(): CacheType;
     get cacheType(): CacheType;
 
+    // Fields
+    priv: CachePrivate;
+
     // Constructors
 
     static ["new"](cache_dir: string | null, cache_type: CacheType): Cache;
@@ -1160,6 +1164,9 @@ export class ContentDecoder extends GObject.Object implements SessionFeature {
     constructor(properties?: Partial<ContentDecoder.ConstructorProperties>, ...args: any[]);
     _init(properties?: Partial<ContentDecoder.ConstructorProperties>, ...args: any[]): void;
 
+    // Fields
+    priv: ContentDecoderPrivate;
+
     // Implemented Members
 
     add_feature(type: GObject.GType): boolean;
@@ -1186,6 +1193,9 @@ export class ContentSniffer extends GObject.Object implements SessionFeature {
 
     constructor(properties?: Partial<ContentSniffer.ConstructorProperties>, ...args: any[]);
     _init(properties?: Partial<ContentSniffer.ConstructorProperties>, ...args: any[]): void;
+
+    // Fields
+    priv: ContentSnifferPrivate;
 
     // Constructors
 
@@ -1378,6 +1388,9 @@ export class HSTSEnforcer extends GObject.Object implements SessionFeature {
     constructor(properties?: Partial<HSTSEnforcer.ConstructorProperties>, ...args: any[]);
     _init(properties?: Partial<HSTSEnforcer.ConstructorProperties>, ...args: any[]): void;
 
+    // Fields
+    priv: HSTSEnforcerPrivate;
+
     // Signals
 
     connect(id: string, callback: (...args: any[]) => any): number;
@@ -1443,6 +1456,9 @@ export class HSTSEnforcerDB extends HSTSEnforcer implements SessionFeature {
 
     // Properties
     get filename(): string;
+
+    // Fields
+    priv: HSTSEnforcerDBPrivate | any;
 
     // Constructors
 
@@ -1628,7 +1644,11 @@ export class Message extends GObject.Object {
         signal: "content-sniffed",
         callback: (_source: this, type: string, params: GLib.HashTable<string, string>) => void
     ): number;
-    emit(signal: "content-sniffed", type: string, params: GLib.HashTable<string, string>): void;
+    emit(
+        signal: "content-sniffed",
+        type: string,
+        params: { [key: string]: any } | GLib.HashTable<string, string>
+    ): void;
     connect(signal: "finished", callback: (_source: this) => void): number;
     connect_after(signal: "finished", callback: (_source: this) => void): number;
     emit(signal: "finished"): void;
@@ -1682,7 +1702,7 @@ export class Message extends GObject.Object {
 
     // Members
 
-    content_sniffed(content_type: string, params: GLib.HashTable<any, any>): void;
+    content_sniffed(content_type: string, params: { [key: string]: any } | GLib.HashTable<any, any>): void;
     disable_feature(feature_type: GObject.GType): void;
     finished(): void;
     get_address(): Address;
@@ -1774,11 +1794,11 @@ export class MultipartInputStream extends Gio.FilterInputStream implements Gio.P
     can_poll(): boolean;
     create_source(cancellable?: Gio.Cancellable | null): GLib.Source;
     is_readable(): boolean;
-    read_nonblocking(buffer: Uint8Array | string, cancellable?: Gio.Cancellable | null): number;
+    read_nonblocking(cancellable?: Gio.Cancellable | null): [number, Uint8Array];
     vfunc_can_poll(): boolean;
     vfunc_create_source(cancellable?: Gio.Cancellable | null): GLib.Source;
     vfunc_is_readable(): boolean;
-    vfunc_read_nonblocking(buffer?: Uint8Array | null): number;
+    vfunc_read_nonblocking(): [number, Uint8Array | null];
 }
 export module ProxyResolverDefault {
     export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
@@ -1844,6 +1864,9 @@ export class Request extends GObject.Object implements Gio.Initable {
     get session(): Session;
     get uri(): URI;
 
+    // Fields
+    priv: RequestPrivate;
+
     // Members
 
     get_content_length(): number;
@@ -1886,6 +1909,9 @@ export class RequestData extends Request implements Gio.Initable {
     constructor(properties?: Partial<RequestData.ConstructorProperties>, ...args: any[]);
     _init(properties?: Partial<RequestData.ConstructorProperties>, ...args: any[]): void;
 
+    // Fields
+    priv: RequestDataPrivate | any;
+
     // Implemented Members
 
     init(cancellable?: Gio.Cancellable | null): boolean;
@@ -1901,6 +1927,9 @@ export class RequestFile extends Request implements Gio.Initable {
 
     constructor(properties?: Partial<RequestFile.ConstructorProperties>, ...args: any[]);
     _init(properties?: Partial<RequestFile.ConstructorProperties>, ...args: any[]): void;
+
+    // Fields
+    priv: RequestFilePrivate | any;
 
     // Members
 
@@ -1922,6 +1951,9 @@ export class RequestHTTP extends Request implements Gio.Initable {
     constructor(properties?: Partial<RequestHTTP.ConstructorProperties>, ...args: any[]);
     _init(properties?: Partial<RequestHTTP.ConstructorProperties>, ...args: any[]): void;
 
+    // Fields
+    priv: RequestHTTPPrivate | any;
+
     // Members
 
     get_message(): Message;
@@ -1941,6 +1973,9 @@ export class Requester extends GObject.Object implements SessionFeature {
 
     constructor(properties?: Partial<Requester.ConstructorProperties>, ...args: any[]);
     _init(properties?: Partial<Requester.ConstructorProperties>, ...args: any[]): void;
+
+    // Fields
+    priv: RequesterPrivate;
 
     // Constructors
 
@@ -2697,7 +2732,6 @@ export class AuthManagerPrivate {
 export class Buffer {
     static $gtype: GObject.GType<Buffer>;
 
-    constructor(use: MemoryUse, data: Uint8Array | string);
     constructor(
         properties?: Partial<{
             data?: any;
@@ -2772,13 +2806,13 @@ export class ContentSnifferPrivate {
 export class Cookie {
     static $gtype: GObject.GType<Cookie>;
 
-    constructor(name: string, value: string, domain: string, path: string, max_age: number);
     constructor(
         properties?: Partial<{
             name?: string;
             value?: string;
             domain?: string;
             path?: string;
+            expires?: Date;
             secure?: boolean;
             http_only?: boolean;
         }>
@@ -2790,6 +2824,7 @@ export class Cookie {
     value: string;
     domain: string;
     path: string;
+    expires: Date;
     secure: boolean;
     http_only: boolean;
 
@@ -2827,7 +2862,6 @@ export class Cookie {
 export class Date {
     static $gtype: GObject.GType<Date>;
 
-    constructor(year: number, month: number, day: number, hour: number, minute: number, second: number);
     constructor(
         properties?: Partial<{
             year?: number;
@@ -2890,11 +2924,11 @@ export class HSTSEnforcerPrivate {
 export class HSTSPolicy {
     static $gtype: GObject.GType<HSTSPolicy>;
 
-    constructor(domain: string, max_age: number, include_subdomains: boolean);
     constructor(
         properties?: Partial<{
             domain?: string;
             max_age?: number;
+            expires?: Date;
             include_subdomains?: boolean;
         }>
     );
@@ -2903,6 +2937,7 @@ export class HSTSPolicy {
     // Fields
     domain: string;
     max_age: number;
+    expires: Date;
     include_subdomains: boolean;
 
     // Constructors
@@ -2974,7 +3009,7 @@ export class MessageHeaders {
     get(name: string): string | null;
     get_content_disposition(): [boolean, string, GLib.HashTable<string, string>];
     get_content_length(): number;
-    get_content_range(): [boolean, number, number, number | null];
+    get_content_range(): [boolean, number, number, number];
     get_content_type(): [string | null, GLib.HashTable<string, string> | null];
     get_encoding(): Encoding;
     get_expectations(): Expectation;
@@ -3093,7 +3128,6 @@ export class RequesterPrivate {
 export class URI {
     static $gtype: GObject.GType<URI>;
 
-    constructor(uri_string?: string | null);
     constructor(
         properties?: Partial<{
             scheme?: string;
@@ -3143,7 +3177,7 @@ export class URI {
     set_path(path: string): void;
     set_port(port: number): void;
     set_query(query?: string | null): void;
-    set_query_from_form(form: GLib.HashTable<string, string>): void;
+    set_query_from_form(form: { [key: string]: any } | GLib.HashTable<string, string>): void;
     set_scheme(scheme: string): void;
     set_user(user?: string | null): void;
     to_string(just_path_and_query: boolean): string;

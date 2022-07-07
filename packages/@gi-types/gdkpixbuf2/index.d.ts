@@ -17,8 +17,20 @@ export function pixbuf_error_quark(): GLib.Quark;
 export type PixbufDestroyNotify = (pixels: Uint8Array | string) => void;
 export type PixbufModuleFillInfoFunc = (info: PixbufFormat) => void;
 export type PixbufModuleFillVtableFunc = (module: PixbufModule) => void;
+export type PixbufModuleIncrementLoadFunc = (context: any | null, buf: Uint8Array | string) => boolean;
+export type PixbufModuleLoadAnimationFunc = (f?: any | null) => PixbufAnimation;
+export type PixbufModuleLoadFunc = (f?: any | null) => Pixbuf;
+export type PixbufModuleLoadXpmDataFunc = (data: string[]) => Pixbuf;
 export type PixbufModulePreparedFunc = (pixbuf: Pixbuf, anim: PixbufAnimation) => void;
+export type PixbufModuleSaveFunc = (
+    f: any | null,
+    pixbuf: Pixbuf,
+    param_keys?: string[] | null,
+    param_values?: string[] | null
+) => boolean;
+export type PixbufModuleSaveOptionSupportedFunc = (option_key: string) => boolean;
 export type PixbufModuleSizeFunc = (width: number, height: number) => void;
+export type PixbufModuleStopLoadFunc = (context?: any | null) => boolean;
 export type PixbufModuleUpdatedFunc = (pixbuf: Pixbuf, x: number, y: number, width: number, height: number) => void;
 export type PixbufSaveFunc = (buf: Uint8Array | string) => boolean;
 
@@ -306,7 +318,7 @@ export class Pixbuf extends GObject.Object implements Gio.Icon, Gio.LoadableIcon
         width: number,
         height: number
     ): number;
-    static get_file_info(filename: string): [PixbufFormat | null, number | null, number | null];
+    static get_file_info(filename: string): [PixbufFormat | null, number, number];
     static get_file_info_async(
         filename: string,
         cancellable?: Gio.Cancellable | null
@@ -353,17 +365,17 @@ export class Pixbuf extends GObject.Object implements Gio.Icon, Gio.LoadableIcon
     vfunc_equal(icon2?: Gio.Icon | null): boolean;
     vfunc_hash(): number;
     vfunc_serialize(): GLib.Variant | null;
-    load(size: number, cancellable?: Gio.Cancellable | null): [Gio.InputStream, string | null];
-    load_async(size: number, cancellable?: Gio.Cancellable | null): Promise<[Gio.InputStream, string | null]>;
+    load(size: number, cancellable?: Gio.Cancellable | null): [Gio.InputStream, string];
+    load_async(size: number, cancellable?: Gio.Cancellable | null): Promise<[Gio.InputStream, string]>;
     load_async(size: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     load_async(
         size: number,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[Gio.InputStream, string | null]> | void;
-    load_finish(res: Gio.AsyncResult): [Gio.InputStream, string | null];
-    vfunc_load(size: number, cancellable?: Gio.Cancellable | null): [Gio.InputStream, string | null];
-    vfunc_load_async(size: number, cancellable?: Gio.Cancellable | null): Promise<[Gio.InputStream, string | null]>;
+    ): Promise<[Gio.InputStream, string]> | void;
+    load_finish(res: Gio.AsyncResult): [Gio.InputStream, string];
+    vfunc_load(size: number, cancellable?: Gio.Cancellable | null): [Gio.InputStream, string];
+    vfunc_load_async(size: number, cancellable?: Gio.Cancellable | null): Promise<[Gio.InputStream, string]>;
     vfunc_load_async(
         size: number,
         cancellable: Gio.Cancellable | null,
@@ -373,8 +385,8 @@ export class Pixbuf extends GObject.Object implements Gio.Icon, Gio.LoadableIcon
         size: number,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[Gio.InputStream, string | null]> | void;
-    vfunc_load_finish(res: Gio.AsyncResult): [Gio.InputStream, string | null];
+    ): Promise<[Gio.InputStream, string]> | void;
+    vfunc_load_finish(res: Gio.AsyncResult): [Gio.InputStream, string];
 }
 export module PixbufAnimation {
     export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
@@ -553,22 +565,15 @@ export class PixbufSimpleAnimIter extends PixbufAnimationIter {
 export class PixbufFormat {
     static $gtype: GObject.GType<PixbufFormat>;
 
-    constructor(
-        properties?: Partial<{
-            name?: string;
-            domain?: string;
-            description?: string;
-            flags?: number;
-            disabled?: boolean;
-            license?: string;
-        }>
-    );
     constructor(copy: PixbufFormat);
 
     // Fields
     name: string;
+    signature: PixbufModulePattern;
     domain: string;
     description: string;
+    mime_types: string[];
+    extensions: string[];
     flags: number;
     disabled: boolean;
     license: string;
@@ -591,17 +596,20 @@ export class PixbufFormat {
 export class PixbufModule {
     static $gtype: GObject.GType<PixbufModule>;
 
-    constructor(
-        properties?: Partial<{
-            module_name?: string;
-            module_path?: string;
-        }>
-    );
     constructor(copy: PixbufModule);
 
     // Fields
     module_name: string;
     module_path: string;
+    module: GModule.Module;
+    info: PixbufFormat;
+    load: PixbufModuleLoadFunc;
+    load_xpm_data: PixbufModuleLoadXpmDataFunc;
+    stop_load: PixbufModuleStopLoadFunc;
+    load_increment: PixbufModuleIncrementLoadFunc;
+    load_animation: PixbufModuleLoadAnimationFunc;
+    save: PixbufModuleSaveFunc;
+    is_save_option_supported: PixbufModuleSaveOptionSupportedFunc;
 }
 
 export class PixbufModulePattern {

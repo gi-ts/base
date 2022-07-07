@@ -4,7 +4,7 @@
         "access": "public",
         "tag": "latest"
     },
-    "version": "1.0.0",
+    "version": "1.50.0",
     "description": "TypeScript definitions for Pango",
     "license": "MIT",
     "contributors": [
@@ -25,14 +25,15 @@
     "types": "index.d.ts",
     "repository": {
         "type": "git",
-        "url": "https://github.com/gi-ts/../base/packages/@gi-types/",
+        "url": "https://github.com/gi-ts/base",
         "directory": "packages/@gi-types/pango1"
     },
     "scripts": {},
     "dependencies": {
-        "@gi-types/glib2": "^2.68.0",
-        "@gi-types/gobject2": "^2.68.0",
-        "@gi-types/harfbuzz2": "^2.8.1"
+        "@gi-types/gio2": "^2.72.0",
+        "@gi-types/glib2": "^2.72.0",
+        "@gi-types/gobject2": "^2.72.0",
+        "@gi-types/harfbuzz2": "^4.4.1"
     },
     "typeScriptVersion": "4.1",
     "gitHead": null

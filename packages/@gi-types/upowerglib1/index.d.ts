@@ -1,7 +1,7 @@
 /**
  * UPowerGlib 1.0
  *
- * Generated from 0.99.12
+ * Generated from 0.99.19
  */
 
 import * as GObject from "@gi-types/gobject2";
@@ -107,7 +107,7 @@ export module Client {
         onBattery: boolean;
     }
 }
-export class Client extends GObject.Object implements Gio.Initable {
+export class Client extends GObject.Object implements Gio.AsyncInitable<Client>, Gio.Initable {
     static $gtype: GObject.GType<Client>;
 
     constructor(properties?: Partial<Client.ConstructorProperties>, ...args: any[]);
@@ -122,6 +122,9 @@ export class Client extends GObject.Object implements Gio.Initable {
     get lidIsPresent(): boolean;
     get on_battery(): boolean;
     get onBattery(): boolean;
+
+    // Fields
+    priv: ClientPrivate;
 
     // Signals
 
@@ -138,6 +141,9 @@ export class Client extends GObject.Object implements Gio.Initable {
     // Constructors
 
     static ["new"](): Client;
+    static new_finish(res: Gio.AsyncResult): Client;
+    // Conflicted with Gio.AsyncInitable.new_finish
+    static new_finish(...args: never[]): any;
     static new_full(cancellable?: Gio.Cancellable | null): Client;
 
     // Members
@@ -146,15 +152,53 @@ export class Client extends GObject.Object implements Gio.Initable {
     get_daemon_version(): string;
     get_devices(): Device[];
     get_devices2(): Device[];
+    get_devices_async(cancellable?: Gio.Cancellable | null): Promise<Device[]>;
+    get_devices_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+    get_devices_async(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<Device[]> | void;
+    get_devices_finish(res: Gio.AsyncResult): Device[];
     get_display_device(): Device;
     get_lid_is_closed(): boolean;
     get_lid_is_present(): boolean;
     get_on_battery(): boolean;
     vfunc_device_added(device: Device): void;
     vfunc_device_removed(object_path: string): void;
+    static new_async(cancellable?: Gio.Cancellable | null): Promise<Client>;
+    static new_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Client> | null): void;
+    static new_async(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<Client> | null
+    ): Promise<Client> | void;
 
     // Implemented Members
 
+    init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    init_async(
+        io_priority: number,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    init_async(
+        io_priority: number,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    init_finish(res: Gio.AsyncResult): boolean;
+    new_finish(res: Gio.AsyncResult): Client;
+    vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    vfunc_init_async(
+        io_priority: number,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<this> | null
+    ): void;
+    vfunc_init_async(
+        io_priority: number,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<this> | null
+    ): Promise<boolean> | void;
+    vfunc_init_finish(res: Gio.AsyncResult): boolean;
     init(cancellable?: Gio.Cancellable | null): boolean;
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
 }
@@ -164,6 +208,8 @@ export module Device {
         battery_level: number;
         batteryLevel: number;
         capacity: number;
+        charge_cycles: number;
+        chargeCycles: number;
         energy: number;
         energy_empty: number;
         energyEmpty: number;
@@ -221,6 +267,10 @@ export class Device extends GObject.Object {
     set batteryLevel(val: number);
     get capacity(): number;
     set capacity(val: number);
+    get charge_cycles(): number;
+    set charge_cycles(val: number);
+    get chargeCycles(): number;
+    set chargeCycles(val: number);
     get energy(): number;
     set energy(val: number);
     get energy_empty(): number;
@@ -306,6 +356,9 @@ export class Device extends GObject.Object {
     get warningLevel(): number;
     set warningLevel(val: number);
 
+    // Fields
+    priv: DevicePrivate;
+
     // Constructors
 
     static ["new"](): Device;
@@ -354,6 +407,9 @@ export class HistoryItem extends GObject.Object {
     get value(): number;
     set value(val: number);
 
+    // Fields
+    priv: HistoryItemPrivate;
+
     // Constructors
 
     static ["new"](): HistoryItem;
@@ -389,6 +445,9 @@ export class StatsItem extends GObject.Object {
     get value(): number;
     set value(val: number);
 
+    // Fields
+    priv: StatsItemPrivate;
+
     // Constructors
 
     static ["new"](): StatsItem;
@@ -399,95 +458,6 @@ export class StatsItem extends GObject.Object {
     get_value(): number;
     set_accuracy(accuracy: number): void;
     set_value(value: number): void;
-}
-export module WakeupItem {
-    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-        [key: string]: any;
-        cmdline: string;
-        details: string;
-        id: number;
-        is_userspace: boolean;
-        isUserspace: boolean;
-        old: number;
-        value: number;
-    }
-}
-export class WakeupItem extends GObject.Object {
-    static $gtype: GObject.GType<WakeupItem>;
-
-    constructor(properties?: Partial<WakeupItem.ConstructorProperties>, ...args: any[]);
-    _init(properties?: Partial<WakeupItem.ConstructorProperties>, ...args: any[]): void;
-
-    // Properties
-    get cmdline(): string;
-    set cmdline(val: string);
-    get details(): string;
-    set details(val: string);
-    get id(): number;
-    set id(val: number);
-    get is_userspace(): boolean;
-    set is_userspace(val: boolean);
-    get isUserspace(): boolean;
-    set isUserspace(val: boolean);
-    get old(): number;
-    set old(val: number);
-    get value(): number;
-    set value(val: number);
-
-    // Constructors
-
-    static ["new"](): WakeupItem;
-
-    // Members
-
-    get_cmdline(): string;
-    get_details(): string;
-    get_id(): number;
-    get_is_userspace(): boolean;
-    get_old(): number;
-    get_value(): number;
-    set_cmdline(cmdline: string): void;
-    set_details(details: string): void;
-    set_id(id: number): void;
-    set_is_userspace(is_userspace: boolean): void;
-    set_old(old: number): void;
-    set_value(value: number): void;
-}
-export module Wakeups {
-    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-        [key: string]: any;
-    }
-}
-export class Wakeups extends GObject.Object {
-    static $gtype: GObject.GType<Wakeups>;
-
-    constructor(properties?: Partial<Wakeups.ConstructorProperties>, ...args: any[]);
-    _init(properties?: Partial<Wakeups.ConstructorProperties>, ...args: any[]): void;
-
-    // Signals
-
-    connect(id: string, callback: (...args: any[]) => any): number;
-    connect_after(id: string, callback: (...args: any[]) => any): number;
-    emit(id: string, ...args: any[]): void;
-    connect(signal: "data-changed", callback: (_source: this) => void): number;
-    connect_after(signal: "data-changed", callback: (_source: this) => void): number;
-    emit(signal: "data-changed"): void;
-    connect(signal: "total-changed", callback: (_source: this, object: number) => void): number;
-    connect_after(signal: "total-changed", callback: (_source: this, object: number) => void): number;
-    emit(signal: "total-changed", object: number): void;
-
-    // Constructors
-
-    static ["new"](): Wakeups;
-
-    // Members
-
-    get_data_sync(cancellable?: Gio.Cancellable | null): WakeupItem[];
-    get_has_capability(): boolean;
-    get_properties_sync(cancellable?: Gio.Cancellable | null): boolean;
-    get_total_sync(cancellable?: Gio.Cancellable | null): number;
-    vfunc_data_changed(): void;
-    vfunc_total_changed(value: number): void;
 }
 
 export class ClientPrivate {
@@ -512,16 +482,4 @@ export class StatsItemPrivate {
     static $gtype: GObject.GType<StatsItemPrivate>;
 
     constructor(copy: StatsItemPrivate);
-}
-
-export class WakeupItemPrivate {
-    static $gtype: GObject.GType<WakeupItemPrivate>;
-
-    constructor(copy: WakeupItemPrivate);
-}
-
-export class WakeupsPrivate {
-    static $gtype: GObject.GType<WakeupsPrivate>;
-
-    constructor(copy: WakeupsPrivate);
 }

@@ -1,0 +1,10 @@
+{
+    "name": "GWeather",
+    "api_version": "4.0",
+    "package_version": "4.0",
+    "imports": {
+        "GObject": "2.0",
+        "GLib": "2.0",
+        "Gio": "2.0"
+    }
+}

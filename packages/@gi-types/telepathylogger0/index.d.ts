@@ -96,6 +96,9 @@ export class Entity extends GObject.Object {
     get identifier(): string;
     get type(): number;
 
+    // Fields
+    priv: EntityPriv;
+
     // Constructors
 
     static ["new"](id: string, type: EntityType, alias: string, avatar_token: string): Entity;
@@ -259,6 +262,9 @@ export class LogWalker extends GObject.Object {
     get filter_data(): any;
     get filterData(): any;
 
+    // Fields
+    priv: LogWalkerPriv;
+
     // Members
 
     get_events_async(num_events: number): Promise<[Event[]]>;
@@ -335,6 +341,11 @@ export class LogSearchHit {
     static $gtype: GObject.GType<LogSearchHit>;
 
     constructor(copy: LogSearchHit);
+
+    // Fields
+    account: TelepathyGLib.Account;
+    target: Entity;
+    date: GLib.Date;
 }
 
 export class LogWalkerPriv {

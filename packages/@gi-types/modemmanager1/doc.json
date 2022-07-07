@@ -1,7 +1,7 @@
 {
     "name": "ModemManager",
     "api_version": "1.0",
-    "package_version": "1.16.6",
+    "package_version": "1.18.10",
     "imports": {
         "GObject": "2.0",
         "Gio": "2.0",

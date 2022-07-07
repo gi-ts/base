@@ -640,14 +640,14 @@ export class ManagerProxy
     ): Promise<boolean> | void;
     call_add_agent_finish(res: Gio.AsyncResult): boolean;
     call_add_agent_sync(arg_id: string, cancellable?: Gio.Cancellable | null): boolean;
-    call_create_client(cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_create_client(cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_create_client(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     call_create_client(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_create_client_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_create_client_sync(cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_create_client_finish(res: Gio.AsyncResult): [boolean, string];
+    call_create_client_sync(cancellable?: Gio.Cancellable | null): [boolean, string];
     call_delete_client(arg_client: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_delete_client(
         arg_client: string,
@@ -661,14 +661,14 @@ export class ManagerProxy
     ): Promise<boolean> | void;
     call_delete_client_finish(res: Gio.AsyncResult): boolean;
     call_delete_client_sync(arg_client: string, cancellable?: Gio.Cancellable | null): boolean;
-    call_get_client(cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_get_client(cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_get_client(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     call_get_client(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_get_client_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_get_client_sync(cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_get_client_finish(res: Gio.AsyncResult): [boolean, string];
+    call_get_client_sync(cancellable?: Gio.Cancellable | null): [boolean, string];
     complete_add_agent(invocation: Gio.DBusMethodInvocation): void;
     complete_create_client(invocation: Gio.DBusMethodInvocation, client: string): void;
     complete_delete_client(invocation: Gio.DBusMethodInvocation): void;
@@ -754,14 +754,14 @@ export class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Manage
     ): Promise<boolean> | void;
     call_add_agent_finish(res: Gio.AsyncResult): boolean;
     call_add_agent_sync(arg_id: string, cancellable?: Gio.Cancellable | null): boolean;
-    call_create_client(cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_create_client(cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_create_client(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     call_create_client(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_create_client_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_create_client_sync(cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_create_client_finish(res: Gio.AsyncResult): [boolean, string];
+    call_create_client_sync(cancellable?: Gio.Cancellable | null): [boolean, string];
     call_delete_client(arg_client: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_delete_client(
         arg_client: string,
@@ -775,14 +775,14 @@ export class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Manage
     ): Promise<boolean> | void;
     call_delete_client_finish(res: Gio.AsyncResult): boolean;
     call_delete_client_sync(arg_client: string, cancellable?: Gio.Cancellable | null): boolean;
-    call_get_client(cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_get_client(cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_get_client(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     call_get_client(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_get_client_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_get_client_sync(cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_get_client_finish(res: Gio.AsyncResult): [boolean, string];
+    call_get_client_sync(cancellable?: Gio.Cancellable | null): [boolean, string];
     complete_add_agent(invocation: Gio.DBusMethodInvocation): void;
     complete_create_client(invocation: Gio.DBusMethodInvocation, client: string): void;
     complete_delete_client(invocation: Gio.DBusMethodInvocation): void;
@@ -806,7 +806,11 @@ export module Simple {
         client: ClientProxy;
         desktop_id: string;
         desktopId: string;
+        distance_threshold: number;
+        distanceThreshold: number;
         location: LocationProxy;
+        time_threshold: number;
+        timeThreshold: number;
     }
 }
 export class Simple extends GObject.Object implements Gio.AsyncInitable<Simple> {
@@ -821,7 +825,11 @@ export class Simple extends GObject.Object implements Gio.AsyncInitable<Simple> 
     get client(): ClientProxy;
     set desktop_id(val: string);
     set desktopId(val: string);
+    get distance_threshold(): number;
+    get distanceThreshold(): number;
     get location(): LocationProxy;
+    get time_threshold(): number;
+    get timeThreshold(): number;
 
     // Constructors
 
@@ -829,11 +837,19 @@ export class Simple extends GObject.Object implements Gio.AsyncInitable<Simple> 
     // Conflicted with Gio.AsyncInitable.new_finish
     static new_finish(...args: never[]): any;
     static new_sync(desktop_id: string, accuracy_level: AccuracyLevel, cancellable?: Gio.Cancellable | null): Simple;
+    static new_with_thresholds_finish(result: Gio.AsyncResult): Simple;
+    static new_with_thresholds_sync(
+        desktop_id: string,
+        accuracy_level: AccuracyLevel,
+        time_threshold: number,
+        distance_threshold: number,
+        cancellable?: Gio.Cancellable | null
+    ): Simple;
 
     // Members
 
     get_client(): ClientProxy;
-    get_location(): LocationProxy;
+    get_location(): Location;
     static new(
         desktop_id: string,
         accuracy_level: AccuracyLevel,
@@ -848,6 +864,29 @@ export class Simple extends GObject.Object implements Gio.AsyncInitable<Simple> 
     static new(
         desktop_id: string,
         accuracy_level: AccuracyLevel,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<Simple> | null
+    ): Promise<Simple> | void;
+    static new_with_thresholds(
+        desktop_id: string,
+        accuracy_level: AccuracyLevel,
+        time_threshold: number,
+        distance_threshold: number,
+        cancellable?: Gio.Cancellable | null
+    ): Promise<Simple>;
+    static new_with_thresholds(
+        desktop_id: string,
+        accuracy_level: AccuracyLevel,
+        time_threshold: number,
+        distance_threshold: number,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Simple> | null
+    ): void;
+    static new_with_thresholds(
+        desktop_id: string,
+        accuracy_level: AccuracyLevel,
+        time_threshold: number,
+        distance_threshold: number,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Simple> | null
     ): Promise<Simple> | void;
@@ -1024,14 +1063,14 @@ export interface ManagerPrototype extends GObject.Object {
     ): Promise<boolean> | void;
     call_add_agent_finish(res: Gio.AsyncResult): boolean;
     call_add_agent_sync(arg_id: string, cancellable?: Gio.Cancellable | null): boolean;
-    call_create_client(cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_create_client(cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_create_client(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     call_create_client(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_create_client_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_create_client_sync(cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_create_client_finish(res: Gio.AsyncResult): [boolean, string];
+    call_create_client_sync(cancellable?: Gio.Cancellable | null): [boolean, string];
     call_delete_client(arg_client: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
     call_delete_client(
         arg_client: string,
@@ -1045,14 +1084,14 @@ export interface ManagerPrototype extends GObject.Object {
     ): Promise<boolean> | void;
     call_delete_client_finish(res: Gio.AsyncResult): boolean;
     call_delete_client_sync(arg_client: string, cancellable?: Gio.Cancellable | null): boolean;
-    call_get_client(cancellable?: Gio.Cancellable | null): Promise<[string | null]>;
+    call_get_client(cancellable?: Gio.Cancellable | null): Promise<[string]>;
     call_get_client(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     call_get_client(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<this> | null
-    ): Promise<[string | null]> | void;
-    call_get_client_finish(res: Gio.AsyncResult): [boolean, string | null];
-    call_get_client_sync(cancellable?: Gio.Cancellable | null): [boolean, string | null];
+    ): Promise<[string]> | void;
+    call_get_client_finish(res: Gio.AsyncResult): [boolean, string];
+    call_get_client_sync(cancellable?: Gio.Cancellable | null): [boolean, string];
     complete_add_agent(invocation: Gio.DBusMethodInvocation): void;
     complete_create_client(invocation: Gio.DBusMethodInvocation, client: string): void;
     complete_delete_client(invocation: Gio.DBusMethodInvocation): void;

@@ -1,7 +1,7 @@
 /**
  * Notify 0.7
  *
- * Generated from 0.7.9
+ * Generated from 0.7.12
  */
 
 import * as GObject from "@gi-types/gobject2";
@@ -15,7 +15,7 @@ export const VERSION_MICRO: number;
 export const VERSION_MINOR: number;
 export function get_app_name(): string;
 export function get_server_caps(): string[];
-export function get_server_info(): [boolean, string | null, string | null, string | null, string | null];
+export function get_server_info(): [boolean, string, string, string, string];
 export function init(app_name: string): boolean;
 export function is_initted(): boolean;
 export function set_app_name(app_name: string): void;
@@ -88,6 +88,7 @@ export class Notification extends GObject.Object {
     clear_actions(): void;
     clear_hints(): void;
     close(): boolean;
+    get_activation_token(): string;
     get_closed_reason(): number;
     set_app_name(app_name: string): void;
     set_category(category: string): void;

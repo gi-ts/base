@@ -1,7 +1,7 @@
 /**
  * Json 1.0
  *
- * Generated from 1.6.2
+ * Generated from 1.6.6
  */
 
 import * as GObject from "@gi-types/gobject2";
@@ -13,7 +13,7 @@ export const MICRO_VERSION: number;
 export const MINOR_VERSION: number;
 export const VERSION_S: string;
 export function boxed_can_deserialize(gboxed_type: GObject.GType, node_type: NodeType): boolean;
-export function boxed_can_serialize(gboxed_type: GObject.GType): [boolean, NodeType];
+export function boxed_can_serialize(gboxed_type: GObject.GType): [boolean, NodeType | null];
 export function boxed_deserialize(gboxed_type: GObject.GType, node: Node): any | null;
 export function boxed_serialize(gboxed_type: GObject.GType, boxed?: any | null): Node | null;
 export function construct_gobject<T = GObject.Object>(gtype: GObject.GType, data: string, length: number): T;
@@ -22,10 +22,10 @@ export function gobject_deserialize<T = GObject.Object>(gtype: GObject.GType, no
 export function gobject_from_data<T = GObject.Object>(gtype: GObject.GType, data: string, length: number): T;
 export function gobject_serialize(gobject: GObject.Object): Node;
 export function gobject_to_data(gobject: GObject.Object): [string, number];
-export function gvariant_deserialize(json_node: Node, signature?: string | null): GLib.Variant;
-export function gvariant_deserialize_data(json: string, length: number, signature?: string | null): GLib.Variant;
+export function gvariant_deserialize(json_node: Node, signature?: string | null): GLib.Variant | null;
+export function gvariant_deserialize_data(json: string, length: number, signature?: string | null): GLib.Variant | null;
 export function gvariant_serialize(variant: GLib.Variant): Node;
-export function gvariant_serialize_data(variant: GLib.Variant): [string, number | null];
+export function gvariant_serialize_data(variant: GLib.Variant): [string, number];
 export function parser_error_quark(): GLib.Quark;
 export function path_error_quark(): GLib.Quark;
 export function reader_error_quark(): GLib.Quark;
@@ -245,7 +245,7 @@ export class Parser extends GObject.Object {
     get_current_line(): number;
     get_current_pos(): number;
     get_root(): Node | null;
-    has_assignment(): [boolean, string | null];
+    has_assignment(): [boolean, string];
     load_from_data(data: string, length: number): boolean;
     load_from_file(filename: string): boolean;
     load_from_mapped_file(filename: string): boolean;
@@ -341,6 +341,7 @@ export class Array {
     static $gtype: GObject.GType<Array>;
 
     constructor();
+    constructor(properties?: Partial<{}>);
     constructor(copy: Array);
 
     // Constructors
@@ -354,7 +355,7 @@ export class Array {
     add_element(node: Node): void;
     add_int_element(value: number): void;
     add_null_element(): void;
-    add_object_element(value: Object): void;
+    add_object_element(value?: Object | null): void;
     add_string_element(value: string): void;
     dup_element(index_: number): Node;
     equal(b: Array): boolean;
@@ -363,7 +364,7 @@ export class Array {
     get_boolean_element(index_: number): boolean;
     get_double_element(index_: number): number;
     get_element(index_: number): Node;
-    get_elements(): Node[];
+    get_elements(): Node[] | null;
     get_int_element(index_: number): number;
     get_length(): number;
     get_null_element(index_: number): boolean;
@@ -393,6 +394,7 @@ export class Node {
     static $gtype: GObject.GType<Node>;
 
     constructor();
+    constructor(properties?: Partial<{}>);
     constructor(copy: Node);
 
     // Constructors
@@ -434,7 +436,7 @@ export class Node {
     set_double(value: number): void;
     set_int(value: number): void;
     set_object(object?: Object | null): void;
-    set_parent(parent: Node): void;
+    set_parent(parent?: Node | null): void;
     set_string(value: string): void;
     set_value(value: GObject.Value | any): void;
     take_array(array: Array): void;
@@ -447,6 +449,7 @@ export class Object {
     static $gtype: GObject.GType<Object>;
 
     constructor();
+    constructor(properties?: Partial<{}>);
     constructor(copy: Object);
 
     // Constructors
@@ -457,7 +460,7 @@ export class Object {
     dup_member(member_name: string): Node | null;
     equal(b: Object): boolean;
     foreach_member(func: ObjectForeach): void;
-    get_array_member(member_name: string): Array;
+    get_array_member(member_name: string): Array | null;
     get_boolean_member(member_name: string): boolean;
     get_boolean_member_with_default(member_name: string, default_value: boolean): boolean;
     get_double_member(member_name: string): number;
@@ -497,8 +500,8 @@ export class ObjectIter {
     // Members
     init(object: Object): void;
     init_ordered(object: Object): void;
-    next(): [boolean, string | null, Node | null];
-    next_ordered(): [boolean, string | null, Node | null];
+    next(): [boolean, string, Node | null];
+    next_ordered(): [boolean, string, Node | null];
 }
 
 export class ParserPrivate {

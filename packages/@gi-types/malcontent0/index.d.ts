@@ -214,10 +214,12 @@ export class AppFilter {
     user_id: number;
     app_list: string;
     app_list_type: AppFilterListType;
+    oars_ratings: GLib.Variant;
     allow_user_installation: boolean;
     allow_system_installation: boolean;
 
     // Members
+    equal(b: AppFilter): boolean;
     get_oars_sections(): string[];
     get_oars_value(oars_section: string): AppFilterOarsValue;
     get_user_id(): number;
@@ -240,25 +242,8 @@ export class AppFilterBuilder {
     static $gtype: GObject.GType<AppFilterBuilder>;
 
     constructor();
-    constructor(
-        properties?: Partial<{
-            p0?: any;
-            p1?: any;
-            b0?: boolean;
-            b1?: boolean;
-            p2?: any;
-            p3?: any;
-        }>
-    );
+    constructor(properties?: Partial<{}>);
     constructor(copy: AppFilterBuilder);
-
-    // Fields
-    p0: any;
-    p1: any;
-    b0: boolean;
-    b1: boolean;
-    p2: any;
-    p3: any;
 
     // Constructors
     static ["new"](): AppFilterBuilder;
@@ -290,7 +275,7 @@ export class SessionLimits {
     daily_end_time: number;
 
     // Members
-    check_time_remaining(now_usecs: number): [boolean, number | null, boolean | null];
+    check_time_remaining(now_usecs: number): [boolean, number, boolean];
     get_user_id(): number;
     is_enabled(): boolean;
     ref(): SessionLimits;
@@ -303,19 +288,8 @@ export class SessionLimitsBuilder {
     static $gtype: GObject.GType<SessionLimitsBuilder>;
 
     constructor();
-    constructor(
-        properties?: Partial<{
-            u0?: number;
-            u1?: number;
-            u2?: number;
-        }>
-    );
+    constructor(properties?: Partial<{}>);
     constructor(copy: SessionLimitsBuilder);
-
-    // Fields
-    u0: number;
-    u1: number;
-    u2: number;
 
     // Constructors
     static ["new"](): SessionLimitsBuilder;

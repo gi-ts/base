@@ -1,7 +1,7 @@
 {
     "name": "NM",
     "api_version": "1.0",
-    "package_version": "1.32.0",
+    "package_version": "1.38.2",
     "imports": {
         "GObject": "2.0",
         "Gio": "2.0",

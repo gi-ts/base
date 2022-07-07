@@ -152,7 +152,7 @@ export class User extends GObject.Object {
     get_email(): string;
     get_home_dir(): string;
     get_icon_file(): string;
-    get_language(): string;
+    get_language(): string | null;
     get_location(): string;
     get_locked(): boolean;
     get_login_frequency(): number;
@@ -161,14 +161,7 @@ export class User extends GObject.Object {
     get_num_sessions(): number;
     get_num_sessions_anywhere(): number;
     get_object_path(): string;
-    get_password_expiration_policy(
-        expiration_time: number,
-        last_change_time: number,
-        min_days_between_changes: number,
-        max_days_between_changes: number,
-        days_to_warn: number,
-        days_after_expiration_until_lock: number
-    ): void;
+    get_password_expiration_policy(): [number, number, number, number, number, number];
     get_password_hint(): string;
     get_password_mode(): UserPasswordMode;
     get_primary_session_id(): string;
@@ -193,11 +186,18 @@ export class User extends GObject.Object {
     set_location(location: string): void;
     set_locked(locked: boolean): void;
     set_password(password: string, hint: string): void;
+    set_password_expiration_policy(
+        min_days_between_changes: number,
+        max_days_between_changes: number,
+        days_to_warn: number,
+        days_after_expiration_until_lock: number
+    ): void;
     set_password_hint(hint: string): void;
     set_password_mode(password_mode: UserPasswordMode): void;
     set_real_name(real_name: string): void;
     set_session(session: string): void;
     set_session_type(session_type: string): void;
+    set_user_expiration_policy(expiration_time: number): void;
     set_user_name(user_name: string): void;
     set_x_session(x_session: string): void;
 }

@@ -1,7 +1,7 @@
 /**
  * GLib 2.0
  *
- * Generated from 2.68.0
+ * Generated from 2.72.0
  */
 
 import * as GObject from "@gi-types/gobject2";
@@ -134,18 +134,22 @@ export const USEC_PER_SEC: number;
 export const VA_COPY_AS_ARRAY: number;
 export const VERSION_MIN_REQUIRED: number;
 export const WIN32_MSG_HANDLE: number;
+export const macro__has_attribute___noreturn__: number;
 export function access(filename: string, mode: number): number;
+export function aligned_alloc(n_blocks: number, n_block_bytes: number, alignment: number): any | null;
+export function aligned_alloc0(n_blocks: number, n_block_bytes: number, alignment: number): any | null;
+export function aligned_free(mem?: any | null): void;
 export function ascii_digit_value(c: number): number;
 export function ascii_dtostr(buffer: string, buf_len: number, d: number): string;
 export function ascii_formatd(buffer: string, buf_len: number, format: string, d: number): string;
 export function ascii_strcasecmp(s1: string, s2: string): number;
 export function ascii_strdown(str: string, len: number): string;
-export function ascii_string_to_signed(str: string, base: number, min: number, max: number): [boolean, number | null];
-export function ascii_string_to_unsigned(str: string, base: number, min: number, max: number): [boolean, number | null];
+export function ascii_string_to_signed(str: string, base: number, min: number, max: number): [boolean, number];
+export function ascii_string_to_unsigned(str: string, base: number, min: number, max: number): [boolean, number];
 export function ascii_strncasecmp(s1: string, s2: string, n: number): number;
-export function ascii_strtod(nptr: string): [number, string | null];
-export function ascii_strtoll(nptr: string, base: number): [number, string | null];
-export function ascii_strtoull(nptr: string, base: number): [number, string | null];
+export function ascii_strtod(nptr: string): [number, string];
+export function ascii_strtoll(nptr: string, base: number): [number, string];
+export function ascii_strtoull(nptr: string, base: number): [number, string];
 export function ascii_strup(str: string, len: number): string;
 export function ascii_tolower(c: number): number;
 export function ascii_toupper(c: number): number;
@@ -245,11 +249,11 @@ export function byte_array_free(array: Uint8Array | string, free_segment: boolea
 export function byte_array_free_to_bytes(array: Uint8Array | string): Bytes;
 export function byte_array_new(): Uint8Array;
 export function byte_array_new_take(data: Uint8Array | string): Uint8Array;
-export function byte_array_steal(array: Uint8Array | string): [number, number | null];
+export function byte_array_steal(array: Uint8Array | string): [number, number];
 export function byte_array_unref(array: Uint8Array | string): void;
 export function canonicalize_filename(filename: string, relative_to?: string | null): string;
 export function chdir(path: string): number;
-export function check_version(required_major: number, required_minor: number, required_micro: number): string;
+export function check_version(required_major: number, required_minor: number, required_micro: number): string | null;
 export function checksum_type_get_length(checksum_type: ChecksumType): number;
 export function child_watch_add(
     priority: number,
@@ -279,18 +283,14 @@ export function compute_hmac_for_string(
     str: string,
     length: number
 ): string;
-export function convert(
-    str: Uint8Array | string,
-    to_codeset: string,
-    from_codeset: string
-): [Uint8Array, number | null];
+export function convert(str: Uint8Array | string, to_codeset: string, from_codeset: string): [Uint8Array, number];
 export function convert_error_quark(): Quark;
 export function convert_with_fallback(
     str: Uint8Array | string,
     to_codeset: string,
     from_codeset: string,
     fallback: string
-): [Uint8Array, number | null];
+): [Uint8Array, number];
 export function datalist_foreach(datalist: Data, func: DataForeachFunc): void;
 export function datalist_get_data(datalist: Data, key: string): any | null;
 export function datalist_get_flags(datalist: Data): number;
@@ -321,7 +321,7 @@ export function double_equal(v1: any, v2: any): boolean;
 export function double_hash(v: any): number;
 export function dpgettext(domain: string | null, msgctxtid: string, msgidoffset: number): string;
 export function dpgettext2(domain: string | null, context: string, msgid: string): string;
-export function environ_getenv(envp: string[] | null, variable: string): string;
+export function environ_getenv(envp: string[] | null, variable: string): string | null;
 export function environ_setenv(envp: string[] | null, variable: string, value: string, overwrite: boolean): string[];
 export function environ_unsetenv(envp: string[] | null, variable: string): string[];
 export function file_error_from_errno(err_no: number): FileError;
@@ -339,19 +339,19 @@ export function file_set_contents_full(
 export function file_test(filename: string, test: FileTest): boolean;
 export function filename_display_basename(filename: string): string;
 export function filename_display_name(filename: string): string;
-export function filename_from_uri(uri: string): [string, string | null];
-export function filename_from_utf8(utf8string: string, len: number): [string, number | null, number | null];
+export function filename_from_uri(uri: string): [string, string];
+export function filename_from_utf8(utf8string: string, len: number): [string, number, number];
 export function filename_to_uri(filename: string, hostname?: string | null): string;
-export function filename_to_utf8(opsysstring: string, len: number): [string, number | null, number | null];
+export function filename_to_utf8(opsysstring: string, len: number): [string, number, number];
 export function find_program_in_path(program: string): string | null;
 export function format_size(size: number): string;
 export function format_size_for_display(size: number): string;
 export function format_size_full(size: number, flags: FormatSizeFlags): string;
 export function free(mem?: any | null): void;
 export function get_application_name(): string | null;
-export function get_charset(): [boolean, string | null];
+export function get_charset(): [boolean, string];
 export function get_codeset(): string;
-export function get_console_charset(): [boolean, string | null];
+export function get_console_charset(): [boolean, string];
 export function get_current_dir(): string;
 export function get_current_time(result: TimeVal): void;
 export function get_environ(): string[];
@@ -375,28 +375,46 @@ export function get_user_config_dir(): string;
 export function get_user_data_dir(): string;
 export function get_user_name(): string;
 export function get_user_runtime_dir(): string;
-export function get_user_special_dir(directory: UserDirectory): string;
-export function getenv(variable: string): string;
-export function hash_table_add(hash_table: HashTable<any, any>, key?: any | null): boolean;
-export function hash_table_contains(hash_table: HashTable<any, any>, key?: any | null): boolean;
-export function hash_table_destroy(hash_table: HashTable<any, any>): void;
-export function hash_table_insert(hash_table: HashTable<any, any>, key?: any | null, value?: any | null): boolean;
-export function hash_table_lookup(hash_table: HashTable<any, any>, key?: any | null): any | null;
+export function get_user_special_dir(directory: UserDirectory): string | null;
+export function get_user_state_dir(): string;
+export function getenv(variable: string): string | null;
+export function hash_table_add(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
+export function hash_table_contains(
+    hash_table: { [key: string]: any } | HashTable<any, any>,
+    key?: any | null
+): boolean;
+export function hash_table_destroy(hash_table: { [key: string]: any } | HashTable<any, any>): void;
+export function hash_table_insert(
+    hash_table: { [key: string]: any } | HashTable<any, any>,
+    key?: any | null,
+    value?: any | null
+): boolean;
+export function hash_table_lookup(
+    hash_table: { [key: string]: any } | HashTable<any, any>,
+    key?: any | null
+): any | null;
 export function hash_table_lookup_extended(
-    hash_table: HashTable<any, any>,
-    lookup_key?: any | null
-): [boolean, any | null, any | null];
-export function hash_table_remove(hash_table: HashTable<any, any>, key?: any | null): boolean;
-export function hash_table_remove_all(hash_table: HashTable<any, any>): void;
-export function hash_table_replace(hash_table: HashTable<any, any>, key?: any | null, value?: any | null): boolean;
-export function hash_table_size(hash_table: HashTable<any, any>): number;
-export function hash_table_steal(hash_table: HashTable<any, any>, key?: any | null): boolean;
-export function hash_table_steal_all(hash_table: HashTable<any, any>): void;
+    hash_table: { [key: string]: any } | HashTable<any, any>,
+    lookup_key: any | null
+): [boolean, any, any];
+export function hash_table_new_similar(
+    other_hash_table: { [key: string]: any } | HashTable<any, any>
+): HashTable<any, any>;
+export function hash_table_remove(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
+export function hash_table_remove_all(hash_table: { [key: string]: any } | HashTable<any, any>): void;
+export function hash_table_replace(
+    hash_table: { [key: string]: any } | HashTable<any, any>,
+    key?: any | null,
+    value?: any | null
+): boolean;
+export function hash_table_size(hash_table: { [key: string]: any } | HashTable<any, any>): number;
+export function hash_table_steal(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
+export function hash_table_steal_all(hash_table: { [key: string]: any } | HashTable<any, any>): void;
 export function hash_table_steal_extended(
-    hash_table: HashTable<any, any>,
-    lookup_key?: any | null
-): [boolean, any | null, any | null];
-export function hash_table_unref(hash_table: HashTable<any, any>): void;
+    hash_table: { [key: string]: any } | HashTable<any, any>,
+    lookup_key: any | null
+): [boolean, any, any];
+export function hash_table_unref(hash_table: { [key: string]: any } | HashTable<any, any>): void;
 export function hook_destroy(hook_list: HookList, hook_id: number): boolean;
 export function hook_destroy_link(hook_list: HookList, hook: Hook): void;
 export function hook_free(hook_list: HookList, hook: Hook): void;
@@ -423,16 +441,18 @@ export function io_channel_error_quark(): Quark;
 export function io_create_watch(channel: IOChannel, condition: IOCondition): Source;
 export function key_file_error_quark(): Quark;
 export function listenv(): string[];
-export function locale_from_utf8(utf8string: string, len: number): [Uint8Array, number | null];
-export function locale_to_utf8(opsysstring: Uint8Array | string): [string, number | null, number | null];
+export function locale_from_utf8(utf8string: string, len: number): [Uint8Array, number];
+export function locale_to_utf8(opsysstring: Uint8Array | string): [string, number, number];
 export function log_default_handler(
     log_domain: string | null,
     log_level: LogLevelFlags,
     message?: string | null,
     unused_data?: any | null
 ): void;
+export function log_get_debug_enabled(): boolean;
 export function log_remove_handler(log_domain: string, handler_id: number): void;
 export function log_set_always_fatal(fatal_mask: LogLevelFlags): LogLevelFlags;
+export function log_set_debug_enabled(enabled: boolean): void;
 export function log_set_fatal_mask(log_domain: string, fatal_mask: LogLevelFlags): LogLevelFlags;
 export function log_set_handler(log_domain: string | null, log_levels: LogLevelFlags, log_func: LogFunc): number;
 export function log_set_writer_func(): void;
@@ -487,18 +507,12 @@ export function path_get_basename(file_name: string): string;
 export function path_get_dirname(file_name: string): string;
 export function path_is_absolute(file_name: string): boolean;
 export function path_skip_root(file_name: string): string | null;
-export function pattern_match(
-    pspec: PatternSpec,
-    string_length: number,
-    string: string,
-    string_reversed?: string | null
-): boolean;
 export function pattern_match_simple(pattern: string, string: string): boolean;
-export function pattern_match_string(pspec: PatternSpec, string: string): boolean;
 export function pointer_bit_lock(address: any, lock_bit: number): void;
 export function pointer_bit_trylock(address: any, lock_bit: number): boolean;
 export function pointer_bit_unlock(address: any, lock_bit: number): void;
 export function poll(fds: PollFD, nfds: number, timeout: number): number;
+export function prefix_error_literal(err: Error | null, prefix: string): void;
 export function propagate_error(src: Error): Error | null;
 export function quark_from_static_string(string?: string | null): Quark;
 export function quark_from_string(string?: string | null): Quark;
@@ -528,7 +542,7 @@ export function ref_string_new(str: string): string;
 export function ref_string_new_intern(str: string): string;
 export function ref_string_new_len(str: string, len: number): string;
 export function ref_string_release(str: string): void;
-export function regex_check_replacement(replacement: string): [boolean, boolean | null];
+export function regex_check_replacement(replacement: string): [boolean, boolean];
 export function regex_error_quark(): Quark;
 export function regex_escape_nul(string: string, length: number): string;
 export function regex_escape_string(string: string[]): string;
@@ -598,8 +612,8 @@ export function spawn_async_with_pipes(
     argv: string[],
     envp: string[] | null,
     flags: SpawnFlags,
-    child_setup?: SpawnChildSetupFunc | null
-): [boolean, Pid | null, number | null, number | null, number | null];
+    child_setup: SpawnChildSetupFunc | null
+): [boolean, Pid | null, number, number, number];
 export function spawn_async_with_pipes_and_fds(
     working_directory: string | null,
     argv: string[],
@@ -609,15 +623,14 @@ export function spawn_async_with_pipes_and_fds(
     stdin_fd: number,
     stdout_fd: number,
     stderr_fd: number,
-    source_fds?: number[] | null,
-    target_fds?: number[] | null
-): [boolean, Pid | null, number | null, number | null, number | null];
-export function spawn_check_exit_status(exit_status: number): boolean;
+    source_fds: number[] | null,
+    target_fds: number[] | null
+): [boolean, Pid | null, number, number, number];
+export function spawn_check_exit_status(wait_status: number): boolean;
+export function spawn_check_wait_status(wait_status: number): boolean;
 export function spawn_close_pid(pid: Pid): void;
 export function spawn_command_line_async(command_line: string): boolean;
-export function spawn_command_line_sync(
-    command_line: string
-): [boolean, Uint8Array | null, Uint8Array | null, number | null];
+export function spawn_command_line_sync(command_line: string): [boolean, Uint8Array | null, Uint8Array | null, number];
 export function spawn_error_quark(): Quark;
 export function spawn_exit_error_quark(): Quark;
 export function spawn_sync(
@@ -625,8 +638,8 @@ export function spawn_sync(
     argv: string[],
     envp: string[] | null,
     flags: SpawnFlags,
-    child_setup?: SpawnChildSetupFunc | null
-): [boolean, Uint8Array | null, Uint8Array | null, number | null];
+    child_setup: SpawnChildSetupFunc | null
+): [boolean, Uint8Array | null, Uint8Array | null, number];
 export function stpcpy(dest: string, src: string): string;
 export function str_equal(v1: any, v2: any): boolean;
 export function str_has_prefix(str: string, prefix: string): boolean;
@@ -648,9 +661,6 @@ export function strdup(str?: string | null): string;
 export function strerror(errnum: number): string;
 export function strescape(source: string, exceptions?: string | null): string;
 export function strfreev(str_array?: string | null): void;
-export function string_new(init?: string | null): String;
-export function string_new_len(init: string, len: number): String;
-export function string_sized_new(dfl_size: number): String;
 export function strip_context(msgid: string, msgval: string): string;
 export function strjoinv(separator: string | null, str_array: string): string;
 export function strlcat(dest: string, src: string, dest_size: number): number;
@@ -663,7 +673,7 @@ export function strrstr(haystack: string, needle: string): string;
 export function strrstr_len(haystack: string, haystack_len: number, needle: string): string;
 export function strsignal(signum: number): string;
 export function strstr_len(haystack: string, haystack_len: number, needle: string): string;
-export function strtod(nptr: string): [number, string | null];
+export function strtod(nptr: string): [number, string];
 export function strup(string: string): string;
 export function strv_contains(strv: string, str: string): boolean;
 export function strv_equal(strv1: string, strv2: string): boolean;
@@ -748,14 +758,14 @@ export function try_malloc0_n(n_blocks: number, n_block_bytes: number): any | nu
 export function try_malloc_n(n_blocks: number, n_block_bytes: number): any | null;
 export function try_realloc(mem: any | null, n_bytes: number): any | null;
 export function try_realloc_n(mem: any | null, n_blocks: number, n_block_bytes: number): any | null;
-export function ucs4_to_utf16(str: number, len: number): [number, number | null, number | null];
-export function ucs4_to_utf8(str: number, len: number): [string, number | null, number | null];
+export function ucs4_to_utf16(str: number, len: number): [number, number, number];
+export function ucs4_to_utf8(str: number, len: number): [string, number, number];
 export function unichar_break_type(c: number): UnicodeBreakType;
 export function unichar_combining_class(uc: number): number;
 export function unichar_compose(a: number, b: number): [boolean, number];
 export function unichar_decompose(ch: number): [boolean, number, number];
 export function unichar_digit_value(c: number): number;
-export function unichar_fully_decompose(ch: number, compat: boolean, result_len: number): [number, number | null];
+export function unichar_fully_decompose(ch: number, compat: boolean, result_len: number): [number, number];
 export function unichar_get_mirror_char(ch: number, mirrored_ch: number): boolean;
 export function unichar_get_script(ch: number): UnicodeScript;
 export function unichar_isalnum(c: number): boolean;
@@ -775,7 +785,7 @@ export function unichar_iswide(c: number): boolean;
 export function unichar_iswide_cjk(c: number): boolean;
 export function unichar_isxdigit(c: number): boolean;
 export function unichar_iszerowidth(c: number): boolean;
-export function unichar_to_utf8(c: number): [number, string | null];
+export function unichar_to_utf8(c: number): [number, string];
 export function unichar_tolower(c: number): number;
 export function unichar_totitle(c: number): number;
 export function unichar_toupper(c: number): number;
@@ -867,26 +877,12 @@ export function uri_resolve_relative(base_uri_string: string | null, uri_ref: st
 export function uri_split(
     uri_ref: string,
     flags: UriFlags
-): [boolean, string | null, string | null, string | null, number | null, string | null, string | null, string | null];
-export function uri_split_network(
-    uri_string: string,
-    flags: UriFlags
-): [boolean, string | null, string | null, number | null];
+): [boolean, string, string, string, number, string, string, string];
+export function uri_split_network(uri_string: string, flags: UriFlags): [boolean, string, string, number];
 export function uri_split_with_user(
     uri_ref: string,
     flags: UriFlags
-): [
-    boolean,
-    string | null,
-    string | null,
-    string | null,
-    string | null,
-    string | null,
-    number | null,
-    string | null,
-    string | null,
-    string | null
-];
+): [boolean, string, string, string, string, string, number, string, string, string];
 export function uri_unescape_bytes(escaped_string: string, length: number, illegal_characters?: string | null): Bytes;
 export function uri_unescape_segment(
     escaped_string?: string | null,
@@ -895,8 +891,8 @@ export function uri_unescape_segment(
 ): string | null;
 export function uri_unescape_string(escaped_string: string, illegal_characters?: string | null): string | null;
 export function usleep(microseconds: number): void;
-export function utf16_to_ucs4(str: number, len: number): [number, number | null, number | null];
-export function utf16_to_utf8(str: number, len: number): [string, number | null, number | null];
+export function utf16_to_ucs4(str: number, len: number): [number, number, number];
+export function utf16_to_utf8(str: number, len: number): [string, number, number];
 export function utf8_casefold(str: string, len: number): string;
 export function utf8_collate(str1: string, str2: string): number;
 export function utf8_collate_key(str: string, len: number): string;
@@ -918,11 +914,11 @@ export function utf8_strrchr(p: string, len: number, c: number): string | null;
 export function utf8_strreverse(str: string, len: number): string;
 export function utf8_strup(str: string, len: number): string;
 export function utf8_substring(str: string, start_pos: number, end_pos: number): string;
-export function utf8_to_ucs4(str: string, len: number): [number, number | null, number | null];
-export function utf8_to_ucs4_fast(str: string, len: number): [number, number | null];
-export function utf8_to_utf16(str: string, len: number): [number, number | null, number | null];
-export function utf8_validate(str: Uint8Array | string): [boolean, string | null];
-export function utf8_validate_len(str: Uint8Array | string): [boolean, string | null];
+export function utf8_to_ucs4(str: string, len: number): [number, number, number];
+export function utf8_to_ucs4_fast(str: string, len: number): [number, number];
+export function utf8_to_utf16(str: string, len: number): [number, number, number];
+export function utf8_validate(str: Uint8Array | string): [boolean, string];
+export function utf8_validate_len(str: Uint8Array | string): [boolean, string];
 export function uuid_string_is_valid(str: string): boolean;
 export function uuid_string_random(): string;
 export function variant_get_gtype(): GObject.GType;
@@ -940,8 +936,8 @@ export function variant_parser_get_error_quark(): Quark;
 export function variant_type_checked_(arg0: string): VariantType;
 export function variant_type_string_get_depth_(type_string: string): number;
 export function variant_type_string_is_valid(type_string: string): boolean;
-export function variant_type_string_scan(string: string, limit?: string | null): [boolean, string | null];
-export type ChildWatchFunc = (pid: Pid, status: number) => void;
+export function variant_type_string_scan(string: string, limit: string | null): [boolean, string];
+export type ChildWatchFunc = (pid: Pid, wait_status: number) => void;
 export type ClearHandleFunc = (handle_id: number) => void;
 export type CompareDataFunc = (a?: any | null, b?: any | null) => number;
 export type CompareFunc = (a?: any | null, b?: any | null) => number;
@@ -1550,6 +1546,7 @@ export enum UnicodeBreakType {
     HANGUL_LV_SYLLABLE = 34,
     HANGUL_LVT_SYLLABLE = 35,
     CLOSE_PARANTHESIS = 36,
+    CLOSE_PARENTHESIS = 36,
     CONDITIONAL_JAPANESE_STARTER = 37,
     HEBREW_LETTER = 38,
     REGIONAL_INDICATOR = 39,
@@ -1721,6 +1718,12 @@ export enum UnicodeScript {
     DIVES_AKURU = 154,
     KHITAN_SMALL_SCRIPT = 155,
     YEZIDI = 156,
+    CYPRO_MINOAN = 157,
+    OLD_UYGHUR = 158,
+    TANGSA = 159,
+    TOTO = 160,
+    VITHKUQI = 161,
+    MATH = 162,
 }
 
 export namespace UnicodeType {
@@ -1965,6 +1968,15 @@ export enum LogLevelFlags {
     LEVEL_MASK = -4,
 }
 
+export namespace MainContextFlags {
+    export const $gtype: GObject.GType<MainContextFlags>;
+}
+
+export enum MainContextFlags {
+    NONE = 0,
+    OWNERLESS_POLLING = 1,
+}
+
 export namespace MarkupCollectType {
     export const $gtype: GObject.GType<MarkupCollectType>;
 }
@@ -2198,12 +2210,12 @@ export class BookmarkFile {
     free(): void;
     get_added(uri: string): number;
     get_added_date_time(uri: string): DateTime;
-    get_app_info(uri: string, name: string): [boolean, string | null, number | null, number | null];
-    get_application_info(uri: string, name: string): [boolean, string | null, number | null, DateTime | null];
+    get_app_info(uri: string, name: string): [boolean, string, number, number];
+    get_application_info(uri: string, name: string): [boolean, string, number, DateTime | null];
     get_applications(uri: string): string[];
     get_description(uri: string): string;
     get_groups(uri: string): string[];
-    get_icon(uri: string): [boolean, string | null, string | null];
+    get_icon(uri: string): [boolean, string, string];
     get_is_private(uri: string): boolean;
     get_mime_type(uri: string): string;
     get_modified(uri: string): number;
@@ -2217,7 +2229,7 @@ export class BookmarkFile {
     has_group(uri: string, group: string): boolean;
     has_item(uri: string): boolean;
     load_from_data(data: Uint8Array | string): boolean;
-    load_from_data_dirs(file: string): [boolean, string | null];
+    load_from_data_dirs(file: string): [boolean, string];
     load_from_file(filename: string): boolean;
     move_item(old_uri: string, new_uri?: string | null): boolean;
     remove_application(uri: string, name: string): boolean;
@@ -2262,7 +2274,7 @@ export class ByteArray {
     static free_to_bytes(array: Uint8Array | string): Bytes;
     static new(): Uint8Array;
     static new_take(data: Uint8Array | string): Uint8Array;
-    static steal(array: Uint8Array | string): [number, number | null];
+    static steal(array: Uint8Array | string): [number, number];
     static unref(array: Uint8Array | string): void;
 }
 
@@ -2280,6 +2292,7 @@ export class Bytes {
     compare(bytes2: Bytes | Uint8Array): number;
     equal(bytes2: Bytes | Uint8Array): boolean;
     get_data(): Uint8Array | null;
+    get_region(element_size: number, offset: number, n_elements: number): any | null;
     get_size(): number;
     hash(): number;
     new_from_bytes(offset: number, length: number): Bytes;
@@ -2311,15 +2324,7 @@ export class Checksum {
 export class Cond {
     static $gtype: GObject.GType<Cond>;
 
-    constructor(
-        properties?: Partial<{
-            p?: any;
-        }>
-    );
     constructor(copy: Cond);
-
-    // Fields
-    p: any;
 
     // Members
     broadcast(): void;
@@ -2417,7 +2422,8 @@ export class Date {
 export class DateTime {
     static $gtype: GObject.GType<DateTime>;
 
-    constructor(tz: TimeZone, year: number, month: number, day: number, hour: number, minute: number, seconds: number);
+    constructor();
+    constructor(properties?: Partial<{}>);
     constructor(copy: DateTime);
 
     // Constructors
@@ -2478,7 +2484,7 @@ export class DateTime {
     get_week_numbering_year(): number;
     get_week_of_year(): number;
     get_year(): number;
-    get_ymd(): [number | null, number | null, number | null];
+    get_ymd(): [number, number, number];
     hash(): number;
     is_daylight_savings(): boolean;
     ref(): DateTime;
@@ -2521,7 +2527,7 @@ export class Dir {
 export class Error {
     static $gtype: GObject.GType<Error>;
 
-    constructor(options: { message: string; code: number });
+    constructor(domain: { new (...args: any[]): Error } | Quark, code: number, message: string);
     constructor(copy: Error);
 
     // Fields
@@ -2530,12 +2536,12 @@ export class Error {
     message: string;
 
     // Constructors
-    static new_literal(domain: Quark, code: number, message: string): Error;
+    static new_literal(domain: { new (...args: any[]): Error } | Quark, code: number, message: string): Error;
 
     // Members
     copy(): Error;
     free(): void;
-    matches(domain: Quark, code: number): boolean;
+    matches(domain: { new (...args: any[]): Error } | Quark, code: number): boolean;
 }
 
 export class HashTable<A = string, B = any> {
@@ -2546,48 +2552,45 @@ export class HashTable<A = string, B = any> {
     constructor(copy: HashTable);
 
     // Members
-    static add(hash_table: HashTable<any, any>, key?: any | null): boolean;
-    static contains(hash_table: HashTable<any, any>, key?: any | null): boolean;
-    static destroy(hash_table: HashTable<any, any>): void;
-    static insert(hash_table: HashTable<any, any>, key?: any | null, value?: any | null): boolean;
-    static lookup(hash_table: HashTable<any, any>, key?: any | null): any | null;
-    static lookup_extended(hash_table: HashTable<any, any>, lookup_key?: any | null): [boolean, any | null, any | null];
-    static remove(hash_table: HashTable<any, any>, key?: any | null): boolean;
-    static remove_all(hash_table: HashTable<any, any>): void;
-    static replace(hash_table: HashTable<any, any>, key?: any | null, value?: any | null): boolean;
-    static size(hash_table: HashTable<any, any>): number;
-    static steal(hash_table: HashTable<any, any>, key?: any | null): boolean;
-    static steal_all(hash_table: HashTable<any, any>): void;
-    static steal_extended(hash_table: HashTable<any, any>, lookup_key?: any | null): [boolean, any | null, any | null];
-    static unref(hash_table: HashTable<any, any>): void;
+    static add(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
+    static contains(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
+    static destroy(hash_table: { [key: string]: any } | HashTable<any, any>): void;
+    static insert(
+        hash_table: { [key: string]: any } | HashTable<any, any>,
+        key?: any | null,
+        value?: any | null
+    ): boolean;
+    static lookup(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): any | null;
+    static lookup_extended(
+        hash_table: { [key: string]: any } | HashTable<any, any>,
+        lookup_key: any | null
+    ): [boolean, any, any];
+    static new_similar(other_hash_table: { [key: string]: any } | HashTable<any, any>): HashTable<any, any>;
+    static remove(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
+    static remove_all(hash_table: { [key: string]: any } | HashTable<any, any>): void;
+    static replace(
+        hash_table: { [key: string]: any } | HashTable<any, any>,
+        key?: any | null,
+        value?: any | null
+    ): boolean;
+    static size(hash_table: { [key: string]: any } | HashTable<any, any>): number;
+    static steal(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
+    static steal_all(hash_table: { [key: string]: any } | HashTable<any, any>): void;
+    static steal_extended(
+        hash_table: { [key: string]: any } | HashTable<any, any>,
+        lookup_key: any | null
+    ): [boolean, any, any];
+    static unref(hash_table: { [key: string]: any } | HashTable<any, any>): void;
 }
 
 export class HashTableIter {
     static $gtype: GObject.GType<HashTableIter>;
 
-    constructor(
-        properties?: Partial<{
-            dummy1?: any;
-            dummy2?: any;
-            dummy3?: any;
-            dummy4?: number;
-            dummy5?: boolean;
-            dummy6?: any;
-        }>
-    );
     constructor(copy: HashTableIter);
 
-    // Fields
-    dummy1: any;
-    dummy2: any;
-    dummy3: any;
-    dummy4: number;
-    dummy5: boolean;
-    dummy6: any;
-
     // Members
-    init(hash_table: HashTable<any, any>): void;
-    next(): [boolean, any | null, any | null];
+    init(hash_table: { [key: string]: any } | HashTable<any, any>): void;
+    next(): [boolean, any, any];
     remove(): void;
     replace(value?: any | null): void;
     steal(): void;
@@ -2608,19 +2611,12 @@ export class Hmac {
 export class Hook {
     static $gtype: GObject.GType<Hook>;
 
-    constructor(
-        properties?: Partial<{
-            data?: any;
-            ref_count?: number;
-            hook_id?: number;
-            flags?: number;
-            func?: any;
-        }>
-    );
     constructor(copy: Hook);
 
     // Fields
     data: any;
+    next: Hook;
+    prev: Hook;
     ref_count: number;
     hook_id: number;
     flags: number;
@@ -2645,8 +2641,10 @@ export class HookList {
     seq_id: number;
     hook_size: number;
     is_setup: number;
+    hooks: Hook;
     dummy3: any;
     finalize_hook: HookFinalizeFunc;
+    dummy: any[];
 
     // Members
     clear(): void;
@@ -2659,39 +2657,7 @@ export class IOChannel {
     static $gtype: GObject.GType<IOChannel>;
 
     constructor(filename: string, mode: string);
-    constructor(
-        properties?: Partial<{
-            ref_count?: number;
-            encoding?: string;
-            line_term?: string;
-            line_term_len?: number;
-            buf_size?: number;
-            use_buffer?: number;
-            do_encode?: number;
-            close_on_unref?: number;
-            is_readable?: number;
-            is_writeable?: number;
-            is_seekable?: number;
-            reserved1?: any;
-            reserved2?: any;
-        }>
-    );
     constructor(copy: IOChannel);
-
-    // Fields
-    ref_count: number;
-    encoding: string;
-    line_term: string;
-    line_term_len: number;
-    buf_size: number;
-    use_buffer: number;
-    do_encode: number;
-    close_on_unref: number;
-    is_readable: number;
-    is_writeable: number;
-    is_seekable: number;
-    reserved1: any;
-    reserved2: any;
 
     // Constructors
     static new_file(filename: string, mode: string): IOChannel;
@@ -2709,8 +2675,8 @@ export class IOChannel {
     get_line_term(length: number): string;
     init(): void;
     read(buf: string, count: number, bytes_read: number): IOError;
-    read_chars(): [IOStatus, Uint8Array, number | null];
-    read_line(): [IOStatus, string, number | null, number | null];
+    read_chars(): [IOStatus, Uint8Array, number];
+    read_line(): [IOStatus, string, number, number];
     read_line_string(buffer: String, terminator_pos?: number | null): IOStatus;
     read_to_end(): [IOStatus, Uint8Array];
     read_unichar(): [IOStatus, number];
@@ -2743,6 +2709,7 @@ export class KeyFile {
     static $gtype: GObject.GType<KeyFile>;
 
     constructor();
+    constructor(properties?: Partial<{}>);
     constructor(copy: KeyFile);
 
     // Constructors
@@ -2754,11 +2721,11 @@ export class KeyFile {
     get_comment(group_name?: string | null, key?: string | null): string;
     get_double(group_name: string, key: string): number;
     get_double_list(group_name: string, key: string): number[];
-    get_groups(): [string[], number | null];
+    get_groups(): [string[], number];
     get_int64(group_name: string, key: string): number;
     get_integer(group_name: string, key: string): number;
     get_integer_list(group_name: string, key: string): number[];
-    get_keys(group_name: string): [string[], number | null];
+    get_keys(group_name: string): [string[], number];
     get_locale_for_key(group_name: string, key: string, locale?: string | null): string | null;
     get_locale_string(group_name: string, key: string, locale?: string | null): string;
     get_locale_string_list(group_name: string, key: string, locale?: string | null): string[];
@@ -2770,8 +2737,8 @@ export class KeyFile {
     has_group(group_name: string): boolean;
     load_from_bytes(bytes: Bytes | Uint8Array, flags: KeyFileFlags): boolean;
     load_from_data(data: string, length: number, flags: KeyFileFlags): boolean;
-    load_from_data_dirs(file: string, flags: KeyFileFlags): [boolean, string | null];
-    load_from_dirs(file: string, search_dirs: string[], flags: KeyFileFlags): [boolean, string | null];
+    load_from_data_dirs(file: string, flags: KeyFileFlags): [boolean, string];
+    load_from_dirs(file: string, search_dirs: string[], flags: KeyFileFlags): [boolean, string];
     load_from_file(file: string, flags: KeyFileFlags): boolean;
     remove_comment(group_name?: string | null, key?: string | null): boolean;
     remove_group(group_name: string): boolean;
@@ -2792,7 +2759,7 @@ export class KeyFile {
     set_string_list(group_name: string, key: string, list: string[]): void;
     set_uint64(group_name: string, key: string, value: number): void;
     set_value(group_name: string, key: string, value: string): void;
-    to_data(): [string, number | null];
+    to_data(): [string, number];
     unref(): void;
     static error_quark(): Quark;
 }
@@ -2800,15 +2767,12 @@ export class KeyFile {
 export class List {
     static $gtype: GObject.GType<List>;
 
-    constructor(
-        properties?: Partial<{
-            data?: any;
-        }>
-    );
     constructor(copy: List);
 
     // Fields
     data: any;
+    next: any[];
+    prev: any[];
 }
 
 export class LogField {
@@ -2833,10 +2797,12 @@ export class MainContext {
     static $gtype: GObject.GType<MainContext>;
 
     constructor();
+    constructor(properties?: Partial<{}>);
     constructor(copy: MainContext);
 
     // Constructors
     static ["new"](): MainContext;
+    static new_with_flags(flags: MainContextFlags): MainContext;
 
     // Members
     acquire(): boolean;
@@ -2851,7 +2817,7 @@ export class MainContext {
     iteration(may_block: boolean): boolean;
     pending(): boolean;
     pop_thread_default(): void;
-    prepare(): [boolean, number | null];
+    prepare(): [boolean, number];
     push_thread_default(): void;
     query(max_priority: number): [number, number, PollFD[]];
     ref(): MainContext;
@@ -2915,7 +2881,7 @@ export class MarkupParseContext {
     end_parse(): boolean;
     free(): void;
     get_element(): string;
-    get_position(): [number | null, number | null];
+    get_position(): [number, number];
     get_user_data(): any | null;
     parse(text: string, text_len: number): boolean;
     pop(): any | null;
@@ -2940,8 +2906,8 @@ export class MatchInfo {
     fetch(match_num: number): string | null;
     fetch_all(): string[];
     fetch_named(name: string): string | null;
-    fetch_named_pos(name: string): [boolean, number | null, number | null];
-    fetch_pos(match_num: number): [boolean, number | null, number | null];
+    fetch_named_pos(name: string): [boolean, number, number];
+    fetch_pos(match_num: number): [boolean, number, number];
     free(): void;
     get_match_count(): number;
     get_regex(): Regex;
@@ -2962,15 +2928,14 @@ export class MemVTable {
 export class Node {
     static $gtype: GObject.GType<Node>;
 
-    constructor(
-        properties?: Partial<{
-            data?: any;
-        }>
-    );
     constructor(copy: Node);
 
     // Fields
     data: any;
+    next: Node;
+    prev: Node;
+    parent: Node;
+    children: Node;
 
     // Members
     child_index(data?: any | null): number;
@@ -3075,11 +3040,18 @@ export class OptionGroup {
 export class PatternSpec {
     static $gtype: GObject.GType<PatternSpec>;
 
+    constructor(pattern: string);
     constructor(copy: PatternSpec);
 
+    // Constructors
+    static ["new"](pattern: string): PatternSpec;
+
     // Members
+    copy(): PatternSpec;
     equal(pspec2: PatternSpec): boolean;
     free(): void;
+    match(string_length: number, string: string, string_reversed?: string | null): boolean;
+    match_string(string: string): boolean;
 }
 
 export class PollFD {
@@ -3104,10 +3076,6 @@ export class Private {
     static $gtype: GObject.GType<Private>;
 
     constructor(copy: Private);
-
-    // Fields
-    p: any;
-    notify: DestroyNotify;
 
     // Members
     get(): any | null;
@@ -3134,14 +3102,11 @@ export class PtrArray {
 export class Queue {
     static $gtype: GObject.GType<Queue>;
 
-    constructor(
-        properties?: Partial<{
-            length?: number;
-        }>
-    );
     constructor(copy: Queue);
 
     // Fields
+    head: any[];
+    tail: any[];
     length: number;
 
     // Members
@@ -3170,15 +3135,7 @@ export class Queue {
 export class RWLock {
     static $gtype: GObject.GType<RWLock>;
 
-    constructor(
-        properties?: Partial<{
-            p?: any;
-        }>
-    );
     constructor(copy: RWLock);
-
-    // Fields
-    p: any;
 
     // Members
     clear(): void;
@@ -3209,15 +3166,7 @@ export class Rand {
 export class RecMutex {
     static $gtype: GObject.GType<RecMutex>;
 
-    constructor(
-        properties?: Partial<{
-            p?: any;
-        }>
-    );
     constructor(copy: RecMutex);
-
-    // Fields
-    p: any;
 
     // Members
     clear(): void;
@@ -3264,7 +3213,7 @@ export class Regex {
     split(string: string, match_options: RegexMatchFlags): string[];
     split_full(string: string[], start_position: number, match_options: RegexMatchFlags, max_tokens: number): string[];
     unref(): void;
-    static check_replacement(replacement: string): [boolean, boolean | null];
+    static check_replacement(replacement: string): [boolean, boolean];
     static error_quark(): Quark;
     static escape_nul(string: string, length: number): string;
     static escape_string(string: string[]): string;
@@ -3285,15 +3234,11 @@ export class Regex {
 export class SList {
     static $gtype: GObject.GType<SList>;
 
-    constructor(
-        properties?: Partial<{
-            data?: any;
-        }>
-    );
     constructor(copy: SList);
 
     // Fields
     data: any;
+    next: any[];
 }
 
 export class Scanner {
@@ -3306,17 +3251,16 @@ export class Scanner {
     max_parse_errors: number;
     parse_errors: number;
     input_name: string;
+    qdata: Data;
+    config: ScannerConfig;
     token: TokenType;
+    value: TokenValue;
     line: number;
     position: number;
     next_token: TokenType;
+    next_value: TokenValue;
     next_line: number;
     next_position: number;
-    input_fd: number;
-    text: string;
-    text_end: string;
-    buffer: string;
-    scope_id: number;
     msg_handler: ScannerMsgFunc;
 
     // Members
@@ -3376,7 +3320,6 @@ export class ScannerConfig {
             symbol_2_token?: number;
             scope_0_fallback?: number;
             store_int64?: number;
-            padding_dummy?: number;
         }>
     );
     constructor(copy: ScannerConfig);
@@ -3408,7 +3351,6 @@ export class ScannerConfig {
     symbol_2_token: number;
     scope_0_fallback: number;
     store_int64: number;
-    padding_dummy: number;
 }
 
 export class Sequence {
@@ -3456,25 +3398,7 @@ export class Source {
     static $gtype: GObject.GType<Source>;
 
     constructor(source_funcs: SourceFuncs, struct_size: number);
-    constructor(
-        properties?: Partial<{
-            callback_data?: any;
-            ref_count?: number;
-            priority?: number;
-            flags?: number;
-            source_id?: number;
-            name?: string;
-        }>
-    );
     constructor(copy: Source);
-
-    // Fields
-    callback_data: any;
-    ref_count: number;
-    priority: number;
-    flags: number;
-    source_id: number;
-    name: string;
 
     // Constructors
     static ["new"](source_funcs: SourceFuncs, struct_size: number): Source;
@@ -3507,6 +3431,7 @@ export class Source {
     set_name(name: string): void;
     set_priority(priority: number): void;
     set_ready_time(ready_time: number): void;
+    set_static_name(name: string): void;
     unref(): void;
     static remove(tag: number): boolean;
     static remove_by_funcs_user_data(funcs: SourceFuncs, user_data?: any | null): boolean;
@@ -3524,10 +3449,6 @@ export class SourceFuncs {
     static $gtype: GObject.GType<SourceFuncs>;
 
     constructor(copy: SourceFuncs);
-
-    // Fields
-    closure_callback: SourceFunc;
-    closure_marshal: SourceDummyMarshal;
 }
 
 export class SourcePrivate {
@@ -3558,6 +3479,11 @@ export class String {
     str: string;
     len: number;
     allocated_len: number;
+
+    // Constructors
+    static ["new"](init?: string | null): String;
+    static new_len(init: string, len: number): String;
+    static sized_new(dfl_size: number): String;
 
     // Members
     append(val: string): String;
@@ -3610,6 +3536,7 @@ export class StrvBuilder {
 
     // Members
     add(value: string): void;
+    addv(value: string[]): void;
     end(): string[];
     unref(): void;
 }
@@ -3618,6 +3545,9 @@ export class TestCase {
     static $gtype: GObject.GType<TestCase>;
 
     constructor(copy: TestCase);
+
+    // Members
+    free(): void;
 }
 
 export class TestConfig {
@@ -3677,6 +3607,7 @@ export class TestSuite {
     // Members
     add(test_case: TestCase): void;
     add_suite(nestedsuite: TestSuite): void;
+    free(): void;
 }
 
 export class Thread {
@@ -3749,7 +3680,8 @@ export class TimeVal {
 export class TimeZone {
     static $gtype: GObject.GType<TimeZone>;
 
-    constructor(identifier?: string | null);
+    constructor();
+    constructor(properties?: Partial<{}>);
     constructor(copy: TimeZone);
 
     // Constructors
@@ -3790,6 +3722,9 @@ export class TrashStack {
 
     constructor(copy: TrashStack);
 
+    // Fields
+    next: TrashStack;
+
     // Members
     static height(stack_p: TrashStack): number;
     static peek(stack_p: TrashStack): any | null;
@@ -3812,7 +3747,7 @@ export class Tree {
     insert(key?: any | null, value?: any | null): void;
     insert_node(key?: any | null, value?: any | null): TreeNode;
     lookup(key?: any | null): any | null;
-    lookup_extended(lookup_key?: any | null): [boolean, any | null, any | null];
+    lookup_extended(lookup_key: any | null): [boolean, any, any];
     lookup_node(key?: any | null): TreeNode | null;
     lower_bound(key?: any | null): TreeNode | null;
     nnodes(): number;
@@ -3820,6 +3755,7 @@ export class Tree {
     node_last(): TreeNode | null;
     ref(): Tree;
     remove(key?: any | null): boolean;
+    remove_all(): void;
     replace(key?: any | null, value?: any | null): void;
     replace_node(key?: any | null, value?: any | null): TreeNode;
     steal(key?: any | null): boolean;
@@ -3918,35 +3854,12 @@ export class Uri {
     static parse_scheme(uri: string): string | null;
     static peek_scheme(uri: string): string | null;
     static resolve_relative(base_uri_string: string | null, uri_ref: string, flags: UriFlags): string;
-    static split(
-        uri_ref: string,
-        flags: UriFlags
-    ): [
-        boolean,
-        string | null,
-        string | null,
-        string | null,
-        number | null,
-        string | null,
-        string | null,
-        string | null
-    ];
-    static split_network(uri_string: string, flags: UriFlags): [boolean, string | null, string | null, number | null];
+    static split(uri_ref: string, flags: UriFlags): [boolean, string, string, string, number, string, string, string];
+    static split_network(uri_string: string, flags: UriFlags): [boolean, string, string, number];
     static split_with_user(
         uri_ref: string,
         flags: UriFlags
-    ): [
-        boolean,
-        string | null,
-        string | null,
-        string | null,
-        string | null,
-        string | null,
-        number | null,
-        string | null,
-        string | null,
-        string | null
-    ];
+    ): [boolean, string, string, string, string, string, number, string, string, string];
     static unescape_bytes(escaped_string: string, length: number, illegal_characters?: string | null): Bytes;
     static unescape_segment(
         escaped_string?: string | null,
@@ -3959,23 +3872,11 @@ export class Uri {
 export class UriParamsIter {
     static $gtype: GObject.GType<UriParamsIter>;
 
-    constructor(
-        properties?: Partial<{
-            dummy0?: number;
-            dummy1?: any;
-            dummy2?: any;
-        }>
-    );
     constructor(copy: UriParamsIter);
-
-    // Fields
-    dummy0: number;
-    dummy1: any;
-    dummy2: any;
 
     // Members
     init(params: string, length: number, separators: string, flags: UriParamsFlags): void;
-    next(): [boolean, string | null, string | null];
+    next(): [boolean, string, string];
 }
 
 export class DoubleIEEE754 {
@@ -4009,15 +3910,7 @@ export class FloatIEEE754 {
 export class Mutex {
     static $gtype: GObject.GType<Mutex>;
 
-    constructor(
-        properties?: Partial<{
-            p?: any;
-        }>
-    );
     constructor(copy: Mutex);
-
-    // Fields
-    p: any;
 
     // Members
     clear(): void;

@@ -1,7 +1,7 @@
 /**
  * GIRepository 2.0
  *
- * Generated from 1.68.0
+ * Generated from 1.72.0
  */
 
 import * as GObject from "@gi-types/gobject2";
@@ -105,6 +105,7 @@ export function object_info_get_abstract(info: ObjectInfo): boolean;
 export function object_info_get_class_struct(info: ObjectInfo): StructInfo | null;
 export function object_info_get_constant(info: ObjectInfo, n: number): ConstantInfo;
 export function object_info_get_field(info: ObjectInfo, n: number): FieldInfo;
+export function object_info_get_final(info: ObjectInfo): boolean;
 export function object_info_get_fundamental(info: ObjectInfo): boolean;
 export function object_info_get_get_value_function(info: ObjectInfo): string | null;
 export function object_info_get_interface(info: ObjectInfo, n: number): InterfaceInfo;
@@ -126,7 +127,9 @@ export function object_info_get_type_name(info: ObjectInfo): string;
 export function object_info_get_unref_function(info: ObjectInfo): string | null;
 export function object_info_get_vfunc(info: ObjectInfo, n: number): VFuncInfo;
 export function property_info_get_flags(info: PropertyInfo): GObject.ParamFlags;
+export function property_info_get_getter(info: PropertyInfo): FunctionInfo | null;
 export function property_info_get_ownership_transfer(info: PropertyInfo): Transfer;
+export function property_info_get_setter(info: PropertyInfo): FunctionInfo | null;
 export function property_info_get_type(info: PropertyInfo): TypeInfo;
 export function registered_type_info_get_g_type(info: RegisteredTypeInfo): GObject.GType;
 export function registered_type_info_get_type_init(info: RegisteredTypeInfo): string;
@@ -155,6 +158,12 @@ export function type_info_get_tag(info: TypeInfo): TypeTag;
 export function type_info_hash_pointer_from_argument(info: TypeInfo, arg: Argument): any | null;
 export function type_info_is_pointer(info: TypeInfo): boolean;
 export function type_info_is_zero_terminated(info: TypeInfo): boolean;
+export function type_tag_argument_from_hash_pointer(
+    storage_type: TypeTag,
+    hash_pointer: any | null,
+    arg: Argument
+): void;
+export function type_tag_hash_pointer_from_argument(storage_type: TypeTag, arg: Argument): any | null;
 export function type_tag_to_string(type: TypeTag): string;
 export function union_info_find_method(info: UnionInfo, name: string): FunctionInfo;
 export function union_info_get_alignment(info: UnionInfo): number;
@@ -242,6 +251,7 @@ export enum ScopeType {
     CALL = 1,
     ASYNC = 2,
     NOTIFIED = 3,
+    FOREVER = 4,
 }
 
 export namespace Transfer {
@@ -381,47 +391,13 @@ export class Repository extends GObject.Object {
 export class AttributeIter {
     static $gtype: GObject.GType<AttributeIter>;
 
-    constructor(
-        properties?: Partial<{
-            data?: any;
-            data2?: any;
-            data3?: any;
-            data4?: any;
-        }>
-    );
     constructor(copy: AttributeIter);
-
-    // Fields
-    data: any;
-    data2: any;
-    data3: any;
-    data4: any;
 }
 
 export class BaseInfo {
     static $gtype: GObject.GType<BaseInfo>;
 
-    constructor(
-        properties?: Partial<{
-            dummy1?: number;
-            dummy2?: number;
-            dummy3?: any;
-            dummy4?: any;
-            dummy5?: any;
-            dummy6?: number;
-            dummy7?: number;
-        }>
-    );
     constructor(copy: BaseInfo);
-
-    // Fields
-    dummy1: number;
-    dummy2: number;
-    dummy3: any;
-    dummy4: any;
-    dummy5: any;
-    dummy6: number;
-    dummy7: number;
 
     // Members
     equal(info2: BaseInfo): boolean;

@@ -17,6 +17,7 @@
         "Atspi": "2.0",
         "cairo": "1.0",
         "DBus": "1.0",
+        "freetype2": "2.0",
         "HarfBuzz": "0.0",
         "Gcr": "3",
         "GdkPixbuf": "2.0",
@@ -27,6 +28,12 @@
         "GLib": "2.0",
         "GModule": "2.0",
         "GObject": "2.0",
+        "GnomeBluetooth": [
+            "3.0"
+        ],
+        "GWeather": [
+            "4.0"
+        ],
         "Gck": "1",
         "IBus": "1.0",
         "Json": "1.0",
@@ -38,7 +45,10 @@
         "Polkit": "1.0",
         "PolkitAgent": "1.0",
         "Rsvg": "2.0",
-        "Soup": "2.4",
+        "Soup": [
+            "2.4",
+            "3.0"
+        ],
         "TelepathyGLib": "0.12",
         "TelepathyLogger": "0.2",
         "UPowerGlib": "1.0",
