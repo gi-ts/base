@@ -110,10 +110,10 @@
     prettier "^2.2.1"
     tslib "^1"
 
-"@gi.ts/lib@^1.5.11":
-  version "1.5.11"
-  resolved "https://registry.yarnpkg.com/@gi.ts/lib/-/lib-1.5.11.tgz#0d52a64d43ca134eded013b537147c9145144e21"
-  integrity sha512-ywsvuVwcXtTFxbolS12FCw/ui40nlBgeqxPXRLxRGqPeIWaXVyTYpu6BwJKympQmRmwXCfWULbwJdfVgrVBtZg==
+"@gi.ts/lib@^1.5.13":
+  version "1.5.13"
+  resolved "https://registry.yarnpkg.com/@gi.ts/lib/-/lib-1.5.13.tgz#44df07bb1b4ed3addad251a32815919b51dbca28"
+  integrity sha512-NnvICjw32uldrzdu3TUZlBnJf17J9xmporENiNcwukWRewXKvNpY/3x1Inm1ojQQi5uOWB1VbysL7s5dB54ZDQ==
   dependencies:
     "@gi.ts/parser" "^1.5.10"
 

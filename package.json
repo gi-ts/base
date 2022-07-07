@@ -3,7 +3,7 @@
   "private": true,
   "devDependencies": {
     "@gi.ts/cli": "^1.5.10",
-    "@gi.ts/lib": "^1.5.11",
+    "@gi.ts/lib": "^1.5.13",
     "lerna": "^3.22.1",
     "typescript": "^4.7.4"
   },
